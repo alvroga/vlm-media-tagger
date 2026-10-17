@@ -166,4 +166,11 @@ Architecture decisions are recorded in [`docs/adr/`](docs/adr/). How to run ever
 
 ## Licence
 
-Apache-2.0 (`LICENSE`). Third-party data and models keep their own licences; see `docs/licenses.md`.
+Apache-2.0 ([`LICENSE`](LICENSE)): use, modify and redistribute freely, including commercially. Redistributions
+must keep the [`NOTICE`](NOTICE) file (the attribution) and mark changed files. Third-party data and models keep
+their own licences; see [`docs/licenses.md`](docs/licenses.md).
+
+## Citing
+
+If this project or its findings help your work, please cite it. [`CITATION.cff`](CITATION.cff) has the details,
+and GitHub's "Cite this repository" button formats them.
