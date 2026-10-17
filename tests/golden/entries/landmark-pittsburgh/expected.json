@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Pittsburgh_Skyline.JPG, CC BY-SA 3.0, photographed 2010-04-07. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 2: the distinctive 'Pittsburgh gold' painted bridges + Three Rivers confluence (Allegheny/Monongahela/Ohio) are a strong but not world-famous identifying signature.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "pittsburgh",
+    "bridge",
+    "river"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "pittsburgh"
+  ],
+  "notes": "Golden-hour view from Mount Washington: multiple gold-painted steel bridges over the river confluence, UPMC-branded tower, downtown skyline. The 'UPMC' text on the tallest building is readable (brand text, not a place name — legitimate OCR tag per stills text policy, but a leading question: could the model use it as a location CLUE, since UPMC is Pittsburgh-specific? Worth watching in results). UNCALIBRATED by design."
+}

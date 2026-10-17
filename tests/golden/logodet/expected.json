@@ -1,0 +1,2260 @@
+{
+ "meta": {
+  "source": "LogoDet-3K (Guo et al.), frozen 2026-07-12",
+  "seed": 20260712,
+  "size": 450,
+  "note": "Bulk false-guess-rate validation tier \u2014 obscure brands only, scored in aggregate. NEVER individually curated; see tests/golden/entries/logo-real-obscure-* for the small hand-reviewed set this scales up."
+ },
+ "images": {
+  "76.jpg": {
+   "brand": "76",
+   "category": "Clothes",
+   "source_file": "Clothes/76/112.jpg"
+  },
+  "apc.jpg": {
+   "brand": "A.P.C",
+   "category": "Clothes",
+   "source_file": "Clothes/A.P.C/10.jpg"
+  },
+  "addicted.jpg": {
+   "brand": "Addicted",
+   "category": "Clothes",
+   "source_file": "Clothes/Addicted/48.jpg"
+  },
+  "aigle.jpg": {
+   "brand": "Aigle",
+   "category": "Clothes",
+   "source_file": "Clothes/Aigle/34.jpg"
+  },
+  "alfred-dunhill.jpg": {
+   "brand": "Alfred Dunhill",
+   "category": "Clothes",
+   "source_file": "Clothes/Alfred Dunhill/29.jpg"
+  },
+  "andrew-marc.jpg": {
+   "brand": "Andrew Marc",
+   "category": "Clothes",
+   "source_file": "Clothes/Andrew Marc/26.jpg"
+  },
+  "anna-sui.jpg": {
+   "brand": "Anna Sui",
+   "category": "Clothes",
+   "source_file": "Clothes/Anna Sui/9.jpg"
+  },
+  "arcteryx.jpg": {
+   "brand": "Arc'teryx",
+   "category": "Clothes",
+   "source_file": "Clothes/Arc'teryx/80.jpg"
+  },
+  "athletic-dna.jpg": {
+   "brand": "Athletic DNA",
+   "category": "Clothes",
+   "source_file": "Clothes/Athletic DNA/166.jpg"
+  },
+  "baci-lingerie.jpg": {
+   "brand": "Baci Lingerie",
+   "category": "Clothes",
+   "source_file": "Clothes/Baci Lingerie/58.jpg"
+  },
+  "badgley-mischka.jpg": {
+   "brand": "Badgley Mischka",
+   "category": "Clothes",
+   "source_file": "Clothes/Badgley Mischka/35.jpg"
+  },
+  "ben-davis.jpg": {
+   "brand": "Ben Davis",
+   "category": "Clothes",
+   "source_file": "Clothes/Ben Davis/57.jpg"
+  },
+  "black-label-skateboards.jpg": {
+   "brand": "Black Label Skateboards",
+   "category": "Clothes",
+   "source_file": "Clothes/Black Label Skateboards/56.jpg"
+  },
+  "blundstone.jpg": {
+   "brand": "Blundstone",
+   "category": "Clothes",
+   "source_file": "Clothes/Blundstone/101.jpg"
+  },
+  "boconi.jpg": {
+   "brand": "Boconi",
+   "category": "Clothes",
+   "source_file": "Clothes/Boconi/42.jpg"
+  },
+  "boscovs.jpg": {
+   "brand": "Boscov's",
+   "category": "Clothes",
+   "source_file": "Clothes/Boscov's/3.jpg"
+  },
+  "bunker.jpg": {
+   "brand": "Bunker",
+   "category": "Clothes",
+   "source_file": "Clothes/Bunker/100.jpg"
+  },
+  "burlington-coat-factory.jpg": {
+   "brand": "Burlington Coat Factory",
+   "category": "Clothes",
+   "source_file": "Clothes/Burlington Coat Factory/76.jpg"
+  },
+  "campmor.jpg": {
+   "brand": "Campmor",
+   "category": "Clothes",
+   "source_file": "Clothes/Campmor/46.jpg"
+  },
+  "captain-planet.jpg": {
+   "brand": "Captain Planet",
+   "category": "Clothes",
+   "source_file": "Clothes/Captain Planet/83.jpg"
+  },
+  "champion.jpg": {
+   "brand": "Champion",
+   "category": "Clothes",
+   "source_file": "Clothes/Champion/48.jpg"
+  },
+  "chipotle-mexican-grill-1.jpg": {
+   "brand": "Chipotle Mexican Grill-1",
+   "category": "Clothes",
+   "source_file": "Clothes/Chipotle Mexican Grill-1/120.jpg"
+  },
+  "christian-louboutin.jpg": {
+   "brand": "Christian Louboutin",
+   "category": "Clothes",
+   "source_file": "Clothes/Christian Louboutin/49.jpg"
+  },
+  "churchkey-can.jpg": {
+   "brand": "Churchkey Can",
+   "category": "Clothes",
+   "source_file": "Clothes/Churchkey Can/12.jpg"
+  },
+  "columbia.jpg": {
+   "brand": "Columbia",
+   "category": "Clothes",
+   "source_file": "Clothes/Columbia/18.jpg"
+  },
+  "converse.jpg": {
+   "brand": "Converse",
+   "category": "Clothes",
+   "source_file": "Clothes/Converse/46.jpg"
+  },
+  "emilio.jpg": {
+   "brand": "Emilio",
+   "category": "Clothes",
+   "source_file": "Clothes/Emilio/19.jpg"
+  },
+  "etro.jpg": {
+   "brand": "Etro",
+   "category": "Clothes",
+   "source_file": "Clothes/Etro/68.jpg"
+  },
+  "exofficio.jpg": {
+   "brand": "Exofficio",
+   "category": "Clothes",
+   "source_file": "Clothes/Exofficio/18.jpg"
+  },
+  "faconnable.jpg": {
+   "brand": "Faconnable",
+   "category": "Clothes",
+   "source_file": "Clothes/Faconnable/18.jpg"
+  },
+  "frank-dandy.jpg": {
+   "brand": "Frank Dandy",
+   "category": "Clothes",
+   "source_file": "Clothes/Frank Dandy/4.jpg"
+  },
+  "gabor.jpg": {
+   "brand": "Gabor",
+   "category": "Clothes",
+   "source_file": "Clothes/Gabor/25.jpg"
+  },
+  "galvin-green.jpg": {
+   "brand": "Galvin Green",
+   "category": "Clothes",
+   "source_file": "Clothes/Galvin Green/20.jpg"
+  },
+  "guy-cotten.jpg": {
+   "brand": "Guy Cotten",
+   "category": "Clothes",
+   "source_file": "Clothes/Guy Cotten/9.jpg"
+  },
+  "hom.jpg": {
+   "brand": "HOM",
+   "category": "Clothes",
+   "source_file": "Clothes/HOM/39.jpg"
+  },
+  "helsport.jpg": {
+   "brand": "Helsport",
+   "category": "Clothes",
+   "source_file": "Clothes/Helsport/56.jpg"
+  },
+  "hilleberg.jpg": {
+   "brand": "Hilleberg",
+   "category": "Clothes",
+   "source_file": "Clothes/Hilleberg/10.jpg"
+  },
+  "hoya.jpg": {
+   "brand": "Hoya",
+   "category": "Clothes",
+   "source_file": "Clothes/Hoya/5.jpg"
+  },
+  "hummel-2.jpg": {
+   "brand": "Hummel-2",
+   "category": "Clothes",
+   "source_file": "Clothes/Hummel-2/96.jpg"
+  },
+  "hurley-2.jpg": {
+   "brand": "Hurley-2",
+   "category": "Clothes",
+   "source_file": "Clothes/Hurley-2/82.jpg"
+  },
+  "imperial.jpg": {
+   "brand": "Imperial",
+   "category": "Clothes",
+   "source_file": "Clothes/Imperial/37.jpg"
+  },
+  "kate-spade-1.jpg": {
+   "brand": "KATE SPADE-1",
+   "category": "Clothes",
+   "source_file": "Clothes/KATE SPADE-1/77.jpg"
+  },
+  "kazhumi.jpg": {
+   "brand": "KaZhuMi",
+   "category": "Clothes",
+   "source_file": "Clothes/KaZhuMi/34.jpg"
+  },
+  "kiton.jpg": {
+   "brand": "Kiton",
+   "category": "Clothes",
+   "source_file": "Clothes/Kiton/49.jpg"
+  },
+  "man-o-war.jpg": {
+   "brand": "Man O' War",
+   "category": "Clothes",
+   "source_file": "Clothes/Man O' War/17.jpg"
+  },
+  "adyson.jpg": {
+   "brand": "adyson",
+   "category": "Clothes",
+   "source_file": "Clothes/adyson/65.jpg"
+  },
+  "bobble.jpg": {
+   "brand": "bobble",
+   "category": "Clothes",
+   "source_file": "Clothes/bobble/1.jpg"
+  },
+  "charles-owo.jpg": {
+   "brand": "charles owo",
+   "category": "Clothes",
+   "source_file": "Clothes/charles owo/54.jpg"
+  },
+  "chilewich.jpg": {
+   "brand": "chilewich",
+   "category": "Clothes",
+   "source_file": "Clothes/chilewich/25.jpg"
+  },
+  "corneliani.jpg": {
+   "brand": "corneliani",
+   "category": "Clothes",
+   "source_file": "Clothes/corneliani/36.jpg"
+  },
+  "gumby.jpg": {
+   "brand": "gumby",
+   "category": "Clothes",
+   "source_file": "Clothes/gumby/109.jpg"
+  },
+  "lesportsac.jpg": {
+   "brand": "lesportsac",
+   "category": "Clothes",
+   "source_file": "Clothes/lesportsac/11.jpg"
+  },
+  "looptworks.jpg": {
+   "brand": "looptworks",
+   "category": "Clothes",
+   "source_file": "Clothes/looptworks/19.jpg"
+  },
+  "louis-vuitton-1.jpg": {
+   "brand": "louis vuitton-1",
+   "category": "Clothes",
+   "source_file": "Clothes/louis vuitton-1/84.jpg"
+  },
+  "louis-vuitton-2.jpg": {
+   "brand": "louis vuitton-2",
+   "category": "Clothes",
+   "source_file": "Clothes/louis vuitton-2/44.jpg"
+  },
+  "luciano-soprani.jpg": {
+   "brand": "luciano soprani",
+   "category": "Clothes",
+   "source_file": "Clothes/luciano soprani/20.jpg"
+  },
+  "mandarina-duck.jpg": {
+   "brand": "mandarina duck",
+   "category": "Clothes",
+   "source_file": "Clothes/mandarina duck/60.jpg"
+  },
+  "marina-rinaldi.jpg": {
+   "brand": "marina rinaldi",
+   "category": "Clothes",
+   "source_file": "Clothes/marina rinaldi/5.jpg"
+  },
+  "minnetonka.jpg": {
+   "brand": "minnetonka",
+   "category": "Clothes",
+   "source_file": "Clothes/minnetonka/4.jpg"
+  },
+  "mitre.jpg": {
+   "brand": "mitre",
+   "category": "Clothes",
+   "source_file": "Clothes/mitre/27.jpg"
+  },
+  "montagu.jpg": {
+   "brand": "montagu",
+   "category": "Clothes",
+   "source_file": "Clothes/montagu/114.jpg"
+  },
+  "mountain-hardwear.jpg": {
+   "brand": "mountain hardwear",
+   "category": "Clothes",
+   "source_file": "Clothes/mountain hardwear/13.jpg"
+  },
+  "nicole-lee-2.jpg": {
+   "brand": "nicole lee-2",
+   "category": "Clothes",
+   "source_file": "Clothes/nicole lee-2/37.jpg"
+  },
+  "old-navy.jpg": {
+   "brand": "old navy",
+   "category": "Clothes",
+   "source_file": "Clothes/old navy/107.jpg"
+  },
+  "oxxford.jpg": {
+   "brand": "oxxford",
+   "category": "Clothes",
+   "source_file": "Clothes/oxxford/73.jpg"
+  },
+  "paddy-pallin.jpg": {
+   "brand": "paddy pallin",
+   "category": "Clothes",
+   "source_file": "Clothes/paddy pallin/62.jpg"
+  },
+  "pajar.jpg": {
+   "brand": "pajar",
+   "category": "Clothes",
+   "source_file": "Clothes/pajar/91.jpg"
+  },
+  "panerai.jpg": {
+   "brand": "panerai",
+   "category": "Clothes",
+   "source_file": "Clothes/panerai/32.jpg"
+  },
+  "ping.jpg": {
+   "brand": "ping",
+   "category": "Clothes",
+   "source_file": "Clothes/ping/55.jpg"
+  },
+  "pony.jpg": {
+   "brand": "pony",
+   "category": "Clothes",
+   "source_file": "Clothes/pony/26.jpg"
+  },
+  "rado.jpg": {
+   "brand": "rado",
+   "category": "Clothes",
+   "source_file": "Clothes/rado/70.jpg"
+  },
+  "roamer.jpg": {
+   "brand": "roamer",
+   "category": "Clothes",
+   "source_file": "Clothes/roamer/50.jpg"
+  },
+  "roberto-cavalli.jpg": {
+   "brand": "roberto cavalli",
+   "category": "Clothes",
+   "source_file": "Clothes/roberto cavalli/28.jpg"
+  },
+  "rocky.jpg": {
+   "brand": "rocky",
+   "category": "Clothes",
+   "source_file": "Clothes/rocky/21.jpg"
+  },
+  "rodania.jpg": {
+   "brand": "rodania",
+   "category": "Clothes",
+   "source_file": "Clothes/rodania/21.jpg"
+  },
+  "ruans.jpg": {
+   "brand": "ruans",
+   "category": "Clothes",
+   "source_file": "Clothes/ruans/85.jpg"
+  },
+  "ryb.jpg": {
+   "brand": "ryb",
+   "category": "Clothes",
+   "source_file": "Clothes/ryb/15.jpg"
+  },
+  "sanuk.jpg": {
+   "brand": "sanuk",
+   "category": "Clothes",
+   "source_file": "Clothes/sanuk/75.jpg"
+  },
+  "seafolly.jpg": {
+   "brand": "seafolly",
+   "category": "Clothes",
+   "source_file": "Clothes/seafolly/71.jpg"
+  },
+  "sergio-tacchini.jpg": {
+   "brand": "sergio tacchini",
+   "category": "Clothes",
+   "source_file": "Clothes/sergio tacchini/40.jpg"
+  },
+  "shure.jpg": {
+   "brand": "shure",
+   "category": "Clothes",
+   "source_file": "Clothes/shure/6.jpg"
+  },
+  "simon.jpg": {
+   "brand": "simon",
+   "category": "Clothes",
+   "source_file": "Clothes/simon/24.jpg"
+  },
+  "sinaina.jpg": {
+   "brand": "sinaina",
+   "category": "Clothes",
+   "source_file": "Clothes/sinaina/37.jpg"
+  },
+  "smythson.jpg": {
+   "brand": "smythson",
+   "category": "Clothes",
+   "source_file": "Clothes/smythson/54.jpg"
+  },
+  "sofft.jpg": {
+   "brand": "sofft",
+   "category": "Clothes",
+   "source_file": "Clothes/sofft/37.jpg"
+  },
+  "spanx.jpg": {
+   "brand": "spanx",
+   "category": "Clothes",
+   "source_file": "Clothes/spanx/83.jpg"
+  },
+  "sparco.jpg": {
+   "brand": "sparco",
+   "category": "Clothes",
+   "source_file": "Clothes/sparco/93.jpg"
+  },
+  "spring-step.jpg": {
+   "brand": "spring step",
+   "category": "Clothes",
+   "source_file": "Clothes/spring step/29.jpg"
+  },
+  "tommy-hilfiger.jpg": {
+   "brand": "tommy hilfiger",
+   "category": "Clothes",
+   "source_file": "Clothes/tommy hilfiger/20.jpg"
+  },
+  "trangoworld.jpg": {
+   "brand": "trangoworld",
+   "category": "Clothes",
+   "source_file": "Clothes/trangoworld/34.jpg"
+  },
+  "viennois.jpg": {
+   "brand": "viennois",
+   "category": "Clothes",
+   "source_file": "Clothes/viennois/47.jpg"
+  },
+  "wolky.jpg": {
+   "brand": "wolky",
+   "category": "Clothes",
+   "source_file": "Clothes/wolky/13.jpg"
+  },
+  "woolrich.jpg": {
+   "brand": "woolrich",
+   "category": "Clothes",
+   "source_file": "Clothes/woolrich/44.jpg"
+  },
+  "yinshidai.jpg": {
+   "brand": "yinshidai",
+   "category": "Clothes",
+   "source_file": "Clothes/yinshidai/16.jpg"
+  },
+  "yuzhaolin.jpg": {
+   "brand": "yuzhaolin",
+   "category": "Clothes",
+   "source_file": "Clothes/yuzhaolin/103.jpg"
+  },
+  "zero-halliburton.jpg": {
+   "brand": "zero halliburton",
+   "category": "Clothes",
+   "source_file": "Clothes/zero halliburton/17.jpg"
+  },
+  "zino.jpg": {
+   "brand": "zino",
+   "category": "Clothes",
+   "source_file": "Clothes/zino/24.jpg"
+  },
+  "65amps.jpg": {
+   "brand": "65amps",
+   "category": "Electronic",
+   "source_file": "Electronic/65amps/37.jpg"
+  },
+  "angenieux.jpg": {
+   "brand": "Angenieux",
+   "category": "Electronic",
+   "source_file": "Electronic/Angenieux/65.jpg"
+  },
+  "bridgeport.jpg": {
+   "brand": "BridgePort",
+   "category": "Electronic",
+   "source_file": "Electronic/BridgePort/41.jpg"
+  },
+  "canon.jpg": {
+   "brand": "Canon",
+   "category": "Electronic",
+   "source_file": "Electronic/Canon/46.jpg"
+  },
+  "cerwin-vega.jpg": {
+   "brand": "Cerwin-Vega",
+   "category": "Electronic",
+   "source_file": "Electronic/Cerwin-Vega/77.jpg"
+  },
+  "contax.jpg": {
+   "brand": "Contax",
+   "category": "Electronic",
+   "source_file": "Electronic/Contax/32.jpg"
+  },
+  "funai.jpg": {
+   "brand": "Funai",
+   "category": "Electronic",
+   "source_file": "Electronic/Funai/55.jpg"
+  },
+  "gateway.jpg": {
+   "brand": "Gateway",
+   "category": "Electronic",
+   "source_file": "Electronic/Gateway/7.jpg"
+  },
+  "hoffmann.jpg": {
+   "brand": "Hoffmann",
+   "category": "Electronic",
+   "source_file": "Electronic/Hoffmann/1.jpg"
+  },
+  "ibm.jpg": {
+   "brand": "IBM",
+   "category": "Electronic",
+   "source_file": "Electronic/IBM/34.jpg"
+  },
+  "iqinvision.jpg": {
+   "brand": "IQinVision",
+   "category": "Electronic",
+   "source_file": "Electronic/IQinVision/60.jpg"
+  },
+  "iiyama.jpg": {
+   "brand": "Iiyama",
+   "category": "Electronic",
+   "source_file": "Electronic/Iiyama/47.jpg"
+  },
+  "ilford-photo.jpg": {
+   "brand": "Ilford Photo",
+   "category": "Electronic",
+   "source_file": "Electronic/Ilford Photo/20.jpg"
+  },
+  "inno-hit.jpg": {
+   "brand": "Inno Hit",
+   "category": "Electronic",
+   "source_file": "Electronic/Inno Hit/9.jpg"
+  },
+  "kyocera.jpg": {
+   "brand": "KYOCERA",
+   "category": "Electronic",
+   "source_file": "Electronic/KYOCERA/2.jpg"
+  },
+  "maple.jpg": {
+   "brand": "Maple",
+   "category": "Electronic",
+   "source_file": "Electronic/Maple/78.jpg"
+  },
+  "anoto.jpg": {
+   "brand": "anoto",
+   "category": "Electronic",
+   "source_file": "Electronic/anoto/51.jpg"
+  },
+  "chimei.jpg": {
+   "brand": "chimei",
+   "category": "Electronic",
+   "source_file": "Electronic/chimei/33.jpg"
+  },
+  "chinon.jpg": {
+   "brand": "chinon",
+   "category": "Electronic",
+   "source_file": "Electronic/chinon/10.jpg"
+  },
+  "hertz.jpg": {
+   "brand": "hertz",
+   "category": "Electronic",
+   "source_file": "Electronic/hertz/7.jpg"
+  },
+  "ipod.jpg": {
+   "brand": "iPod",
+   "category": "Electronic",
+   "source_file": "Electronic/iPod/36.jpg"
+  },
+  "lishen.jpg": {
+   "brand": "lishen",
+   "category": "Electronic",
+   "source_file": "Electronic/lishen/18.jpg"
+  },
+  "me-too.jpg": {
+   "brand": "me too",
+   "category": "Electronic",
+   "source_file": "Electronic/me too/25.jpg"
+  },
+  "meizu.jpg": {
+   "brand": "meizu",
+   "category": "Electronic",
+   "source_file": "Electronic/meizu/66.jpg"
+  },
+  "nimslo.jpg": {
+   "brand": "nimslo",
+   "category": "Electronic",
+   "source_file": "Electronic/nimslo/31.jpg"
+  },
+  "piano.jpg": {
+   "brand": "piano",
+   "category": "Electronic",
+   "source_file": "Electronic/piano/19.jpg"
+  },
+  "pisen.jpg": {
+   "brand": "pisen",
+   "category": "Electronic",
+   "source_file": "Electronic/pisen/65.jpg"
+  },
+  "refinor.jpg": {
+   "brand": "refinor",
+   "category": "Electronic",
+   "source_file": "Electronic/refinor/32.jpg"
+  },
+  "vertex-standard.jpg": {
+   "brand": "vertex standard",
+   "category": "Electronic",
+   "source_file": "Electronic/vertex standard/54.jpg"
+  },
+  "vir-sec.jpg": {
+   "brand": "vir-sec",
+   "category": "Electronic",
+   "source_file": "Electronic/vir-sec/38.jpg"
+  },
+  "westinghouse.jpg": {
+   "brand": "westinghouse",
+   "category": "Electronic",
+   "source_file": "Electronic/westinghouse/29.jpg"
+  },
+  "yhdcom.jpg": {
+   "brand": "yhd.com",
+   "category": "Electronic",
+   "source_file": "Electronic/yhd.com/7.jpg"
+  },
+  "zipp.jpg": {
+   "brand": "zipp",
+   "category": "Electronic",
+   "source_file": "Electronic/zipp/9.jpg"
+  },
+  "amt-coffee.jpg": {
+   "brand": "AMT Coffee",
+   "category": "Food",
+   "source_file": "Food/AMT Coffee/33.jpg"
+  },
+  "adnams.jpg": {
+   "brand": "Adnams",
+   "category": "Food",
+   "source_file": "Food/Adnams/42.jpg"
+  },
+  "allagash.jpg": {
+   "brand": "Allagash",
+   "category": "Food",
+   "source_file": "Food/Allagash/46.jpg"
+  },
+  "angies-kettle.jpg": {
+   "brand": "Angie's Kettle",
+   "category": "Food",
+   "source_file": "Food/Angie's Kettle/82.jpg"
+  },
+  "aokis-pizza.jpg": {
+   "brand": "Aoki's Pizza",
+   "category": "Food",
+   "source_file": "Food/Aoki's Pizza/22.jpg"
+  },
+  "arcaffe.jpg": {
+   "brand": "Arcaffe",
+   "category": "Food",
+   "source_file": "Food/Arcaffe/25.jpg"
+  },
+  "ballast-point.jpg": {
+   "brand": "Ballast Point",
+   "category": "Food",
+   "source_file": "Food/Ballast Point/110.jpg"
+  },
+  "bawls.jpg": {
+   "brand": "Bawls",
+   "category": "Food",
+   "source_file": "Food/Bawls/24.jpg"
+  },
+  "bearnos.jpg": {
+   "brand": "Bearno's",
+   "category": "Food",
+   "source_file": "Food/Bearno's/59.jpg"
+  },
+  "belvita.jpg": {
+   "brand": "Belvita",
+   "category": "Food",
+   "source_file": "Food/Belvita/34.jpg"
+  },
+  "berry-lucky-charms.jpg": {
+   "brand": "Berry Lucky Charms",
+   "category": "Food",
+   "source_file": "Food/Berry Lucky Charms/84.jpg"
+  },
+  "biggby-coffee.jpg": {
+   "brand": "Biggby Coffee",
+   "category": "Food",
+   "source_file": "Food/Biggby Coffee/11.jpg"
+  },
+  "bisquick.jpg": {
+   "brand": "Bisquick",
+   "category": "Food",
+   "source_file": "Food/Bisquick/6.jpg"
+  },
+  "boca-burger.jpg": {
+   "brand": "Boca Burger",
+   "category": "Food",
+   "source_file": "Food/Boca Burger/60.jpg"
+  },
+  "bojangles-famous-chicken-n-biscuits.jpg": {
+   "brand": "Bojangles' Famous Chicken 'n Biscuits",
+   "category": "Food",
+   "source_file": "Food/Bojangles' Famous Chicken 'n Biscuits/129.jpg"
+  },
+  "bournvita.jpg": {
+   "brand": "Bournvita",
+   "category": "Food",
+   "source_file": "Food/Bournvita/121.jpg"
+  },
+  "bridgehead-coffee.jpg": {
+   "brand": "Bridgehead Coffee",
+   "category": "Food",
+   "source_file": "Food/Bridgehead Coffee/40.jpg"
+  },
+  "brusters-ice-cream.jpg": {
+   "brand": "Bruster's Ice Cream",
+   "category": "Food",
+   "source_file": "Food/Bruster's Ice Cream/52.jpg"
+  },
+  "bubba-gump-shrimp-company.jpg": {
+   "brand": "Bubba Gump Shrimp Company",
+   "category": "Food",
+   "source_file": "Food/Bubba Gump Shrimp Company/113.jpg"
+  },
+  "buca-di-beppo.jpg": {
+   "brand": "Buca di Beppo",
+   "category": "Food",
+   "source_file": "Food/Buca di Beppo/117.jpg"
+  },
+  "bully-boy-distillers.jpg": {
+   "brand": "Bully Boy Distillers",
+   "category": "Food",
+   "source_file": "Food/Bully Boy Distillers/52.jpg"
+  },
+  "bundaberg.jpg": {
+   "brand": "Bundaberg",
+   "category": "Food",
+   "source_file": "Food/Bundaberg/78.jpg"
+  },
+  "burrow-hill-cider.jpg": {
+   "brand": "Burrow Hill Cider",
+   "category": "Food",
+   "source_file": "Food/Burrow Hill Cider/58.jpg"
+  },
+  "chivas-regal.jpg": {
+   "brand": "CHIVAS REGAL",
+   "category": "Food",
+   "source_file": "Food/CHIVAS REGAL/26.jpg"
+  },
+  "caffe-cova.jpg": {
+   "brand": "Caffe Cova",
+   "category": "Food",
+   "source_file": "Food/Caffe Cova/9.jpg"
+  },
+  "caffe-umbria.jpg": {
+   "brand": "Caffe Umbria",
+   "category": "Food",
+   "source_file": "Food/Caffe Umbria/84.jpg"
+  },
+  "captain-ds.jpg": {
+   "brand": "Captain D's",
+   "category": "Food",
+   "source_file": "Food/Captain D's/16.jpg"
+  },
+  "captain-morgan.jpg": {
+   "brand": "Captain Morgan",
+   "category": "Food",
+   "source_file": "Food/Captain Morgan/61.jpg"
+  },
+  "caribou-coffee.jpg": {
+   "brand": "Caribou Coffee",
+   "category": "Food",
+   "source_file": "Food/Caribou Coffee/59.jpg"
+  },
+  "carls-jr.jpg": {
+   "brand": "Carl's Jr",
+   "category": "Food",
+   "source_file": "Food/Carl's Jr/50.jpg"
+  },
+  "casa-dragones.jpg": {
+   "brand": "Casa Dragones",
+   "category": "Food",
+   "source_file": "Food/Casa Dragones/39.jpg"
+  },
+  "cascadian-farm.jpg": {
+   "brand": "Cascadian Farm",
+   "category": "Food",
+   "source_file": "Food/Cascadian Farm/66.jpg"
+  },
+  "cavalier.jpg": {
+   "brand": "Cavalier",
+   "category": "Food",
+   "source_file": "Food/Cavalier/38.jpg"
+  },
+  "chef-boyardee.jpg": {
+   "brand": "Chef Boyardee",
+   "category": "Food",
+   "source_file": "Food/Chef Boyardee/35.jpg"
+  },
+  "chex.jpg": {
+   "brand": "Chex",
+   "category": "Food",
+   "source_file": "Food/Chex/14.jpg"
+  },
+  "chocolate-toast-crunch.jpg": {
+   "brand": "Chocolate Toast Crunch",
+   "category": "Food",
+   "source_file": "Food/Chocolate Toast Crunch/17.jpg"
+  },
+  "chronic-tacos-2.jpg": {
+   "brand": "Chronic Tacos-2",
+   "category": "Food",
+   "source_file": "Food/Chronic Tacos-2/121.jpg"
+  },
+  "cinnamon-toast-crunch.jpg": {
+   "brand": "Cinnamon Toast Crunch",
+   "category": "Food",
+   "source_file": "Food/Cinnamon Toast Crunch/55.jpg"
+  },
+  "coco-pops.jpg": {
+   "brand": "Coco Pops",
+   "category": "Food",
+   "source_file": "Food/Coco Pops/87.jpg"
+  },
+  "cocoa-puffs-combos.jpg": {
+   "brand": "Cocoa Puffs Combos",
+   "category": "Food",
+   "source_file": "Food/Cocoa Puffs Combos/12.jpg"
+  },
+  "colmans.jpg": {
+   "brand": "Colman's",
+   "category": "Food",
+   "source_file": "Food/Colman's/139.jpg"
+  },
+  "conagra-foods.jpg": {
+   "brand": "ConAgra Foods",
+   "category": "Food",
+   "source_file": "Food/ConAgra Foods/82.jpg"
+  },
+  "costa-coffee.jpg": {
+   "brand": "Costa Coffee",
+   "category": "Food",
+   "source_file": "Food/Costa Coffee/33.jpg"
+  },
+  "creemore.jpg": {
+   "brand": "Creemore",
+   "category": "Food",
+   "source_file": "Food/Creemore/2.jpg"
+  },
+  "crunchy-nut.jpg": {
+   "brand": "Crunchy Nut",
+   "category": "Food",
+   "source_file": "Food/Crunchy Nut/29.jpg"
+  },
+  "espolon.jpg": {
+   "brand": "Espolon",
+   "category": "Food",
+   "source_file": "Food/Espolon/0.jpg"
+  },
+  "freihofers.jpg": {
+   "brand": "Freihofers",
+   "category": "Food",
+   "source_file": "Food/Freihofers/24.jpg"
+  },
+  "frosty-os.jpg": {
+   "brand": "Frosty O's",
+   "category": "Food",
+   "source_file": "Food/Frosty O's/9.jpg"
+  },
+  "fruchocs.jpg": {
+   "brand": "FruChocs",
+   "category": "Food",
+   "source_file": "Food/FruChocs/38.jpg"
+  },
+  "fruco.jpg": {
+   "brand": "Fruco",
+   "category": "Food",
+   "source_file": "Food/Fruco/51.jpg"
+  },
+  "gattis-pizza.jpg": {
+   "brand": "Gatti's Pizza",
+   "category": "Food",
+   "source_file": "Food/Gatti's Pizza/22.jpg"
+  },
+  "ginsters.jpg": {
+   "brand": "Ginsters",
+   "category": "Food",
+   "source_file": "Food/Ginsters/32.jpg"
+  },
+  "guigoz.jpg": {
+   "brand": "Guigoz",
+   "category": "Food",
+   "source_file": "Food/Guigoz/47.jpg"
+  },
+  "half-acre.jpg": {
+   "brand": "Half Acre",
+   "category": "Food",
+   "source_file": "Food/Half Acre/46.jpg"
+  },
+  "harvest-crunch.jpg": {
+   "brand": "Harvest Crunch",
+   "category": "Food",
+   "source_file": "Food/Harvest Crunch/72.jpg"
+  },
+  "heineken.jpg": {
+   "brand": "Heineken",
+   "category": "Food",
+   "source_file": "Food/Heineken/17.jpg"
+  },
+  "henniez.jpg": {
+   "brand": "Henniez",
+   "category": "Food",
+   "source_file": "Food/Henniez/19.jpg"
+  },
+  "hersheys-cookies-n-creme.jpg": {
+   "brand": "Hershey's Cookies 'n' Creme",
+   "category": "Food",
+   "source_file": "Food/Hershey's Cookies 'n' Creme/56.jpg"
+  },
+  "hobnobs.jpg": {
+   "brand": "HobNobs",
+   "category": "Food",
+   "source_file": "Food/HobNobs/13.jpg"
+  },
+  "hollys-coffee.jpg": {
+   "brand": "Hollys Coffee",
+   "category": "Food",
+   "source_file": "Food/Hollys Coffee/38.jpg"
+  },
+  "honey-kix.jpg": {
+   "brand": "Honey Kix",
+   "category": "Food",
+   "source_file": "Food/Honey Kix/14.jpg"
+  },
+  "honey-maid.jpg": {
+   "brand": "Honey Maid",
+   "category": "Food",
+   "source_file": "Food/Honey Maid/46.jpg"
+  },
+  "honey-nut-corn-flakes.jpg": {
+   "brand": "Honey Nut Corn Flakes",
+   "category": "Food",
+   "source_file": "Food/Honey Nut Corn Flakes/56.jpg"
+  },
+  "honey-smacks.jpg": {
+   "brand": "Honey Smacks",
+   "category": "Food",
+   "source_file": "Food/Honey Smacks/16.jpg"
+  },
+  "hornimans.jpg": {
+   "brand": "Horniman's",
+   "category": "Food",
+   "source_file": "Food/Horniman's/29.jpg"
+  },
+  "hot-pockets.jpg": {
+   "brand": "Hot Pockets",
+   "category": "Food",
+   "source_file": "Food/Hot Pockets/12.jpg"
+  },
+  "hubba-bubba.jpg": {
+   "brand": "Hubba Bubba",
+   "category": "Food",
+   "source_file": "Food/Hubba Bubba/67.jpg"
+  },
+  "hudsons-coffee-1.jpg": {
+   "brand": "Hudsons Coffee-1",
+   "category": "Food",
+   "source_file": "Food/Hudsons Coffee-1/89.jpg"
+  },
+  "huiyuan.jpg": {
+   "brand": "Huiyuan",
+   "category": "Food",
+   "source_file": "Food/Huiyuan/92.jpg"
+  },
+  "i-cant-believe-its-not-butter.jpg": {
+   "brand": "I Can't Believe It's Not Butter",
+   "category": "Food",
+   "source_file": "Food/I Can't Believe It's Not Butter/88.jpg"
+  },
+  "johns-incredible-pizza.jpg": {
+   "brand": "John's Incredible Pizza",
+   "category": "Food",
+   "source_file": "Food/John's Incredible Pizza/40.jpg"
+  },
+  "kissan.jpg": {
+   "brand": "Kissan",
+   "category": "Food",
+   "source_file": "Food/Kissan/59.jpg"
+  },
+  "la-laitiere.jpg": {
+   "brand": "La Laitiere",
+   "category": "Food",
+   "source_file": "Food/La Laitiere/65.jpg"
+  },
+  "lacta.jpg": {
+   "brand": "Lacta",
+   "category": "Food",
+   "source_file": "Food/Lacta/56.jpg"
+  },
+  "ladys-choice.jpg": {
+   "brand": "Lady's Choice",
+   "category": "Food",
+   "source_file": "Food/Lady's Choice/56.jpg"
+  },
+  "makers-mark.jpg": {
+   "brand": "Maker's Mark",
+   "category": "Food",
+   "source_file": "Food/Maker's Mark/60.jpg"
+  },
+  "marios-pizzeria.jpg": {
+   "brand": "Mario's Pizzeria",
+   "category": "Food",
+   "source_file": "Food/Mario's Pizzeria/10.jpg"
+  },
+  "cheesybite.jpg": {
+   "brand": "cheesybite",
+   "category": "Food",
+   "source_file": "Food/cheesybite/48.jpg"
+  },
+  "chicken-out-rotisserie.jpg": {
+   "brand": "chicken out rotisserie",
+   "category": "Food",
+   "source_file": "Food/chicken out rotisserie/61.jpg"
+  },
+  "cookie-crisp-brownie.jpg": {
+   "brand": "cookie crisp brownie",
+   "category": "Food",
+   "source_file": "Food/cookie crisp brownie/103.jpg"
+  },
+  "hengshui-laobaigan.jpg": {
+   "brand": "hengshui laobaigan",
+   "category": "Food",
+   "source_file": "Food/hengshui laobaigan/44.jpg"
+  },
+  "jack-in-the-box.jpg": {
+   "brand": "jack in the box",
+   "category": "Food",
+   "source_file": "Food/jack in the box/137.jpg"
+  },
+  "le-viennois.jpg": {
+   "brand": "le viennois",
+   "category": "Food",
+   "source_file": "Food/le viennois/38.jpg"
+  },
+  "lenders.jpg": {
+   "brand": "lender's",
+   "category": "Food",
+   "source_file": "Food/lender's/13.jpg"
+  },
+  "lizano.jpg": {
+   "brand": "lizano",
+   "category": "Food",
+   "source_file": "Food/lizano/36.jpg"
+  },
+  "luzhoulaojiao-2.jpg": {
+   "brand": "luzhoulaojiao-2",
+   "category": "Food",
+   "source_file": "Food/luzhoulaojiao-2/15.jpg"
+  },
+  "maggi-noodles.jpg": {
+   "brand": "maggi noodles",
+   "category": "Food",
+   "source_file": "Food/maggi noodles/11.jpg"
+  },
+  "margies-candies.jpg": {
+   "brand": "margie's candies",
+   "category": "Food",
+   "source_file": "Food/margie's candies/48.jpg"
+  },
+  "michels-patisserie.jpg": {
+   "brand": "michel's patisserie",
+   "category": "Food",
+   "source_file": "Food/michel's patisserie/32.jpg"
+  },
+  "montesierpe.jpg": {
+   "brand": "montesierpe",
+   "category": "Food",
+   "source_file": "Food/montesierpe/30.jpg"
+  },
+  "nandos.jpg": {
+   "brand": "nandos",
+   "category": "Food",
+   "source_file": "Food/nandos/32.jpg"
+  },
+  "newport-creamery-2.jpg": {
+   "brand": "newport creamery-2",
+   "category": "Food",
+   "source_file": "Food/newport creamery-2/45.jpg"
+  },
+  "oh-henry.jpg": {
+   "brand": "oh henry",
+   "category": "Food",
+   "source_file": "Food/oh henry/97.jpg"
+  },
+  "papa-guiseppi.jpg": {
+   "brand": "papa guiseppi",
+   "category": "Food",
+   "source_file": "Food/papa guiseppi/4.jpg"
+  },
+  "peppes-pizza.jpg": {
+   "brand": "peppes pizza",
+   "category": "Food",
+   "source_file": "Food/peppes pizza/56.jpg"
+  },
+  "peter-piper-pizza.jpg": {
+   "brand": "peter piper pizza",
+   "category": "Food",
+   "source_file": "Food/peter piper pizza/41.jpg"
+  },
+  "pizza-schmizza.jpg": {
+   "brand": "pizza schmizza",
+   "category": "Food",
+   "source_file": "Food/pizza schmizza/48.jpg"
+  },
+  "pronutro.jpg": {
+   "brand": "pronutro",
+   "category": "Food",
+   "source_file": "Food/pronutro/20.jpg"
+  },
+  "qingmei.jpg": {
+   "brand": "qingmei",
+   "category": "Food",
+   "source_file": "Food/qingmei/9.jpg"
+  },
+  "quaker-steak-and-lube.jpg": {
+   "brand": "quaker steak & lube",
+   "category": "Food",
+   "source_file": "Food/quaker steak & lube/83.jpg"
+  },
+  "quality-street.jpg": {
+   "brand": "quality street",
+   "category": "Food",
+   "source_file": "Food/quality street/153.jpg"
+  },
+  "quorn.jpg": {
+   "brand": "quorn",
+   "category": "Food",
+   "source_file": "Food/quorn/17.jpg"
+  },
+  "raisin-wheats.jpg": {
+   "brand": "raisin wheats",
+   "category": "Food",
+   "source_file": "Food/raisin wheats/52.jpg"
+  },
+  "raisinets.jpg": {
+   "brand": "raisinets",
+   "category": "Food",
+   "source_file": "Food/raisinets/19.jpg"
+  },
+  "razzle-dazzle-rice-krispies.jpg": {
+   "brand": "razzle dazzle rice krispies",
+   "category": "Food",
+   "source_file": "Food/razzle dazzle rice krispies/44.jpg"
+  },
+  "red-lobster.jpg": {
+   "brand": "red lobster",
+   "category": "Food",
+   "source_file": "Food/red lobster/53.jpg"
+  },
+  "red-rose-tea.jpg": {
+   "brand": "red rose tea",
+   "category": "Food",
+   "source_file": "Food/red rose tea/25.jpg"
+  },
+  "rice-bubbles.jpg": {
+   "brand": "rice bubbles",
+   "category": "Food",
+   "source_file": "Food/rice bubbles/1.jpg"
+  },
+  "rickards-white.jpg": {
+   "brand": "rickard's white",
+   "category": "Food",
+   "source_file": "Food/rickard's white/16.jpg"
+  },
+  "ricoffy.jpg": {
+   "brand": "ricoffy",
+   "category": "Food",
+   "source_file": "Food/ricoffy/64.jpg"
+  },
+  "rooibee.jpg": {
+   "brand": "rooibee",
+   "category": "Food",
+   "source_file": "Food/rooibee/53.jpg"
+  },
+  "sandford-orchards.jpg": {
+   "brand": "sandford orchards",
+   "category": "Food",
+   "source_file": "Food/sandford orchards/32.jpg"
+  },
+  "sheetz.jpg": {
+   "brand": "sheetz",
+   "category": "Food",
+   "source_file": "Food/sheetz/60.jpg"
+  },
+  "shuanghui.jpg": {
+   "brand": "shuanghui",
+   "category": "Food",
+   "source_file": "Food/shuanghui/74.jpg"
+  },
+  "silver-gulch.jpg": {
+   "brand": "silver gulch",
+   "category": "Food",
+   "source_file": "Food/silver gulch/151.jpg"
+  },
+  "smokey-bones.jpg": {
+   "brand": "smokey bones",
+   "category": "Food",
+   "source_file": "Food/smokey bones/41.jpg"
+  },
+  "stephens-gourmet.jpg": {
+   "brand": "stephen's gourmet",
+   "category": "Food",
+   "source_file": "Food/stephen's gourmet/51.jpg"
+  },
+  "tealuxe.jpg": {
+   "brand": "tealuxe",
+   "category": "Food",
+   "source_file": "Food/tealuxe/95.jpg"
+  },
+  "texan-bar.jpg": {
+   "brand": "texan bar",
+   "category": "Food",
+   "source_file": "Food/texan bar/13.jpg"
+  },
+  "tired-hands.jpg": {
+   "brand": "tired hands",
+   "category": "Food",
+   "source_file": "Food/tired hands/31.jpg"
+  },
+  "titos.jpg": {
+   "brand": "tito's",
+   "category": "Food",
+   "source_file": "Food/tito's/18.jpg"
+  },
+  "toblerone.jpg": {
+   "brand": "toblerone",
+   "category": "Food",
+   "source_file": "Food/toblerone/73.jpg"
+  },
+  "toppers-pizza.jpg": {
+   "brand": "toppers pizza",
+   "category": "Food",
+   "source_file": "Food/toppers pizza/61.jpg"
+  },
+  "ucc-ueshima-coffee-co.jpg": {
+   "brand": "ucc ueshima coffee co",
+   "category": "Food",
+   "source_file": "Food/ucc ueshima coffee co/48.jpg"
+  },
+  "valiojaatelo.jpg": {
+   "brand": "valiojaatelo",
+   "category": "Food",
+   "source_file": "Food/valiojaatelo/7.jpg"
+  },
+  "viru-valge.jpg": {
+   "brand": "viru valge",
+   "category": "Food",
+   "source_file": "Food/viru valge/66.jpg"
+  },
+  "waffle-crisp.jpg": {
+   "brand": "waffle crisp",
+   "category": "Food",
+   "source_file": "Food/waffle crisp/88.jpg"
+  },
+  "wanchai-ferry.jpg": {
+   "brand": "wanchai ferry",
+   "category": "Food",
+   "source_file": "Food/wanchai ferry/3.jpg"
+  },
+  "wangzhihe.jpg": {
+   "brand": "wangzhihe",
+   "category": "Food",
+   "source_file": "Food/wangzhihe/45.jpg"
+  },
+  "warburtons.jpg": {
+   "brand": "warburtons",
+   "category": "Food",
+   "source_file": "Food/warburtons/70.jpg"
+  },
+  "waynes-coffee.jpg": {
+   "brand": "wayne's coffee",
+   "category": "Food",
+   "source_file": "Food/wayne's coffee/69.jpg"
+  },
+  "wheat-chex.jpg": {
+   "brand": "wheat chex",
+   "category": "Food",
+   "source_file": "Food/wheat chex/13.jpg"
+  },
+  "wolf-brand-chili.jpg": {
+   "brand": "wolf brand chili",
+   "category": "Food",
+   "source_file": "Food/wolf brand chili/35.jpg"
+  },
+  "wrigleys.jpg": {
+   "brand": "wrigley's",
+   "category": "Food",
+   "source_file": "Food/wrigley's/34.jpg"
+  },
+  "yonho-2.jpg": {
+   "brand": "yonho-2",
+   "category": "Food",
+   "source_file": "Food/yonho-2/27.jpg"
+  },
+  "zjs-express.jpg": {
+   "brand": "zjs express",
+   "category": "Food",
+   "source_file": "Food/zjs express/21.jpg"
+  },
+  "big-boy.jpg": {
+   "brand": "Big Boy",
+   "category": "Leisure",
+   "source_file": "Leisure/Big Boy/12.jpg"
+  },
+  "h-upmann.jpg": {
+   "brand": "H. Upmann",
+   "category": "Leisure",
+   "source_file": "Leisure/H. Upmann/1.jpg"
+  },
+  "lares-ice-cream-parlor.jpg": {
+   "brand": "Lares Ice Cream Parlor",
+   "category": "Leisure",
+   "source_file": "Leisure/Lares Ice Cream Parlor/46.jpg"
+  },
+  "barrel-o-monkeys.jpg": {
+   "brand": "barrel o' monkeys",
+   "category": "Leisure",
+   "source_file": "Leisure/barrel o' monkeys/28.jpg"
+  },
+  "lego-mindstorms.jpg": {
+   "brand": "lego mindstorms",
+   "category": "Leisure",
+   "source_file": "Leisure/lego mindstorms/9.jpg"
+  },
+  "mega-bloks.jpg": {
+   "brand": "mega bloks",
+   "category": "Leisure",
+   "source_file": "Leisure/mega bloks/64.jpg"
+  },
+  "mohawk-2.jpg": {
+   "brand": "mohawk-2",
+   "category": "Leisure",
+   "source_file": "Leisure/mohawk-2/63.jpg"
+  },
+  "qq.jpg": {
+   "brand": "qq",
+   "category": "Leisure",
+   "source_file": "Leisure/qq/38.jpg"
+  },
+  "silly-putty.jpg": {
+   "brand": "silly putty",
+   "category": "Leisure",
+   "source_file": "Leisure/silly putty/44.jpg"
+  },
+  "standard-fireworks.jpg": {
+   "brand": "standard fireworks",
+   "category": "Leisure",
+   "source_file": "Leisure/standard fireworks/13.jpg"
+  },
+  "starworld.jpg": {
+   "brand": "starworld",
+   "category": "Leisure",
+   "source_file": "Leisure/starworld/36.jpg"
+  },
+  "superman-stars.jpg": {
+   "brand": "superman stars",
+   "category": "Leisure",
+   "source_file": "Leisure/superman stars/86.jpg"
+  },
+  "the-fullbright.jpg": {
+   "brand": "the fullbright",
+   "category": "Leisure",
+   "source_file": "Leisure/the fullbright/75.jpg"
+  },
+  "tonka-toys.jpg": {
+   "brand": "tonka toys",
+   "category": "Leisure",
+   "source_file": "Leisure/tonka toys/100.jpg"
+  },
+  "vibrations.jpg": {
+   "brand": "vibrations",
+   "category": "Leisure",
+   "source_file": "Leisure/vibrations/9.jpg"
+  },
+  "yoplait.jpg": {
+   "brand": "yoplait",
+   "category": "Leisure",
+   "source_file": "Leisure/yoplait/72.jpg"
+  },
+  "biotene.jpg": {
+   "brand": "biotene",
+   "category": "Medical",
+   "source_file": "Medical/biotene/91.jpg"
+  },
+  "jimin.jpg": {
+   "brand": "jimin",
+   "category": "Medical",
+   "source_file": "Medical/jimin/156.jpg"
+  },
+  "jindan.jpg": {
+   "brand": "jindan",
+   "category": "Medical",
+   "source_file": "Medical/jindan/45.jpg"
+  },
+  "lekadol.jpg": {
+   "brand": "lekadol",
+   "category": "Medical",
+   "source_file": "Medical/lekadol/50.jpg"
+  },
+  "paralen.jpg": {
+   "brand": "paralen",
+   "category": "Medical",
+   "source_file": "Medical/paralen/124.jpg"
+  },
+  "yuyue-3.jpg": {
+   "brand": "yuyue-3",
+   "category": "Medical",
+   "source_file": "Medical/yuyue-3/72.jpg"
+  },
+  "aitefu.jpg": {
+   "brand": "AiTeFu",
+   "category": "Necessities",
+   "source_file": "Necessities/AiTeFu/36.jpg"
+  },
+  "belk.jpg": {
+   "brand": "Belk",
+   "category": "Necessities",
+   "source_file": "Necessities/Belk/38.jpg"
+  },
+  "biotherm.jpg": {
+   "brand": "Biotherm",
+   "category": "Necessities",
+   "source_file": "Necessities/Biotherm/29.jpg"
+  },
+  "blue-stratos.jpg": {
+   "brand": "Blue Stratos",
+   "category": "Necessities",
+   "source_file": "Necessities/Blue Stratos/35.jpg"
+  },
+  "brylcreem.jpg": {
+   "brand": "Brylcreem",
+   "category": "Necessities",
+   "source_file": "Necessities/Brylcreem/153.jpg"
+  },
+  "burts-bees.jpg": {
+   "brand": "Burt's Bees",
+   "category": "Necessities",
+   "source_file": "Necessities/Burt's Bees/129.jpg"
+  },
+  "candle.jpg": {
+   "brand": "Candle",
+   "category": "Necessities",
+   "source_file": "Necessities/Candle/39.jpg"
+  },
+  "carlos-torano.jpg": {
+   "brand": "Carlos Torano",
+   "category": "Necessities",
+   "source_file": "Necessities/Carlos Torano/114.jpg"
+  },
+  "carslan.jpg": {
+   "brand": "Carslan",
+   "category": "Necessities",
+   "source_file": "Necessities/Carslan/26.jpg"
+  },
+  "casa-magna.jpg": {
+   "brand": "Casa Magna",
+   "category": "Necessities",
+   "source_file": "Necessities/Casa Magna/46.jpg"
+  },
+  "clear-clean.jpg": {
+   "brand": "Clear Clean",
+   "category": "Necessities",
+   "source_file": "Necessities/Clear Clean/12.jpg"
+  },
+  "coccolino.jpg": {
+   "brand": "Coccolino",
+   "category": "Necessities",
+   "source_file": "Necessities/Coccolino/54.jpg"
+  },
+  "crayola.jpg": {
+   "brand": "Crayola",
+   "category": "Necessities",
+   "source_file": "Necessities/Crayola/8.jpg"
+  },
+  "estrella.jpg": {
+   "brand": "Estrella",
+   "category": "Necessities",
+   "source_file": "Necessities/Estrella/41.jpg"
+  },
+  "fair-and-lovely.jpg": {
+   "brand": "Fair and Lovely",
+   "category": "Necessities",
+   "source_file": "Necessities/Fair and Lovely/52.jpg"
+  },
+  "frizz-ease.jpg": {
+   "brand": "Frizz-Ease",
+   "category": "Necessities",
+   "source_file": "Necessities/Frizz-Ease/10.jpg"
+  },
+  "fundacion-ancestral.jpg": {
+   "brand": "Fundacion Ancestral",
+   "category": "Necessities",
+   "source_file": "Necessities/Fundacion Ancestral/40.jpg"
+  },
+  "galp.jpg": {
+   "brand": "Galp",
+   "category": "Necessities",
+   "source_file": "Necessities/Galp/29.jpg"
+  },
+  "gel.jpg": {
+   "brand": "Gel",
+   "category": "Necessities",
+   "source_file": "Necessities/Gel/19.jpg"
+  },
+  "hancock-1.jpg": {
+   "brand": "Hancock-1",
+   "category": "Necessities",
+   "source_file": "Necessities/Hancock-1/10.jpg"
+  },
+  "honeywell.jpg": {
+   "brand": "Honeywell",
+   "category": "Necessities",
+   "source_file": "Necessities/Honeywell/0.jpg"
+  },
+  "iittala.jpg": {
+   "brand": "IITTALA",
+   "category": "Necessities",
+   "source_file": "Necessities/IITTALA/17.jpg"
+  },
+  "inoherb-2.jpg": {
+   "brand": "INOHERB-2",
+   "category": "Necessities",
+   "source_file": "Necessities/INOHERB-2/16.jpg"
+  },
+  "ivory.jpg": {
+   "brand": "IVORY",
+   "category": "Necessities",
+   "source_file": "Necessities/IVORY/27.jpg"
+  },
+  "kaisheng.jpg": {
+   "brand": "KAISHENG",
+   "category": "Necessities",
+   "source_file": "Necessities/KAISHENG/72.jpg"
+  },
+  "loccitane-en-provence.jpg": {
+   "brand": "L'Occitane en Provence",
+   "category": "Necessities",
+   "source_file": "Necessities/L'Occitane en Provence/52.jpg"
+  },
+  "la-gloria-cubana.jpg": {
+   "brand": "La Gloria Cubana",
+   "category": "Necessities",
+   "source_file": "Necessities/La Gloria Cubana/36.jpg"
+  },
+  "longines.jpg": {
+   "brand": "Longines",
+   "category": "Necessities",
+   "source_file": "Necessities/Longines/31.jpg"
+  },
+  "lucky.jpg": {
+   "brand": "Lucky",
+   "category": "Necessities",
+   "source_file": "Necessities/Lucky/77.jpg"
+  },
+  "max-factor.jpg": {
+   "brand": "Max Factor",
+   "category": "Necessities",
+   "source_file": "Necessities/Max Factor/21.jpg"
+  },
+  "apothia-2.jpg": {
+   "brand": "apothia-2",
+   "category": "Necessities",
+   "source_file": "Necessities/apothia-2/137.jpg"
+  },
+  "asd.jpg": {
+   "brand": "asd",
+   "category": "Necessities",
+   "source_file": "Necessities/asd/84.jpg"
+  },
+  "bio-ionic.jpg": {
+   "brand": "bio ionic",
+   "category": "Necessities",
+   "source_file": "Necessities/bio ionic/67.jpg"
+  },
+  "brita.jpg": {
+   "brand": "brita",
+   "category": "Necessities",
+   "source_file": "Necessities/brita/86.jpg"
+  },
+  "burton-james.jpg": {
+   "brand": "burton james",
+   "category": "Necessities",
+   "source_file": "Necessities/burton james/5.jpg"
+  },
+  "canadel.jpg": {
+   "brand": "canadel",
+   "category": "Necessities",
+   "source_file": "Necessities/canadel/39.jpg"
+  },
+  "canbo.jpg": {
+   "brand": "canbo",
+   "category": "Necessities",
+   "source_file": "Necessities/canbo/17.jpg"
+  },
+  "caran-dache.jpg": {
+   "brand": "caran d'ache",
+   "category": "Necessities",
+   "source_file": "Necessities/caran d'ache/28.jpg"
+  },
+  "chantelle.jpg": {
+   "brand": "chantelle",
+   "category": "Necessities",
+   "source_file": "Necessities/chantelle/53.jpg"
+  },
+  "corzo.jpg": {
+   "brand": "corzo",
+   "category": "Necessities",
+   "source_file": "Necessities/corzo/6.jpg"
+  },
+  "joyoung.jpg": {
+   "brand": "joyoung",
+   "category": "Necessities",
+   "source_file": "Necessities/joyoung/77.jpg"
+  },
+  "kilner.jpg": {
+   "brand": "kilner",
+   "category": "Necessities",
+   "source_file": "Necessities/kilner/72.jpg"
+  },
+  "kokuyo.jpg": {
+   "brand": "kokuyo",
+   "category": "Necessities",
+   "source_file": "Necessities/kokuyo/25.jpg"
+  },
+  "la-roche-posay.jpg": {
+   "brand": "la roche-posay",
+   "category": "Necessities",
+   "source_file": "Necessities/la roche-posay/133.jpg"
+  },
+  "lancome.jpg": {
+   "brand": "lancome",
+   "category": "Necessities",
+   "source_file": "Necessities/lancome/13.jpg"
+  },
+  "le-creuset.jpg": {
+   "brand": "le creuset",
+   "category": "Necessities",
+   "source_file": "Necessities/le creuset/23.jpg"
+  },
+  "lianle.jpg": {
+   "brand": "lianle",
+   "category": "Necessities",
+   "source_file": "Necessities/lianle/17.jpg"
+  },
+  "los-statos-de-luxe.jpg": {
+   "brand": "los statos de luxe",
+   "category": "Necessities",
+   "source_file": "Necessities/los statos de luxe/24.jpg"
+  },
+  "luxottica.jpg": {
+   "brand": "luxottica",
+   "category": "Necessities",
+   "source_file": "Necessities/luxottica/112.jpg"
+  },
+  "lysoform.jpg": {
+   "brand": "lysoform",
+   "category": "Necessities",
+   "source_file": "Necessities/lysoform/126.jpg"
+  },
+  "maydos.jpg": {
+   "brand": "maydos",
+   "category": "Necessities",
+   "source_file": "Necessities/maydos/44.jpg"
+  },
+  "mentadent.jpg": {
+   "brand": "mentadent",
+   "category": "Necessities",
+   "source_file": "Necessities/mentadent/12.jpg"
+  },
+  "mentadent-sr.jpg": {
+   "brand": "mentadent sr",
+   "category": "Necessities",
+   "source_file": "Necessities/mentadent sr/65.jpg"
+  },
+  "miquelrius-1.jpg": {
+   "brand": "miquelrius-1",
+   "category": "Necessities",
+   "source_file": "Necessities/miquelrius-1/51.jpg"
+  },
+  "mobil.jpg": {
+   "brand": "mobil",
+   "category": "Necessities",
+   "source_file": "Necessities/mobil/3.jpg"
+  },
+  "noxzema.jpg": {
+   "brand": "noxzema",
+   "category": "Necessities",
+   "source_file": "Necessities/noxzema/96.jpg"
+  },
+  "osm.jpg": {
+   "brand": "osm",
+   "category": "Necessities",
+   "source_file": "Necessities/osm/41.jpg"
+  },
+  "ralph-lauren-home.jpg": {
+   "brand": "ralph lauren home",
+   "category": "Necessities",
+   "source_file": "Necessities/ralph lauren home/5.jpg"
+  },
+  "sam-moore.jpg": {
+   "brand": "sam moore",
+   "category": "Necessities",
+   "source_file": "Necessities/sam moore/28.jpg"
+  },
+  "shangdedianli.jpg": {
+   "brand": "shangdedianli",
+   "category": "Necessities",
+   "source_file": "Necessities/shangdedianli/67.jpg"
+  },
+  "shuangye.jpg": {
+   "brand": "shuangye",
+   "category": "Necessities",
+   "source_file": "Necessities/shuangye/46.jpg"
+  },
+  "stime.jpg": {
+   "brand": "stime",
+   "category": "Necessities",
+   "source_file": "Necessities/stime/51.jpg"
+  },
+  "streamlight.jpg": {
+   "brand": "streamlight",
+   "category": "Necessities",
+   "source_file": "Necessities/streamlight/64.jpg"
+  },
+  "teflon.jpg": {
+   "brand": "teflon",
+   "category": "Necessities",
+   "source_file": "Necessities/teflon/7.jpg"
+  },
+  "tiangxiaxiu.jpg": {
+   "brand": "tiangxiaxiu",
+   "category": "Necessities",
+   "source_file": "Necessities/tiangxiaxiu/20.jpg"
+  },
+  "ykk.jpg": {
+   "brand": "ykk",
+   "category": "Necessities",
+   "source_file": "Necessities/ykk/18.jpg"
+  },
+  "zwitsal.jpg": {
+   "brand": "zwitsal",
+   "category": "Necessities",
+   "source_file": "Necessities/zwitsal/67.jpg"
+  },
+  "akpet.jpg": {
+   "brand": "AKPET",
+   "category": "Others",
+   "source_file": "Others/AKPET/12.jpg"
+  },
+  "anli.jpg": {
+   "brand": "ANLI",
+   "category": "Others",
+   "source_file": "Others/ANLI/2.jpg"
+  },
+  "ap-industries.jpg": {
+   "brand": "AP Industries",
+   "category": "Others",
+   "source_file": "Others/AP Industries/83.jpg"
+  },
+  "absolwent.jpg": {
+   "brand": "Absolwent",
+   "category": "Others",
+   "source_file": "Others/Absolwent/30.jpg"
+  },
+  "ampol.jpg": {
+   "brand": "Ampol",
+   "category": "Others",
+   "source_file": "Others/Ampol/83.jpg"
+  },
+  "ashland-inc.jpg": {
+   "brand": "Ashland Inc",
+   "category": "Others",
+   "source_file": "Others/Ashland Inc/19.jpg"
+  },
+  "bp.jpg": {
+   "brand": "BP",
+   "category": "Others",
+   "source_file": "Others/BP/84.jpg"
+  },
+  "beeline.jpg": {
+   "brand": "Beeline",
+   "category": "Others",
+   "source_file": "Others/Beeline/55.jpg"
+  },
+  "blue-avocado.jpg": {
+   "brand": "Blue Avocado",
+   "category": "Others",
+   "source_file": "Others/Blue Avocado/3.jpg"
+  },
+  "cabaiguan.jpg": {
+   "brand": "Cabaiguan",
+   "category": "Others",
+   "source_file": "Others/Cabaiguan/103.jpg"
+  },
+  "calumet.jpg": {
+   "brand": "Calumet",
+   "category": "Others",
+   "source_file": "Others/Calumet/62.jpg"
+  },
+  "carola.jpg": {
+   "brand": "Carola",
+   "category": "Others",
+   "source_file": "Others/Carola/45.jpg"
+  },
+  "carolina-2.jpg": {
+   "brand": "Carolina-2",
+   "category": "Others",
+   "source_file": "Others/Carolina-2/78.jpg"
+  },
+  "chicago.jpg": {
+   "brand": "Chicago",
+   "category": "Others",
+   "source_file": "Others/Chicago/38.jpg"
+  },
+  "classmate.jpg": {
+   "brand": "Classmate",
+   "category": "Others",
+   "source_file": "Others/Classmate/35.jpg"
+  },
+  "copelands.jpg": {
+   "brand": "Copeland's",
+   "category": "Others",
+   "source_file": "Others/Copeland's/44.jpg"
+  },
+  "fss.jpg": {
+   "brand": "FSS",
+   "category": "Others",
+   "source_file": "Others/FSS/1.jpg"
+  },
+  "hy-markets.jpg": {
+   "brand": "HY Markets",
+   "category": "Others",
+   "source_file": "Others/HY Markets/19.jpg"
+  },
+  "hualian.jpg": {
+   "brand": "HuaLian",
+   "category": "Others",
+   "source_file": "Others/HuaLian/24.jpg"
+  },
+  "huaneng.jpg": {
+   "brand": "HuaNeng",
+   "category": "Others",
+   "source_file": "Others/HuaNeng/44.jpg"
+  },
+  "isla-1.jpg": {
+   "brand": "Isla-1",
+   "category": "Others",
+   "source_file": "Others/Isla-1/4.jpg"
+  },
+  "isla-2.jpg": {
+   "brand": "Isla-2",
+   "category": "Others",
+   "source_file": "Others/Isla-2/18.jpg"
+  },
+  "chica-rica.jpg": {
+   "brand": "chica rica",
+   "category": "Others",
+   "source_file": "Others/chica rica/56.jpg"
+  },
+  "chinese-petroleum.jpg": {
+   "brand": "chinese petroleum",
+   "category": "Others",
+   "source_file": "Others/chinese petroleum/9.jpg"
+  },
+  "huarun.jpg": {
+   "brand": "huarun",
+   "category": "Others",
+   "source_file": "Others/huarun/213.jpg"
+  },
+  "isaura.jpg": {
+   "brand": "isaura",
+   "category": "Others",
+   "source_file": "Others/isaura/57.jpg"
+  },
+  "linum.jpg": {
+   "brand": "linum",
+   "category": "Others",
+   "source_file": "Others/linum/3.jpg"
+  },
+  "liu-gong.jpg": {
+   "brand": "liu gong",
+   "category": "Others",
+   "source_file": "Others/liu gong/41.jpg"
+  },
+  "longping.jpg": {
+   "brand": "longping",
+   "category": "Others",
+   "source_file": "Others/longping/45.jpg"
+  },
+  "minsheng.jpg": {
+   "brand": "minsheng",
+   "category": "Others",
+   "source_file": "Others/minsheng/48.jpg"
+  },
+  "mmmuffins.jpg": {
+   "brand": "mmmuffins",
+   "category": "Others",
+   "source_file": "Others/mmmuffins/30.jpg"
+  },
+  "monte.jpg": {
+   "brand": "monte",
+   "category": "Others",
+   "source_file": "Others/monte/3.jpg"
+  },
+  "old-country-buffet.jpg": {
+   "brand": "old country buffet",
+   "category": "Others",
+   "source_file": "Others/old country buffet/51.jpg"
+  },
+  "profex.jpg": {
+   "brand": "profex",
+   "category": "Others",
+   "source_file": "Others/profex/20.jpg"
+  },
+  "pulser.jpg": {
+   "brand": "pulser",
+   "category": "Others",
+   "source_file": "Others/pulser/121.jpg"
+  },
+  "qalam.jpg": {
+   "brand": "qalam",
+   "category": "Others",
+   "source_file": "Others/qalam/46.jpg"
+  },
+  "qixing.jpg": {
+   "brand": "qixing",
+   "category": "Others",
+   "source_file": "Others/qixing/14.jpg"
+  },
+  "repsol-ypf.jpg": {
+   "brand": "repsol ypf",
+   "category": "Others",
+   "source_file": "Others/repsol ypf/98.jpg"
+  },
+  "sf-express.jpg": {
+   "brand": "sf express",
+   "category": "Others",
+   "source_file": "Others/sf express/56.jpg"
+  },
+  "shimano.jpg": {
+   "brand": "shimano",
+   "category": "Others",
+   "source_file": "Others/shimano/213.jpg"
+  },
+  "skeena.jpg": {
+   "brand": "skeena",
+   "category": "Others",
+   "source_file": "Others/skeena/61.jpg"
+  },
+  "socar-1.jpg": {
+   "brand": "socar-1",
+   "category": "Others",
+   "source_file": "Others/socar-1/16.jpg"
+  },
+  "socar-2.jpg": {
+   "brand": "socar-2",
+   "category": "Others",
+   "source_file": "Others/socar-2/52.jpg"
+  },
+  "sowden.jpg": {
+   "brand": "sowden",
+   "category": "Others",
+   "source_file": "Others/sowden/47.jpg"
+  },
+  "tubao-1.jpg": {
+   "brand": "tubao-1",
+   "category": "Others",
+   "source_file": "Others/tubao-1/51.jpg"
+  },
+  "tubao-3.jpg": {
+   "brand": "tubao-3",
+   "category": "Others",
+   "source_file": "Others/tubao-3/39.jpg"
+  },
+  "vaude-1.jpg": {
+   "brand": "vaude-1",
+   "category": "Others",
+   "source_file": "Others/vaude-1/32.jpg"
+  },
+  "vaude-2.jpg": {
+   "brand": "vaude-2",
+   "category": "Others",
+   "source_file": "Others/vaude-2/12.jpg"
+  },
+  "vertu.jpg": {
+   "brand": "vertu",
+   "category": "Others",
+   "source_file": "Others/vertu/23.jpg"
+  },
+  "vigo.jpg": {
+   "brand": "vigo",
+   "category": "Others",
+   "source_file": "Others/vigo/47.jpg"
+  },
+  "vogue.jpg": {
+   "brand": "vogue",
+   "category": "Others",
+   "source_file": "Others/vogue/213.jpg"
+  },
+  "von-maur.jpg": {
+   "brand": "von maur",
+   "category": "Others",
+   "source_file": "Others/von maur/67.jpg"
+  },
+  "weixing.jpg": {
+   "brand": "weixing",
+   "category": "Others",
+   "source_file": "Others/weixing/140.jpg"
+  },
+  "yucheng-ceramics.jpg": {
+   "brand": "yucheng ceramics",
+   "category": "Others",
+   "source_file": "Others/yucheng ceramics/21.jpg"
+  },
+  "gazelle.jpg": {
+   "brand": "Gazelle",
+   "category": "Sports",
+   "source_file": "Sports/Gazelle/42.jpg"
+  },
+  "kukri.jpg": {
+   "brand": "Kukri",
+   "category": "Sports",
+   "source_file": "Sports/Kukri/45.jpg"
+  },
+  "agv.jpg": {
+   "brand": "agv",
+   "category": "Sports",
+   "source_file": "Sports/agv/94.jpg"
+  },
+  "riddell.jpg": {
+   "brand": "riddell",
+   "category": "Sports",
+   "source_file": "Sports/riddell/78.jpg"
+  },
+  "snow-peak-1.jpg": {
+   "brand": "snow peak-1",
+   "category": "Sports",
+   "source_file": "Sports/snow peak-1/17.jpg"
+  },
+  "sprinter.jpg": {
+   "brand": "sprinter",
+   "category": "Sports",
+   "source_file": "Sports/sprinter/13.jpg"
+  },
+  "surly-bikes.jpg": {
+   "brand": "surly bikes",
+   "category": "Sports",
+   "source_file": "Sports/surly bikes/33.jpg"
+  },
+  "uhlsport.jpg": {
+   "brand": "uhlsport",
+   "category": "Sports",
+   "source_file": "Sports/uhlsport/62.jpg"
+  },
+  "air-choice-one-airlines.jpg": {
+   "brand": "Air Choice One Airlines",
+   "category": "Transportation",
+   "source_file": "Transportation/Air Choice One Airlines/51.jpg"
+  },
+  "bi-mart.jpg": {
+   "brand": "Bi-Mart",
+   "category": "Transportation",
+   "source_file": "Transportation/Bi-Mart/68.jpg"
+  },
+  "cimc-1.jpg": {
+   "brand": "Cimc-1",
+   "category": "Transportation",
+   "source_file": "Transportation/Cimc-1/59.jpg"
+  },
+  "citgo.jpg": {
+   "brand": "Citgo",
+   "category": "Transportation",
+   "source_file": "Transportation/Citgo/101.jpg"
+  },
+  "conoco.jpg": {
+   "brand": "Conoco",
+   "category": "Transportation",
+   "source_file": "Transportation/Conoco/2.jpg"
+  },
+  "heinkel.jpg": {
+   "brand": "Heinkel",
+   "category": "Transportation",
+   "source_file": "Transportation/Heinkel/68.jpg"
+  },
+  "husqvarna-1.jpg": {
+   "brand": "Husqvarna-1",
+   "category": "Transportation",
+   "source_file": "Transportation/Husqvarna-1/32.jpg"
+  },
+  "ktm.jpg": {
+   "brand": "KTM",
+   "category": "Transportation",
+   "source_file": "Transportation/KTM/59.jpg"
+  },
+  "kaipan.jpg": {
+   "brand": "Kaipan",
+   "category": "Transportation",
+   "source_file": "Transportation/Kaipan/39.jpg"
+  },
+  "landwind-1.jpg": {
+   "brand": "Landwind-1",
+   "category": "Transportation",
+   "source_file": "Transportation/Landwind-1/23.jpg"
+  },
+  "lapierre.jpg": {
+   "brand": "Lapierre",
+   "category": "Transportation",
+   "source_file": "Transportation/Lapierre/14.jpg"
+  },
+  "los-angeles-international-airport.jpg": {
+   "brand": "Los Angeles International Airport",
+   "category": "Transportation",
+   "source_file": "Transportation/Los Angeles International Airport/6.jpg"
+  },
+  "lotus-cars.jpg": {
+   "brand": "Lotus Cars",
+   "category": "Transportation",
+   "source_file": "Transportation/Lotus Cars/4.jpg"
+  },
+  "akurra.jpg": {
+   "brand": "akurra",
+   "category": "Transportation",
+   "source_file": "Transportation/akurra/107.jpg"
+  },
+  "bike-friday.jpg": {
+   "brand": "bike friday",
+   "category": "Transportation",
+   "source_file": "Transportation/bike friday/50.jpg"
+  },
+  "bilenky.jpg": {
+   "brand": "bilenky",
+   "category": "Transportation",
+   "source_file": "Transportation/bilenky/4.jpg"
+  },
+  "boardman-bikes.jpg": {
+   "brand": "boardman bikes",
+   "category": "Transportation",
+   "source_file": "Transportation/boardman bikes/128.jpg"
+  },
+  "brodie-bicycles.jpg": {
+   "brand": "brodie bicycles",
+   "category": "Transportation",
+   "source_file": "Transportation/brodie bicycles/81.jpg"
+  },
+  "canyon-bicycles.jpg": {
+   "brand": "canyon bicycles",
+   "category": "Transportation",
+   "source_file": "Transportation/canyon bicycles/37.jpg"
+  },
+  "ginetta.jpg": {
+   "brand": "ginetta",
+   "category": "Transportation",
+   "source_file": "Transportation/ginetta/47.jpg"
+  },
+  "gitane.jpg": {
+   "brand": "gitane",
+   "category": "Transportation",
+   "source_file": "Transportation/gitane/15.jpg"
+  },
+  "gocycle.jpg": {
+   "brand": "gocycle",
+   "category": "Transportation",
+   "source_file": "Transportation/gocycle/18.jpg"
+  },
+  "huffy.jpg": {
+   "brand": "huffy",
+   "category": "Transportation",
+   "source_file": "Transportation/huffy/13.jpg"
+  },
+  "iron-horse-bicycles.jpg": {
+   "brand": "iron horse bicycles",
+   "category": "Transportation",
+   "source_file": "Transportation/iron horse bicycles/78.jpg"
+  },
+  "maybach-1.jpg": {
+   "brand": "maybach-1",
+   "category": "Transportation",
+   "source_file": "Transportation/maybach-1/23.jpg"
+  },
+  "moots-cycles.jpg": {
+   "brand": "moots cycles",
+   "category": "Transportation",
+   "source_file": "Transportation/moots cycles/85.jpg"
+  },
+  "munro.jpg": {
+   "brand": "munro",
+   "category": "Transportation",
+   "source_file": "Transportation/munro/35.jpg"
+  },
+  "petron.jpg": {
+   "brand": "petron",
+   "category": "Transportation",
+   "source_file": "Transportation/petron/28.jpg"
+  },
+  "roadmaster.jpg": {
+   "brand": "roadmaster",
+   "category": "Transportation",
+   "source_file": "Transportation/roadmaster/18.jpg"
+  },
+  "rockshox.jpg": {
+   "brand": "rockshox",
+   "category": "Transportation",
+   "source_file": "Transportation/rockshox/30.jpg"
+  },
+  "saipa.jpg": {
+   "brand": "saipa",
+   "category": "Transportation",
+   "source_file": "Transportation/saipa/15.jpg"
+  },
+  "seaoil-philippines.jpg": {
+   "brand": "seaoil philippines",
+   "category": "Transportation",
+   "source_file": "Transportation/seaoil philippines/60.jpg"
+  },
+  "venko.jpg": {
+   "brand": "venko",
+   "category": "Transportation",
+   "source_file": "Transportation/venko/49.jpg"
+  }
+ }
+}

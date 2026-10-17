@@ -1,0 +1,1210 @@
+{
+ "meta": {
+  "source": "Places365-Standard val_large, category-filtered, frozen 2026-07-12",
+  "seed": 20260712,
+  "size": 300,
+  "note": "Bulk false-guess-rate validation tier (landmark/city side, CONTEMPORARY photography) \u2014 category-filtered for outdoor architecture/landmark relevance, scored in aggregate. NEVER individually curated; see tests/golden/entries/landmark-* for the small hand-reviewed set this scales up."
+ },
+ "images": {
+  "water_tower-Places365_val_00012134.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00012134.jpg"
+  },
+  "downtown-Places365_val_00029473.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00029473.jpg"
+  },
+  "palace-Places365_val_00016954.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00016954.jpg"
+  },
+  "palace-Places365_val_00027301.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00027301.jpg"
+  },
+  "tower-Places365_val_00026643.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00026643.jpg"
+  },
+  "temple-asia-Places365_val_00026658.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00026658.jpg"
+  },
+  "stadium-football-Places365_val_00024491.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00024491.jpg"
+  },
+  "tower-Places365_val_00011097.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00011097.jpg"
+  },
+  "plaza-Places365_val_00035021.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00035021.jpg"
+  },
+  "tower-Places365_val_00008619.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00008619.jpg"
+  },
+  "bridge-Places365_val_00021613.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00021613.jpg"
+  },
+  "skyscraper-Places365_val_00025194.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00025194.jpg"
+  },
+  "harbor-Places365_val_00030755.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00030755.jpg"
+  },
+  "stadium-soccer-Places365_val_00025937.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00025937.jpg"
+  },
+  "palace-Places365_val_00012428.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00012428.jpg"
+  },
+  "harbor-Places365_val_00016752.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00016752.jpg"
+  },
+  "palace-Places365_val_00010085.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00010085.jpg"
+  },
+  "palace-Places365_val_00020955.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00020955.jpg"
+  },
+  "mosque-outdoor-Places365_val_00023806.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00023806.jpg"
+  },
+  "plaza-Places365_val_00028036.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00028036.jpg"
+  },
+  "tower-Places365_val_00033498.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00033498.jpg"
+  },
+  "harbor-Places365_val_00027343.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00027343.jpg"
+  },
+  "skyscraper-Places365_val_00000045.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00000045.jpg"
+  },
+  "mosque-outdoor-Places365_val_00029048.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00029048.jpg"
+  },
+  "church-outdoor-Places365_val_00008069.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00008069.jpg"
+  },
+  "plaza-Places365_val_00012558.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00012558.jpg"
+  },
+  "downtown-Places365_val_00025001.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00025001.jpg"
+  },
+  "bridge-Places365_val_00013718.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00013718.jpg"
+  },
+  "rope_bridge-Places365_val_00022562.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00022562.jpg"
+  },
+  "plaza-Places365_val_00016881.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00016881.jpg"
+  },
+  "palace-Places365_val_00003084.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00003084.jpg"
+  },
+  "downtown-Places365_val_00002561.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00002561.jpg"
+  },
+  "water_tower-Places365_val_00020249.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00020249.jpg"
+  },
+  "stadium-football-Places365_val_00035870.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00035870.jpg"
+  },
+  "tower-Places365_val_00007283.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00007283.jpg"
+  },
+  "mosque-outdoor-Places365_val_00034415.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00034415.jpg"
+  },
+  "bridge-Places365_val_00005511.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00005511.jpg"
+  },
+  "harbor-Places365_val_00036157.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00036157.jpg"
+  },
+  "palace-Places365_val_00024241.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00024241.jpg"
+  },
+  "water_tower-Places365_val_00027979.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00027979.jpg"
+  },
+  "plaza-Places365_val_00003504.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00003504.jpg"
+  },
+  "plaza-Places365_val_00005603.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00005603.jpg"
+  },
+  "water_tower-Places365_val_00011866.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00011866.jpg"
+  },
+  "castle-Places365_val_00033881.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00033881.jpg"
+  },
+  "tower-Places365_val_00007180.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00007180.jpg"
+  },
+  "castle-Places365_val_00033293.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00033293.jpg"
+  },
+  "church-outdoor-Places365_val_00031318.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00031318.jpg"
+  },
+  "downtown-Places365_val_00027923.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00027923.jpg"
+  },
+  "plaza-Places365_val_00026316.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00026316.jpg"
+  },
+  "stadium-football-Places365_val_00033733.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00033733.jpg"
+  },
+  "bridge-Places365_val_00024930.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00024930.jpg"
+  },
+  "palace-Places365_val_00020390.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00020390.jpg"
+  },
+  "skyscraper-Places365_val_00026891.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00026891.jpg"
+  },
+  "downtown-Places365_val_00028135.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00028135.jpg"
+  },
+  "bridge-Places365_val_00012375.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00012375.jpg"
+  },
+  "skyscraper-Places365_val_00026140.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00026140.jpg"
+  },
+  "church-outdoor-Places365_val_00022989.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00022989.jpg"
+  },
+  "church-outdoor-Places365_val_00018182.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00018182.jpg"
+  },
+  "skyscraper-Places365_val_00027163.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00027163.jpg"
+  },
+  "bridge-Places365_val_00032759.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00032759.jpg"
+  },
+  "downtown-Places365_val_00033339.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00033339.jpg"
+  },
+  "harbor-Places365_val_00035875.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00035875.jpg"
+  },
+  "plaza-Places365_val_00016586.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00016586.jpg"
+  },
+  "mosque-outdoor-Places365_val_00033556.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00033556.jpg"
+  },
+  "castle-Places365_val_00025748.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00025748.jpg"
+  },
+  "mosque-outdoor-Places365_val_00012393.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00012393.jpg"
+  },
+  "rope_bridge-Places365_val_00013585.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00013585.jpg"
+  },
+  "skyscraper-Places365_val_00011750.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00011750.jpg"
+  },
+  "stadium-baseball-Places365_val_00029625.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00029625.jpg"
+  },
+  "mosque-outdoor-Places365_val_00022293.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00022293.jpg"
+  },
+  "church-outdoor-Places365_val_00026371.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00026371.jpg"
+  },
+  "skyscraper-Places365_val_00000220.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00000220.jpg"
+  },
+  "harbor-Places365_val_00002134.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00002134.jpg"
+  },
+  "rope_bridge-Places365_val_00022184.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00022184.jpg"
+  },
+  "bridge-Places365_val_00030666.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00030666.jpg"
+  },
+  "castle-Places365_val_00007490.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00007490.jpg"
+  },
+  "skyscraper-Places365_val_00030622.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00030622.jpg"
+  },
+  "plaza-Places365_val_00035231.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00035231.jpg"
+  },
+  "plaza-Places365_val_00014352.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00014352.jpg"
+  },
+  "mosque-outdoor-Places365_val_00027719.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00027719.jpg"
+  },
+  "stadium-football-Places365_val_00006254.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00006254.jpg"
+  },
+  "skyscraper-Places365_val_00021111.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00021111.jpg"
+  },
+  "rope_bridge-Places365_val_00032314.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00032314.jpg"
+  },
+  "temple-asia-Places365_val_00008807.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00008807.jpg"
+  },
+  "mosque-outdoor-Places365_val_00000416.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00000416.jpg"
+  },
+  "rope_bridge-Places365_val_00012038.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00012038.jpg"
+  },
+  "church-outdoor-Places365_val_00021618.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00021618.jpg"
+  },
+  "harbor-Places365_val_00015756.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00015756.jpg"
+  },
+  "skyscraper-Places365_val_00030447.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00030447.jpg"
+  },
+  "harbor-Places365_val_00020050.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00020050.jpg"
+  },
+  "stadium-football-Places365_val_00017351.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00017351.jpg"
+  },
+  "castle-Places365_val_00019165.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00019165.jpg"
+  },
+  "tower-Places365_val_00002121.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00002121.jpg"
+  },
+  "plaza-Places365_val_00013014.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00013014.jpg"
+  },
+  "temple-asia-Places365_val_00022044.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00022044.jpg"
+  },
+  "church-outdoor-Places365_val_00005098.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00005098.jpg"
+  },
+  "stadium-football-Places365_val_00007914.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00007914.jpg"
+  },
+  "stadium-baseball-Places365_val_00016000.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00016000.jpg"
+  },
+  "castle-Places365_val_00007855.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00007855.jpg"
+  },
+  "water_tower-Places365_val_00003874.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00003874.jpg"
+  },
+  "stadium-baseball-Places365_val_00018911.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00018911.jpg"
+  },
+  "rope_bridge-Places365_val_00008746.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00008746.jpg"
+  },
+  "plaza-Places365_val_00028658.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00028658.jpg"
+  },
+  "tower-Places365_val_00004972.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00004972.jpg"
+  },
+  "harbor-Places365_val_00031704.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00031704.jpg"
+  },
+  "temple-asia-Places365_val_00024023.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00024023.jpg"
+  },
+  "harbor-Places365_val_00035515.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00035515.jpg"
+  },
+  "plaza-Places365_val_00016177.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00016177.jpg"
+  },
+  "tower-Places365_val_00032822.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00032822.jpg"
+  },
+  "stadium-soccer-Places365_val_00034089.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00034089.jpg"
+  },
+  "downtown-Places365_val_00005255.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00005255.jpg"
+  },
+  "church-outdoor-Places365_val_00035818.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00035818.jpg"
+  },
+  "tower-Places365_val_00015360.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00015360.jpg"
+  },
+  "mosque-outdoor-Places365_val_00000082.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00000082.jpg"
+  },
+  "palace-Places365_val_00009473.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00009473.jpg"
+  },
+  "palace-Places365_val_00010856.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00010856.jpg"
+  },
+  "skyscraper-Places365_val_00011791.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00011791.jpg"
+  },
+  "bridge-Places365_val_00028341.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00028341.jpg"
+  },
+  "water_tower-Places365_val_00030618.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00030618.jpg"
+  },
+  "temple-asia-Places365_val_00002436.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00002436.jpg"
+  },
+  "stadium-soccer-Places365_val_00024190.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00024190.jpg"
+  },
+  "temple-asia-Places365_val_00022007.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00022007.jpg"
+  },
+  "plaza-Places365_val_00032915.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00032915.jpg"
+  },
+  "castle-Places365_val_00008635.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00008635.jpg"
+  },
+  "temple-asia-Places365_val_00003677.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00003677.jpg"
+  },
+  "harbor-Places365_val_00000299.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00000299.jpg"
+  },
+  "downtown-Places365_val_00036424.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00036424.jpg"
+  },
+  "harbor-Places365_val_00017750.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00017750.jpg"
+  },
+  "water_tower-Places365_val_00011728.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00011728.jpg"
+  },
+  "water_tower-Places365_val_00008003.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00008003.jpg"
+  },
+  "stadium-soccer-Places365_val_00013774.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00013774.jpg"
+  },
+  "mosque-outdoor-Places365_val_00035710.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00035710.jpg"
+  },
+  "stadium-baseball-Places365_val_00012454.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00012454.jpg"
+  },
+  "bridge-Places365_val_00026433.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00026433.jpg"
+  },
+  "tower-Places365_val_00006949.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00006949.jpg"
+  },
+  "tower-Places365_val_00022117.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00022117.jpg"
+  },
+  "stadium-soccer-Places365_val_00002658.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00002658.jpg"
+  },
+  "stadium-soccer-Places365_val_00018124.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00018124.jpg"
+  },
+  "downtown-Places365_val_00004740.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00004740.jpg"
+  },
+  "palace-Places365_val_00011999.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00011999.jpg"
+  },
+  "plaza-Places365_val_00023625.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00023625.jpg"
+  },
+  "tower-Places365_val_00030188.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00030188.jpg"
+  },
+  "castle-Places365_val_00009588.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00009588.jpg"
+  },
+  "mosque-outdoor-Places365_val_00033555.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00033555.jpg"
+  },
+  "palace-Places365_val_00033547.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00033547.jpg"
+  },
+  "downtown-Places365_val_00024714.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00024714.jpg"
+  },
+  "downtown-Places365_val_00035046.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00035046.jpg"
+  },
+  "stadium-football-Places365_val_00005447.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00005447.jpg"
+  },
+  "palace-Places365_val_00020284.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00020284.jpg"
+  },
+  "skyscraper-Places365_val_00018621.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00018621.jpg"
+  },
+  "harbor-Places365_val_00026751.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00026751.jpg"
+  },
+  "water_tower-Places365_val_00027313.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00027313.jpg"
+  },
+  "water_tower-Places365_val_00002053.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00002053.jpg"
+  },
+  "temple-asia-Places365_val_00032830.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00032830.jpg"
+  },
+  "plaza-Places365_val_00010763.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00010763.jpg"
+  },
+  "harbor-Places365_val_00035027.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00035027.jpg"
+  },
+  "rope_bridge-Places365_val_00009648.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00009648.jpg"
+  },
+  "downtown-Places365_val_00012115.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00012115.jpg"
+  },
+  "skyscraper-Places365_val_00025442.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00025442.jpg"
+  },
+  "church-outdoor-Places365_val_00015622.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00015622.jpg"
+  },
+  "palace-Places365_val_00032403.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00032403.jpg"
+  },
+  "mosque-outdoor-Places365_val_00020680.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00020680.jpg"
+  },
+  "stadium-soccer-Places365_val_00015281.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00015281.jpg"
+  },
+  "temple-asia-Places365_val_00034565.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00034565.jpg"
+  },
+  "water_tower-Places365_val_00007574.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00007574.jpg"
+  },
+  "stadium-baseball-Places365_val_00001530.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00001530.jpg"
+  },
+  "water_tower-Places365_val_00015078.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00015078.jpg"
+  },
+  "skyscraper-Places365_val_00003876.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00003876.jpg"
+  },
+  "rope_bridge-Places365_val_00019178.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00019178.jpg"
+  },
+  "mosque-outdoor-Places365_val_00020954.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00020954.jpg"
+  },
+  "castle-Places365_val_00006210.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00006210.jpg"
+  },
+  "stadium-soccer-Places365_val_00019288.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00019288.jpg"
+  },
+  "mosque-outdoor-Places365_val_00011273.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00011273.jpg"
+  },
+  "palace-Places365_val_00012912.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00012912.jpg"
+  },
+  "mosque-outdoor-Places365_val_00006162.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00006162.jpg"
+  },
+  "stadium-soccer-Places365_val_00030430.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00030430.jpg"
+  },
+  "temple-asia-Places365_val_00000350.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00000350.jpg"
+  },
+  "temple-asia-Places365_val_00005755.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00005755.jpg"
+  },
+  "plaza-Places365_val_00010397.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00010397.jpg"
+  },
+  "tower-Places365_val_00018014.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00018014.jpg"
+  },
+  "stadium-football-Places365_val_00018347.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00018347.jpg"
+  },
+  "bridge-Places365_val_00030234.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00030234.jpg"
+  },
+  "stadium-soccer-Places365_val_00035983.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00035983.jpg"
+  },
+  "water_tower-Places365_val_00012608.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00012608.jpg"
+  },
+  "mosque-outdoor-Places365_val_00013472.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00013472.jpg"
+  },
+  "church-outdoor-Places365_val_00023567.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00023567.jpg"
+  },
+  "stadium-football-Places365_val_00006670.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00006670.jpg"
+  },
+  "tower-Places365_val_00032454.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00032454.jpg"
+  },
+  "castle-Places365_val_00024160.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00024160.jpg"
+  },
+  "mosque-outdoor-Places365_val_00022395.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00022395.jpg"
+  },
+  "mosque-outdoor-Places365_val_00031278.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00031278.jpg"
+  },
+  "tower-Places365_val_00001696.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00001696.jpg"
+  },
+  "skyscraper-Places365_val_00002456.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00002456.jpg"
+  },
+  "stadium-soccer-Places365_val_00015678.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00015678.jpg"
+  },
+  "stadium-soccer-Places365_val_00034286.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00034286.jpg"
+  },
+  "temple-asia-Places365_val_00032771.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00032771.jpg"
+  },
+  "skyscraper-Places365_val_00025507.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00025507.jpg"
+  },
+  "palace-Places365_val_00002341.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00002341.jpg"
+  },
+  "stadium-football-Places365_val_00008387.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00008387.jpg"
+  },
+  "downtown-Places365_val_00019683.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00019683.jpg"
+  },
+  "plaza-Places365_val_00026460.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00026460.jpg"
+  },
+  "mosque-outdoor-Places365_val_00002363.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00002363.jpg"
+  },
+  "plaza-Places365_val_00019844.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00019844.jpg"
+  },
+  "downtown-Places365_val_00020044.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00020044.jpg"
+  },
+  "stadium-baseball-Places365_val_00000929.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00000929.jpg"
+  },
+  "harbor-Places365_val_00014877.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00014877.jpg"
+  },
+  "harbor-Places365_val_00029498.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00029498.jpg"
+  },
+  "rope_bridge-Places365_val_00009659.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00009659.jpg"
+  },
+  "rope_bridge-Places365_val_00011878.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00011878.jpg"
+  },
+  "downtown-Places365_val_00021454.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00021454.jpg"
+  },
+  "skyscraper-Places365_val_00025965.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00025965.jpg"
+  },
+  "mosque-outdoor-Places365_val_00013935.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00013935.jpg"
+  },
+  "harbor-Places365_val_00016965.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00016965.jpg"
+  },
+  "harbor-Places365_val_00029297.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00029297.jpg"
+  },
+  "temple-asia-Places365_val_00017537.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00017537.jpg"
+  },
+  "stadium-soccer-Places365_val_00001928.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00001928.jpg"
+  },
+  "tower-Places365_val_00012840.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00012840.jpg"
+  },
+  "water_tower-Places365_val_00022010.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00022010.jpg"
+  },
+  "stadium-soccer-Places365_val_00021244.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00021244.jpg"
+  },
+  "harbor-Places365_val_00026637.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00026637.jpg"
+  },
+  "temple-asia-Places365_val_00009680.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00009680.jpg"
+  },
+  "downtown-Places365_val_00006602.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00006602.jpg"
+  },
+  "rope_bridge-Places365_val_00026882.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00026882.jpg"
+  },
+  "bridge-Places365_val_00009657.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00009657.jpg"
+  },
+  "stadium-baseball-Places365_val_00006399.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00006399.jpg"
+  },
+  "bridge-Places365_val_00011317.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00011317.jpg"
+  },
+  "harbor-Places365_val_00019660.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00019660.jpg"
+  },
+  "stadium-football-Places365_val_00006564.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00006564.jpg"
+  },
+  "downtown-Places365_val_00001544.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00001544.jpg"
+  },
+  "rope_bridge-Places365_val_00001123.jpg": {
+   "category": "rope_bridge",
+   "source_file": "Places365_val_00001123.jpg"
+  },
+  "skyscraper-Places365_val_00032794.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00032794.jpg"
+  },
+  "downtown-Places365_val_00031047.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00031047.jpg"
+  },
+  "water_tower-Places365_val_00005056.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00005056.jpg"
+  },
+  "stadium-baseball-Places365_val_00021586.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00021586.jpg"
+  },
+  "tower-Places365_val_00032680.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00032680.jpg"
+  },
+  "stadium-soccer-Places365_val_00010453.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00010453.jpg"
+  },
+  "skyscraper-Places365_val_00003060.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00003060.jpg"
+  },
+  "temple-asia-Places365_val_00031323.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00031323.jpg"
+  },
+  "stadium-baseball-Places365_val_00017044.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00017044.jpg"
+  },
+  "skyscraper-Places365_val_00033695.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00033695.jpg"
+  },
+  "stadium-football-Places365_val_00016186.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00016186.jpg"
+  },
+  "skyscraper-Places365_val_00010709.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00010709.jpg"
+  },
+  "temple-asia-Places365_val_00003217.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00003217.jpg"
+  },
+  "bridge-Places365_val_00007116.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00007116.jpg"
+  },
+  "skyscraper-Places365_val_00034552.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00034552.jpg"
+  },
+  "stadium-baseball-Places365_val_00019289.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00019289.jpg"
+  },
+  "stadium-football-Places365_val_00029616.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00029616.jpg"
+  },
+  "castle-Places365_val_00005090.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00005090.jpg"
+  },
+  "water_tower-Places365_val_00000864.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00000864.jpg"
+  },
+  "water_tower-Places365_val_00031575.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00031575.jpg"
+  },
+  "temple-asia-Places365_val_00001507.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00001507.jpg"
+  },
+  "skyscraper-Places365_val_00020250.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00020250.jpg"
+  },
+  "temple-asia-Places365_val_00011704.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00011704.jpg"
+  },
+  "stadium-baseball-Places365_val_00006487.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00006487.jpg"
+  },
+  "bridge-Places365_val_00007667.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00007667.jpg"
+  },
+  "water_tower-Places365_val_00033370.jpg": {
+   "category": "water_tower",
+   "source_file": "Places365_val_00033370.jpg"
+  },
+  "skyscraper-Places365_val_00032473.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00032473.jpg"
+  },
+  "stadium-baseball-Places365_val_00031098.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00031098.jpg"
+  },
+  "stadium-soccer-Places365_val_00020794.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00020794.jpg"
+  },
+  "stadium-football-Places365_val_00009893.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00009893.jpg"
+  },
+  "stadium-football-Places365_val_00022306.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00022306.jpg"
+  },
+  "stadium-soccer-Places365_val_00015712.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00015712.jpg"
+  },
+  "temple-asia-Places365_val_00026604.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00026604.jpg"
+  },
+  "plaza-Places365_val_00014066.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00014066.jpg"
+  },
+  "plaza-Places365_val_00002706.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00002706.jpg"
+  },
+  "tower-Places365_val_00027563.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00027563.jpg"
+  },
+  "stadium-football-Places365_val_00022932.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00022932.jpg"
+  },
+  "palace-Places365_val_00033132.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00033132.jpg"
+  },
+  "harbor-Places365_val_00001783.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00001783.jpg"
+  },
+  "harbor-Places365_val_00025188.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00025188.jpg"
+  },
+  "stadium-football-Places365_val_00024459.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00024459.jpg"
+  },
+  "castle-Places365_val_00028591.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00028591.jpg"
+  },
+  "temple-asia-Places365_val_00005188.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00005188.jpg"
+  },
+  "skyscraper-Places365_val_00008588.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00008588.jpg"
+  },
+  "castle-Places365_val_00034678.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00034678.jpg"
+  },
+  "skyscraper-Places365_val_00019785.jpg": {
+   "category": "skyscraper",
+   "source_file": "Places365_val_00019785.jpg"
+  },
+  "castle-Places365_val_00033280.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00033280.jpg"
+  },
+  "mosque-outdoor-Places365_val_00000370.jpg": {
+   "category": "mosque/outdoor",
+   "source_file": "Places365_val_00000370.jpg"
+  },
+  "temple-asia-Places365_val_00021575.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00021575.jpg"
+  },
+  "palace-Places365_val_00014950.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00014950.jpg"
+  },
+  "downtown-Places365_val_00026791.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00026791.jpg"
+  },
+  "harbor-Places365_val_00017898.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00017898.jpg"
+  },
+  "church-outdoor-Places365_val_00009212.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00009212.jpg"
+  },
+  "plaza-Places365_val_00013026.jpg": {
+   "category": "plaza",
+   "source_file": "Places365_val_00013026.jpg"
+  },
+  "harbor-Places365_val_00032134.jpg": {
+   "category": "harbor",
+   "source_file": "Places365_val_00032134.jpg"
+  },
+  "stadium-football-Places365_val_00004566.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00004566.jpg"
+  },
+  "palace-Places365_val_00024765.jpg": {
+   "category": "palace",
+   "source_file": "Places365_val_00024765.jpg"
+  },
+  "temple-asia-Places365_val_00024408.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00024408.jpg"
+  },
+  "stadium-football-Places365_val_00002410.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00002410.jpg"
+  },
+  "temple-asia-Places365_val_00004921.jpg": {
+   "category": "temple/asia",
+   "source_file": "Places365_val_00004921.jpg"
+  },
+  "stadium-football-Places365_val_00018116.jpg": {
+   "category": "stadium/football",
+   "source_file": "Places365_val_00018116.jpg"
+  },
+  "church-outdoor-Places365_val_00035365.jpg": {
+   "category": "church/outdoor",
+   "source_file": "Places365_val_00035365.jpg"
+  },
+  "stadium-soccer-Places365_val_00006457.jpg": {
+   "category": "stadium/soccer",
+   "source_file": "Places365_val_00006457.jpg"
+  },
+  "castle-Places365_val_00004395.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00004395.jpg"
+  },
+  "bridge-Places365_val_00018721.jpg": {
+   "category": "bridge",
+   "source_file": "Places365_val_00018721.jpg"
+  },
+  "castle-Places365_val_00017679.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00017679.jpg"
+  },
+  "tower-Places365_val_00027725.jpg": {
+   "category": "tower",
+   "source_file": "Places365_val_00027725.jpg"
+  },
+  "downtown-Places365_val_00030443.jpg": {
+   "category": "downtown",
+   "source_file": "Places365_val_00030443.jpg"
+  },
+  "castle-Places365_val_00002829.jpg": {
+   "category": "castle",
+   "source_file": "Places365_val_00002829.jpg"
+  },
+  "stadium-baseball-Places365_val_00026305.jpg": {
+   "category": "stadium/baseball",
+   "source_file": "Places365_val_00026305.jpg"
+  }
+ }
+}

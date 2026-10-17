@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Chicago_aerial_view.jpg, CC BY 2.0, photographer Sean McMenemy (Flickr), photographed 2011-06-04. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 2 (recognizable via specific buildings, not a single unmistakable icon): Willis Tower (antenna spires) and the blue-glass Trump Tower are both individually identifiable to someone who knows the skyline, but this requires more than silhouette-only recognition.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "chicago",
+    "willis tower|sears tower",
+    "skyscraper|skyline"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "chicago"
+  ],
+  "notes": "Dense high-altitude view of downtown Chicago looking north: Willis Tower's twin antennas and the blue-glass Trump Tower are both visible landmarks. Hazy daylight, no readable text at this resolution. UNCALIBRATED by design — this is a companion/expansion to an aerial-city entry in the private set."
+}

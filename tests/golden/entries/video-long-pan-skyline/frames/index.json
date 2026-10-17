@@ -1,0 +1,86 @@
+[
+  {
+    "frame_idx": 0,
+    "source_frame": 0,
+    "timestamp_sec": 0.0,
+    "filename": "frame_000000.jpg"
+  },
+  {
+    "frame_idx": 1,
+    "source_frame": 22,
+    "timestamp_sec": 0.9176,
+    "filename": "frame_000001.jpg"
+  },
+  {
+    "frame_idx": 2,
+    "source_frame": 44,
+    "timestamp_sec": 1.8352,
+    "filename": "frame_000002.jpg"
+  },
+  {
+    "frame_idx": 3,
+    "source_frame": 88,
+    "timestamp_sec": 3.6703,
+    "filename": "frame_000003.jpg"
+  },
+  {
+    "frame_idx": 4,
+    "source_frame": 143,
+    "timestamp_sec": 5.9643,
+    "filename": "frame_000004.jpg"
+  },
+  {
+    "frame_idx": 5,
+    "source_frame": 198,
+    "timestamp_sec": 8.2583,
+    "filename": "frame_000005.jpg"
+  },
+  {
+    "frame_idx": 6,
+    "source_frame": 242,
+    "timestamp_sec": 10.0934,
+    "filename": "frame_000006.jpg"
+  },
+  {
+    "frame_idx": 7,
+    "source_frame": 275,
+    "timestamp_sec": 11.4698,
+    "filename": "frame_000007.jpg"
+  },
+  {
+    "frame_idx": 8,
+    "source_frame": 286,
+    "timestamp_sec": 11.9286,
+    "filename": "frame_000008.jpg"
+  },
+  {
+    "frame_idx": 9,
+    "source_frame": 319,
+    "timestamp_sec": 13.305,
+    "filename": "frame_000009.jpg"
+  },
+  {
+    "frame_idx": 10,
+    "source_frame": 385,
+    "timestamp_sec": 16.0577,
+    "filename": "frame_000010.jpg"
+  },
+  {
+    "frame_idx": 11,
+    "source_frame": 418,
+    "timestamp_sec": 17.4341,
+    "filename": "frame_000011.jpg"
+  },
+  {
+    "frame_idx": 12,
+    "source_frame": 572,
+    "timestamp_sec": 23.8572,
+    "filename": "frame_000012.jpg"
+  },
+  {
+    "frame_idx": 13,
+    "source_frame": 583,
+    "timestamp_sec": 24.316,
+    "filename": "frame_000013.jpg"
+  }
+]

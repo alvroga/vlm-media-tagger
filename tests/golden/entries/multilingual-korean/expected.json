@@ -1,0 +1,20 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Street_hongdae_Seoul.jpg, CC BY-SA 4.0, photographed in Hongdae, Seoul. Frozen 2026-07-11.",
+  "sentinel_for": "domain-diverse entry: dense real-world Korean street signage AND a person-ban stress test (numerous pedestrians filling the frame) AND a bonus brand-recognition case (real global/regional brands visible in Latin script alongside the Korean).",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "missha",
+    "umbrella",
+    "street|alley|market street",
+    "sign|signage|storefront",
+    "awning|canopy"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "street|market|shopping"
+  ],
+  "notes": "Busy pedestrian shopping street in Hongdae, Seoul, overcast/rainy day: dense stacked signage in Korean on both sides, several visible Latin-script brand names readable amid the Korean — 'MISSHA' (real Korean cosmetics brand, the strongest verifiable case), 'CoCo' (a real bubble-tea chain), 'PHỞ BÒ' (Vietnamese restaurant name), 'O.S.T', 'VINTAGE SANTA'. Roughly a dozen pedestrians fill the frame, several carrying closed umbrellas — global person-ban applies in full; their clothing/umbrellas remain legitimately taggable. UNCALIBRATED by design. CALIBRATED 2026-07-11 after first scored run: the '<language> text' must_not entries were removed — they correctly caught natural descriptive prose ('written in Chinese characters', alongside a CORRECT full transcription), which is good behavior, not the lazy-tag pattern they were meant to guard against. The REAL lazy-tag pattern (bare tags like 'korean text banners' with no actual transcription) showed up on the Korean/Russian entries specifically and is now fixed at the source in tag_filter.clean_tag (language+generic-textual-word tags dropped, same pattern as the existing watermark/overlay junk filter) rather than tracked per-entry."
+}

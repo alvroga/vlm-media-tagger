@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "_comment": "OPUS-MT model download manifest for translation_models.py. Artifacts hosted as GitHub release assets in the public nmt-model-store repo. Adding a language = add an entry here + upload its archives to a release, then point base_url (or a per-component url) at it.",
+  "base_url": "https://github.com/alvroga/nmt-model-store/releases/download/es-v1/",
+  "languages": {
+    "es": {
+      "name": "Spanish",
+      "attribution": {
+        "tcbig": {
+          "model": "Helsinki-NLP/opus-mt-tc-big-en-es",
+          "license": "CC-BY-4.0",
+          "url": "https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-es",
+          "cite": [
+            "Tiedemann & Thottingal (2020), OPUS-MT — Building open translation services for the World, EAMT.",
+            "Tiedemann (2020), The Tatoeba Translation Challenge, WMT."
+          ]
+        },
+        "base": {
+          "model": "Helsinki-NLP/opus-mt-en-es",
+          "license": "Apache-2.0",
+          "url": "https://huggingface.co/Helsinki-NLP/opus-mt-en-es"
+        }
+      },
+      "components": [
+        {
+          "name": "base",
+          "archive": "es-base.tar.gz",
+          "size": 86898710,
+          "sha256": "962ad3397681335667e3e917005858d5181c5169d5b2e014afc90069d8c2dc7e"
+        },
+        {
+          "name": "tcbig",
+          "archive": "es-tcbig.tar.gz",
+          "size": 214777337,
+          "sha256": "c5ddd93dcb116f3c27a988d172585b7da70f554bb5c603144dbd97f3f71bfcba"
+        }
+      ]
+    },
+    "zh": {
+      "name": "Chinese (Simplified)",
+      "attribution": {
+        "tcbig": {
+          "model": "Argos OpenTech en_zh (translate-en_zh-1_9.argosmodel)",
+          "license": "CC-BY-4.0",
+          "url": "https://www.argosopentech.com/argospm/index/",
+          "cite": [
+            "Tiedemann & Thottingal (2020), OPUS-MT — Building open translation services for the World, EAMT.",
+            "Tiedemann (2020), The Tatoeba Translation Challenge, WMT."
+          ]
+        },
+        "base": {
+          "model": "Helsinki-NLP/opus-mt-en-zh",
+          "license": "Apache-2.0",
+          "url": "https://huggingface.co/Helsinki-NLP/opus-mt-en-zh"
+        }
+      },
+      "components": [
+        {
+          "name": "base",
+          "archive": "zh-base.tar.gz",
+          "url": "https://github.com/alvroga/nmt-model-store/releases/download/zh-v1/zh-base.tar.gz",
+          "size": 71074448,
+          "sha256": "98b2231f62fc335c3437a4815f387cbb7d936c19ea8a761113569fcf661c99aa"
+        },
+        {
+          "name": "tcbig",
+          "archive": "zh-tcbig.tar.gz",
+          "url": "https://github.com/alvroga/nmt-model-store/releases/download/zh-v1/zh-tcbig.tar.gz",
+          "size": 70676398,
+          "sha256": "95e2854d483e476591756808a5a49a6214b6a11cc84292598bf8ae55743919b7"
+        }
+      ]
+    },
+    "pt": {
+      "name": "Portuguese (Brazil)",
+      "attribution": {
+        "tcbig": {
+          "model": "Helsinki-NLP/opus-mt-tc-big-en-pt",
+          "license": "CC-BY-4.0",
+          "url": "https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-pt",
+          "cite": [
+            "Tiedemann & Thottingal (2020), OPUS-MT — Building open translation services for the World, EAMT.",
+            "Tiedemann (2020), The Tatoeba Translation Challenge, WMT."
+          ]
+        },
+        "base": {
+          "model": "Tatoeba-Challenge eng-por (opus-2021-02-18)",
+          "license": "CC-BY-4.0",
+          "url": "https://object.pouta.csc.fi/Tatoeba-MT-models/eng-por/opus-2021-02-18.zip"
+        }
+      },
+      "components": [
+        {
+          "name": "base",
+          "archive": "pt-base.tar.gz",
+          "url": "https://github.com/alvroga/nmt-model-store/releases/download/pt-v1/pt-base.tar.gz",
+          "size": 65975428,
+          "sha256": "34937d3fe49fdc46e718377f356f4787dacc63f13e21254b717a25226bc5bb3b"
+        },
+        {
+          "name": "tcbig",
+          "archive": "pt-tcbig.tar.gz",
+          "url": "https://github.com/alvroga/nmt-model-store/releases/download/pt-v1/pt-tcbig.tar.gz",
+          "size": 215940947,
+          "sha256": "c11de192b5175b41defb74efd8e3970ca49387a73ee5111ecea45c547f173bed"
+        }
+      ]
+    }
+  }
+}

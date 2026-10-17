@@ -1,0 +1,12 @@
+{
+  "type": "video-full",
+  "source": "Water Rocks.mp4 (Pexels stock clip), frozen 2026-07-10; FULL cuts.json (PySceneDetect found ZERO cuts, not even the usual frame-0 entry) + all 17 extracted frames. Static close-up of shallow water rippling over rocks, near-zero visual change. Same source file as the curated still entry 'nature-water-rocks'.",
+  "sentinel_for": "detect_objects_vlm's has_cuts=False INTERVAL fallback (_select_interval_frames, 5s spacing) — every other video-full/video-frames entry in this golden set has real cuts.json data, so this is the only coverage of that branch at all. Verified empirically (2026-07-12) rather than assumed: this specific clip's cuts.json is genuinely `{\"cuts\": []}`, and pHash dedup at extraction time discarded everything past ~9.5s as near-duplicate of the last kept frame despite a 30s nominal duration — so the interval selector, walking a 17-frame index that only spans 0-9.5s, ends up choosing just 2 frames (t=0.0, t=5.0) even before any VLM call runs. Also exercises _merge_segments' non-boundary (has_cuts=False -> boundaries=None -> gap_sec=10.0) fallback path, since the two selected frames are within gap_sec of each other. Secondary check: whether the summary stays honest on a low-narrative, single-subject clip instead of inventing incident or variety that isn't there.",
+  "prompt": "video",
+  "must_have": ["water|rock"],
+  "nice_to_have": ["rock", "water"],
+  "must_not": [],
+  "summary_must_mention": ["water|rock"],
+  "min_segment_counts": {},
+  "notes": "Cheapest of the video-full entries (17 raw frames, but only 2 actually get selected/VLM-called per run — see sentinel_for) — good fast-iteration case when developing this tier further."
+}

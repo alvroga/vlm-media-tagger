@@ -1,0 +1,23 @@
+{
+  "type": "still",
+  "source": "COCO val2017 000000276284.jpg (image_id 276284; captions: 'A lone motorcycle parked in parking space at night.' / 'A motorcycle in a parking lot at night.'), frozen 2026-07-11. NOT in the coco/ anti-overfit sample (checked). CC-licensed via Flickr/COCO, no visible photographer watermark.",
+  "sentinel_for": "borderline dusk/blue-hour lit scene (median luma 61, similar brightness range to night-city-lights' 68-71) — a second, brighter data point on the 'lit night' spectrum, and simultaneously a negative-control risk: deep blue (not black) sky could tempt a naive prompt clause into over-firing on ANY blue/dark-toned photo, the same failure mode that got the earlier VLM instruction rejected on golden-hour",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "motorcycle",
+    "parking lot|parking space",
+    "streetlight|street light|lamp post",
+    "car|truck|vehicle",
+    "night|dusk|evening",
+    "tree"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "motorcycle",
+    "night|dusk|evening",
+    "parking lot|parking space"
+  ],
+  "notes": "Blue-hour parking lot: single motorcycle parked in a marked 'MOTORCYCLE' stall, deep saturated blue sky (sun already set, not full black), one bright streetlight overhead, a few cars/trucks parked in the distance, bare winter trees on the horizon, small distant lights (a building/town glow). No people. UNCALIBRATED — first scored run pending. Deliberately brighter/less obviously-night than night-street-lit: if a future VLM prompt clause fires here, check it ALSO still correctly stays silent on golden-hour and bright daytime sky frames — this is the entry most likely to catch an over-eager rewrite of the night clause."
+}

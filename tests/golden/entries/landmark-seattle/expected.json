@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Seattle_Downtown_Skyline_2019-1104.jpg, CC BY-SA 4.0, photographed 2019-01-26. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 1 (reclassified from planned tier-2 after inspection — the Space Needle is clearly visible, making this effectively iconic-tier): tests whether a small-in-frame but world-famous landmark still gets named correctly.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "space needle|tower",
+    "seattle",
+    "ferris wheel"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "seattle|space needle"
+  ],
+  "notes": "Waterfront view: Space Needle in the background (moderately small in frame), the Seattle Great Wheel (ferris wheel) dominates the foreground, a seagull mid-flight (not a person, no ban issue), 'Seattle Aquarium' signage readable on a pier building. UNCALIBRATED by design."
+}

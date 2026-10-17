@@ -1,0 +1,10 @@
+{
+  "type": "video-frames",
+  "source": "Skyline.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "crossfade/double-exposure frames (editorial dissolves land between shots in real footage) — model must still produce sane city tags, not junk or empty",
+  "prompt": "video",
+  "must_have": ["building|city|street"],
+  "nice_to_have": ["bridge", "sunset", "traffic|light trails|timelapse"],
+  "must_not": [],
+  "notes": "Despite the filename this is a multi-shot city timelapse (Stockholm — 'EAST CAPITAL' signage readable) with long dissolves; frames 2 and 4 of 4 are mid-crossfade double exposures. Frame 1 is a clean sunset bridge, frame 3 a clean night street aerial."
+}

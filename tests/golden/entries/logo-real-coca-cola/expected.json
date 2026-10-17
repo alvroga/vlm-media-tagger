@@ -1,0 +1,15 @@
+{
+  "type": "still",
+  "source": "LogoDet-3K (Guo et al., research/education dataset; LogoDet-3K/Food/coca cola/10.jpg), frozen 2026-07-11.",
+  "sentinel_for": "brand/logo-naming precision test, FAMOUS tier: a globally recognizable logo, mostly on a plain background — does the model name the brand confidently and correctly?",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "coca-cola"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "coca-cola"
+  ],
+  "notes": "UNCALIBRATED by design — this is the initial full-scale landmark/brand naming investigation (2026-07-11), testing our CURRENT tuned production prompts (minicpm-v 4.5) directly, no baseline/comparison arm. Part of the LogoDet-3K famous-tier sample."
+}

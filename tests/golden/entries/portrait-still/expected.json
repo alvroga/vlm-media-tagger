@@ -1,0 +1,21 @@
+{
+  "type": "still",
+  "source": "RAW Conversion/converted/PHASEONE-RAW-P0005969.jpg (Phase One studio sample), frozen 2026-07-10",
+  "sentinel_for": "NEGATIVE control on the STILLS path: a studio portrait — person nouns banned even when the person IS the entire subject; wearable objects still taggable",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "denim|jacket|denim jacket",
+    "necklace|beads",
+    "studio|portrait"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|portrait",
+    "denim|jean jacket|jacket",
+    "necklace|beads",
+    "studio|backdrop|brown background|dark background",
+    "medium|close-up"
+  ],
+  "notes": "Studio portrait, brown backdrop: woman in white top + denim jacket with a red bead necklace. The stills description prompt will have to describe SOMETHING — composition/lighting language is fine, person nouns in the TAGS are the fail (globals). Companion to a video interview entry in the private set. Recalibrated 2026-07-10: necklace never detected (0/3 — small-object stills weakness, now the aspirational metric); denim jacket hit 3/3 and is the floor. Recalibrated again 2026-07-10 (multi-pass runs): on this minimal single-subject frame each call yields 1-2 tags and ATTENTION FLIPS between jacket and necklace (multi-pass made necklace 67-100% but jacket wobbled) — no stable object floor exists; the entry's hard line is the global person-noun check, which is its real job anyway. Person WORDS are fine in the description (descriptions describe people freely — only TAGS ban person nouns); 'medium|close-up' checks the mandatory shot-type clause of the stills description prompt."
+}

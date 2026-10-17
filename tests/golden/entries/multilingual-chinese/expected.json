@@ -1,0 +1,25 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Street_signs_in_Beijing_China.JPG, public domain (photographer Scott Meltzer), photographed 2009. Frozen 2026-07-11.",
+  "sentinel_for": "domain-diverse entry : non-Latin script OCR/transcription recall — dense Chinese street signage with the correct English romanization PRINTED ON THE SIGNS THEMSELVES, giving independently verifiable ground truth without needing external translation.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "chaoyang|chaoyang road",
+    "brt",
+    "shilipu|shilipu road",
+    "balizhuang|balizhuang road",
+    "ciyunsi|ciyunsi bridge",
+    "road sign|street sign|traffic sign",
+    "skyscraper|skyline|buildings",
+    "traffic light"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "street sign|road sign|traffic sign",
+    "chinese|china",
+    "building|skyline|skyscraper"
+  ],
+  "notes": "Two large blue overhead street/directional signs at a Beijing intersection: left sign reads Chaoyang Rd (朝阳路) / BRT with a bus icon and a yellow 'express lane straight only' strip; right sign reads E.4th Ring Rd / CIYUNSI Bridge, SHILIPU Rd, BALIZHUANG Rd, all with arrows; a small blue triangle-warning sign below reads 'watch the traffic light'. Hazy/smoggy sky, high-rise buildings behind, a few pedestrians and a car at street level (person-ban applies to any of those, not to the signage). UNCALIBRATED by design — first scored run pending. must_not targets the LAZY-tag failure mode: a generic 'chinese text' tag is exactly as useless for search as the already-banned generic 'text' tag; the actual transcribed road names are what should appear instead, and are independently verifiable here via the signs' own English sub-text. CALIBRATED 2026-07-11 after first scored run: the '<language> text' must_not entries were removed — they correctly caught natural descriptive prose ('written in Chinese characters', alongside a CORRECT full transcription), which is good behavior, not the lazy-tag pattern they were meant to guard against. The REAL lazy-tag pattern (bare tags like 'korean text banners' with no actual transcription) showed up on the Korean/Russian entries specifically and is now fixed at the source in tag_filter.clean_tag (language+generic-textual-word tags dropped, same pattern as the existing watermark/overlay junk filter) rather than tracked per-entry."
+}

@@ -1,0 +1,15 @@
+{
+  "type": "video-frames",
+  "source": "Car Bokeh.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "fully-defocused footage: the visible effect must be tagged — an empty result is the regression (blur/bokeh prompt clause)",
+  "prompt": "video",
+  "must_have": [
+    "bokeh|blur|blurred|out of focus|defocused",
+    "night"
+  ],
+  "nice_to_have": [
+    "lights|city lights|street lights"
+  ],
+  "must_not": [],
+  "notes": "Warm night street lights, NOTHING in focus in any frame — no car is actually discernible despite the filename. This was also the anchoring-bug file (old 'car/bow tie/fence' JSON example leaked into it), so watch for suspiciously specific object tags. CALIBRATED 2026-07-11: 'night' promoted to must_have — no longer VLM-dependent, now a deterministic pixel-darkness signature (detect_objects_vlm.apply_deterministic_tags); this frame's median luma/flatness were measured and confirmed to trigger it, so the floor is guaranteed as long as the frozen frame itself doesn't change."
+}

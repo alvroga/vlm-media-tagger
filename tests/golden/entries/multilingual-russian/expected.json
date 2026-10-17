@@ -1,0 +1,21 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Road_sign_in_St._Petersburg.jpg, CC BY-SA 4.0, near Kantemirovsky Bridge / Vyborgskaya Embankment, St. Petersburg. Frozen 2026-07-11.",
+  "sentinel_for": "domain-diverse entry: Cyrillic script, with real verifiable institution names (a real bank, a real telecom fragment) plus a distinctive weather element (rainbow) as a description-recall bonus check.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "globex|bank globex",
+    "rainbow",
+    "building|skyscraper|tower",
+    "street sign|directional sign|road sign",
+    "power lines|cables"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "rainbow",
+    "building"
+  ],
+  "notes": "Overcast St. Petersburg skyline with a vivid rainbow: a building reads 'БАНК ГЛОБЭКС' (Bank Globex, a real Russian bank) with the tagline 'ГЛОБАЛЬНО. ИНДИВИДУАЛЬНО' ('Globally. Individually.') and a partial 'ЕЛЕКОМ' fragment above (likely a cropped 'Ростелеком'/Rostelecom sign); a small hanging yellow directional sign reads 'НА ПРИМОРСКИЙ ПР.' ('TO Primorsky Ave') with an arrow; power lines cross the frame; a stepped high-rise tower sits behind, rainbow arcing through the clouds on the right. UNCALIBRATED by design. CALIBRATED 2026-07-11 after first scored run: the '<language> text' must_not entries were removed — they correctly caught natural descriptive prose ('written in Chinese characters', alongside a CORRECT full transcription), which is good behavior, not the lazy-tag pattern they were meant to guard against. The REAL lazy-tag pattern (bare tags like 'korean text banners' with no actual transcription) showed up on the Korean/Russian entries specifically and is now fixed at the source in tag_filter.clean_tag (language+generic-textual-word tags dropped, same pattern as the existing watermark/overlay junk filter) rather than tracked per-entry."
+}

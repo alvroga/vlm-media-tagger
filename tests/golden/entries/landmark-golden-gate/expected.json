@@ -1,0 +1,19 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Golden_Gate_Bridge._San_Francisco._02.JPG, CC BY-SA 3.0, photographer Pemolo, photographed 2011-11-02. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 1: distinctive International Orange color + Art Deco towers, near-zero ambiguity, with one plausible SF-area confusable (Bay Bridge) as a must_not sanity check.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "golden gate bridge|bridge",
+    "san francisco"
+  ],
+  "must_not": [
+    "bay bridge"
+  ],
+  "description_must_mention": [
+    "golden gate bridge",
+    "san francisco"
+  ],
+  "notes": "Ground-level view of the Golden Gate Bridge towers and suspension cables, clear sky, water below, no readable text. UNCALIBRATED by design (see landmark-eiffel note — same investigation)."
+}

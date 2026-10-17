@@ -1,0 +1,10 @@
+{
+  "type": "video-frames",
+  "source": "Bokeh Rainbow.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "fully-defocused footage, colorful variant: effect must be tagged, empty result is the regression",
+  "prompt": "video",
+  "must_have": ["bokeh|blur|blurred|out of focus|defocused"],
+  "nice_to_have": ["lights", "colorful|multicolored|rainbow"],
+  "must_not": [],
+  "notes": "Multicolored bokeh circles (green/purple/red/yellow), zero sharp content in any frame."
+}

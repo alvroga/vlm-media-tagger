@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Denver_Skyline_in_Winter.JPG, CC BY-SA 4.0, photographer R0uge, photographed 2016-03-24. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 2: distinctive 'cash register' building shape (Republic Plaza) + snow-capped Rocky Mountains backdrop is a strong geographic signature (few US downtowns have mountains immediately behind them) but not a single iconic structure.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "denver",
+    "mountain|mountains|rocky mountains",
+    "snow"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "denver|rocky mountains"
+  ],
+  "notes": "Winter skyline, snow-covered rooftops in the foreground, snow-capped mountain range filling the horizon behind downtown towers. The mountain backdrop is the strongest single clue (very few US skylines have this exact geography). UNCALIBRATED by design."
+}

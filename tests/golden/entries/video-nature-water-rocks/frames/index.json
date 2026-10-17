@@ -1,0 +1,104 @@
+[
+  {
+    "frame_idx": 0,
+    "source_frame": 0,
+    "timestamp_sec": 0.0,
+    "filename": "frame_000000.jpg"
+  },
+  {
+    "frame_idx": 1,
+    "source_frame": 15,
+    "timestamp_sec": 0.5,
+    "filename": "frame_000001.jpg"
+  },
+  {
+    "frame_idx": 2,
+    "source_frame": 30,
+    "timestamp_sec": 1.0,
+    "filename": "frame_000002.jpg"
+  },
+  {
+    "frame_idx": 3,
+    "source_frame": 45,
+    "timestamp_sec": 1.5,
+    "filename": "frame_000003.jpg"
+  },
+  {
+    "frame_idx": 4,
+    "source_frame": 60,
+    "timestamp_sec": 2.0,
+    "filename": "frame_000004.jpg"
+  },
+  {
+    "frame_idx": 5,
+    "source_frame": 75,
+    "timestamp_sec": 2.5,
+    "filename": "frame_000005.jpg"
+  },
+  {
+    "frame_idx": 6,
+    "source_frame": 90,
+    "timestamp_sec": 3.0,
+    "filename": "frame_000006.jpg"
+  },
+  {
+    "frame_idx": 7,
+    "source_frame": 105,
+    "timestamp_sec": 3.5,
+    "filename": "frame_000007.jpg"
+  },
+  {
+    "frame_idx": 8,
+    "source_frame": 120,
+    "timestamp_sec": 4.0,
+    "filename": "frame_000008.jpg"
+  },
+  {
+    "frame_idx": 9,
+    "source_frame": 135,
+    "timestamp_sec": 4.5,
+    "filename": "frame_000009.jpg"
+  },
+  {
+    "frame_idx": 10,
+    "source_frame": 150,
+    "timestamp_sec": 5.0,
+    "filename": "frame_000010.jpg"
+  },
+  {
+    "frame_idx": 11,
+    "source_frame": 165,
+    "timestamp_sec": 5.5,
+    "filename": "frame_000011.jpg"
+  },
+  {
+    "frame_idx": 12,
+    "source_frame": 180,
+    "timestamp_sec": 6.0,
+    "filename": "frame_000012.jpg"
+  },
+  {
+    "frame_idx": 13,
+    "source_frame": 195,
+    "timestamp_sec": 6.5,
+    "filename": "frame_000013.jpg"
+  },
+  {
+    "frame_idx": 14,
+    "source_frame": 210,
+    "timestamp_sec": 7.0,
+    "filename": "frame_000014.jpg"
+  },
+  {
+    "frame_idx": 15,
+    "source_frame": 270,
+    "timestamp_sec": 9.0,
+    "filename": "frame_000015.jpg"
+  },
+  {
+    "frame_idx": 16,
+    "source_frame": 285,
+    "timestamp_sec": 9.5,
+    "filename": "frame_000016.jpg"
+  }
+]

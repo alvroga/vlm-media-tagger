@@ -1,0 +1,23 @@
+{
+  "type": "still",
+  "source": "COCO val2017 000000423798.jpg (image_id 423798; caption: 'A street at night is lit up by streetlights.'), frozen 2026-07-11. NOT in the coco/ anti-overfit sample (checked). CC-licensed via Flickr/COCO, no visible photographer watermark.",
+  "sentinel_for": "THE motivating 'lit night' hard case: a well-lit night street — median pixel luma 32, ABOVE the deterministic darkness-tag's 18.0 cutoff by design, so this entry is NOT covered by apply_deterministic_tags and exists specifically to judge a future VLM prompt clause for 'night' on illuminated (not pitch-black) night scenes",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "street|road|intersection",
+    "streetlight|street light|lamp post",
+    "traffic light",
+    "tree",
+    "night",
+    "light trails|motion blur|long exposure"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "night",
+    "street|road|intersection",
+    "light|streetlight|lamp"
+  ],
+  "notes": "Empty night intersection, long-exposure shot: bright streetlight flare center-top, red/green traffic lights, white light-trail streaks across the road (car headlights on a long exposure), dark trees either side, near-black sky. No people. UNCALIBRATED — first scored run pending; this entry's 'night' rate is the target metric for the deterministic-tag-can't-catch-it case (see night-cityscape-pan/bokeh-car for the covered case). Do not promote 'night' to must_have until/unless a prompt change demonstrably fixes it — docs/findings.md is explicit that an earlier blunt VLM instruction false-tagged golden-hour footage, so any new attempt must be judged carefully against golden-hour and daytime sky frames as negative controls too."
+}

@@ -1,0 +1,23 @@
+{
+  "type": "still",
+  "source": "LogoDet-3K Food/7-Up/63.jpg, frozen 2026-07-10",
+  "sentinel_for": "brand text on a physical object (not a flat design): both the object and the readable brand should be picked up",
+  "prompt": "still",
+  "must_have": [
+    "shirt|t-shirt"
+  ],
+  "nice_to_have": [
+    "7up|7-up",
+    "logo",
+    "hanger|clothes rack"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "shirt|t-shirt|tee",
+    "7up|7-up|7 up",
+    "white",
+    "hanger|hanging|rack|display|store"
+  ],
+  "notes": "White t-shirt on a store hanger with the green/red 7up logo print. Object recall (shirt) is the hard line; brand pickup is the stochastic part."
+}

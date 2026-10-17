@@ -1,0 +1,24 @@
+{
+  "type": "still",
+  "source": "RAW Conversion/converted/PHASEONE-RAW-P0006186.jpg (Phase One sample), frozen 2026-07-10",
+  "sentinel_for": "readable real-world signage on a photograph + confidence-edge landmark naming for stills (Pike Place Market, Seattle)",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "clock",
+    "sign|neon sign",
+    "public market",
+    "pike place|seattle",
+    "market",
+    "flowers"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "sign|neon|signage",
+    "public market",
+    "clock",
+    "farmers"
+  ],
+  "notes": "The iconic 'PUBLIC MARKET CENTER' neon sign + clock, cloudy sky, 'FARMERS' lettering below. Naming Pike Place/Seattle is a legitimate confidence-edge hit (identifiable landmark), parallel to the Brooklyn Bridge entry. Recalibrated 2026-07-10: 1 of 3 runs returned EMPTY; 'clock' 1/3, 'sign' 0/3 (reads the words but never says 'sign'). No reliable floor yet."
+}

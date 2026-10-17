@@ -1,0 +1,20 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Downtown_skyline_panorama_as_seen_from_Ohio_%26_Erie_Canalway,_Akron,_Ohio_-_20200530.jpg, CC BY-SA 4.0, photographer Andre Carrotflower, photographed 2020-05-30. Frozen 2026-07-11.",
+  "sentinel_for": "FALSE-GUESS trap, second data point: a generic inland (no waterfront/river visible) downtown skyline with readable NATIONAL BRAND signage (PNC, AT&T) that carries no location information (both brands operate in most US cities) — tests whether the model mistakes brand-text recognition for place recognition.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "akron"
+  ],
+  "must_not": [
+    "cleveland",
+    "columbus",
+    "dayton",
+    "cincinnati",
+    "pittsburgh",
+    "buffalo"
+  ],
+  "description_must_mention": [],
+  "notes": "Panoramic street-level view of downtown office towers under a partly-cloudy sky; a cylindrical tower, a PNC-branded building, and an AT&T-branded building are all visible with clearly readable text. No water, no distinctive geography, no unique silhouette. 'PNC' and 'AT&T' are legitimate OCR tags (brand text policy) but neither is Akron-specific — if a naming-enabled prompt cites either brand AS EVIDENCE for a specific city guess, that's exactly the overconfidence failure mode this entry exists to catch."
+}

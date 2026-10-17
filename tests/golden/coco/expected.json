@@ -1,0 +1,1969 @@
+{
+ "meta": {
+  "source": "COCO val2017 (instances_val2017.json), frozen 2026-07-11",
+  "seed": 20260711,
+  "size": 200,
+  "note": "Anti-overfit breadth tier \u2014 never tune any prompt against these images or the synonym map in coco_tier.py."
+ },
+ "images": {
+  "2006": {
+   "file": "000000002006.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bus": 167865.6,
+    "person": 2296.2,
+    "tie": 84.7,
+    "traffic light": 390.8
+   }
+  },
+  "3501": {
+   "file": "000000003501.jpg",
+   "width": 612,
+   "height": 612,
+   "categories": {
+    "bowl": 268221.0,
+    "broccoli": 18766.1
+   }
+  },
+  "6471": {
+   "file": "000000006471.jpg",
+   "width": 500,
+   "height": 333,
+   "categories": {
+    "baseball bat": 494.0,
+    "baseball glove": 594.2,
+    "bench": 1138.0,
+    "bottle": 65.6,
+    "person": 13534.7
+   }
+  },
+  "13597": {
+   "file": "000000013597.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "cake": 82770.7,
+    "dining table": 27365.6
+   }
+  },
+  "17959": {
+   "file": "000000017959.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "backpack": 305.7,
+    "kite": 8236.1,
+    "person": 1007.7
+   }
+  },
+  "19402": {
+   "file": "000000019402.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "person": 140541.8,
+    "pizza": 23284.8
+   }
+  },
+  "21503": {
+   "file": "000000021503.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "keyboard": 13822.1,
+    "mouse": 13379.8,
+    "remote": 7496.0,
+    "sandwich": 91416.4
+   }
+  },
+  "21903": {
+   "file": "000000021903.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "elephant": 44204.1,
+    "person": 16552.2
+   }
+  },
+  "25424": {
+   "file": "000000025424.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "person": 33768.9,
+    "sports ball": 507.4,
+    "tennis racket": 5243.7
+   }
+  },
+  "26204": {
+   "file": "000000026204.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "bus": 11495.0,
+    "car": 8357.7,
+    "person": 808.6,
+    "traffic light": 432.0,
+    "truck": 5074.2
+   }
+  },
+  "31269": {
+   "file": "000000031269.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "zebra": 26656.4
+   }
+  },
+  "36660": {
+   "file": "000000036660.jpg",
+   "width": 500,
+   "height": 323,
+   "categories": {
+    "cell phone": 5073.5,
+    "person": 29833.8
+   }
+  },
+  "42528": {
+   "file": "000000042528.jpg",
+   "width": 640,
+   "height": 495,
+   "categories": {
+    "cell phone": 16637.4,
+    "chair": 23936.8,
+    "person": 76332.4
+   }
+  },
+  "44877": {
+   "file": "000000044877.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "person": 51779.9,
+    "sports ball": 792.0,
+    "tennis racket": 16429.2
+   }
+  },
+  "46497": {
+   "file": "000000046497.jpg",
+   "width": 500,
+   "height": 332,
+   "categories": {
+    "boat": 31260.0,
+    "person": 17217.5
+   }
+  },
+  "47585": {
+   "file": "000000047585.jpg",
+   "width": 424,
+   "height": 640,
+   "categories": {
+    "person": 57152.9,
+    "tie": 854.4,
+    "umbrella": 23149.6
+   }
+  },
+  "50811": {
+   "file": "000000050811.jpg",
+   "width": 640,
+   "height": 605,
+   "categories": {
+    "bottle": 14247.5,
+    "bowl": 12458.4,
+    "cell phone": 741.0,
+    "dining table": 84616.0,
+    "person": 108524.4,
+    "remote": 1184.5,
+    "tie": 3875.4
+   }
+  },
+  "50844": {
+   "file": "000000050844.jpg",
+   "width": 334,
+   "height": 500,
+   "categories": {
+    "teddy bear": 42770.8
+   }
+  },
+  "51738": {
+   "file": "000000051738.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "bed": 72374.1,
+    "chair": 4539.6,
+    "suitcase": 3126.1
+   }
+  },
+  "52017": {
+   "file": "000000052017.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "airplane": 35378.3,
+    "person": 227.9
+   }
+  },
+  "52413": {
+   "file": "000000052413.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "cell phone": 14558.2,
+    "chair": 2175.3,
+    "cup": 1631.1,
+    "person": 57377.4
+   }
+  },
+  "53624": {
+   "file": "000000053624.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "elephant": 26810.3,
+    "person": 509.6
+   }
+  },
+  "54628": {
+   "file": "000000054628.jpg",
+   "width": 375,
+   "height": 500,
+   "categories": {
+    "cake": 10261.4,
+    "chair": 4939.2,
+    "dining table": 38551.4,
+    "person": 355.5,
+    "potted plant": 1045.0
+   }
+  },
+  "58029": {
+   "file": "000000058029.jpg",
+   "width": 640,
+   "height": 478,
+   "categories": {
+    "sink": 7556.7,
+    "toilet": 5131.2
+   }
+  },
+  "58350": {
+   "file": "000000058350.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "couch": 45332.1,
+    "knife": 1067.6,
+    "person": 88489.6,
+    "pizza": 7631.7
+   }
+  },
+  "60855": {
+   "file": "000000060855.jpg",
+   "width": 500,
+   "height": 399,
+   "categories": {
+    "apple": 23695.4,
+    "orange": 19217.1
+   }
+  },
+  "70158": {
+   "file": "000000070158.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "zebra": 65963.8
+   }
+  },
+  "76731": {
+   "file": "000000076731.jpg",
+   "width": 640,
+   "height": 406,
+   "categories": {
+    "laptop": 150970.8
+   }
+  },
+  "80659": {
+   "file": "000000080659.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "horse": 37758.8,
+    "person": 10798.3
+   }
+  },
+  "81988": {
+   "file": "000000081988.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "person": 11846.1,
+    "surfboard": 1623.6
+   }
+  },
+  "89761": {
+   "file": "000000089761.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "toilet": 49026.8
+   }
+  },
+  "92416": {
+   "file": "000000092416.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "boat": 6634.5,
+    "bottle": 3214.2,
+    "person": 120683.8,
+    "tie": 6119.2
+   }
+  },
+  "94852": {
+   "file": "000000094852.jpg",
+   "width": 640,
+   "height": 512,
+   "categories": {
+    "elephant": 40717.4
+   }
+  },
+  "108253": {
+   "file": "000000108253.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "bottle": 26732.3,
+    "cup": 4322.5,
+    "dining table": 208366.9,
+    "fork": 188.0,
+    "knife": 1119.3,
+    "person": 28339.1,
+    "pizza": 49792.2,
+    "spoon": 26.0
+   }
+  },
+  "110359": {
+   "file": "000000110359.jpg",
+   "width": 640,
+   "height": 428,
+   "categories": {
+    "airplane": 10804.5
+   }
+  },
+  "112110": {
+   "file": "000000112110.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "person": 32043.0,
+    "suitcase": 9369.6
+   }
+  },
+  "116479": {
+   "file": "000000116479.jpg",
+   "width": 411,
+   "height": 640,
+   "categories": {
+    "bed": 119506.2,
+    "chair": 3750.2,
+    "couch": 2930.2
+   }
+  },
+  "119452": {
+   "file": "000000119452.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "apple": 1657.3,
+    "banana": 117161.5,
+    "orange": 63598.9
+   }
+  },
+  "121586": {
+   "file": "000000121586.jpg",
+   "width": 640,
+   "height": 478,
+   "categories": {
+    "book": 2247.7,
+    "cat": 1714.5,
+    "tv": 26106.7
+   }
+  },
+  "122927": {
+   "file": "000000122927.jpg",
+   "width": 640,
+   "height": 361,
+   "categories": {
+    "bird": 10773.5
+   }
+  },
+  "124975": {
+   "file": "000000124975.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "zebra": 57793.4
+   }
+  },
+  "127955": {
+   "file": "000000127955.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "bear": 70385.9
+   }
+  },
+  "135561": {
+   "file": "000000135561.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bottle": 198.2,
+    "bowl": 452.3,
+    "clock": 202.6,
+    "cup": 341.6,
+    "refrigerator": 26395.8,
+    "sink": 867.1,
+    "toaster": 3200.5
+   }
+  },
+  "141597": {
+   "file": "000000141597.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "car": 14836.1,
+    "truck": 51393.6
+   }
+  },
+  "148707": {
+   "file": "000000148707.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "orange": 3969.8
+   }
+  },
+  "151962": {
+   "file": "000000151962.jpg",
+   "width": 640,
+   "height": 479,
+   "categories": {
+    "car": 123858.1,
+    "dog": 7144.5,
+    "person": 1492.2
+   }
+  },
+  "163155": {
+   "file": "000000163155.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "cat": 64590.2
+   }
+  },
+  "163290": {
+   "file": "000000163290.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "giraffe": 7698.5,
+    "zebra": 19489.5
+   }
+  },
+  "163611": {
+   "file": "000000163611.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "cup": 10693.5,
+    "dining table": 38698.6,
+    "fork": 9424.4,
+    "knife": 812.4,
+    "pizza": 172468.2
+   }
+  },
+  "165336": {
+   "file": "000000165336.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "giraffe": 13643.1
+   }
+  },
+  "166478": {
+   "file": "000000166478.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "book": 1433.5,
+    "bowl": 1436.4,
+    "cell phone": 1637.4,
+    "couch": 85257.5,
+    "laptop": 13660.7,
+    "person": 53477.8
+   }
+  },
+  "168974": {
+   "file": "000000168974.jpg",
+   "width": 375,
+   "height": 500,
+   "categories": {
+    "cell phone": 2884.3,
+    "person": 74680.7,
+    "remote": 1760.4
+   }
+  },
+  "170670": {
+   "file": "000000170670.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "bottle": 4974.4,
+    "bowl": 15660.3,
+    "carrot": 2530.3,
+    "chair": 8700.9,
+    "cup": 8774.7,
+    "dining table": 198211.0,
+    "fork": 698.8
+   }
+  },
+  "172571": {
+   "file": "000000172571.jpg",
+   "width": 640,
+   "height": 361,
+   "categories": {
+    "cup": 10653.2,
+    "fork": 1201.1,
+    "knife": 7449.1,
+    "person": 18013.7,
+    "pizza": 68415.5,
+    "wine glass": 11159.0
+   }
+  },
+  "174371": {
+   "file": "000000174371.jpg",
+   "width": 640,
+   "height": 511,
+   "categories": {
+    "bottle": 1911.6,
+    "cell phone": 786.4,
+    "person": 85608.2
+   }
+  },
+  "178618": {
+   "file": "000000178618.jpg",
+   "width": 446,
+   "height": 640,
+   "categories": {
+    "elephant": 17581.2
+   }
+  },
+  "179653": {
+   "file": "000000179653.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "clock": 6355.2
+   }
+  },
+  "180798": {
+   "file": "000000180798.jpg",
+   "width": 375,
+   "height": 500,
+   "categories": {
+    "cell phone": 25692.9
+   }
+  },
+  "181303": {
+   "file": "000000181303.jpg",
+   "width": 640,
+   "height": 358,
+   "categories": {
+    "kite": 5192.4,
+    "person": 11220.1
+   }
+  },
+  "186637": {
+   "file": "000000186637.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "giraffe": 22429.6
+   }
+  },
+  "189775": {
+   "file": "000000189775.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "chair": 764.5,
+    "person": 10582.9,
+    "tennis racket": 2172.9
+   }
+  },
+  "193494": {
+   "file": "000000193494.jpg",
+   "width": 426,
+   "height": 640,
+   "categories": {
+    "bed": 45532.4
+   }
+  },
+  "193743": {
+   "file": "000000193743.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "person": 60161.9,
+    "tennis racket": 1821.4
+   }
+  },
+  "199681": {
+   "file": "000000199681.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "microwave": 269435.6,
+    "teddy bear": 34886.0
+   }
+  },
+  "203546": {
+   "file": "000000203546.jpg",
+   "width": 640,
+   "height": 457,
+   "categories": {
+    "bear": 57119.0
+   }
+  },
+  "203580": {
+   "file": "000000203580.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "bench": 11290.0,
+    "dining table": 4181.1,
+    "umbrella": 13160.5
+   }
+  },
+  "214703": {
+   "file": "000000214703.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "person": 2440.0,
+    "surfboard": 706.3
+   }
+  },
+  "215259": {
+   "file": "000000215259.jpg",
+   "width": 336,
+   "height": 500,
+   "categories": {
+    "couch": 11492.6,
+    "person": 23641.7,
+    "remote": 190.7
+   }
+  },
+  "222991": {
+   "file": "000000222991.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "umbrella": 16292.1
+   }
+  },
+  "223130": {
+   "file": "000000223130.jpg",
+   "width": 425,
+   "height": 640,
+   "categories": {
+    "giraffe": 28303.4
+   }
+  },
+  "226903": {
+   "file": "000000226903.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bicycle": 4961.5,
+    "bottle": 841.8,
+    "cake": 3194.6,
+    "dining table": 63501.9,
+    "knife": 664.7,
+    "person": 6309.4,
+    "sandwich": 1720.6,
+    "spoon": 527.2
+   }
+  },
+  "229747": {
+   "file": "000000229747.jpg",
+   "width": 640,
+   "height": 541,
+   "categories": {
+    "airplane": 10729.8
+   }
+  },
+  "235857": {
+   "file": "000000235857.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "cow": 42704.6
+   }
+  },
+  "243204": {
+   "file": "000000243204.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "oven": 58395.5,
+    "person": 112028.7,
+    "sandwich": 3209.5,
+    "spoon": 8102.2
+   }
+  },
+  "245448": {
+   "file": "000000245448.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "motorcycle": 30525.7,
+    "person": 20119.6,
+    "truck": 6003.4
+   }
+  },
+  "246454": {
+   "file": "000000246454.jpg",
+   "width": 640,
+   "height": 640,
+   "categories": {
+    "dog": 28785.2,
+    "handbag": 27429.6,
+    "person": 97257.1
+   }
+  },
+  "250901": {
+   "file": "000000250901.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "book": 2786.0,
+    "person": 30393.6,
+    "sandwich": 10053.3
+   }
+  },
+  "263644": {
+   "file": "000000263644.jpg",
+   "width": 473,
+   "height": 640,
+   "categories": {
+    "bed": 39754.7
+   }
+  },
+  "266409": {
+   "file": "000000266409.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "person": 22075.5,
+    "skis": 979.4
+   }
+  },
+  "272364": {
+   "file": "000000272364.jpg",
+   "width": 428,
+   "height": 640,
+   "categories": {
+    "giraffe": 50908.9
+   }
+  },
+  "273493": {
+   "file": "000000273493.jpg",
+   "width": 500,
+   "height": 333,
+   "categories": {
+    "person": 2871.0,
+    "sports ball": 6.3,
+    "tennis racket": 109.9
+   }
+  },
+  "273711": {
+   "file": "000000273711.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "apple": 2145.4,
+    "bowl": 14401.8,
+    "carrot": 508.2,
+    "chair": 6760.0,
+    "cup": 3809.5,
+    "dining table": 168038.5,
+    "orange": 908.4,
+    "person": 17506.8,
+    "sandwich": 3593.6,
+    "spoon": 499.7
+   }
+  },
+  "275058": {
+   "file": "000000275058.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "person": 4046.3,
+    "surfboard": 1556.6
+   }
+  },
+  "275727": {
+   "file": "000000275727.jpg",
+   "width": 640,
+   "height": 475,
+   "categories": {
+    "traffic light": 685.6,
+    "train": 73601.4
+   }
+  },
+  "277689": {
+   "file": "000000277689.jpg",
+   "width": 640,
+   "height": 424,
+   "categories": {
+    "cake": 48477.8,
+    "cup": 8376.6,
+    "dining table": 1496.4,
+    "wine glass": 9874.6
+   }
+  },
+  "279714": {
+   "file": "000000279714.jpg",
+   "width": 425,
+   "height": 640,
+   "categories": {
+    "baseball bat": 12758.9,
+    "car": 25406.0,
+    "parking meter": 37134.7,
+    "sports ball": 330.1
+   }
+  },
+  "283038": {
+   "file": "000000283038.jpg",
+   "width": 500,
+   "height": 281,
+   "categories": {
+    "car": 968.9,
+    "stop sign": 43433.4,
+    "traffic light": 132.2,
+    "truck": 1652.6
+   }
+  },
+  "286503": {
+   "file": "000000286503.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "elephant": 23461.1,
+    "person": 294.8
+   }
+  },
+  "287959": {
+   "file": "000000287959.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "sandwich": 137827.6
+   }
+  },
+  "289393": {
+   "file": "000000289393.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bird": 10152.6,
+    "cow": 34725.1,
+    "giraffe": 9484.1,
+    "potted plant": 3576.8
+   }
+  },
+  "289659": {
+   "file": "000000289659.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "giraffe": 27298.2
+   }
+  },
+  "290833": {
+   "file": "000000290833.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "zebra": 61333.0
+   }
+  },
+  "293071": {
+   "file": "000000293071.jpg",
+   "width": 335,
+   "height": 500,
+   "categories": {
+    "car": 12068.4,
+    "fire hydrant": 11035.5
+   }
+  },
+  "294162": {
+   "file": "000000294162.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "laptop": 112740.8,
+    "mouse": 9872.5
+   }
+  },
+  "308394": {
+   "file": "000000308394.jpg",
+   "width": 640,
+   "height": 428,
+   "categories": {
+    "bench": 44443.2,
+    "handbag": 1428.3,
+    "person": 25581.5,
+    "umbrella": 3384.6
+   }
+  },
+  "320632": {
+   "file": "000000320632.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "zebra": 123762.8
+   }
+  },
+  "320664": {
+   "file": "000000320664.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "dining table": 84037.9,
+    "fork": 4410.2,
+    "hot dog": 44660.6,
+    "knife": 6870.4,
+    "spoon": 3668.4
+   }
+  },
+  "321557": {
+   "file": "000000321557.jpg",
+   "width": 547,
+   "height": 640,
+   "categories": {
+    "motorcycle": 184383.3
+   }
+  },
+  "321790": {
+   "file": "000000321790.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "person": 53487.4,
+    "tennis racket": 10867.6
+   }
+  },
+  "322574": {
+   "file": "000000322574.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bowl": 16534.5,
+    "cup": 16889.4,
+    "hot dog": 116628.8,
+    "sandwich": 24313.2
+   }
+  },
+  "326128": {
+   "file": "000000326128.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "backpack": 1603.6,
+    "person": 30317.4,
+    "snowboard": 10894.2
+   }
+  },
+  "329319": {
+   "file": "000000329319.jpg",
+   "width": 428,
+   "height": 640,
+   "categories": {
+    "bench": 38062.6,
+    "cat": 39332.5,
+    "chair": 36133.2,
+    "dining table": 12868.6
+   }
+  },
+  "329542": {
+   "file": "000000329542.jpg",
+   "width": 612,
+   "height": 612,
+   "categories": {
+    "cake": 13942.5,
+    "cup": 7399.1,
+    "person": 26679.9
+   }
+  },
+  "334521": {
+   "file": "000000334521.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "bird": 832.6,
+    "giraffe": 12462.0,
+    "person": 101.7
+   }
+  },
+  "336053": {
+   "file": "000000336053.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "carrot": 1066.8,
+    "chair": 8224.7,
+    "cup": 14233.3,
+    "dining table": 148146.4,
+    "fork": 1935.0,
+    "person": 48978.1,
+    "spoon": 514.2,
+    "wine glass": 14132.7
+   }
+  },
+  "340272": {
+   "file": "000000340272.jpg",
+   "width": 640,
+   "height": 360,
+   "categories": {
+    "sheep": 5985.3
+   }
+  },
+  "344268": {
+   "file": "000000344268.jpg",
+   "width": 640,
+   "height": 512,
+   "categories": {
+    "person": 85608.3,
+    "tie": 909.6
+   }
+  },
+  "345252": {
+   "file": "000000345252.jpg",
+   "width": 640,
+   "height": 479,
+   "categories": {
+    "chair": 5109.3,
+    "keyboard": 2709.7,
+    "laptop": 4428.3,
+    "person": 85313.0,
+    "tv": 22265.4
+   }
+  },
+  "349837": {
+   "file": "000000349837.jpg",
+   "width": 500,
+   "height": 333,
+   "categories": {
+    "refrigerator": 37188.0
+   }
+  },
+  "350054": {
+   "file": "000000350054.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "cat": 3886.2,
+    "teddy bear": 1190.2,
+    "tv": 28744.4
+   }
+  },
+  "352760": {
+   "file": "000000352760.jpg",
+   "width": 544,
+   "height": 640,
+   "categories": {
+    "person": 32743.2,
+    "skis": 14170.6
+   }
+  },
+  "357567": {
+   "file": "000000357567.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "sink": 101.3,
+    "toilet": 15740.9
+   }
+  },
+  "357737": {
+   "file": "000000357737.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bicycle": 58148.9,
+    "car": 23981.6,
+    "motorcycle": 20321.5,
+    "person": 37621.7,
+    "truck": 6295.6
+   }
+  },
+  "357888": {
+   "file": "000000357888.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "apple": 105.0,
+    "bottle": 340.9,
+    "bowl": 877.0,
+    "clock": 34.6,
+    "cup": 757.5,
+    "kite": 14993.1,
+    "person": 36282.1,
+    "vase": 1030.4,
+    "wine glass": 336.6
+   }
+  },
+  "362434": {
+   "file": "000000362434.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "book": 6683.3,
+    "teddy bear": 32026.8
+   }
+  },
+  "362682": {
+   "file": "000000362682.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "bus": 95663.8,
+    "person": 741.3,
+    "truck": 12987.7
+   }
+  },
+  "365208": {
+   "file": "000000365208.jpg",
+   "width": 603,
+   "height": 640,
+   "categories": {
+    "chair": 11128.3,
+    "handbag": 340.5,
+    "person": 29856.2,
+    "umbrella": 24341.1
+   }
+  },
+  "369442": {
+   "file": "000000369442.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "car": 524.0,
+    "person": 47843.0,
+    "sheep": 2035.6,
+    "stop sign": 339.7
+   }
+  },
+  "370270": {
+   "file": "000000370270.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "bowl": 256.2,
+    "person": 46728.5,
+    "sports ball": 9283.2
+   }
+  },
+  "370818": {
+   "file": "000000370818.jpg",
+   "width": 472,
+   "height": 640,
+   "categories": {
+    "potted plant": 911.1,
+    "sink": 18784.7,
+    "toilet": 2771.3
+   }
+  },
+  "371042": {
+   "file": "000000371042.jpg",
+   "width": 640,
+   "height": 428,
+   "categories": {
+    "backpack": 876.9,
+    "bottle": 275.6,
+    "person": 2998.7,
+    "sports ball": 41.4,
+    "tennis racket": 644.8
+   }
+  },
+  "372718": {
+   "file": "000000372718.jpg",
+   "width": 640,
+   "height": 638,
+   "categories": {
+    "vase": 28575.3
+   }
+  },
+  "375278": {
+   "file": "000000375278.jpg",
+   "width": 333,
+   "height": 500,
+   "categories": {
+    "book": 10218.3,
+    "cat": 35319.8,
+    "dog": 31882.0,
+    "person": 15961.0,
+    "suitcase": 64311.1
+   }
+  },
+  "375763": {
+   "file": "000000375763.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "sheep": 6493.7
+   }
+  },
+  "377368": {
+   "file": "000000377368.jpg",
+   "width": 640,
+   "height": 481,
+   "categories": {
+    "bench": 73092.2,
+    "cake": 48011.2,
+    "cup": 3139.7,
+    "dining table": 61197.4,
+    "handbag": 5374.3,
+    "person": 14512.4
+   }
+  },
+  "383676": {
+   "file": "000000383676.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "giraffe": 16245.2
+   }
+  },
+  "385205": {
+   "file": "000000385205.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "carrot": 4476.0,
+    "cat": 147929.5
+   }
+  },
+  "389315": {
+   "file": "000000389315.jpg",
+   "width": 640,
+   "height": 640,
+   "categories": {
+    "book": 23426.0,
+    "suitcase": 327310.5
+   }
+  },
+  "389566": {
+   "file": "000000389566.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "car": 1329.7,
+    "sheep": 7899.7
+   }
+  },
+  "392933": {
+   "file": "000000392933.jpg",
+   "width": 383,
+   "height": 640,
+   "categories": {
+    "giraffe": 3447.6
+   }
+  },
+  "393014": {
+   "file": "000000393014.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "hot dog": 29916.5,
+    "sandwich": 35023.9
+   }
+  },
+  "393838": {
+   "file": "000000393838.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "bottle": 9433.7,
+    "carrot": 1393.4,
+    "oven": 246689.9
+   }
+  },
+  "398377": {
+   "file": "000000398377.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "book": 1595.9,
+    "cell phone": 72.3,
+    "couch": 8145.5,
+    "handbag": 8500.3,
+    "person": 33995.4
+   }
+  },
+  "401250": {
+   "file": "000000401250.jpg",
+   "width": 640,
+   "height": 332,
+   "categories": {
+    "person": 13955.7,
+    "skis": 4405.6
+   }
+  },
+  "402992": {
+   "file": "000000402992.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "cow": 44966.1
+   }
+  },
+  "404249": {
+   "file": "000000404249.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "person": 33224.5,
+    "skateboard": 3279.1
+   }
+  },
+  "404678": {
+   "file": "000000404678.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "bench": 14544.3,
+    "bowl": 532.6,
+    "chair": 11098.4,
+    "couch": 12082.4,
+    "dining table": 22131.8,
+    "person": 22958.9,
+    "wine glass": 1237.2
+   }
+  },
+  "406611": {
+   "file": "000000406611.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "backpack": 409.1,
+    "person": 4950.3,
+    "skis": 1382.4
+   }
+  },
+  "415748": {
+   "file": "000000415748.jpg",
+   "width": 426,
+   "height": 640,
+   "categories": {
+    "elephant": 51643.7,
+    "person": 1621.8
+   }
+  },
+  "417085": {
+   "file": "000000417085.jpg",
+   "width": 640,
+   "height": 360,
+   "categories": {
+    "cow": 9524.3
+   }
+  },
+  "419201": {
+   "file": "000000419201.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "bird": 414.0,
+    "horse": 763.9
+   }
+  },
+  "419882": {
+   "file": "000000419882.jpg",
+   "width": 612,
+   "height": 612,
+   "categories": {
+    "train": 48836.4
+   }
+  },
+  "421455": {
+   "file": "000000421455.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "car": 129891.1,
+    "cell phone": 15209.9,
+    "dog": 14871.3,
+    "person": 24734.9,
+    "truck": 716.3
+   }
+  },
+  "424349": {
+   "file": "000000424349.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "oven": 37159.5,
+    "person": 36473.9,
+    "pizza": 1511.1
+   }
+  },
+  "424721": {
+   "file": "000000424721.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "apple": 5362.3,
+    "carrot": 14630.0,
+    "chair": 2075.2
+   }
+  },
+  "434548": {
+   "file": "000000434548.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "baseball glove": 1326.8,
+    "person": 19720.8,
+    "sports ball": 20.1
+   }
+  },
+  "441468": {
+   "file": "000000441468.jpg",
+   "width": 426,
+   "height": 640,
+   "categories": {
+    "car": 1794.7,
+    "fire hydrant": 15617.4,
+    "person": 748.1
+   }
+  },
+  "450399": {
+   "file": "000000450399.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bowl": 5099.6,
+    "cell phone": 249.2,
+    "donut": 1488.5,
+    "person": 36451.0,
+    "spoon": 93.2
+   }
+  },
+  "450488": {
+   "file": "000000450488.jpg",
+   "width": 334,
+   "height": 500,
+   "categories": {
+    "bed": 27979.4,
+    "sink": 375.1,
+    "tv": 2615.2
+   }
+  },
+  "453584": {
+   "file": "000000453584.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "bench": 25281.9,
+    "chair": 2629.3
+   }
+  },
+  "455624": {
+   "file": "000000455624.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "motorcycle": 48902.7,
+    "person": 17081.9
+   }
+  },
+  "458109": {
+   "file": "000000458109.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "person": 1679.7,
+    "train": 144589.4
+   }
+  },
+  "459396": {
+   "file": "000000459396.jpg",
+   "width": 612,
+   "height": 612,
+   "categories": {
+    "cow": 89769.4
+   }
+  },
+  "474170": {
+   "file": "000000474170.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "elephant": 5045.4
+   }
+  },
+  "484415": {
+   "file": "000000484415.jpg",
+   "width": 320,
+   "height": 240,
+   "categories": {
+    "person": 17135.3,
+    "toilet": 30375.8
+   }
+  },
+  "491683": {
+   "file": "000000491683.jpg",
+   "width": 366,
+   "height": 500,
+   "categories": {
+    "horse": 682.9,
+    "train": 4179.3
+   }
+  },
+  "491725": {
+   "file": "000000491725.jpg",
+   "width": 500,
+   "height": 375,
+   "categories": {
+    "boat": 4345.2
+   }
+  },
+  "493334": {
+   "file": "000000493334.jpg",
+   "width": 500,
+   "height": 311,
+   "categories": {
+    "cake": 117000.7,
+    "cell phone": 3118.9
+   }
+  },
+  "493613": {
+   "file": "000000493613.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "skateboard": 10081.0
+   }
+  },
+  "500716": {
+   "file": "000000500716.jpg",
+   "width": 445,
+   "height": 500,
+   "categories": {
+    "person": 206506.8,
+    "scissors": 15066.8
+   }
+  },
+  "501005": {
+   "file": "000000501005.jpg",
+   "width": 640,
+   "height": 396,
+   "categories": {
+    "baseball bat": 598.8,
+    "baseball glove": 1061.4,
+    "person": 14503.5
+   }
+  },
+  "501243": {
+   "file": "000000501243.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "zebra": 34939.9
+   }
+  },
+  "505638": {
+   "file": "000000505638.jpg",
+   "width": 640,
+   "height": 483,
+   "categories": {
+    "person": 705.1,
+    "train": 156557.4
+   }
+  },
+  "506707": {
+   "file": "000000506707.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "baseball bat": 335.7,
+    "baseball glove": 1083.9,
+    "bench": 235.8,
+    "car": 5985.3,
+    "chair": 2341.3,
+    "person": 18442.0
+   }
+  },
+  "507473": {
+   "file": "000000507473.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "cell phone": 3516.2,
+    "person": 117465.1,
+    "toothbrush": 414.1
+   }
+  },
+  "508639": {
+   "file": "000000508639.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "horse": 16897.4
+   }
+  },
+  "509699": {
+   "file": "000000509699.jpg",
+   "width": 640,
+   "height": 440,
+   "categories": {
+    "book": 601.0,
+    "chair": 32257.8,
+    "clock": 118.5,
+    "tv": 8738.0
+   }
+  },
+  "509719": {
+   "file": "000000509719.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "bird": 21359.9
+   }
+  },
+  "510095": {
+   "file": "000000510095.jpg",
+   "width": 640,
+   "height": 428,
+   "categories": {
+    "baseball bat": 570.4,
+    "fire hydrant": 86.8,
+    "person": 10965.2
+   }
+  },
+  "511599": {
+   "file": "000000511599.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "backpack": 530.4,
+    "boat": 5255.6,
+    "handbag": 213.3,
+    "person": 1406.5,
+    "suitcase": 654.5,
+    "truck": 660.6
+   }
+  },
+  "512194": {
+   "file": "000000512194.jpg",
+   "width": 640,
+   "height": 476,
+   "categories": {
+    "vase": 31781.8
+   }
+  },
+  "512648": {
+   "file": "000000512648.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "cow": 9248.1
+   }
+  },
+  "512985": {
+   "file": "000000512985.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "person": 8145.0,
+    "surfboard": 4670.6
+   }
+  },
+  "515445": {
+   "file": "000000515445.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "person": 797.7,
+    "surfboard": 737.5
+   }
+  },
+  "515579": {
+   "file": "000000515579.jpg",
+   "width": 500,
+   "height": 332,
+   "categories": {
+    "baseball glove": 424.7,
+    "bench": 1024.4,
+    "person": 23944.5,
+    "potted plant": 15976.8,
+    "sports ball": 417.9
+   }
+  },
+  "516601": {
+   "file": "000000516601.jpg",
+   "width": 640,
+   "height": 360,
+   "categories": {
+    "person": 1395.8,
+    "skis": 57.4,
+    "snowboard": 136.9
+   }
+  },
+  "517523": {
+   "file": "000000517523.jpg",
+   "width": 640,
+   "height": 435,
+   "categories": {
+    "airplane": 19406.8
+   }
+  },
+  "517832": {
+   "file": "000000517832.jpg",
+   "width": 640,
+   "height": 640,
+   "categories": {
+    "chair": 123881.8,
+    "dog": 57496.7
+   }
+  },
+  "520659": {
+   "file": "000000520659.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "chair": 627.7,
+    "person": 1941.1,
+    "surfboard": 12144.4,
+    "umbrella": 344.4
+   }
+  },
+  "520832": {
+   "file": "000000520832.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "handbag": 3674.0,
+    "person": 9605.0,
+    "umbrella": 1271.0
+   }
+  },
+  "521717": {
+   "file": "000000521717.jpg",
+   "width": 640,
+   "height": 426,
+   "categories": {
+    "chair": 1850.7,
+    "person": 5972.1,
+    "sports ball": 226.7,
+    "tennis racket": 120.6
+   }
+  },
+  "524108": {
+   "file": "000000524108.jpg",
+   "width": 640,
+   "height": 400,
+   "categories": {
+    "motorcycle": 100652.3
+   }
+  },
+  "530146": {
+   "file": "000000530146.jpg",
+   "width": 640,
+   "height": 640,
+   "categories": {
+    "bottle": 9077.5,
+    "bowl": 231006.1,
+    "cup": 4203.5,
+    "dining table": 392324.0,
+    "fork": 2162.1,
+    "knife": 4078.2
+   }
+  },
+  "530624": {
+   "file": "000000530624.jpg",
+   "width": 640,
+   "height": 478,
+   "categories": {
+    "bed": 228298.0,
+    "dog": 52889.4
+   }
+  },
+  "537053": {
+   "file": "000000537053.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "giraffe": 34596.5
+   }
+  },
+  "542089": {
+   "file": "000000542089.jpg",
+   "width": 375,
+   "height": 500,
+   "categories": {
+    "sink": 4102.3
+   }
+  },
+  "542856": {
+   "file": "000000542856.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "bus": 104950.1,
+    "person": 1706.9,
+    "traffic light": 1333.4
+   }
+  },
+  "547144": {
+   "file": "000000547144.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "keyboard": 7559.0,
+    "laptop": 13972.3,
+    "mouse": 515.7,
+    "tv": 16810.3
+   }
+  },
+  "550471": {
+   "file": "000000550471.jpg",
+   "width": 640,
+   "height": 425,
+   "categories": {
+    "fork": 7134.3,
+    "orange": 44720.5
+   }
+  },
+  "551215": {
+   "file": "000000551215.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "person": 37269.5,
+    "tennis racket": 2992.6
+   }
+  },
+  "554838": {
+   "file": "000000554838.jpg",
+   "width": 480,
+   "height": 640,
+   "categories": {
+    "bottle": 3710.0,
+    "refrigerator": 86233.9
+   }
+  },
+  "556873": {
+   "file": "000000556873.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "cake": 17490.4
+   }
+  },
+  "562561": {
+   "file": "000000562561.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "dog": 64075.7,
+    "umbrella": 4971.7
+   }
+  },
+  "562581": {
+   "file": "000000562581.jpg",
+   "width": 640,
+   "height": 444,
+   "categories": {
+    "person": 3056.6,
+    "sports ball": 32.5,
+    "tennis racket": 259.3
+   }
+  },
+  "563702": {
+   "file": "000000563702.jpg",
+   "width": 640,
+   "height": 427,
+   "categories": {
+    "person": 746.0,
+    "truck": 39719.6
+   }
+  },
+  "567825": {
+   "file": "000000567825.jpg",
+   "width": 427,
+   "height": 640,
+   "categories": {
+    "bottle": 44919.9,
+    "sandwich": 70707.9,
+    "wine glass": 34410.3
+   }
+  },
+  "568213": {
+   "file": "000000568213.jpg",
+   "width": 500,
+   "height": 325,
+   "categories": {
+    "frisbee": 711.9,
+    "person": 13628.2
+   }
+  },
+  "572900": {
+   "file": "000000572900.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "frisbee": 402.9,
+    "person": 7982.3,
+    "potted plant": 941.2,
+    "sandwich": 66.8
+   }
+  },
+  "573094": {
+   "file": "000000573094.jpg",
+   "width": 375,
+   "height": 500,
+   "categories": {
+    "bicycle": 15022.6,
+    "book": 786.0,
+    "chair": 19399.4,
+    "couch": 23763.8,
+    "potted plant": 275.2,
+    "remote": 222.4,
+    "tv": 5095.2
+   }
+  },
+  "575970": {
+   "file": "000000575970.jpg",
+   "width": 640,
+   "height": 480,
+   "categories": {
+    "apple": 50.1,
+    "banana": 120.9,
+    "bowl": 958.1,
+    "chair": 11264.6,
+    "cup": 633.2,
+    "dining table": 39406.3,
+    "microwave": 1178.0,
+    "oven": 1132.1,
+    "potted plant": 887.0,
+    "refrigerator": 18021.7,
+    "sink": 460.2,
+    "vase": 682.1
+   }
+  }
+ }
+}

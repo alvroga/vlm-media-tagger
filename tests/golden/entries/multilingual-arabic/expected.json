@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Al_Bireh_08.jpg, CC BY-SA 4.0, Al-Zahra Street, Al-Bireh, Palestine. Frozen 2026-07-11.",
+  "sentinel_for": "domain-diverse entry: Arabic script (right-to-left) — deliberately a THINNER/simpler case than the other four (one road sign, not a dense streetscape) to test whether recall holds on sparse content too, not just busy scenes.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "warning sign|caution sign|road sign|traffic sign",
+    "triangle"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo",
+    "sign|road sign|warning sign"
+  ],
+  "notes": "A yellow triangular road-warning sign reading (Arabic, right-to-left) 'تنبيه' (caution/attention) above 'أولاد على الطريق' (children on the road), with the standard international pictogram (child silhouettes crossing) inside the red-bordered triangle — same universal design language as a 'school crossing' sign elsewhere. Background: a residential stone building, a parked van, greenery. UNCALIBRATED by design. Note: the pictogram's silhouette figures are a SIGN GRAPHIC, not real people — but if the model tags the plural 'children' as a bare noun, be aware PERSON_NOUNS only lists the singular 'child', not 'children' (a possible word-level gap, same category as the historical 'a man'/'person's arm' gotcha — flag for tag_filter if it surfaces here, not just this entry). CALIBRATED 2026-07-11 after first scored run: the '<language> text' must_not entries were removed — they correctly caught natural descriptive prose ('written in Chinese characters', alongside a CORRECT full transcription), which is good behavior, not the lazy-tag pattern they were meant to guard against. The REAL lazy-tag pattern (bare tags like 'korean text banners' with no actual transcription) showed up on the Korean/Russian entries specifically and is now fixed at the source in tag_filter.clean_tag (language+generic-textual-word tags dropped, same pattern as the existing watermark/overlay junk filter) rather than tracked per-entry."
+}

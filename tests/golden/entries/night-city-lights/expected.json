@@ -1,0 +1,17 @@
+{
+  "type": "video-frames",
+  "source": "City Lights.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "night city recall + confidence-edge landmark naming (the motivating case: named buildings land stochastically at temp 0.2)",
+  "prompt": "video",
+  "must_have": [],
+  "nice_to_have": [
+    "water|river",
+    "skyline|buildings|skyscraper|city",
+    "bridge",
+    "brooklyn bridge",
+    "new york|manhattan",
+    "night"
+  ],
+  "must_not": [],
+  "notes": "Lower Manhattan night skyline across the East River, Brooklyn Bridge on the right. Landmarks ARE identifiable here, so naming them is a nice_to_have hit, not a fabrication (contrast: the anonymous aerial-city entries). Recalibrated again 2026-07-10 (second baseline): one run returned a COMPLETELY EMPTY union across both frames \u2014 the empty-list weakness hits dark night scenes on the VIDEO prompt too, not just nature stills. No reliable floor until that's fixed; this entry is the dark-scene empty-rate meter."
+}

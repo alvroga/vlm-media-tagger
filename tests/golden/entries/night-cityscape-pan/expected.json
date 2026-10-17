@@ -1,0 +1,17 @@
+{
+  "type": "video-frames",
+  "source": "Cityscape pan at night.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "very dark footage recall + confidence-edge landmark naming (Empire State Building lit against black sky)",
+  "prompt": "video",
+  "must_have": [
+    "night",
+    "skyline|buildings|skyscraper|city|cityscape"
+  ],
+  "nice_to_have": [
+    "empire state building",
+    "new york|manhattan",
+    "tower|spire"
+  ],
+  "must_not": [],
+  "notes": "Single frame survived extraction (dark pan dedup'd hard): Midtown Manhattan at night, Empire State Building brightly lit center-left, Chrysler Building right. Mostly black frame — degraded recall here means dark-scene regression. CALIBRATED 2026-07-11: 'night' promoted to must_have — no longer VLM-dependent, now a deterministic pixel-darkness signature (detect_objects_vlm.apply_deterministic_tags); this frame's median luma/flatness were measured and confirmed to trigger it, so the floor is guaranteed as long as the frozen frame itself doesn't change."
+}

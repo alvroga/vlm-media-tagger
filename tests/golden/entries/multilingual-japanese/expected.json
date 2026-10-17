@@ -1,0 +1,19 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Japanese_Street_Signs_(27593276243).jpg, CC0 (photographer franck injapan, Tokyo), photographed 2016-07-09. Frozen 2026-07-11.",
+  "sentinel_for": "domain-diverse entry: DENSE small-print Japanese text on an administrative/public-notice sign — deliberately the HARD case (no English backup text, obscure regional content), testing honest recall rather than assuming perfect translation.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "sign|poster|notice",
+    "dog|puppy",
+    "cat|kitten",
+    "illustration|cartoon|drawing"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "photograph|photo|sign|poster",
+    "japanese|japan"
+  ],
+  "notes": "A Saitama Prefecture rabies-prevention association public notice (埼玉県狂犬病予防協会) on pet ownership rules: three numbered panels with cartoon illustrations (a crying dog+cat being abandoned in a box, a collar/leash circle, a waste pile) each captioned in Japanese, plus a bottom line about registration/vaccination. DELIBERATELY MODEST expectations — this is dense small-print administrative Japanese with no romanized backup text, unlike the Chinese entry; ground truth here only asserts what's visually verifiable without fluent Japanese (the illustration content), not precise translation of the prose. UNCALIBRATED by design. Companion to the Chinese entry: together they test both the 'romanized backup available' and 'no backup, honest recall only' cases. CALIBRATED 2026-07-11 after first scored run: the '<language> text' must_not entries were removed — they correctly caught natural descriptive prose ('written in Chinese characters', alongside a CORRECT full transcription), which is good behavior, not the lazy-tag pattern they were meant to guard against. The REAL lazy-tag pattern (bare tags like 'korean text banners' with no actual transcription) showed up on the Korean/Russian entries specifically and is now fixed at the source in tag_filter.clean_tag (language+generic-textual-word tags dropped, same pattern as the existing watermark/overlay junk filter) rather than tracked per-entry."
+}

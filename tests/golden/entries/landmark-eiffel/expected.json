@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Eiffel_Tower_01.jpg, CC BY 2.0, photographer samantha smith (Flickr), photographed 2005-05-18. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 1 (maximally iconic — near-zero ambiguity): does a future landmark-naming prompt clause correctly name the Eiffel Tower/Paris with very high confidence, without needing the current explicit ban?",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "eiffel tower|tower",
+    "paris"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "eiffel tower",
+    "paris"
+  ],
+  "notes": "Ground-floor/low-angle view of the Eiffel Tower against a blue sky, no other buildings visible, no readable text. UNCALIBRATED by design — place names were banned by the description prompt when this entry was added (since replaced by confidence-gated naming, see docs/findings.md), so a baseline run is expected to show near-zero naming until/unless a new prompt clause is tested. This is the easiest possible case: if a naming clause can't get this right consistently, it shouldn't be trusted on anything harder."
+}

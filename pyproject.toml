@@ -1,0 +1,24 @@
+[project]
+name = "vlm-media-tagger"
+version = "0.1.0"
+description = "Open-vocabulary tagging and description of video and still images with a local vision-language model"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+authors = [{ name = "Alvaro Robles" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["tools", "venv"]
+
+[tool.ruff.lint]
+# Pyflakes + syntax errors + import order. No line-length rule.
+select = ["E9", "F", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "detect_cuts", "detect_objects_vlm", "extract_frames", "media_probe",
+                     "opus_translate", "pipeline", "profanity", "prompts", "resolve_proxy", "summarize",
+                     "tag_filter", "tagger", "timecode_utils", "translation_models", "harness"]

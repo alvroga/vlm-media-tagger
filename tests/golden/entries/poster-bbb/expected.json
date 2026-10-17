@@ -1,0 +1,24 @@
+{
+  "type": "still",
+  "source": "Big_Buck_Bunny_Poster.webp (Blender Foundation, CC-BY 3.0), frozen 2026-07-10",
+  "sentinel_for": "poster branch of the stills prompt: design kind + exact readable title text as tags",
+  "prompt": "still",
+  "must_have": [
+    "rabbit|bunny",
+    "big buck bunny"
+  ],
+  "nice_to_have": [
+    "poster|movie poster",
+    "squirrel|rodent|chinchilla",
+    "butterfly",
+    "animation|animated|cartoon"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "poster|movie poster|graphic design|promotional",
+    "big buck bunny",
+    "rabbit|bunny",
+    "animation|animated|3d|cartoon|illustration|cgi"
+  ],
+  "notes": "Blue title text 'Big Buck Bunny' plus URL www.bigbuckbunny.org; one giant white rabbit, three smaller rodents, butterfly silhouette in the title. Characters are animals — any person noun appearing is caught by the global must_not rules. Description (if run) should quote the title exactly. Recalibrated 2026-07-10: design kind 'poster' never returned (0/3 — stills prompt over-indexes on text extraction); title text hit 3/3 and is the floor. One run returned the whole crew credits as tags — junk-filter food for thought."
+}

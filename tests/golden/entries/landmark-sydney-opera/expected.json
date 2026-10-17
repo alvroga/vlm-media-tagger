@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Aerial_view_of_the_Sydney_Opera_House.jpg, CC BY 2.0, photographer James Cridland (Flickr), photographed 2007-10-09. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 1: uniquely shaped shell-roof structure, essentially zero ambiguity.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "sydney opera house|opera house",
+    "sydney"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "sydney opera house",
+    "sydney"
+  ],
+  "notes": "Aerial view of the Sydney Opera House's white shell roofs against the harbour, boats visible, no readable text. UNCALIBRATED by design."
+}

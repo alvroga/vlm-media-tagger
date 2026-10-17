@@ -1,0 +1,21 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Skyline_of_Toledo,_Ohio.jpg, CC BY-SA 2.0. Frozen 2026-07-11.",
+  "sentinel_for": "FALSE-GUESS trap (the dangerous case, not a recall test): a real but visually generic Great Lakes waterfront skyline with no single identifying landmark. The point isn't whether it names 'Toledo' correctly (unlikely, and not required) — it's whether a naming-enabled prompt invents a WRONG, confident-sounding city guess. must_not lists visually-similar Great Lakes/Rust Belt cities a model might plausibly (and wrongly) guess.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "toledo",
+    "waterfront|river|lake"
+  ],
+  "must_not": [
+    "cleveland",
+    "buffalo",
+    "rochester",
+    "milwaukee",
+    "detroit",
+    "erie"
+  ],
+  "description_must_mention": [],
+  "notes": "Generic mid-size downtown skyline viewed across water (Maumee River, not that it's identifiable as such): a mix of mid-rise glass/brick towers, no distinctive silhouette, no readable text, no landmark structures. Naming 'Toledo' correctly would be a genuine surprise (nice_to_have, not expected); the must_not list is the real test — any of those specific WRONG city names appearing (in tags or description) is a hallucination-under-confidence failure, the same category of risk as the original fabricated 'Boston'."
+}

@@ -1,0 +1,19 @@
+{
+  "type": "still",
+  "source": "LogoDet-3K Food/APEROL/10.jpg, frozen 2026-07-10",
+  "sentinel_for": "flat-logo branch of the stills prompt: design kind + exact brand text (the video prompt returns nothing on flat logos)",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "logo",
+    "aperol|aperol spritz"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "logo|wordmark|graphic design|design",
+    "aperol",
+    "spritz",
+    "gray|grey|grayscale|black and white|monochrome"
+  ],
+  "notes": "Grayscale low-res 'Aperol Spritz' wordmark on a sunburst background — deliberately unglamorous source material; the brand text is still plainly readable. Recalibrated 2026-07-10: 'logo' hit 2/3 runs (one run returned only 'aperol spritz'), demoted to nice until the design-kind ask is reliable."
+}

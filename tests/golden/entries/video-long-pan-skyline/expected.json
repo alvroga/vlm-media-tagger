@@ -1,0 +1,12 @@
+{
+  "type": "video-full",
+  "source": "Skyline.mp4 (Pexels stock clip), frozen 2026-07-10; FULL cuts.json (2 shots, ~12s each) + all 14 extracted frames. Stockholm city timelapse: sunset opening over a bridge/harbor, a night crossfade street shot ('EAST CAPITAL' signage), and a night skyline with a church spire and highway light trails. Same source file as the curated still entry 'city-timelapse-dissolves' (4 hand-picked crossfade frames, isolates PROMPT behavior on dissolve artifacts).",
+  "sentinel_for": "the _LONG_SHOT_SEC slicing path on real long (>8s) shots — both of this video's 2 detected shots exceed the 8s threshold and must get sliced into multiple sample points each instead of one midpoint frame (the historical gap this project documented: 'a 30s skyline pan was ONE shot = one midpoint frame, the main reason NYC night clips under-tagged'); video-summary quality on a moody, low-object-count timelapse.",
+  "prompt": "video",
+  "must_have": ["building|city"],
+  "nice_to_have": ["bridge", "sunset|night", "traffic|light trails"],
+  "must_not": [],
+  "summary_must_mention": ["city|skyline|building"],
+  "min_segment_counts": {},
+  "notes": "PySceneDetect found only 2 hard cuts despite the real content having more perceptual shots connected by dissolves (see city-timelapse-dissolves' notes) — a legitimate stress case for slicing on imperfect shot boundaries, not a data-quality bug to fix here."
+}

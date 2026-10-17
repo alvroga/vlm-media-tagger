@@ -1,0 +1,10 @@
+{
+  "type": "video-frames",
+  "source": "Water Rocks.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "semi-abstract nature (looking down through shallow clear water at rock slabs) — hardest empty-list case: no subject, no horizon, no man-made anchor",
+  "prompt": "video",
+  "must_have": ["water", "rock|stone|riverbed"],
+  "nice_to_have": ["ripples|reflection|transparent"],
+  "must_not": [],
+  "notes": "Two nearly identical frames. Genuinely confusing content — historically the profile of image that made minicpm-v either return empty or anchor on prompt examples."
+}

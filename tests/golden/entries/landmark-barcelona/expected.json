@@ -1,0 +1,17 @@
+{
+  "type": "still",
+  "source": "Wikimedia Commons File:Aerial_view_of_La_Sagrada_Familia,_Barcelona,_Spain_(51227006134).jpg, CC BY 2.0, photographer dronepicr, photographed 2021-05-24. Frozen 2026-07-11.",
+  "sentinel_for": "landmark-naming precision test, TIER 1: Gaudi's unmistakable spires, essentially zero ambiguity.",
+  "prompt": "still",
+  "must_have": [],
+  "nice_to_have": [
+    "sagrada familia|cathedral|basilica",
+    "barcelona"
+  ],
+  "must_not": [],
+  "description_must_mention": [
+    "sagrada familia",
+    "barcelona"
+  ],
+  "notes": "Aerial drone view of La Sagrada Familia's distinctive spires rising above surrounding Barcelona city blocks, clear day. UNCALIBRATED by design."
+}

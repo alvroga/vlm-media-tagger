@@ -1,0 +1,15 @@
+{
+  "type": "video-frames",
+  "source": "Creek.mp4 (Pexels stock clip), frozen 2026-07-10",
+  "sentinel_for": "nature with zero man-made objects: the empty-list-on-nature regression (prompt must cover natural elements)",
+  "prompt": "video",
+  "must_have": [],
+  "nice_to_have": [
+    "leaves|foliage",
+    "rock|stone",
+    "water|waterfall|creek|stream",
+    "autumn|fall leaves"
+  ],
+  "must_not": [],
+  "notes": "Single frame survived extraction (flowing water pHashes near-identically \u2014 the whole clip dedup'd to one frame): small waterfall over dark rocks with red autumn leaves. Recalibrated 2026-07-10: 1 of 3 runs returned EMPTY (the empty-on-nature regression is alive at ~1/3 on this frame \u2014 the very thing this entry watches); hits are measured as rates until that's fixed."
+}
