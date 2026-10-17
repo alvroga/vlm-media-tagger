@@ -34,7 +34,7 @@ Scoring (see README.md for the entry format):
   --passes is ignored for these (DETECT_PASSES is fixed inside
   detect_objects_vlm by design). See README.md.
 
---canary: one reliable entry (product-brand), one run, detection AND
+--canary: one reliable entry (poster-bbb), one run, detection AND
 description, diffed against the newest saved baseline for the model —
 run it BEFORE any measurement session (and after ANY Ollama upgrade, see
 docs/findings.md): catches contaminated environments (empty outputs, thinking-
@@ -77,15 +77,16 @@ GLOBAL_MUST_NOT = set(_PERSON_NOUNS) | {
 # --quick: the highest-signal subset — one entry per major failure mode.
 QUICK = [
     "night-cityscape-pan", "landmark-barcelona", "logo-real-obscure-amora",
-    "bokeh-car", "nature-creek", "noise-frame", "portrait-still", "poster-bbb",
+    "bokeh-car", "nature-creek", "night-street-lit", "poster-bbb",
     "logo-flat", "multilingual-japanese",
 ]
 
-# --canary: single fast control entry. product-brand: 1 frame, a hard
-# must_have floor ('paperpro' — brand extraction, historically the first
-# thing a strangled model loses), and it's a still, so one run covers the
-# detection AND description code paths in two VLM calls.
-CANARY = "product-brand"
+# --canary: single fast control entry. poster-bbb (Big Buck Bunny, CC-BY):
+# 1 frame, a hard must_have floor ('big buck bunny' — reading printed title
+# text, historically the first thing a strangled model loses), and it's a
+# still, so one run covers the detection AND description code paths in two
+# VLM calls.
+CANARY = "poster-bbb"
 
 
 def _norm(phrase: str) -> str:

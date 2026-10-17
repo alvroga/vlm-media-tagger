@@ -131,7 +131,7 @@ entry (a full shot list × `DETECT_PASSES` detection calls, plus up to
 ## Canary (added 2026-07-11)
 
 `harness.py --canary` is the pre-measurement gate: one reliable entry
-(product-brand — 1 frame, hard brand floor, covers detection + description),
+(poster-bbb — 1 frame, hard title-text floor, covers detection + description),
 one run against the newest saved full-set baseline for the active model,
 after a warm-up call. It hard-fails (exit ≠ 0) on must_have misses,
 violations, EMPTY outputs (the thinking-mode contamination signature), or

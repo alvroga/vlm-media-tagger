@@ -36,14 +36,13 @@ New ones get a row before they are added.
 ## Evaluation data (local only, git-ignored)
 | Set | Licence | Use |
 |---|---|---|
-| Golden entries' frames | per source: Pexels licence (stock clips), Wikimedia per-file, COCO/LogoDet-3K terms, camera RAW samples | regression fixtures, not redistributed; provenance in each `expected.json` |
+| Golden entries' frames | per source: Pexels licence (stock clips), Wikimedia per-file, COCO/LogoDet-3K terms | regression fixtures, not redistributed; provenance in each `expected.json` |
 | Private golden entries (`tests/golden/private/`) | not redistributable | local-only fixtures, never committed |
 | COCO val2017 sample | annotations CC-BY-4.0; images per-Flickr licence | recall tier |
 | Places365 val sample | research / non-commercial (Places2 terms) | false place-guess tier |
 | LogoDet-3K sample | research use | false brand-guess tier |
 | Wikimedia Commons images (landmark entries) | per-file (CC-BY/CC-BY-SA/PD) | golden entries |
 | Big Buck Bunny poster (`poster-bbb`) | CC-BY-3.0, Blender Foundation | golden entry |
-| Camera RAW sample files (`noise-frame`, `portrait-still`, `product-brand`, `signage-market`) | manufacturer/sample-site test files, licence per source | golden entries; not redistributed |
 | Pexels stock clips (bokeh, creek, skyline, night entries) | Pexels licence | golden entries; frames not redistributed |
 
 ## External tools (optional, not distributed)
