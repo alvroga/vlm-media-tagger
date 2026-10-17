@@ -84,8 +84,10 @@ PROMPT_SET = os.environ.get("PROMPT_SET") or (
 # and description (see opus_translate.py).
 OUTPUT_LANGUAGE = os.environ.get("OUTPUT_LANGUAGE", "en")
 
-# Output plugins (planned, ADR-0003): comma-separated names or `module:Class` specs.
+# Output sinks (src/sinks.py, ADR-0003): comma-separated names or `module:Class` specs.
 OUTPUT_SINKS = os.environ.get("OUTPUT_SINKS", "sidecar")
+# Where the `jsonl` sink appends its records.
+OUTPUT_JSONL = Path(os.environ.get("OUTPUT_JSONL") or DATA_DIR / "records.jsonl")
 
 # Concurrent VLM requests. 1 is MEASURED, not a guess (Ollama + 4.5: every
 # level from 2 to 8 was ~48% slower than serial). Re-measure before raising.

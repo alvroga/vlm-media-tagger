@@ -43,6 +43,7 @@ image ─► PIL / macOS sips (HEIC, PSD, camera RAW) ─► still prompt ─►
 | Module | Role |
 |---|---|
 | `src/tagger.py` | CLI and per-file orchestration, Resolve fallback, JSON output |
+| `src/sinks.py`, `src/library.py` | output sinks (JSON sidecar, JSONL, plugins: [`docs/plugins.md`](docs/plugins.md)) and the folder scanner that skips done files |
 | `src/pipeline.py` | cuts → frames → detection, with source-aware caching |
 | `src/detect_objects_vlm.py` | frame selection, VLM calls, output parsing, segment merge |
 | `src/summarize.py` | still descriptions and hierarchical video summaries |
@@ -66,6 +67,7 @@ scripts/build_llama_cpp.sh                     # pinned llama.cpp → vendor/lla
 ./venv/bin/python src/tagger.py footage/ -r -o results.json     # a folder, recursively
 ./venv/bin/python src/tagger.py photo.heic --lang es            # Spanish output (downloads ~300 MB once)
 ./venv/bin/python src/tagger.py clip.braw                       # RAW: uses DaVinci Resolve Studio if installed
+./venv/bin/python src/tagger.py footage/ -r --sidecar --skip-done # clip.mp4 → clip.mp4.json; reruns skip done files
 ```
 
 Options: `--model`, `--no-description`, `--filter-profanity`, `--no-resolve`, `--force` (redo cached

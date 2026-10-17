@@ -17,6 +17,7 @@ Usage:
   python src/tagger.py clip.mp4                       # JSON to stdout
   python src/tagger.py footage/ -r -o results.json    # a folder, recursively
   python src/tagger.py photo.heic --lang es --no-description
+  python src/tagger.py footage/ -r --sidecar --skip-done  # clip.mp4 → clip.mp4.json, resumable
 
 Progress goes to stderr, so stdout carries only the JSON.
 """
@@ -35,6 +36,7 @@ import opus_translate
 import pipeline
 import profanity
 import resolve_proxy
+import sinks as sinks_mod
 import translation_models
 from media_probe import UndecodableMediaError
 from tag_filter import clean_tag, clean_tags
@@ -347,6 +349,14 @@ def main() -> int:
     ap.add_argument("--force", action="store_true", help="redo cached cuts/frames")
     ap.add_argument("--keep-workdir", action="store_true",
                     help=f"keep per-file frames/cuts under {config.DATA_DIR}")
+    ap.add_argument("--sidecar", action="store_true",
+                    help="also write <file>.<ext>.json beside each file (same as --sinks sidecar)")
+    ap.add_argument("--sinks", default=None, metavar="SPEC",
+                    help="output sinks: comma-separated names (sidecar, jsonl) or module:Class plugins")
+    ap.add_argument("--skip-done", action="store_true",
+                    help="skip files the sinks already have for these tasks (unchanged since)")
+    ap.add_argument("--redo-other-model", action="store_true",
+                    help="with --skip-done, redo files whose output came from a different model")
     a = ap.parse_args()
 
     if a.filter_profanity:
@@ -364,10 +374,29 @@ def main() -> int:
                 print(f"ERROR: translation model download failed: {msg}", file=sys.stderr)
                 return 1
 
+    spec = a.sinks if a.sinks is not None else ("sidecar" if a.sidecar else "")
+    try:
+        output_sinks = sinks_mod.load_sinks(spec)
+    except ValueError as e:
+        ap.error(str(e))
+    if a.skip_done and not any(s.tracks_state for s in output_sinks):
+        ap.error("--skip-done needs a sink that tracks processed state (e.g. --sidecar)")
+    tasks = {"tags"} | (set() if a.no_description else {"description"})
+
     files = collect_inputs(a.inputs, a.recursive)
     if not files:
         ap.error("no video or image files found")
+    if a.skip_done:
+        before = len(files)
+        files = [f for f in files if not sinks_mod.is_done(
+            output_sinks, f, tasks, language=a.lang,
+            model=model if a.redo_other_model else None)]
+        print(f"{before - len(files)} of {before} file(s) already done, skipped", file=sys.stderr)
+        if not files:
+            return 0
     config.check_vlm(model)
+    run_meta = {"model": model, "prompt_set": config.PROMPT_SET, "language": a.lang,
+                "tool_version": TOOL_VERSION, "tasks": sorted(tasks)}
 
     out = {"tool": "vlm-media-tagger", "version": TOOL_VERSION, "model": model,
            "language": a.lang, "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -380,9 +409,16 @@ def main() -> int:
                                    force=a.force, keep_workdir=a.keep_workdir)
                 print(f"    → {rec['status']} ({rec['elapsed_sec']}s)")
                 out["files"].append(rec)
+                for sink in output_sinks:
+                    try:
+                        sink.write(f, {**rec, **run_meta})
+                    except Exception as e:  # one bad sink must not lose the run
+                        print(f"    WARNING: {sink.name} sink failed for {f.name}: {e}")
     finally:
         with contextlib.redirect_stdout(sys.stderr):
             shutdown_resolve()
+            for sink in output_sinks:
+                sink.close()
 
     text = json.dumps(out, indent=2, ensure_ascii=False)
     if a.output == "-":

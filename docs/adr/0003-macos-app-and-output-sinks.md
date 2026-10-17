@@ -1,6 +1,6 @@
 # ADR-0003: A macOS app and pluggable output sinks (JSON sidecars by default)
 
-Status: Accepted — not yet implemented (`src/vmt_app/`, `src/sinks.py` and `docs/plugins.md` are planned)
+Status: Accepted — sinks implemented (`src/sinks.py`, `src/library.py`, [`docs/plugins.md`](../plugins.md)); the app (`src/vmt_app/`) in progress
 Date: 2026-10-17
 Supersedes / related: ADR-0001, ADR-0002
 
