@@ -19,11 +19,30 @@ tests/golden/
   _sources/           # staging for raw sources being processed (gitignored)
 ```
 
+## Other tiers
+
+Bulk samples scored in aggregate, never hand-curated. Each `*/freeze_sample.py`
+rebuilds its frozen sample from the public dataset (fixed seed); the images are
+git-ignored. A violation count from a naming tier is a worklist for manual
+review, never a number to report on its own
+([why](../../docs/research/naming-policy-validation.md#why-the-raw-numbers-overcounted)).
+
+| Tier | Measures | Source |
+|---|---|---|
+| `coco_tier.py` | object recall | COCO val2017, 200 images |
+| `landmark_tier.py` | false place/landmark guesses | Places365 val, 300 images |
+| `logodet_tier.py` | false brand guesses | LogoDet-3K, 450 logos |
+| `i18n_tier.py` | non-English output: native generation vs English-then-translate, language consistency and content fidelity | a sample of the public entries above |
+| `archival/` | old photography (B&W, postcards, engravings); sample only, no runner yet | Google Landmarks v2 `index` split, 300 images |
+
+`i18n_tier.py --dry-run` lists its combos without calling the model. `i18n_lang_id.py` is its pure-text
+language detector; `langdetect` (optional) improves sentence-level Spanish detection.
+
 ## Fixture images
 
 The frame JPEGs are not redistributed (`.gitignore`): `expected.json` records
 each entry's provenance so the frames can be rebuilt from the original source
-(Pexels stock clips, Wikimedia Commons, COCO, LogoDet-3K, camera RAW samples).
+(Pexels stock clips, Wikimedia Commons, COCO, LogoDet-3K).
 Entries built from footage that can't be shared at all live under `private/entries/` with the same layout.
 The harness runs both sets; `--save` writes the public entries to `results/`
 and the private ones to `private/results/` under the same filename, and a

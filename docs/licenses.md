@@ -18,6 +18,7 @@ New ones get a row before they are added.
 | ctranslate2 | MIT | NMT inference |
 | sentencepiece | Apache-2.0 | NMT tokenization |
 | pytest, ruff | MIT | dev only |
+| langdetect (optional) | Apache-2.0 | i18n harness tier only; sentence-level language ID |
 
 ## Vendored data (in the repo)
 | Item | Licence | Source |
@@ -41,6 +42,7 @@ New ones get a row before they are added.
 | COCO val2017 sample | annotations CC-BY-4.0; images per-Flickr licence | recall tier |
 | Places365 val sample | research / non-commercial (Places2 terms) | false place-guess tier |
 | LogoDet-3K sample | research use | false brand-guess tier |
+| Google Landmarks Dataset v2 `index` sample | CC0 / public domain (per the GLDv2 README) | archival-photo tier |
 | Wikimedia Commons images (landmark entries) | per-file (CC-BY/CC-BY-SA/PD) | golden entries |
 | Big Buck Bunny poster (`poster-bbb`) | CC-BY-3.0, Blender Foundation | golden entry |
 | Pexels stock clips (bokeh, creek, skyline, night entries) | Pexels licence | golden entries; frames not redistributed |

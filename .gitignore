@@ -15,6 +15,9 @@ tests/golden/entries/*/frames/*.jpg
 tests/golden/coco/images/
 tests/golden/landmark/images/
 tests/golden/logodet/images/
+tests/golden/archival/images/
+# Raw bulk datasets the freeze scripts sample from (GBs, never committed)
+datasets/
 tests/golden/_incoming/
 tests/golden/_sources/
 .ruff_cache/

@@ -1,0 +1,1210 @@
+{
+ "meta": {
+  "source": "Google Landmarks Dataset v2 (index split), category-filtered, frozen 2026-07-12",
+  "seed": 20260712,
+  "size": 300,
+  "note": "Archival/historical photo-handling tier: a category-filtered GLDv2 index sample that skews archival/vintage in style. Scored in aggregate, NOT hand-curated. See tests/golden/landmark/ for the contemporary-photo landmark-naming tier (Places365)."
+ },
+ "images": {
+  "fireproof-building.jpg": {
+   "category": "Fireproof Building",
+   "source_image_id": "006b266113cdf187"
+  },
+  "shin-yodogawa-great-bridge.jpg": {
+   "category": "Shin-Yodogawa Great Bridge",
+   "source_image_id": "014cb9b53c6f93de"
+  },
+  "bangkok-railway-station.jpg": {
+   "category": "Bangkok Railway Station",
+   "source_image_id": "01b12ea6f552a990"
+  },
+  "civil-war-unknowns-monument.jpg": {
+   "category": "Civil War Unknowns Monument",
+   "source_image_id": "003ba5add3c6fce0"
+  },
+  "skyline-drive-shenandoah-national-park.jpg": {
+   "category": "Skyline Drive (Shenandoah National Park)",
+   "source_image_id": "00fdf526912a4f2c"
+  },
+  "venetian-bridge-in-kiev.jpg": {
+   "category": "Venetian bridge in Kiev",
+   "source_image_id": "019232d519649b94"
+  },
+  "dunstanburgh-castle.jpg": {
+   "category": "Dunstanburgh Castle",
+   "source_image_id": "004feb14c8606fd9"
+  },
+  "naval-station-great-lakes.jpg": {
+   "category": "Naval Station Great Lakes",
+   "source_image_id": "022acbe8c287c1b2"
+  },
+  "francis-scott-key-bridge-baltimore.jpg": {
+   "category": "Francis Scott Key Bridge (Baltimore)",
+   "source_image_id": "021c1344a6653c14"
+  },
+  "san-francisco-de-asis-mission-church.jpg": {
+   "category": "San Francisco de Asis Mission Church",
+   "source_image_id": "00e86a45671f76ca"
+  },
+  "city-market-charleston-south-carolina.jpg": {
+   "category": "City Market (Charleston, South Carolina)",
+   "source_image_id": "01a995f633dd38a7"
+  },
+  "church-of-nativity-of-virgin-mary-berezhany.jpg": {
+   "category": "Church of Nativity of Virgin Mary, Berezhany",
+   "source_image_id": "008bd0ca3355a3f1"
+  },
+  "kidwelly-castle.jpg": {
+   "category": "Kidwelly Castle",
+   "source_image_id": "00b21c1fb57131a5"
+  },
+  "kornis-castle-in-m\u0103n\u0103stirea-cluj.jpg": {
+   "category": "Kornis castle in M\u0103n\u0103stirea, Cluj",
+   "source_image_id": "016f0e39c273833d"
+  },
+  "maribor-town-hall.jpg": {
+   "category": "Maribor Town Hall",
+   "source_image_id": "00d3cbab25ba43d0"
+  },
+  "italian-hall-calumet.jpg": {
+   "category": "Italian Hall, Calumet",
+   "source_image_id": "010f8b2898667775"
+  },
+  "fortified-church-in-prejmer-bra\u0219ov.jpg": {
+   "category": "Fortified church in Prejmer, Bra\u0219ov",
+   "source_image_id": "0264ffde16bf2004"
+  },
+  "harju-madise-church.jpg": {
+   "category": "Harju-Madise Church",
+   "source_image_id": "0256f983e4cfc1c5"
+  },
+  "mus\u00e9e-des-transports-en-commun-de-wallonie.jpg": {
+   "category": "Mus\u00e9e des transports en commun de Wallonie",
+   "source_image_id": "00a0a64ba623278d"
+  },
+  "myles-standish-monument.jpg": {
+   "category": "Myles Standish Monument",
+   "source_image_id": "01296b9051b74a20"
+  },
+  "uss-yorktown-cv-10.jpg": {
+   "category": "USS Yorktown (CV-10)",
+   "source_image_id": "020ca744f8e424c9"
+  },
+  "fuyan-temple-hunan.jpg": {
+   "category": "Fuyan Temple (Hunan)",
+   "source_image_id": "01f0bfcb68b478fc"
+  },
+  "eastwood-city.jpg": {
+   "category": "Eastwood City",
+   "source_image_id": "00bc2b57c3a0d737"
+  },
+  "saint-george-church-germas.jpg": {
+   "category": "Saint George Church, Germas",
+   "source_image_id": "01a8a46cfeb3946d"
+  },
+  "church-of-saints-fabian-and-sebastian-z\u00e1kupy.jpg": {
+   "category": "Church of Saints Fabian and Sebastian (Z\u00e1kupy)",
+   "source_image_id": "01c8e19e7e498d40"
+  },
+  "marie-valerie-bridge.jpg": {
+   "category": "Marie Valerie Bridge",
+   "source_image_id": "01e6807cb59026f6"
+  },
+  "cathedral-of-the-theotokos-of-kazan-and-saint-serg.jpg": {
+   "category": "Cathedral of the Theotokos of Kazan and Saint Sergius of Radonezh (Kursk)",
+   "source_image_id": "0217de770e488e8b"
+  },
+  "portsmouth-historic-dockyard.jpg": {
+   "category": "Portsmouth Historic Dockyard",
+   "source_image_id": "0103525e856c922c"
+  },
+  "naval-station-guantanamo-bay.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "00d6aa83bf09fdee"
+  },
+  "haughmond-abbey.jpg": {
+   "category": "Haughmond Abbey",
+   "source_image_id": "0034aa4d10ddf2f0"
+  },
+  "san-agustin-church-manila.jpg": {
+   "category": "San Agustin Church, Manila",
+   "source_image_id": "00d816f84ae427c5"
+  },
+  "waukegan-harbor-lighthouse.jpg": {
+   "category": "Waukegan Harbor Lighthouse",
+   "source_image_id": "01eb63cf0192c351"
+  },
+  "englert-theatre-iowa-city-iowa.jpg": {
+   "category": "Englert Theatre (Iowa City, Iowa)",
+   "source_image_id": "0044ff83e5e7d955"
+  },
+  "brest-fortress.jpg": {
+   "category": "Brest Fortress",
+   "source_image_id": "0043185b439cabaa"
+  },
+  "church-of-saint-nicholas-babruysk.jpg": {
+   "category": "Church of Saint Nicholas (Babruysk)",
+   "source_image_id": "01237109da7c5936"
+  },
+  "church-in-senieji-trakai.jpg": {
+   "category": "Church in Senieji Trakai",
+   "source_image_id": "02664b4d72272e4b"
+  },
+  "woburn-abbey.jpg": {
+   "category": "Woburn Abbey",
+   "source_image_id": "0180a5b261fa10c5"
+  },
+  "prudential-building-buffalo-new-york.jpg": {
+   "category": "Prudential Building (Buffalo, New York)",
+   "source_image_id": "01ff1313177f25f0"
+  },
+  "para\u00f1aque-cathedral.jpg": {
+   "category": "Para\u00f1aque Cathedral",
+   "source_image_id": "010b7dca3609c656"
+  },
+  "gilpins-falls-covered-bridge.jpg": {
+   "category": "Gilpin's Falls Covered Bridge",
+   "source_image_id": "015562e29ff53040"
+  },
+  "ayala-bridge.jpg": {
+   "category": "Ayala Bridge",
+   "source_image_id": "00c1a34ca365d7c4"
+  },
+  "portsmouth-point.jpg": {
+   "category": "Portsmouth Point",
+   "source_image_id": "004591215f4f2ece"
+  },
+  "porte-daix-marseille.jpg": {
+   "category": "Porte d'Aix (Marseille)",
+   "source_image_id": "00871546b824312d"
+  },
+  "francis-scott-key-bridge-washington-dc.jpg": {
+   "category": "Francis Scott Key Bridge (Washington, D.C.)",
+   "source_image_id": "0078602ca078a633"
+  },
+  "st-margarets-church-west-hoathly.jpg": {
+   "category": "St Margaret's Church, West Hoathly",
+   "source_image_id": "01f391470b7c5a38"
+  },
+  "church-of-santiago-cristo-de-las-batallas-plasenci.jpg": {
+   "category": "Church of Santiago (Cristo de las Batallas), Plasencia",
+   "source_image_id": "01f7f11f3ae182c8"
+  },
+  "old-city-hall-boston.jpg": {
+   "category": "Old City Hall, Boston",
+   "source_image_id": "006343c72da359d8"
+  },
+  "cottage-palace.jpg": {
+   "category": "Cottage Palace",
+   "source_image_id": "0200c3826cac7326"
+  },
+  "stamford-bridge-stadium.jpg": {
+   "category": "Stamford Bridge (stadium)",
+   "source_image_id": "00331ea2da2165a1"
+  },
+  "kossuth-square-budapest.jpg": {
+   "category": "Kossuth Square (Budapest)",
+   "source_image_id": "005a2649d08fae00"
+  },
+  "sea-towers-gdynia.jpg": {
+   "category": "Sea Towers Gdynia",
+   "source_image_id": "0093d89f92591d8d"
+  },
+  "town-hall-of-ixelles.jpg": {
+   "category": "Town hall of Ixelles",
+   "source_image_id": "00474955dc398636"
+  },
+  "church-of-saint-barbara-otovice.jpg": {
+   "category": "Church of Saint Barbara (Otovice)",
+   "source_image_id": "01339fd14bb563ee"
+  },
+  "sam-kee-building.jpg": {
+   "category": "Sam Kee Building",
+   "source_image_id": "01ca060505d7023d"
+  },
+  "chinatown-manhattan.jpg": {
+   "category": "Chinatown, Manhattan",
+   "source_image_id": "01c6de80af449a75"
+  },
+  "presidential-palace-in-kaunas.jpg": {
+   "category": "Presidential Palace in Kaunas",
+   "source_image_id": "022f6ff050a1dfe6"
+  },
+  "church-of-the-visitation-of-the-virgin-mary-svitav.jpg": {
+   "category": "Church of the Visitation of the Virgin Mary (Svitavy)",
+   "source_image_id": "014b92b401e357d3"
+  },
+  "copenhagen-opera-house.jpg": {
+   "category": "Copenhagen Opera House",
+   "source_image_id": "00ea97131203bdbf"
+  },
+  "naval-station-norfolk.jpg": {
+   "category": "Naval Station Norfolk",
+   "source_image_id": "00cb1c040ad658da"
+  },
+  "huating-temple.jpg": {
+   "category": "Huating Temple",
+   "source_image_id": "0276d322b69e5e4d"
+  },
+  "kunst--und-ausstellungshalle-der-bundesrepublik-de.jpg": {
+   "category": "Kunst- und Ausstellungshalle der Bundesrepublik Deutschland",
+   "source_image_id": "00ddc2a6bca8c89f"
+  },
+  "morristown-national-historical-park.jpg": {
+   "category": "Morristown National Historical Park",
+   "source_image_id": "00382e30c8d53aae"
+  },
+  "dutch-harbor-naval-operating-base-and-fort-mears.jpg": {
+   "category": "Dutch Harbor Naval Operating Base and Fort Mears",
+   "source_image_id": "0065adb5f2a44745"
+  },
+  "carrick-a-rede-rope-bridge.jpg": {
+   "category": "Carrick-a-Rede rope bridge",
+   "source_image_id": "025fba011562b3ba"
+  },
+  "church-of-st-peter-and-st-paul-in-varniai.jpg": {
+   "category": "Church of St. Peter and St. Paul in Varniai",
+   "source_image_id": "0221a73be2ed048c"
+  },
+  "krupa-castle.jpg": {
+   "category": "Krupa Castle",
+   "source_image_id": "006db88039497d6a"
+  },
+  "inman-square.jpg": {
+   "category": "Inman Square",
+   "source_image_id": "001bc491681b267b"
+  },
+  "granite-store-uxbridge-massachusetts.jpg": {
+   "category": "Granite Store (Uxbridge, Massachusetts)",
+   "source_image_id": "010cb5ed8c26bb85"
+  },
+  "first-presbyterian-church-philadelphia-pennsylvani.jpg": {
+   "category": "First Presbyterian Church (Philadelphia, Pennsylvania)",
+   "source_image_id": "00007d3b7f15b575"
+  },
+  "ferenciek-square-budapest.jpg": {
+   "category": "Ferenciek Square (Budapest)",
+   "source_image_id": "008fcc1ae247ec50"
+  },
+  "irving-plaza.jpg": {
+   "category": "Irving Plaza",
+   "source_image_id": "02293f27543ffe23"
+  },
+  "city-walls-of-cologne.jpg": {
+   "category": "City walls of Cologne",
+   "source_image_id": "0003f2ec0028ac42"
+  },
+  "church-of-ss-john-the-baptist-and-john-the-evangel.jpg": {
+   "category": "Church of SS. John the Baptist and John the Evangelist in Krak\u00f3w",
+   "source_image_id": "0234ec0812e94580"
+  },
+  "befreiungshalle.jpg": {
+   "category": "Befreiungshalle",
+   "source_image_id": "01b28b9396e25e18"
+  },
+  "bridger-teton-national-forest.jpg": {
+   "category": "Bridger-Teton National Forest",
+   "source_image_id": "01667d76f07bb305"
+  },
+  "cathedral-of-st-florin-vaduz.jpg": {
+   "category": "Cathedral of St. Florin, Vaduz",
+   "source_image_id": "019f1324ab82e08b"
+  },
+  "church-of-the-holy-apostles-manhattan.jpg": {
+   "category": "Church of the Holy Apostles (Manhattan)",
+   "source_image_id": "0266a76bbb4ebf2c"
+  },
+  "city-botanic-gardens-brisbane.jpg": {
+   "category": "City Botanic Gardens, Brisbane",
+   "source_image_id": "01c072849c527dad"
+  },
+  "union-square-manhattan.jpg": {
+   "category": "Union Square, Manhattan",
+   "source_image_id": "01418e552dc4e624"
+  },
+  "marine-corps-air-station-yuma.jpg": {
+   "category": "Marine Corps Air Station Yuma",
+   "source_image_id": "019f607344d9cc78"
+  },
+  "port-of-baltimore.jpg": {
+   "category": "Port of Baltimore",
+   "source_image_id": "01e3eceb8767eed3"
+  },
+  "grand-ducal-palace-luxembourg.jpg": {
+   "category": "Grand Ducal Palace (Luxembourg)",
+   "source_image_id": "026a156f4fbb7dee"
+  },
+  "venetian-bridge-in-kiev-2.jpg": {
+   "category": "Venetian bridge in Kiev",
+   "source_image_id": "011d4ef3d8a3141f"
+  },
+  "air-station-kodiak.jpg": {
+   "category": "Air Station Kodiak",
+   "source_image_id": "01c4eefad6eb1064"
+  },
+  "naval-station-guantanamo-bay-2.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "0001e99724ddbf3b"
+  },
+  "naval-station-guantanamo-bay-3.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "0294b1e0fbd2eb46"
+  },
+  "doha-stadium.jpg": {
+   "category": "Doha Stadium",
+   "source_image_id": "022067464bb92669"
+  },
+  "gateway-motorsports-park.jpg": {
+   "category": "Gateway Motorsports Park",
+   "source_image_id": "0137eaab9c6e5f27"
+  },
+  "richmond-palace.jpg": {
+   "category": "Richmond Palace",
+   "source_image_id": "00c4510c675ceba2"
+  },
+  "sioux-city-municipal-auditorium.jpg": {
+   "category": "Sioux City Municipal Auditorium",
+   "source_image_id": "0110ef43410286e1"
+  },
+  "marine-corps-air-station-yuma-2.jpg": {
+   "category": "Marine Corps Air Station Yuma",
+   "source_image_id": "02339369a7925d5c"
+  },
+  "octagon-house-watertown-wi.jpg": {
+   "category": "Octagon House (Watertown, WI)",
+   "source_image_id": "0103074bda656408"
+  },
+  "church-of-saint-nicholas-in-brest.jpg": {
+   "category": "Church of Saint Nicholas in Brest",
+   "source_image_id": "022fb836ba282e14"
+  },
+  "cathedral-of-the-nativity-of-the-blessed-virgin-ma.jpg": {
+   "category": "Cathedral of the Nativity of the Blessed Virgin Mary, Grand Island, Nebraska",
+   "source_image_id": "0221af8f9bb6ca86"
+  },
+  "queens-building.jpg": {
+   "category": "Queen's Building",
+   "source_image_id": "012f7a0a44808ed9"
+  },
+  "ronald-reagan-building-and-international-trade-cen.jpg": {
+   "category": "Ronald Reagan Building and International Trade Center",
+   "source_image_id": "00f4bbb846597161"
+  },
+  "grand-staircase-escalante-national-monument.jpg": {
+   "category": "Grand Staircase-Escalante National Monument",
+   "source_image_id": "01d2cf2d3dfaa4e4"
+  },
+  "st-michaels-episcopal-church-charleston-south-caro.jpg": {
+   "category": "St. Michael's Episcopal Church (Charleston, South Carolina)",
+   "source_image_id": "0040e4b06fecf169"
+  },
+  "church-of-saint-barbara-in-zahr\u00e1dky-\u010desk\u00e1-l\u00edpa-dis.jpg": {
+   "category": "Church of Saint Barbara in Zahr\u00e1dky (\u010cesk\u00e1 L\u00edpa District)",
+   "source_image_id": "004ad580a02097fd"
+  },
+  "ma-tsu-temple.jpg": {
+   "category": "Ma-Tsu Temple",
+   "source_image_id": "008212820ece50cf"
+  },
+  "port-of-mannheim.jpg": {
+   "category": "Port of Mannheim",
+   "source_image_id": "005a19c5efaabb5d"
+  },
+  "daegu-stadium.jpg": {
+   "category": "Daegu Stadium",
+   "source_image_id": "012255b562a82ecb"
+  },
+  "church-of-san-pedro-de-los-arcos-oviedo.jpg": {
+   "category": "Church of San Pedro de los Arcos, Oviedo",
+   "source_image_id": "015d46d36d1a082a"
+  },
+  "new-york-harbor.jpg": {
+   "category": "New York Harbor",
+   "source_image_id": "00b9a57a77d745e4"
+  },
+  "swalec-stadium.jpg": {
+   "category": "SWALEC Stadium",
+   "source_image_id": "0144304501b0d249"
+  },
+  "church-of-st-barbara-in-krak\u00f3w.jpg": {
+   "category": "Church of St. Barbara in Krak\u00f3w",
+   "source_image_id": "026bcfd5c467bf42"
+  },
+  "secession-hall-austria.jpg": {
+   "category": "Secession Hall (Austria)",
+   "source_image_id": "027da7f37b185fa7"
+  },
+  "ba\u010d-fortress.jpg": {
+   "category": "Ba\u010d Fortress",
+   "source_image_id": "012ad62a67316646"
+  },
+  "holy-rosary-cathedral-vancouver.jpg": {
+   "category": "Holy Rosary Cathedral (Vancouver)",
+   "source_image_id": "010b45a07001c531"
+  },
+  "mira-buse-train-station.jpg": {
+   "category": "Mira Buse train station",
+   "source_image_id": "0295ee4264f02196"
+  },
+  "rochester-castle.jpg": {
+   "category": "Rochester Castle",
+   "source_image_id": "00c8ab285339dd29"
+  },
+  "roebling-suspension-bridge.jpg": {
+   "category": "Roebling Suspension Bridge",
+   "source_image_id": "01930137806ac288"
+  },
+  "qatif-castle.jpg": {
+   "category": "Qatif Castle",
+   "source_image_id": "027dbff0b0ebc264"
+  },
+  "mogadishu-stadium.jpg": {
+   "category": "Mogadishu Stadium",
+   "source_image_id": "0179eb95ecbe8a51"
+  },
+  "marine-corps-air-station-yuma-3.jpg": {
+   "category": "Marine Corps Air Station Yuma",
+   "source_image_id": "000f0631a46f17c3"
+  },
+  "castle-of-ham-sur-heure.jpg": {
+   "category": "Castle of Ham-sur-Heure",
+   "source_image_id": "01592378193edbe0"
+  },
+  "ioof-temple-fairbury-nebraska.jpg": {
+   "category": "IOOF Temple (Fairbury, Nebraska)",
+   "source_image_id": "021cb6c5f8c3e49a"
+  },
+  "st-michael-and-all-angels-church-withyham.jpg": {
+   "category": "St Michael and All Angels Church, Withyham",
+   "source_image_id": "018c720748f748db"
+  },
+  "brick-presbyterian-church-new-york-city.jpg": {
+   "category": "Brick Presbyterian Church (New York City)",
+   "source_image_id": "027158c75ee1f95d"
+  },
+  "naval-station-norfolk-2.jpg": {
+   "category": "Naval Station Norfolk",
+   "source_image_id": "00a1376b4ccb4220"
+  },
+  "hyde-hall-covered-bridge.jpg": {
+   "category": "Hyde Hall Covered Bridge",
+   "source_image_id": "021e8b5360ffffbf"
+  },
+  "st-elisabeth-church-budapest.jpg": {
+   "category": "St Elisabeth Church (Budapest)",
+   "source_image_id": "021bada02ad2832a"
+  },
+  "joint-base-pearl-harbor-hickam.jpg": {
+   "category": "Joint Base Pearl Harbor-Hickam",
+   "source_image_id": "01b906a845791309"
+  },
+  "boskovice-castle.jpg": {
+   "category": "Boskovice Castle",
+   "source_image_id": "01d83514152a876f"
+  },
+  "monument-to-peter-the-great-in-taganrog.jpg": {
+   "category": "Monument to Peter the Great in Taganrog",
+   "source_image_id": "0223153120de0252"
+  },
+  "port-of-antwerp.jpg": {
+   "category": "Port of Antwerp",
+   "source_image_id": "01f8834279b8a63d"
+  },
+  "saint-alexander-church-in-warsaw.jpg": {
+   "category": "Saint Alexander church in Warsaw",
+   "source_image_id": "024cfe050076dd38"
+  },
+  "park-street-church.jpg": {
+   "category": "Park Street Church",
+   "source_image_id": "00ca4ea94d14e4e5"
+  },
+  "commission-palace.jpg": {
+   "category": "Commission Palace",
+   "source_image_id": "025360ea3118bfa4"
+  },
+  "hrdly-castle.jpg": {
+   "category": "Hrdly (castle)",
+   "source_image_id": "023a0373a8abb120"
+  },
+  "church-of-the-ascension-in-kolomenskoye-moscow.jpg": {
+   "category": "Church of the Ascension in Kolomenskoye (Moscow)",
+   "source_image_id": "001ba86104f3004b"
+  },
+  "holy-assumption-russian-orthodox-church-kenai-alas.jpg": {
+   "category": "Holy Assumption Russian Orthodox Church (Kenai, Alaska)",
+   "source_image_id": "0272563c46fe625e"
+  },
+  "st-johns-anglican-church-fremantle.jpg": {
+   "category": "St John's Anglican Church, Fremantle",
+   "source_image_id": "00d4f86be95241e1"
+  },
+  "marmar-palace-tehran.jpg": {
+   "category": "Marmar Palace, Tehran",
+   "source_image_id": "0277454662e8d233"
+  },
+  "monumento-a-la-revoluci\u00f3n-m\u00e9xico.jpg": {
+   "category": "Monumento a la Revoluci\u00f3n (M\u00e9xico)",
+   "source_image_id": "01ce85e2b449c43f"
+  },
+  "belltower-ryazan-kremlin.jpg": {
+   "category": "Belltower (Ryazan Kremlin)",
+   "source_image_id": "005fcca09334ae03"
+  },
+  "port-of-jaffa.jpg": {
+   "category": "Port of Jaffa",
+   "source_image_id": "013849f7f53802a6"
+  },
+  "tre-kronor-castle.jpg": {
+   "category": "Tre kronor (castle)",
+   "source_image_id": "0107393b1a76c49e"
+  },
+  "saint-john-the-baptist-church-in-radom.jpg": {
+   "category": "Saint John the Baptist church in Radom",
+   "source_image_id": "02462c649f8a24db"
+  },
+  "tower-42.jpg": {
+   "category": "Tower 42",
+   "source_image_id": "01bb19a86cb06bc0"
+  },
+  "naval-station-norfolk-3.jpg": {
+   "category": "Naval Station Norfolk",
+   "source_image_id": "00c9dfbbb95676f7"
+  },
+  "sailors-snug-harbor.jpg": {
+   "category": "Sailors' Snug Harbor",
+   "source_image_id": "011d5303ce85a11a"
+  },
+  "fortress-church-of-saint-nicholas-in-brest.jpg": {
+   "category": "Fortress church of Saint Nicholas in Brest",
+   "source_image_id": "01e6275b3b7a5de2"
+  },
+  "pr\u016fhonice-castle.jpg": {
+   "category": "Pr\u016fhonice Castle",
+   "source_image_id": "0266b4dc74171108"
+  },
+  "old-post-office-building-washington-dc.jpg": {
+   "category": "Old Post Office Building (Washington, D.C.)",
+   "source_image_id": "00e1777a8c0a448d"
+  },
+  "treasure-hill-temple.jpg": {
+   "category": "Treasure Hill Temple",
+   "source_image_id": "01749b033762afaa"
+  },
+  "nouri-mosque.jpg": {
+   "category": "Nouri Mosque",
+   "source_image_id": "00f0c1db503d46c1"
+  },
+  "santa-catalina-de-alexandria-parish-church-porac-p.jpg": {
+   "category": "Santa Catalina de Alexandria Parish Church (Porac, Pampanga)",
+   "source_image_id": "01557834a014b69c"
+  },
+  "walla-lutheran-church-roberts-county-south-dakota.jpg": {
+   "category": "Walla Lutheran Church (Roberts County, South Dakota)",
+   "source_image_id": "01ea61aa2d8f19ba"
+  },
+  "taum-sauk-hydroelectric-power-station.jpg": {
+   "category": "Taum Sauk Hydroelectric Power Station",
+   "source_image_id": "02576cfeedf01dbf"
+  },
+  "soldiers-and-sailors-monument-indianapolis.jpg": {
+   "category": "Soldiers' and Sailors' Monument (Indianapolis)",
+   "source_image_id": "02907af00de14ac2"
+  },
+  "tillman-hall.jpg": {
+   "category": "Tillman Hall",
+   "source_image_id": "024931bad94b927e"
+  },
+  "port-of-haifa.jpg": {
+   "category": "Port of Haifa",
+   "source_image_id": "01e0cfa911b358df"
+  },
+  "town-hall-tower-in-krak\u00f3w.jpg": {
+   "category": "Town Hall Tower in Krak\u00f3w",
+   "source_image_id": "00f8d3eb2fe713d1"
+  },
+  "church-of-saint-peter-and-saint-paul-on-gorodyanka.jpg": {
+   "category": "Church of Saint Peter and Saint Paul on Gorodyanka",
+   "source_image_id": "005f7037fc957bab"
+  },
+  "noshiro-stadium.jpg": {
+   "category": "Noshiro Stadium",
+   "source_image_id": "022b721869ac188a"
+  },
+  "sm-city-cabanatuan.jpg": {
+   "category": "SM City Cabanatuan",
+   "source_image_id": "00a8b12a7a486e4b"
+  },
+  "naval-station-norfolk-4.jpg": {
+   "category": "Naval Station Norfolk",
+   "source_image_id": "0058dce3b5206e67"
+  },
+  "manhattan-bridge.jpg": {
+   "category": "Manhattan Bridge",
+   "source_image_id": "011c3dab7958a69b"
+  },
+  "newport-center.jpg": {
+   "category": "Newport Center",
+   "source_image_id": "0218ee98188c74e6"
+  },
+  "st-marys-church-lenham.jpg": {
+   "category": "St Mary's Church, Lenham",
+   "source_image_id": "0153d3fe196d8eae"
+  },
+  "bromley-hall.jpg": {
+   "category": "Bromley Hall",
+   "source_image_id": "003da2c783853582"
+  },
+  "port-of-ijmuiden.jpg": {
+   "category": "Port of IJmuiden",
+   "source_image_id": "018df189d2cc091a"
+  },
+  "buildings-in-the-university-of-pennsylvania.jpg": {
+   "category": "Buildings in the University of Pennsylvania",
+   "source_image_id": "023dcaceb696e58c"
+  },
+  "aqueduct-bridge-potomac-river.jpg": {
+   "category": "Aqueduct Bridge (Potomac River)",
+   "source_image_id": "02747f18e642780f"
+  },
+  "naval-station-guantanamo-bay-4.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "000a61e2729a5f8f"
+  },
+  "fountain-square-cincinnati.jpg": {
+   "category": "Fountain Square, Cincinnati",
+   "source_image_id": "00498b98c065a2da"
+  },
+  "new-york-city-hall.jpg": {
+   "category": "New York City Hall",
+   "source_image_id": "023cc4164f958c65"
+  },
+  "tel-aviv-port.jpg": {
+   "category": "Tel Aviv Port",
+   "source_image_id": "0020efd55db66762"
+  },
+  "st-johns-church-bangalore.jpg": {
+   "category": "St. John's Church, Bangalore",
+   "source_image_id": "026733bff9de388c"
+  },
+  "elmwood-shepherdstown-west-virginia.jpg": {
+   "category": "Elmwood (Shepherdstown, West Virginia)",
+   "source_image_id": "0223eddd0019ca93"
+  },
+  "tudor-city.jpg": {
+   "category": "Tudor City",
+   "source_image_id": "0165f5b168133fec"
+  },
+  "newport-steam-factory.jpg": {
+   "category": "Newport Steam Factory",
+   "source_image_id": "00c2d5682d667275"
+  },
+  "california-memorial-stadium.jpg": {
+   "category": "California Memorial Stadium",
+   "source_image_id": "029270c56c409a58"
+  },
+  "caerhayes-castle.jpg": {
+   "category": "Caerhayes Castle",
+   "source_image_id": "012dd1e17c793145"
+  },
+  "bouchout-castle.jpg": {
+   "category": "Bouchout Castle",
+   "source_image_id": "010612545c2711ed"
+  },
+  "ako-castle.jpg": {
+   "category": "Ako Castle",
+   "source_image_id": "00b666a34e0a7ee4"
+  },
+  "church-of-our-lady-of-the-snow-prague.jpg": {
+   "category": "Church of Our Lady of the Snow (Prague)",
+   "source_image_id": "023b9d1dd48708f4"
+  },
+  "british-columbia-parliament-buildings.jpg": {
+   "category": "British Columbia Parliament Buildings",
+   "source_image_id": "0198b9d129aefedc"
+  },
+  "the-walls-and-towers-of-kitai-gorod.jpg": {
+   "category": "The walls and towers of Kitai-gorod",
+   "source_image_id": "015484b1e7d80463"
+  },
+  "tanners-bridge-tirana.jpg": {
+   "category": "Tanner's Bridge, Tirana",
+   "source_image_id": "02771aa3a5d4daf5"
+  },
+  "sunpu-castle.jpg": {
+   "category": "Sunpu Castle",
+   "source_image_id": "00892f11139900b9"
+  },
+  "naval-station-norfolk-5.jpg": {
+   "category": "Naval Station Norfolk",
+   "source_image_id": "001e3c482f4a34dd"
+  },
+  "elisabeth-bridge-budapest.jpg": {
+   "category": "Elisabeth Bridge, Budapest",
+   "source_image_id": "00454ad2434ee811"
+  },
+  "basilica-di-santa-maria-assunta-castel-di-sangro.jpg": {
+   "category": "Basilica di Santa Maria Assunta (Castel di Sangro)",
+   "source_image_id": "006801e44cecd76e"
+  },
+  "catholic-church-of-st-michael-the-archangel-a\u0161mian.jpg": {
+   "category": "Catholic church of St. Michael the Archangel, A\u0161miany",
+   "source_image_id": "00a194d44b493523"
+  },
+  "st-augustine-parish-church-of-baliuag.jpg": {
+   "category": "St. Augustine Parish Church of Baliuag",
+   "source_image_id": "0164ee87e603c1c2"
+  },
+  "naval-station-guantanamo-bay-5.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "0232ebd713dd2e93"
+  },
+  "poledn\u00edk-observation-tower.jpg": {
+   "category": "Poledn\u00edk (observation tower)",
+   "source_image_id": "02181c9a851145f6"
+  },
+  "fatih-mosque.jpg": {
+   "category": "Fatih Mosque",
+   "source_image_id": "0093681282ab4b3b"
+  },
+  "san-salvador-metropolitan-cathedral.jpg": {
+   "category": "San Salvador Metropolitan Cathedral",
+   "source_image_id": "00536a2c69e08b92"
+  },
+  "st-peters-episcopal-church-society-hill-philadelph.jpg": {
+   "category": "St. Peter's Episcopal Church, Society Hill, Philadelphia",
+   "source_image_id": "003c0792f1e13a02"
+  },
+  "kunsthalle-basel.jpg": {
+   "category": "Kunsthalle Basel",
+   "source_image_id": "014f75dcd93c05e9"
+  },
+  "houston-heights-fire-station.jpg": {
+   "category": "Houston Heights Fire Station",
+   "source_image_id": "009102bf75e0ad28"
+  },
+  "siedl\u0119cin-tower.jpg": {
+   "category": "Siedl\u0119cin Tower",
+   "source_image_id": "0269356e9ce55fd1"
+  },
+  "colonial-germantown-historic-district.jpg": {
+   "category": "Colonial Germantown Historic District",
+   "source_image_id": "003cbe9b9c413d20"
+  },
+  "plaza-de-col\u00f3n-madrid.jpg": {
+   "category": "Plaza de Col\u00f3n, Madrid",
+   "source_image_id": "001283fd55589d45"
+  },
+  "monument-to-leo-tolstoy-moscow-prechistenka-street.jpg": {
+   "category": "Monument to Leo Tolstoy (Moscow, Prechistenka Street)",
+   "source_image_id": "00886cb9ef080ae4"
+  },
+  "la-recolecci\u00f3n-church-antigua-guatemala.jpg": {
+   "category": "La Recolecci\u00f3n Church (Antigua Guatemala)",
+   "source_image_id": "021b8c400fca6a09"
+  },
+  "hounsom-memorial-urc-church-hangleton.jpg": {
+   "category": "Hounsom Memorial URC Church, Hangleton",
+   "source_image_id": "020f7501b146607f"
+  },
+  "gardner-news-building.jpg": {
+   "category": "Gardner News Building",
+   "source_image_id": "01ee91f1a17a0f95"
+  },
+  "rifnik-castle.jpg": {
+   "category": "Rifnik Castle",
+   "source_image_id": "011c1c8c371dd167"
+  },
+  "city-duma-building-saint-petersburg.jpg": {
+   "category": "City Duma building (Saint Petersburg)",
+   "source_image_id": "00d2323b06f6ea4c"
+  },
+  "federal-hall.jpg": {
+   "category": "Federal Hall",
+   "source_image_id": "01d011cb4d05d9be"
+  },
+  "union-bank-building-winnipeg.jpg": {
+   "category": "Union Bank Building (Winnipeg)",
+   "source_image_id": "00de7ff48bc494fa"
+  },
+  "tower-115.jpg": {
+   "category": "Tower 115",
+   "source_image_id": "009f76358d03b905"
+  },
+  "macedonia-square-skopje.jpg": {
+   "category": "Macedonia Square (Skopje)",
+   "source_image_id": "02562585deb73970"
+  },
+  "uffington-castle.jpg": {
+   "category": "Uffington Castle",
+   "source_image_id": "00069b8df9f67a69"
+  },
+  "church-of-s\u00e3o-v\u00edtor-braga.jpg": {
+   "category": "Church of S\u00e3o V\u00edtor (Braga)",
+   "source_image_id": "0054df70261d0ffe"
+  },
+  "kilchurn-castle.jpg": {
+   "category": "Kilchurn Castle",
+   "source_image_id": "027ef856482ffea0"
+  },
+  "st-godehard-church-hildesheim.jpg": {
+   "category": "St. Godehard Church (Hildesheim)",
+   "source_image_id": "01e631c5499e6f05"
+  },
+  "j-birney-crum-stadium.jpg": {
+   "category": "J. Birney Crum Stadium",
+   "source_image_id": "0260bc28b9c2e639"
+  },
+  "church-of-nuestra-se\u00f1ora-de-la-antigua-valladolid.jpg": {
+   "category": "Church of Nuestra Se\u00f1ora de la Antigua, Valladolid",
+   "source_image_id": "0258a5997d753cd5"
+  },
+  "old-post-office-building-washington-dc-2.jpg": {
+   "category": "Old Post Office Building (Washington, D.C.)",
+   "source_image_id": "0247333eca2471ec"
+  },
+  "incan-rope-bridges.jpg": {
+   "category": "Incan rope bridges",
+   "source_image_id": "02182eb1a870d98b"
+  },
+  "mikuni-world-stadium-kitakyushu.jpg": {
+   "category": "Mikuni World Stadium Kitakyushu",
+   "source_image_id": "00a9ab453a51ff85"
+  },
+  "cathedral-of-guadalajara-mexico.jpg": {
+   "category": "Cathedral of Guadalajara, Mexico",
+   "source_image_id": "016bb30a9d1ed18b"
+  },
+  "puducherry-immaculate-conception-cathedral.jpg": {
+   "category": "Puducherry Immaculate Conception Cathedral",
+   "source_image_id": "01f3eaaf470af2c6"
+  },
+  "john-frost-bridge.jpg": {
+   "category": "John Frost Bridge",
+   "source_image_id": "021d09428dec649c"
+  },
+  "canyon-de-chelly-national-monument.jpg": {
+   "category": "Canyon de Chelly National Monument",
+   "source_image_id": "01ded703cdbca078"
+  },
+  "metalist-stadium.jpg": {
+   "category": "Metalist Stadium",
+   "source_image_id": "005e50cd880c2b6a"
+  },
+  "coit-tower.jpg": {
+   "category": "Coit Tower",
+   "source_image_id": "02813cdcc1644c93"
+  },
+  "runkelstein-castle.jpg": {
+   "category": "Runkelstein Castle",
+   "source_image_id": "01409a425afb1184"
+  },
+  "cathedral-treasury-esztergom.jpg": {
+   "category": "Cathedral Treasury (Esztergom)",
+   "source_image_id": "01ce5b264f0c136e"
+  },
+  "st-thomas-episcopal-church-sioux-city-iowa.jpg": {
+   "category": "St. Thomas Episcopal Church (Sioux City, Iowa)",
+   "source_image_id": "024993edf5653f4a"
+  },
+  "battle-abbey.jpg": {
+   "category": "Battle Abbey",
+   "source_image_id": "01459ff3128cddef"
+  },
+  "alor-setar-tower.jpg": {
+   "category": "Alor Setar Tower",
+   "source_image_id": "00f80857371e4b75"
+  },
+  "san-francisco-de-asis-mission-church-2.jpg": {
+   "category": "San Francisco de Asis Mission Church",
+   "source_image_id": "0073832ecb8db6ee"
+  },
+  "air-station-kodiak-2.jpg": {
+   "category": "Air Station Kodiak",
+   "source_image_id": "00568708e9b9abf4"
+  },
+  "administration-building-randolph-air-force-base.jpg": {
+   "category": "Administration Building (Randolph Air Force Base)",
+   "source_image_id": "028e60a14c87aaf1"
+  },
+  "nicolaus-copernicus-monument-in-warsaw.jpg": {
+   "category": "Nicolaus Copernicus Monument in Warsaw",
+   "source_image_id": "0013eecec02dc0df"
+  },
+  "william-tecumseh-sherman-monument.jpg": {
+   "category": "William Tecumseh Sherman Monument",
+   "source_image_id": "015e09daca531c7f"
+  },
+  "st-lawrence-hall.jpg": {
+   "category": "St. Lawrence Hall",
+   "source_image_id": "014a6babb9c56552"
+  },
+  "church-of-the-holy-spirit-in-lublin.jpg": {
+   "category": "Church of the Holy Spirit in Lublin",
+   "source_image_id": "008c951349ccf169"
+  },
+  "naval-station-guantanamo-bay-6.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "0184bb2724932149"
+  },
+  "karstula-church.jpg": {
+   "category": "Karstula Church",
+   "source_image_id": "012268cd93a25b42"
+  },
+  "monument-to-miguel-de-cervantes-madrid.jpg": {
+   "category": "Monument to Miguel de Cervantes, Madrid",
+   "source_image_id": "00d9dc624e8de263"
+  },
+  "uskela-church.jpg": {
+   "category": "Uskela church",
+   "source_image_id": "027bbd6eec0dc7d4"
+  },
+  "nauvoo-temple.jpg": {
+   "category": "Nauvoo Temple",
+   "source_image_id": "014b5486e334e8bd"
+  },
+  "tampa-city-hall.jpg": {
+   "category": "Tampa City Hall",
+   "source_image_id": "01b09404b871a0e8"
+  },
+  "takeda-castle.jpg": {
+   "category": "Takeda Castle",
+   "source_image_id": "0012f4bb3812e158"
+  },
+  "church-of-the-holy-family-in-szczecin.jpg": {
+   "category": "Church of the Holy Family in Szczecin",
+   "source_image_id": "009235635ca8eb60"
+  },
+  "naval-station-norfolk-6.jpg": {
+   "category": "Naval Station Norfolk",
+   "source_image_id": "004cc7f6ad31b28f"
+  },
+  "white-city-stadium.jpg": {
+   "category": "White City Stadium",
+   "source_image_id": "00846f04cce1b438"
+  },
+  "protestant-church-hirschfeld-hunsr\u00fcck.jpg": {
+   "category": "Protestant Church (Hirschfeld Hunsr\u00fcck)",
+   "source_image_id": "02800eea5827cbee"
+  },
+  "victoria-square-adelaide.jpg": {
+   "category": "Victoria Square, Adelaide",
+   "source_image_id": "01941148ec125282"
+  },
+  "taras-shevchenko-monument-in-warsaw.jpg": {
+   "category": "Taras Shevchenko Monument in Warsaw",
+   "source_image_id": "016718e29bc604ef"
+  },
+  "saint-odile-church-absberg.jpg": {
+   "category": "Saint Odile Church (Absberg)",
+   "source_image_id": "0142e0be5eb3b19d"
+  },
+  "quezon-city-experience.jpg": {
+   "category": "Quezon City Experience",
+   "source_image_id": "001fb7834b878fbc"
+  },
+  "nagoya-civic-assembly-hall.jpg": {
+   "category": "Nagoya Civic Assembly Hall",
+   "source_image_id": "01e6ddecb758eda6"
+  },
+  "primitive-hall.jpg": {
+   "category": "Primitive Hall",
+   "source_image_id": "01e4fe03ba8dc6b9"
+  },
+  "church-of-st-thomas-in-krak\u00f3w.jpg": {
+   "category": "Church of St. Thomas in Krak\u00f3w",
+   "source_image_id": "003b2de1b5c993b1"
+  },
+  "stone-bridge-skopje.jpg": {
+   "category": "Stone Bridge (Skopje)",
+   "source_image_id": "0198b8aac3e1ca6b"
+  },
+  "elks-building-globe-arizona.jpg": {
+   "category": "Elks building (Globe, Arizona)",
+   "source_image_id": "0270f557042e8e31"
+  },
+  "carew-tower.jpg": {
+   "category": "Carew Tower",
+   "source_image_id": "023bdb5c7902dd00"
+  },
+  "acre-municipal-stadium.jpg": {
+   "category": "Acre Municipal Stadium",
+   "source_image_id": "00b54c8b55e090c5"
+  },
+  "tom-uglys-bridge.jpg": {
+   "category": "Tom Uglys Bridge",
+   "source_image_id": "00616c5d4e4c7051"
+  },
+  "main-square-maribor.jpg": {
+   "category": "Main Square (Maribor)",
+   "source_image_id": "009dc6d5022e3d11"
+  },
+  "st-pauls-episcopal-church-selma-alabama.jpg": {
+   "category": "St. Paul's Episcopal Church (Selma, Alabama)",
+   "source_image_id": "020d989681fb8789"
+  },
+  "luttrells-tower.jpg": {
+   "category": "Luttrell's Tower",
+   "source_image_id": "015236b5e0e44a96"
+  },
+  "dev\u00edn-castle.jpg": {
+   "category": "Dev\u00edn Castle",
+   "source_image_id": "01eb7afa8f71bf6e"
+  },
+  "kanchi-kailasanathar-temple.jpg": {
+   "category": "Kanchi Kailasanathar Temple",
+   "source_image_id": "027afa81476eb655"
+  },
+  "big-bethel-ame-church.jpg": {
+   "category": "Big Bethel AME Church",
+   "source_image_id": "005c5d6e45e76e0d"
+  },
+  "church-of-the-st-cross-bansk\u00e1-bystrica.jpg": {
+   "category": "Church of the St. Cross (Bansk\u00e1 Bystrica)",
+   "source_image_id": "01b85d915357d739"
+  },
+  "st-marys-church-walberton.jpg": {
+   "category": "St Mary's Church, Walberton",
+   "source_image_id": "00a7b1caa71a9988"
+  },
+  "kaifu-temple.jpg": {
+   "category": "Kaifu Temple",
+   "source_image_id": "010b97285df6c844"
+  },
+  "church-of-the-assumption-of-the-virgin-mary-\u00fast\u00ed-n.jpg": {
+   "category": "Church of the Assumption of the Virgin Mary (\u00dast\u00ed nad Labem)",
+   "source_image_id": "026a85fbabd377a4"
+  },
+  "sakitama-bridge.jpg": {
+   "category": "Sakitama Bridge",
+   "source_image_id": "00930e07dd11e5c3"
+  },
+  "dutch-harbor-naval-operating-base-and-fort-mears-2.jpg": {
+   "category": "Dutch Harbor Naval Operating Base and Fort Mears",
+   "source_image_id": "001d4fd1f252fe0e"
+  },
+  "edmonton-city-hall.jpg": {
+   "category": "Edmonton City Hall",
+   "source_image_id": "01ad42f12f82929d"
+  },
+  "cove-presbyterian-church.jpg": {
+   "category": "Cove Presbyterian Church",
+   "source_image_id": "00f052884d5c90b9"
+  },
+  "bamberg-cathedral.jpg": {
+   "category": "Bamberg Cathedral",
+   "source_image_id": "02074a82b84c7d5d"
+  },
+  "grays-harbor-lighthouse.jpg": {
+   "category": "Grays Harbor Lighthouse",
+   "source_image_id": "009565be9f4d9d11"
+  },
+  "stadio-polisportivo-provinciale.jpg": {
+   "category": "Stadio Polisportivo Provinciale",
+   "source_image_id": "0260ef4f9d789f61"
+  },
+  "marine-corps-air-station-yuma-4.jpg": {
+   "category": "Marine Corps Air Station Yuma",
+   "source_image_id": "01c01738f423f6e0"
+  },
+  "church-of-nicholas-the-rubleny.jpg": {
+   "category": "Church of Nicholas the Rubleny",
+   "source_image_id": "00e8f806debc26f4"
+  },
+  "church-of-the-visitation.jpg": {
+   "category": "Church of the Visitation",
+   "source_image_id": "00fb10e2904cbaa3"
+  },
+  "queens-theatre-hornchurch.jpg": {
+   "category": "Queen's Theatre, Hornchurch",
+   "source_image_id": "022be2cb25a45d8d"
+  },
+  "parliament-building-of-quebec.jpg": {
+   "category": "Parliament Building of Quebec",
+   "source_image_id": "01cc84591e602f62"
+  },
+  "metlife-building.jpg": {
+   "category": "MetLife Building",
+   "source_image_id": "02114d2e2b7b32ec"
+  },
+  "joint-base-pearl-harbor-hickam-2.jpg": {
+   "category": "Joint Base Pearl Harbor-Hickam",
+   "source_image_id": "006fd66bd98361b1"
+  },
+  "old-town-market-square-in-warsaw.jpg": {
+   "category": "Old Town Market Square in Warsaw",
+   "source_image_id": "0109d1513775a499"
+  },
+  "pau-castle.jpg": {
+   "category": "Pau Castle",
+   "source_image_id": "00acfd8f0ccecc52"
+  },
+  "uji-bridge.jpg": {
+   "category": "Uji Bridge",
+   "source_image_id": "0115f7ff568914e3"
+  },
+  "percival-molson-memorial-stadium.jpg": {
+   "category": "Percival Molson Memorial Stadium",
+   "source_image_id": "0161c5b31ec3a32d"
+  },
+  "salvator-church-in-szczecin.jpg": {
+   "category": "Salvator church in Szczecin",
+   "source_image_id": "013b7a1f4a71e24d"
+  },
+  "church-of-saint-barbara-\u0161akvice.jpg": {
+   "category": "Church of Saint Barbara (\u0160akvice)",
+   "source_image_id": "0195ac454eeb1b5c"
+  },
+  "stan-hywet-hall-and-gardens.jpg": {
+   "category": "Stan Hywet Hall and Gardens",
+   "source_image_id": "0045703258f9a14c"
+  },
+  "taft-bridge.jpg": {
+   "category": "Taft Bridge",
+   "source_image_id": "01e985b161b54747"
+  },
+  "holy-cross-church-in-warsaw.jpg": {
+   "category": "Holy Cross church in Warsaw",
+   "source_image_id": "00d1ff21a8a31732"
+  },
+  "naval-station-guantanamo-bay-7.jpg": {
+   "category": "Naval Station Guantanamo Bay",
+   "source_image_id": "017bd14168cd0440"
+  },
+  "revere-city-hall.jpg": {
+   "category": "Revere City Hall",
+   "source_image_id": "0255123fd6a3f0a7"
+  },
+  "white-city-of-tel-aviv.jpg": {
+   "category": "White City of Tel Aviv",
+   "source_image_id": "012a962faa09de0c"
+  },
+  "church-of-the-nativity-menlo-park-california.jpg": {
+   "category": "Church of the Nativity (Menlo Park, California)",
+   "source_image_id": "0284c7bf04ff43e7"
+  },
+  "gholson-bridge.jpg": {
+   "category": "Gholson Bridge",
+   "source_image_id": "008bb0e81698dc1a"
+  },
+  "st-vitus-cathedral.jpg": {
+   "category": "St. Vitus Cathedral",
+   "source_image_id": "0159e0e708f71720"
+  },
+  "aston-hall.jpg": {
+   "category": "Aston Hall",
+   "source_image_id": "0074d40b506c36dd"
+  },
+  "crook-point-bascule-bridge.jpg": {
+   "category": "Crook Point Bascule Bridge",
+   "source_image_id": "02371bfca8853580"
+  },
+  "custom-house-tower-boston.jpg": {
+   "category": "Custom House Tower, Boston",
+   "source_image_id": "00daa1cb4caf947b"
+  },
+  "saint-m\u00e9dard-abbey-in-soissons.jpg": {
+   "category": "Saint-M\u00e9dard Abbey in Soissons",
+   "source_image_id": "0163dfa038c94912"
+  }
+ }
+}

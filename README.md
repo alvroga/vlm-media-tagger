@@ -109,10 +109,11 @@ mode that actually happened, scored over N runs:
 - `must_have` / `must_not` are hard pass/fail.
 - `nice_to_have` and description mentions are hit rates, judged as movement against a saved baseline.
 
-There are three breadth tiers:
+There are breadth tiers too:
 - COCO val2017 recall
 - Places365 false place-guess rate
 - LogoDet-3K false brand-guess rate
+- multilingual output (native generation vs translation)
 
 ```bash
 ./venv/bin/python tests/golden/harness.py --canary           # ~1 min environment gate (run first)
@@ -139,9 +140,17 @@ Unit tests (no model needed; the VLM and Resolve are mocked): `tools/test.sh`. L
 - An NMT model beats the VLM itself at translating short tags.
 - Confidence-gated naming of places and brands holds a low false-guess rate.
 
-[`docs/research/minicpm-v4.7-evaluation.md`](docs/research/minicpm-v4.7-evaluation.md) compares the newer
-MiniCPM-V 4.7 35B-A3B against 4.5. It covers speed, tag recall, naming calibration, long-form
-descriptions, and fictional characters vs real-person face identification.
+[`docs/research/`](docs/research/) has the longer studies:
+- [MiniCPM-V 4.7 evaluation](docs/research/minicpm-v4.7-evaluation.md): 4.7 35B-A3B vs 4.5 on speed, tag
+  recall, naming calibration, long-form descriptions, and fictional characters vs real-person face ID.
+- [Naming policy validation](docs/research/naming-policy-validation.md): does confidence-gated naming
+  invent famous brands and places? (770 images, audited by hand.)
+- [Scene-level summaries](docs/research/scene-summary-feasibility.md): embedding-segmented scene lines
+  for fast-cut video.
+- OPUS-MT reviews for [Chinese](docs/research/opusmt-chinese-review.md) and
+  [Portuguese](docs/research/opusmt-portuguese-review.md): what real content found that a synthetic corpus missed.
+- [Apple Vision and Foundation Models](docs/research/apple-vision-framework.md) as a replacement or
+  supplement (COCO benchmark).
 
 ## Limits
 
