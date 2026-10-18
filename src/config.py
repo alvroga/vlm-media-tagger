@@ -98,6 +98,10 @@ PARALLEL_WORKERS = _int_setting("PARALLEL_WORKERS", 1)
 # always-on check for profanity a TRANSLATION invents.
 FILTER_PROFANITY = os.environ.get("FILTER_PROFANITY", "").lower() == "true"
 
+# App: how often the sidebar's DaVinci Resolve light checks that a Resolve it
+# connected to is still running (a crash or a manual quit turns it red).
+RESOLVE_WATCH_SECONDS = _int_setting("RESOLVE_WATCH_SECONDS", 10)
+
 TRANSLATION_MODELS_DIR = Path(
     os.environ.get("TRANSLATION_MODELS_DIR") or APP_SUPPORT_DIR / "translation_models")
 

@@ -136,6 +136,11 @@ def _running_resolve_pids() -> list[str]:
     return result.stdout.split() if result.returncode == 0 else []
 
 
+def resolve_running() -> bool:
+    """True while any Resolve process (headless or GUI) is alive."""
+    return bool(_running_resolve_pids())
+
+
 def _wait_for_scripting_api(timeout=RESOLVE_STARTUP_TIMEOUT):
     """Poll dvr.scriptapp("Resolve") until it returns non-None or `timeout`
     elapses. Returns the resolve instance, or None on timeout."""

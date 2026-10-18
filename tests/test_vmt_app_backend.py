@@ -535,3 +535,38 @@ def test_run_analyze_engine_down(backend, monkeypatch):
     asyncio.new_event_loop().run_until_complete(backend._run_analyze(scheduled=False))
     assert backend._batch_running is False
     assert any(e.get("type") == "run_status" and e.get("cls") == "err" for e in pushed)
+
+
+# -- DaVinci Resolve light ------------------------------------------------------------
+
+def test_resolve_light_follows_start_crash_and_stop(backend, monkeypatch):
+    import asyncio
+
+    from vmt_app import app
+    events = []
+    monkeypatch.setattr(backend, "push", lambda **ev: events.append(ev))
+    monkeypatch.setattr(config, "RESOLVE_WATCH_SECONDS", 0)
+    monkeypatch.setattr(app.resolve_proxy, "ensure_resolve_running", lambda: (object(), False))
+    alive = {"v": True}
+    monkeypatch.setattr(app.resolve_proxy, "resolve_running", lambda: alive["v"])
+    monkeypatch.setattr(app.tagger, "shutdown_resolve", lambda: None)
+    assert backend.snapshot()["resolve_light"] == "off"
+
+    async def scenario():
+        await backend._start_resolve()
+        assert backend._resolve_light == "ok"
+        await asyncio.sleep(0.01)                      # watcher sees Resolve alive
+        assert backend._resolve_handle is not None
+        alive["v"] = False                             # Resolve crashed / quit by hand
+        await asyncio.wait_for(backend._resolve_watch_task, 1)
+        assert backend._resolve_handle is None and backend._resolve_light == "error"
+        alive["v"] = True                              # toggle off and on: fresh start
+        await backend._stop_resolve()
+        assert backend._resolve_light == "off"
+        await backend._start_resolve()
+        assert backend._resolve_light == "ok"
+        await backend._stop_resolve()
+        await asyncio.wait_for(backend._resolve_watch_task, 1)  # exits once stopped
+    asyncio.new_event_loop().run_until_complete(scenario())
+    lights = [ev["light"] for ev in events if ev.get("type") == "resolve"]
+    assert lights == ["busy", "ok", "error", "off", "busy", "ok", "off"]

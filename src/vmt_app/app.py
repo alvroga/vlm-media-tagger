@@ -188,6 +188,10 @@ class Backend:
         # Serializes _start_resolve/_stop_resolve: the startup auto-start can
         # otherwise race a manual toggle and leak a Resolve process on quit.
         self._resolve_lock = asyncio.Lock()
+        # The sidebar light: off | busy | ok | error. Enabled-but-not-started
+        # yet (Resolve waits for the engine setup) already reads as busy.
+        self._resolve_light = "busy" if self.settings.get("resolve_enabled") else "off"
+        self._resolve_watch_task: asyncio.Task | None = None
 
         # Per-source (done, total), in memory only: recomputed on demand.
         # _progress_gen bumps whenever what "done" means changes (tasks,
@@ -245,6 +249,7 @@ class Backend:
             "pause": {"enabled": bool(s["auto_pause_enabled"]),
                       "start": s["auto_pause_start"], "end": s["auto_pause_end"]},
             "resolve_enabled": bool(s["resolve_enabled"]),
+            "resolve_light": self._resolve_light,
             "reconnect_shares": bool(s["reconnect_shares"]),
             "unmount_on_quit": bool(s["unmount_on_quit"]),
             "filter_profanity": bool(s["filter_profanity"]),
@@ -549,7 +554,7 @@ class Backend:
                       message="✗ enter a server address like smb://nas.local")
             return
         self.push(type="sources_status",
-                  message="Connecting… once the share is mounted, use Add Folder to pick a folder on it.")
+                  message="Connecting… once the volume is mounted, use Add Folder to pick a folder on it.")
 
     def _spawn_progress_refresh(self, path: str) -> None:
         """Recount one source in the background. One scan per source at a
@@ -1002,24 +1007,50 @@ class Backend:
 
     # -- DaVinci Resolve Studio lifecycle ---------------------------------------
 
-    def _set_resolve_status(self, text: str, cls: str = "") -> None:
-        self.push(type="resolve", text=text, cls=cls)
+    def _set_resolve_status(self, text: str, cls: str = "", light: str = "off") -> None:
+        self._resolve_light = light
+        self.push(type="resolve", text=text, cls=cls, light=light)
 
     async def _start_resolve(self) -> None:
         async with self._resolve_lock:
             if self._resolve_handle is not None:
                 return
-            self._set_resolve_status("Starting…")
+            self._set_resolve_status("Starting…", light="busy")
             try:
                 resolve, ours_to_quit = await asyncio.to_thread(resolve_proxy.ensure_resolve_running)
             except Exception as e:
-                self._set_resolve_status(f"✗ {_short(e)}", "err")
+                self._set_resolve_status(f"✗ {_short(e)}", "err", light="error")
                 return
             self._resolve_handle = (resolve, ours_to_quit)
             # ours_to_quit is False when another live process (the CLI, or
             # another instance of this app) already owns this Resolve.
             self._set_resolve_status(
-                "✓ Running" if ours_to_quit else "✓ Running (managed by another process)", "ok")
+                "✓ Running" if ours_to_quit else "✓ Running (managed by another process)", "ok",
+                light="ok")
+            if self._resolve_watch_task is None or self._resolve_watch_task.done():
+                self._resolve_watch_task = asyncio.ensure_future(self._watch_resolve())
+
+    async def _watch_resolve(self) -> None:
+        """Keeps the light honest: Resolve can crash or be quit by hand while
+        we hold a handle. Clears the handle so toggling the option off and on
+        starts a fresh one."""
+        while self._resolve_handle is not None:
+            await asyncio.sleep(config.RESOLVE_WATCH_SECONDS)
+            if self._resolve_handle is None:
+                return
+            if await asyncio.to_thread(resolve_proxy.resolve_running):
+                continue
+            async with self._resolve_lock:
+                if self._resolve_handle is None:  # stopped meanwhile: not a crash
+                    return
+                _, ours_to_quit = self._resolve_handle
+                self._resolve_handle = None
+                if ours_to_quit:
+                    resolve_proxy.release_ownership()
+                self._set_resolve_status(
+                    "✗ Resolve is no longer running — turn this off and on to restart it",
+                    "err", light="error")
+            return
 
     async def _stop_resolve(self) -> None:
         async with self._resolve_lock:
@@ -1029,7 +1060,7 @@ class Backend:
                 resolve, ours_to_quit = self._resolve_handle
                 self._resolve_handle = None
                 if ours_to_quit:
-                    self._set_resolve_status("Stopping…")
+                    self._set_resolve_status("Stopping…", light="busy")
                     started = time.time()
                     try:
                         # Bounded, but awaited: on quit the process is about
@@ -1062,10 +1093,12 @@ class Backend:
 
             if timed_out:
                 self._set_resolve_status(
-                    "✗ Resolve did not quit within 30s — it may still be running", "err")
+                    "✗ Resolve did not quit within 30s — it may still be running", "err",
+                    light="error")
             elif failed:
                 self._set_resolve_status(
-                    "✗ Resolve did not quit cleanly — it may still be running (see the log)", "err")
+                    "✗ Resolve did not quit cleanly — it may still be running (see the log)", "err",
+                    light="error")
             else:
                 self._set_resolve_status("")
 

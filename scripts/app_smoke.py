@@ -91,6 +91,10 @@ def scenario(window, backend: "app.Backend", media: Path) -> None:
                                  "document.getElementById('engine-text').textContent.indexOf('ready') !== -1",
                          600, every=2)
         check(ready, "AI engine ready, setup overlay hidden")
+        # Resolve light: off unless the option is on (a clean profile has it off).
+        light = js(window, "document.querySelector('#resolve-pill .dot').className + '|' + "
+                           "document.getElementById('resolve-text').textContent")
+        check(light == "dot off|DaVinci Resolve off", f"Resolve light shown: {light!r}")
 
         # Settings tabs switch.
         for tab in ("tab-output", "tab-automation", "tab-integrations", "tab-general"):

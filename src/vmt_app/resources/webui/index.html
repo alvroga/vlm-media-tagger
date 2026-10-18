@@ -44,6 +44,7 @@
     </nav>
     <div class="sidebar-status">
       <div class="engine-pill" id="engine-pill"><span class="dot busy"></span><span id="engine-text">AI engine starting…</span></div>
+      <div class="engine-pill" id="resolve-pill" title="DaVinci Resolve Studio (Settings → Integrations)"><span class="dot off"></span><span id="resolve-text">DaVinci Resolve off</span></div>
     </div>
     <div class="sidebar-foot" id="sidebar-version"></div>
   </aside>
@@ -205,20 +206,20 @@
             <button class="btn btn-outline btn-sm" id="btn-reveal-data" style="flex:none;">Reveal in Finder</button>
           </div>
 
-          <div class="section-label" style="margin-top:22px;">Network shares</div>
+          <div class="section-label" style="margin-top:22px;">Network volumes</div>
           <div class="check-row">
             <div class="checkbox" id="cb-reconnect-shares"></div>
             <div class="copy">
-              <span class="t">Reconnect shares at launch</span>
-              <span class="d">Remount the shares your selected sources live on, using the login saved in your
-                Keychain. The app never sees or stores share passwords.</span>
+              <span class="t">Reconnect volumes at launch</span>
+              <span class="d">Remount the network volumes your selected sources live on, using the login saved in your
+                Keychain. The app never sees or stores volume passwords.</span>
             </div>
           </div>
           <div class="check-row">
             <div class="checkbox" id="cb-unmount-on-quit"></div>
             <div class="copy">
-              <span class="t">Unmount shares on quit</span>
-              <span class="d">Release the shares the app reconnected when it closes (shares you mounted yourself
+              <span class="t">Unmount volumes on quit</span>
+              <span class="d">Release the volumes the app reconnected when it closes (volumes you mounted yourself
                 are left alone). Useful on a shared Mac: an overnight run, then a different user during the day.</span>
             </div>
           </div>

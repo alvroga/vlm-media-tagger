@@ -87,6 +87,22 @@ function setEngine(ev) {
   $("btn-analyze").disabled = state.running;
 }
 
+/* DaVinci Resolve light (sidebar): the detail line lives in Settings → Integrations. */
+var RESOLVE_LIGHT = {
+  off: ["off", "DaVinci Resolve off"],
+  busy: ["busy", "DaVinci Resolve starting…"],
+  ok: ["good", "✓ DaVinci Resolve ready"],
+  error: ["bad", "✗ DaVinci Resolve unavailable"],
+};
+
+function setResolveLight(light, detail) {
+  var spec = RESOLVE_LIGHT[light] || RESOLVE_LIGHT.off;
+  var text = spec[1];
+  if (light === "busy" && /^Stopping/.test(detail || "")) text = "DaVinci Resolve stopping…";
+  $("resolve-pill").querySelector(".dot").className = "dot " + spec[0];
+  $("resolve-text").textContent = text;
+}
+
 /* ---------- run status animation ---------- */
 
 function setRunStatus(text, cls) {
@@ -264,7 +280,7 @@ function renderSources(rows) {
     empty.className = "field-note";
     empty.style.padding = "14px 2px";
     empty.textContent = "No sources yet. Add a folder (scanned with all its subfolders), individual files, " +
-      "or a folder on a network share.";
+      "or a folder on a network volume.";
     list.appendChild(empty);
   }
 }
@@ -436,6 +452,7 @@ var UI = {
         var rs = $("resolve-status");
         rs.textContent = ev.text || "";
         rs.className = "status-line" + (ev.cls ? " " + ev.cls : "");
+        setResolveLight(ev.light, ev.text);
         break;
       }
       case "skipped": renderSkipped(ev); break;
@@ -472,6 +489,7 @@ function applySnapshot(s) {
   updateAutomationNote();
 
   checkboxes.resolve.set(s.resolve_enabled);
+  setResolveLight(s.resolve_light);
   checkboxes.reconnectShares.set(s.reconnect_shares);
   checkboxes.unmountOnQuit.set(s.unmount_on_quit);
   checkboxes.filterProfanity.set(s.filter_profanity);

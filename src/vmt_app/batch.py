@@ -189,7 +189,7 @@ def collect_candidates(sources: list[str], tasks: set[str], output_sinks: list, 
             todo = [] if done else [p]
             progress[source] = (1 if done else 0, 1)
         else:
-            print(f"  NOTE: {source} is not available (unplugged, or a share that "
+            print(f"  NOTE: {source} is not available (unplugged, or a network volume that "
                   f"isn't mounted) — skipped this run")
             continue
         kept = []
@@ -305,7 +305,7 @@ def run_batch(
             consecutive_failures += 1
             if consecutive_failures >= _BREAKER_LIMIT and i < total:
                 print(f"\nAborting: {consecutive_failures} files in a row failed — this "
-                      "looks systemic (the AI engine or a share went away), not a bad "
+                      "looks systemic (the AI engine or a network volume went away), not a bad "
                       "file. Finished files are saved; fix the cause and run again to "
                       "continue where this left off.")
                 break
