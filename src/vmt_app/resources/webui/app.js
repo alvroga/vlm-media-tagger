@@ -87,18 +87,18 @@ function setEngine(ev) {
   $("btn-analyze").disabled = state.running;
 }
 
-/* DaVinci Resolve light (sidebar): the detail line lives in Settings → Integrations. */
+/* DaVinci Resolve Studio light (sidebar): the detail line lives in Settings → Integrations. */
 var RESOLVE_LIGHT = {
-  off: ["off", "DaVinci Resolve off"],
-  busy: ["busy", "DaVinci Resolve starting…"],
-  ok: ["good", "✓ DaVinci Resolve ready"],
-  error: ["bad", "✗ DaVinci Resolve unavailable"],
+  off: ["off", "DaVinci Resolve Studio off"],
+  busy: ["busy", "DaVinci Resolve Studio starting…"],
+  ok: ["good", "✓ DaVinci Resolve Studio ready"],
+  error: ["bad", "✗ DaVinci Resolve Studio unavailable"],
 };
 
 function setResolveLight(light, detail) {
   var spec = RESOLVE_LIGHT[light] || RESOLVE_LIGHT.off;
   var text = spec[1];
-  if (light === "busy" && /^Stopping/.test(detail || "")) text = "DaVinci Resolve stopping…";
+  if (light === "busy" && /^Stopping/.test(detail || "")) text = "DaVinci Resolve Studio stopping…";
   $("resolve-pill").querySelector(".dot").className = "dot " + spec[0];
   $("resolve-text").textContent = text;
 }

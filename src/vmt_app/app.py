@@ -1048,7 +1048,7 @@ class Backend:
                 if ours_to_quit:
                     resolve_proxy.release_ownership()
                 self._set_resolve_status(
-                    "✗ Resolve is no longer running — turn this off and on to restart it",
+                    "✗ DaVinci Resolve Studio is no longer running — turn this off and on to restart it",
                     "err", light="error")
             return
 

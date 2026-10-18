@@ -345,7 +345,7 @@ def main() -> int:
     ap.add_argument("--filter-profanity", action="store_true",
                     help="drop/redact profanity present in the media itself")
     ap.add_argument("--no-resolve", action="store_true",
-                    help="never launch DaVinci Resolve for RAW files")
+                    help="never launch DaVinci Resolve Studio for RAW files")
     ap.add_argument("--force", action="store_true", help="redo cached cuts/frames")
     ap.add_argument("--keep-workdir", action="store_true",
                     help=f"keep per-file frames/cuts under {config.DATA_DIR}")

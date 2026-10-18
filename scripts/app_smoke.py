@@ -94,7 +94,7 @@ def scenario(window, backend: "app.Backend", media: Path) -> None:
         # Resolve light: off unless the option is on (a clean profile has it off).
         light = js(window, "document.querySelector('#resolve-pill .dot').className + '|' + "
                            "document.getElementById('resolve-text').textContent")
-        check(light == "dot off|DaVinci Resolve off", f"Resolve light shown: {light!r}")
+        check(light == "dot off|DaVinci Resolve Studio off", f"Resolve light shown: {light!r}")
 
         # Settings tabs switch.
         for tab in ("tab-output", "tab-automation", "tab-integrations", "tab-general"):

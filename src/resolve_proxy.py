@@ -283,7 +283,7 @@ def ensure_resolve_running():
     gui_pid = _find_gui_resolve_pid()
     if gui_pid is not None:
         raise RuntimeError(
-            "DaVinci Resolve is open — close it so a background instance "
+            "DaVinci Resolve Studio is open — close it so a background instance "
             "can be started."
         )
 
