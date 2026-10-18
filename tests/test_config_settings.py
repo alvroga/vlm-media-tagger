@@ -42,3 +42,10 @@ def test_app_support_dir_default_is_the_standard_macos_location():
         pytest.skip("VMT_APP_SUPPORT_DIR overrides the default")
     assert config.APP_SUPPORT_DIR == (
         Path.home() / "Library" / "Application Support" / "VLM Media Tagger")
+
+
+def test_vendored_word_lists_resolve_in_a_checkout():
+    # The built app has them at Resources/app/ldnoobw (profanity._VENDOR_DIR
+    # checks both); in a checkout they must be found under vendor/.
+    import profanity
+    assert (profanity._VENDOR_DIR / "en.txt").is_file()

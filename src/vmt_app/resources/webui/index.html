@@ -1,0 +1,346 @@
+<!doctype html>
+<!-- VLM Media Tagger front end (pywebview / WKWebView). Backend bridge:
+     window.pywebview.api (calls in) + UI.dispatch (events out); see app.js
+     and vmt_app/app.py. No external resources: a strictly local page. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VLM Media Tagger</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+
+<div id="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <svg class="app-mark" viewBox="0 0 40 40" aria-hidden="true" fill="none">
+        <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="2.2"/>
+        <circle cx="20" cy="20" r="8.6" stroke="currentColor" stroke-width="1.6" opacity="0.55"/>
+        <circle cx="20" cy="20" r="5" fill="#ff3b1e" opacity="0.28"/>
+        <circle cx="20" cy="20" r="3" fill="#ff2a12"/>
+        <circle cx="20" cy="20" r="1.1" fill="#ffdaa8"/>
+      </svg>
+      <div class="wordmark">VLM <span class="w2">Media Tagger</span></div>
+    </div>
+    <nav class="nav">
+      <button class="nav-item active" data-target="screen-analysis" id="nav-analysis">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><path d="M8 0.6V3M8 13V15.4M0.6 8H3M13 8H15.4" stroke="currentColor" stroke-width="1.3"/></svg>
+        <span class="label">Analyze</span>
+      </button>
+      <button class="nav-item" data-target="screen-log" id="nav-log">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        <span class="label">Log</span>
+      </button>
+      <button class="nav-item" data-target="screen-skipped" id="nav-skipped">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4.5L8 1.5L14 4.5V11.5L8 14.5L2 11.5V4.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.6 7.4L8 8.6L10.4 7.4M8 8.6V12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="label">Skipped Files</span>
+        <span class="nav-badge" id="nav-skipped-badge" hidden>0</span>
+      </button>
+      <button class="nav-item" data-target="screen-settings" id="nav-settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="label">Settings</span>
+      </button>
+    </nav>
+    <div class="sidebar-status">
+      <div class="engine-pill" id="engine-pill"><span class="dot busy"></span><span id="engine-text">AI engine starting…</span></div>
+    </div>
+    <div class="sidebar-foot" id="sidebar-version"></div>
+  </aside>
+
+  <main>
+    <!-- ANALYZE -->
+    <section class="screen" id="screen-analysis">
+      <div class="screen-head">
+        <h2>Analyze</h2>
+      </div>
+
+      <div class="panel panel-sources" id="panel-sources">
+        <div class="panel-head">
+          <h3>Sources</h3>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div class="check-row" style="padding:0;">
+              <div class="checkbox" id="cb-select-all"></div>
+              <div class="copy"><span class="t" style="font-weight:600;font-size:0.82rem;">Select all</span></div>
+            </div>
+            <button class="btn btn-outline btn-sm" id="btn-edit-sources">Edit list</button>
+          </div>
+        </div>
+        <div id="sources-list"></div>
+        <div id="sources-hidden-wrap" hidden style="margin-top:6px;">
+          <button class="sources-hidden-toggle" id="btn-toggle-hidden" type="button"></button>
+          <div id="sources-hidden-list" hidden></div>
+        </div>
+        <div class="row-between" style="margin-top:16px;">
+          <span style="font-size:0.78rem;color:var(--text-faint);" id="sources-status">Add a folder or files to analyze.</span>
+          <div class="source-actions">
+            <button class="btn btn-outline btn-sm" id="btn-add-folder">Add Folder…</button>
+            <button class="btn btn-outline btn-sm" id="btn-add-files">Add Files…</button>
+            <button class="btn btn-outline btn-sm" id="btn-show-connect">Connect to Server…</button>
+            <button class="btn btn-outline btn-sm" id="btn-refresh-sources">Refresh</button>
+          </div>
+        </div>
+        <div class="connect-row" id="connect-row" hidden>
+          <input type="text" id="in-server" placeholder="smb://nas.local" autocapitalize="off" autocorrect="off" spellcheck="false" />
+          <button class="btn btn-outline btn-sm" id="btn-connect">Connect</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Tasks</h3></div>
+        <div class="check-row inline">
+          <div class="checkbox on" id="cb-tags"></div>
+          <div class="copy">
+            <span class="t">Object tags</span>
+            <span class="d" id="task-dest-tags">→ JSON sidecar</span>
+          </div>
+        </div>
+        <div class="check-row inline">
+          <div class="checkbox on" id="cb-describe"></div>
+          <div class="copy">
+            <span class="t">Descriptions</span>
+            <span class="d" id="task-dest-desc">→ JSON sidecar</span>
+          </div>
+        </div>
+        <div class="automation-note-row">
+          <span class="status-line" id="automation-note" style="margin:0;">Automatic re-run is off.</span>
+          <button class="btn btn-outline btn-sm" id="btn-goto-automation">Automation settings →</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Run</h3></div>
+        <div class="run-bar">
+          <button class="btn btn-primary" id="btn-analyze" disabled>Analyze</button>
+          <button class="btn btn-danger" id="btn-stop" disabled>Stop</button>
+          <span class="run-status" id="run-status"></span>
+          <!-- Activity glyph, cycled from app.js while body.running. -->
+          <div class="torch" id="torch" aria-hidden="true"></div>
+        </div>
+
+        <div class="progress-wrap" style="margin-top:12px;">
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          <div class="progress-meta">
+            <span class="phase" id="progress-phase">Idle</span>
+            <span id="progress-count"></span>
+          </div>
+          <div class="progress-file mono" id="progress-file"></div>
+        </div>
+        <div class="field-note" style="margin-top:6px;">Full step-by-step detail lives on the <a href="#" id="link-to-log">Log</a> page. AI-generated tags and descriptions can make mistakes.</div>
+      </div>
+
+      <button class="stat-tile" id="skipped-stat">
+        <div class="left">
+          <span class="num" id="skipped-count">0</span>
+          <div class="lbl">
+            <span class="t">Skipped files</span>
+            <span class="d">RAW awaiting a transcode, or undecodable — click to review</span>
+          </div>
+        </div>
+        <span class="chev">→</span>
+      </button>
+    </section>
+
+    <!-- LOG -->
+    <section class="screen screen-fill" id="screen-log" hidden>
+      <div class="screen-head">
+        <h2>Log</h2>
+      </div>
+      <div class="path-row">
+        <span id="logs-dir-path"></span>
+        <button class="btn btn-outline btn-sm" id="btn-reveal-logs" style="flex:none;">Reveal in Finder</button>
+      </div>
+      <div class="panel">
+        <div class="runlog" id="runlog"><div class="ln placeholder">No run yet.</div></div>
+      </div>
+    </section>
+
+    <!-- SKIPPED FILES -->
+    <section class="screen" id="screen-skipped" hidden>
+      <div class="screen-head">
+        <h2>Skipped Files</h2>
+      </div>
+
+      <div class="panel">
+        <div class="row-between" style="margin-bottom:12px;">
+          <span class="status-line" id="skipped-status" style="margin:0;">No skipped files.</span>
+          <div class="source-actions">
+            <button class="btn btn-outline btn-sm" id="btn-retry-skipped" title="Try every skipped file again on the next run">Retry all</button>
+            <button class="btn btn-outline btn-sm" id="btn-refresh-skipped">Refresh</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="mini">
+            <thead><tr><th>Source</th><th>Path</th><th>Reason</th><th>Logged At</th></tr></thead>
+            <tbody id="skipped-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="screen" id="screen-settings" hidden>
+      <div class="screen-head">
+        <h2>Settings</h2>
+      </div>
+
+      <div class="panel">
+        <div class="tabbar">
+          <button class="tab-btn active" data-tab="tab-general">General</button>
+          <button class="tab-btn" data-tab="tab-output">Output</button>
+          <button class="tab-btn" data-tab="tab-automation">Automation</button>
+          <button class="tab-btn" data-tab="tab-integrations">Integrations</button>
+        </div>
+
+        <div class="tab-panel" id="tab-general">
+          <div class="section-label">AI engine</div>
+          <div class="path-row" style="margin-bottom:4px;"><span id="engine-description"></span></div>
+          <div class="field-note" style="margin-top:4px;">Everything runs on this Mac. Your media is never uploaded.</div>
+
+          <div class="section-label" style="margin-top:22px;">Data</div>
+          <div class="field-note" style="margin-bottom:8px;margin-top:0;">The AI model, translation models,
+            settings and working files are stored here.</div>
+          <div class="path-row">
+            <span id="data-dir-path"></span>
+            <button class="btn btn-outline btn-sm" id="btn-reveal-data" style="flex:none;">Reveal in Finder</button>
+          </div>
+
+          <div class="section-label" style="margin-top:22px;">Network shares</div>
+          <div class="check-row">
+            <div class="checkbox" id="cb-reconnect-shares"></div>
+            <div class="copy">
+              <span class="t">Reconnect shares at launch</span>
+              <span class="d">Remount the shares your selected sources live on, using the login saved in your
+                Keychain. The app never sees or stores share passwords.</span>
+            </div>
+          </div>
+          <div class="check-row">
+            <div class="checkbox" id="cb-unmount-on-quit"></div>
+            <div class="copy">
+              <span class="t">Unmount shares on quit</span>
+              <span class="d">Release the shares the app reconnected when it closes (shares you mounted yourself
+                are left alone). Useful on a shared Mac: an overnight run, then a different user during the day.</span>
+            </div>
+          </div>
+
+          <div class="section-label" style="margin-top:22px;">Logs</div>
+          <div class="field-note" style="margin-bottom:8px;margin-top:0;">Run logs older than this are deleted
+            at the start of each run.</div>
+          <div class="field">
+            <label for="in-log-retention-days">Delete logs older than (days)</label>
+            <input type="text" id="in-log-retention-days" inputmode="numeric" placeholder="30" />
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-output" hidden>
+          <div class="section-label">Where results go</div>
+          <div class="field-note" style="margin-bottom:8px;margin-top:0;">Each file gets a JSON sidecar beside it
+            (<span class="mono">clip.mp4</span> → <span class="mono">clip.mp4.json</span>) with its tags,
+            description and when each appears. The sidecar is also how the app knows a file is done: a changed file
+            is analyzed again. In a read-only folder the sidecar goes under the data folder instead. More outputs
+            (a JSONL file, your own plugin) are set with <span class="mono">OUTPUT_SINKS</span>; see docs/plugins.md.</div>
+          <div class="path-row"><span>Active outputs</span><span id="sinks-list"></span></div>
+
+          <div class="section-label" style="margin-top:22px;">Output language</div>
+          <div class="field-note" style="margin-bottom:8px;margin-top:0;">Languages other than English are
+            machine-translated and may contain mistakes. Each language downloads once (about 300&nbsp;MB).</div>
+          <div class="field">
+            <label for="sel-language">Language</label>
+            <select id="sel-language"></select>
+          </div>
+          <div id="lang-download" class="field-note" hidden style="margin-top:10px;">
+            <div style="height:6px;border-radius:3px;background:rgba(127,127,127,0.22);overflow:hidden;">
+              <div id="lang-download-fill" style="height:100%;width:0%;background:currentColor;transition:width .2s ease;"></div>
+            </div>
+            <div id="lang-download-status" style="margin-top:6px;"></div>
+          </div>
+
+          <div class="section-label" style="margin-top:22px;">Re-analysis</div>
+          <div class="check-row">
+            <div class="checkbox" id="cb-redo-other-model"></div>
+            <div class="copy">
+              <span class="t">Redo files analyzed by a different model</span>
+              <span class="d">Off: a file with results is done, whichever model produced them. On: results from
+                another model (for example after an upgrade) count as not done. Never automatic.</span>
+            </div>
+          </div>
+
+          <div class="section-label" style="margin-top:22px;">Content</div>
+          <div class="check-row">
+            <div class="checkbox" id="cb-filter-profanity"></div>
+            <div class="copy">
+              <span class="t">Filter profanity</span>
+              <span class="d">Remove profanity genuinely present in the media (a sign, dialogue, a shirt) from
+                tags and descriptions.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-automation" hidden>
+          <div class="check-row">
+            <div class="checkbox" id="cb-auto"></div>
+            <div class="copy">
+              <span class="t">Re-run automatically</span>
+              <span class="d">Repeat over the selected sources to pick up new files.</span>
+            </div>
+          </div>
+          <div class="field" style="margin-top:8px;">
+            <label for="sel-interval">Interval</label>
+            <select id="sel-interval" class="interval-select" disabled>
+              <option value="30">every 30 minutes</option>
+              <option value="60" selected>every hour</option>
+              <option value="120">every 2 hours</option>
+              <option value="360">every 6 hours</option>
+              <option value="720">every 12 hours</option>
+              <option value="1440">every 24 hours</option>
+            </select>
+          </div>
+          <div class="check-row" style="margin-top:2px;">
+            <div class="checkbox" id="cb-pause"></div>
+            <div class="copy">
+              <span class="t">Pause window</span>
+              <span class="d">Don't start scheduled runs during these hours (a run already in progress finishes).</span>
+            </div>
+          </div>
+          <div class="pause-times" id="pause-times">
+            <input type="time" id="in-pause-start" value="09:00" disabled />
+            <span class="pause-sep">to</span>
+            <input type="time" id="in-pause-end" value="18:00" disabled />
+          </div>
+          <div class="status-line" id="auto-status" style="margin-top:10px;"></div>
+        </div>
+
+        <div class="tab-panel" id="tab-integrations" hidden>
+          <div class="check-row">
+            <div class="checkbox" id="cb-resolve"></div>
+            <div class="copy">
+              <span class="t">DaVinci Resolve Studio</span>
+              <span class="d">Decodes RAW camera video (R3D, BRAW, ARRIRAW, X-OCN) through a local 720p transcode.
+                Needs Resolve Studio installed; see Skipped Files.</span>
+            </div>
+          </div>
+          <div class="status-line" id="resolve-status"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- FIRST-LAUNCH SETUP OVERLAY (model download + engine start) -->
+<div id="setup-overlay" hidden>
+  <div class="setup-card">
+    <img src="logo.png" alt="" class="setup-logo" onerror="this.hidden=true" />
+    <h2>First-time setup</h2>
+    <p>VLM Media Tagger analyzes media with a local AI vision model (about 22&nbsp;GB; it needs a Mac with
+       32&nbsp;GB of memory or more).</p>
+    <p>It is downloaded once, onto this Mac — nothing is sent to any cloud service.
+       Quitting is safe: the download resumes.</p>
+    <div class="progress-track setup-track"><div class="progress-fill indeterminate" id="setup-fill"></div></div>
+    <div class="setup-status" id="setup-status">Starting…</div>
+    <button class="btn btn-primary" id="btn-setup-retry" hidden>Retry</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

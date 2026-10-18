@@ -53,7 +53,31 @@ image ─► PIL / macOS sips (HEIC, PSD, camera RAW) ─► still prompt ─►
 | `src/resolve_proxy.py` | headless DaVinci Resolve Studio proxy renderer (from [resolve-proxy-nogui](https://github.com/alvroga/resolve-proxy-nogui)) |
 | `src/opus_translate.py`, `src/translation_models/` | tc-big → base OPUS-MT hybrid, models fetched on demand |
 
-## Quick start
+## The app
+
+A macOS app over the same pipeline. Add folders (scanned with all their subfolders), single files, or folders on
+a network share; pick tags and/or descriptions; press Analyze. Each file gets its JSON sidecar
+(`clip.mp4` → `clip.mp4.json`), and the next run skips everything already done, so a big library can be
+processed in as many sittings as you like, or on a schedule (Settings → Automation).
+
+- **Network shares (SMB/AFP/NFS):** connect with Connect to Server (macOS's own dialog; the password stays in
+  your Keychain) and add a folder on the share. The app remembers the share, reconnects it at launch and can
+  unmount it on quit.
+- **First launch** downloads the AI model once (22 GB, or links it from a local Ollama store), then loads it.
+  Needs an Apple Silicon Mac with 32 GB of memory or more.
+- **RAW camera files** (BRAW, R3D, ARRIRAW, X-OCN) work when DaVinci Resolve Studio is installed and enabled in
+  Settings → Integrations.
+- **Send results elsewhere:** add an output plugin ([`docs/plugins.md`](docs/plugins.md)).
+
+Run it from a checkout (after the Quick start's engine steps):
+
+```bash
+./venv/bin/pip install -r requirements-app.txt
+cd src && ../venv/bin/python -m vmt_app
+../venv/bin/python ../scripts/app_smoke.py   # optional: end-to-end check that drives the real window
+```
+
+## Quick start (CLI)
 
 ```bash
 python3.13 -m venv venv && ./venv/bin/pip install -r requirements.txt

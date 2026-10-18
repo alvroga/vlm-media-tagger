@@ -53,6 +53,11 @@ class WebhookSink(OutputSink):
 
 A sink that raises is logged and skipped for that file; it never stops the run or the other sinks.
 
+**Lifecycle.** One instance lives as long as the app (or one CLI run). The app calls `close()` at the end of
+every run and keeps using the same instance, so `write()` can follow `close()`: reopen lazily on the next
+write, as `JsonlSink` does. `is_done()` is called from background threads (the app's progress counts) while a
+run may be writing, so keep it read-only and thread-safe.
+
 ## The record
 
 The keys a sink receives (the sidecar stores the same data, minus the run-only `path`/`status` and plus its
@@ -60,11 +65,11 @@ own bookkeeping):
 
 | Key | Meaning |
 |---|---|
-| `status` | `ok`, or why not: `undecodable`, `image-undecodable`, `resolve-unavailable`, `pipeline-failed`, `redundant-chunk` |
+| `status` | `ok`, or why not: `undecodable`, `image-undecodable`, `resolve-unavailable`, `pipeline-failed`, `redundant-chunk`, `error` |
 | `type` | `video` or `image` |
 | `tags` | cleaned tags, in the output language |
 | `description` | summary (video) or description (image); empty for a tags-only run |
-| `segments` | video only: `[{class, start, end}, …]`, when each tag is on screen |
+| `segments` | video only: `[{tag, start_sec, end_sec, frame_count}, …]`, when each tag is on screen |
 | `duration_sec`, `shot_count` | video only |
 | `source` | `native`, or `resolve-proxy` when DaVinci Resolve decoded a RAW file |
 | `tags_en`, `description_en` | the English originals, when the output language isn't English |

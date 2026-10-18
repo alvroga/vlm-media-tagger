@@ -1,0 +1,610 @@
+/* VLM Media Tagger front end.
+   One skin: 1990s brushed-metal "Winamp" — beveled metal chrome, titlebar
+   panel headers, green-LCD readouts, a spinning run indicator. The
+   structural rules read var() custom properties; the rules after "Skin"
+   below layer on the bevels, gradients and text transforms. */
+
+:root {
+  --bg: #0b0c11;
+  --bg-2: #0f1017;
+  --panel: #171922;
+  --panel-2: #12141c;      /* deeper inset (LCD backgrounds sit on this) */
+  --lcd-bg: #060a06;       /* LCD readout background (near-black green) */
+  --metal-hi: #565c74;
+  --metal: #333850;
+  --metal-lo: #171a26;
+  --border: #000000;
+  --bevel-hi: rgba(255, 255, 255, 0.16);
+  --bevel-hi-soft: rgba(255, 255, 255, 0.08);
+  --bevel-lo: rgba(0, 0, 0, 0.75);
+
+  --text: #d2d5e4;
+  --text-dim: #8f94ad;
+  --text-faint: #5d6178;
+
+  --lcd: #4dff77;          /* Winamp visualizer green */
+  --lcd-dim: #1e6f39;
+  --accent: #ff8a1e;       /* flame orange (primary accent) */
+  --accent-hi: #ffc24d;
+  --accent-contrast: #1a0d02;
+  --accent-wash: rgba(255, 138, 30, 0.16);
+  --accent-wash-strong: rgba(255, 138, 30, 0.32);
+  --good: #4dff77;
+  --good-wash: rgba(77, 255, 119, 0.14);
+  --bad: #ff5a4d;
+  --bad-wash: rgba(255, 90, 77, 0.16);
+  --neutral-wash: #2b2f42;
+
+  --font-display: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Monaco", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Generic names the structural CSS below reads via var() */
+  --surface: #171922;            /* = --panel */
+  --surface-2: #12141c;          /* = --panel-2 */
+  --surface-3: #2b2f42;          /* = --neutral-wash */
+  --border-strong: #565c74;      /* = --metal-hi */
+  --accent-hover: #ffc24d;       /* = --accent-hi */
+  --backdrop-center: #14161f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* the window chrome is fixed: only #sources-list,
+                       .runlog and `main` (as a fallback) scroll */
+  /* Native-app feel inside the WKWebView: no text cursor / rubber-band selection */
+  -webkit-user-select: none;
+  user-select: none;
+}
+input, .runlog, .file-cell, .path-row, table.mini td { -webkit-user-select: text; user-select: text; }
+
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+button, input, select { font-family: inherit; font-size: inherit; color: inherit; }
+a { color: var(--accent); }
+::selection { background: var(--accent-wash-strong); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- App mark (a lens: concentric rings + a glowing red eye) ----------
+   Rings use currentColor so they follow --text; the eye stays red. */
+.app-mark { width: 34px; height: 34px; flex: none; display: block; color: var(--text); }
+
+.wordmark { font-family: var(--font-display); font-weight: 800; font-size: 1rem; line-height: 1.1; letter-spacing: -0.01em; }
+.wordmark .w2 { color: var(--text-dim); }
+
+/* ---------- Form primitives ---------- */
+.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.field label { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.field-row { display: flex; gap: 10px; }
+.field-row .field { flex: 1; }
+.field-row .field.narrow { flex: 0 0 92px; }
+input[type="text"], input[type="password"], input[type="time"], select {
+  background: var(--surface-2);
+  border: 1.5px solid transparent;
+  border-radius: 5px;
+  padding: 10px 12px;
+  color: var(--text);
+  width: 100%;
+}
+input:focus, select:focus { border-color: var(--accent); outline: none; }
+input:disabled, select:disabled { opacity: 0.45; }
+
+/* Checkbox: dark box, amber check */
+.check-row { display: flex; align-items: flex-start; gap: 11px; padding: 6px 0; cursor: pointer; }
+.checkbox {
+  width: 19px; height: 19px; border-radius: 4px; flex: none;
+  background: var(--surface-2); border: 1.5px solid var(--border-strong);
+  cursor: pointer; position: relative; margin-top: 1px;
+}
+.checkbox.on { border-color: var(--accent); }
+.checkbox.on::after {
+  content: ""; position: absolute; left: 5px; top: 2px; width: 5px; height: 10px;
+  border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(40deg);
+}
+.checkbox.disabled { opacity: 0.4; cursor: not-allowed; }
+.check-row .copy { display: flex; flex-direction: column; gap: 2px; }
+.check-row .copy .t { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.check-row .copy .d { font-size: 0.78rem; color: var(--text-dim); }
+/* Single-line variant: title + description on one row (Tasks panel), so
+   the sources list keeps the vertical space. Wraps on a narrow window. */
+.check-row.inline .copy { flex-direction: row; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  border-radius: 6px; border: 1.5px solid transparent;
+  padding: 10px 18px; font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: var(--accent-contrast); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; background: var(--accent); }
+.btn-outline { background: transparent; border-color: var(--border-strong); color: var(--text); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.btn-outline:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-danger { background: transparent; border-color: var(--bad); color: var(--bad); }
+.btn-danger:hover { background: var(--bad-wash); }
+.btn-danger:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-block { width: 100%; }
+.btn-sm { padding: 7px 13px; font-size: 0.76rem; border-radius: 5px; }
+
+.status-line { font-size: 0.8rem; color: var(--text-dim); margin-top: 14px; min-height: 1.2em; overflow-wrap: anywhere; }
+.status-line.ok { color: var(--good); }
+.status-line.err { color: var(--bad); }
+.version-tag { font-size: 0.72rem; color: var(--text-faint); margin-top: 18px; text-align: center; }
+
+/* ---------- Shell ----------
+   A fixed sidebar + `main`, which is the only thing that scrolls (plus,
+   inside it, #sources-list / .runlog): the window never grows a page-level
+   scrollbar. */
+#app-shell { display: grid; grid-template-columns: 220px 1fr; height: 100dvh; }
+
+.sidebar {
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 18px 12px;
+  display: flex; flex-direction: column;
+}
+.sidebar-head { display: flex; align-items: center; gap: 10px; padding: 4px 8px 22px; }
+
+.nav { display: flex; flex-direction: column; gap: 2px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 10px; border-radius: 6px;
+  color: var(--text-dim); font-size: 0.86rem; font-weight: 600;
+  cursor: pointer; border: none; background: none; text-align: left; width: 100%;
+}
+.nav-item svg { flex: none; opacity: 0.75; }
+.nav-item:hover { background: var(--surface-2); color: var(--text); }
+.nav-item.active { background: var(--accent-wash); color: var(--text); }
+.nav-item.active svg { opacity: 1; stroke: var(--accent); }
+.nav-item.disabled { color: var(--text-faint); cursor: not-allowed; opacity: 0.5; }
+.nav-item.disabled:hover { background: none; color: var(--text-faint); }
+.nav-item .label { flex: 1; }
+.nav-badge {
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+  background: var(--surface-3); color: var(--text-dim);
+  border-radius: 9px; padding: 1px 7px; flex: none;
+}
+.nav-item.active .nav-badge { background: var(--accent); color: var(--accent-contrast); }
+
+/* Pushed to the bottom of the sidebar; the version line follows it, so the
+   two read as one footer. */
+.engine-pill { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-dim); padding: 0 10px; overflow-wrap: anywhere; }
+.sidebar-status {
+  margin-top: auto; padding: 10px 0 4px;
+  display: flex; flex-direction: column; gap: 8px;
+  border-top: 1px solid var(--border);
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.dot.good { background: var(--good); box-shadow: 0 0 0 3px var(--good-wash); }
+.dot.bad { background: var(--bad); box-shadow: 0 0 0 3px var(--bad-wash); }
+.dot.busy { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-wash); }
+
+.sidebar-foot { margin-top: 8px; padding: 2px 10px 2px; font-size: 0.68rem; color: var(--text-faint); }
+
+main { grid-column: 2; padding: 18px 26px; max-width: 940px; overflow-y: auto; min-height: 0; }
+.screen { display: flex; flex-direction: column; gap: 14px; }
+.screen-head { display: flex; flex-direction: column; gap: 5px; margin-bottom: 2px; }
+.screen-head h2 { font-size: 1.5rem; font-weight: 800; }
+.screen-head p { font-size: 0.86rem; color: var(--text-dim); max-width: 64ch; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+.panel-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; gap: 10px; flex-wrap: wrap; }
+.panel-head h3 { font-size: 1.02rem; font-weight: 700; }
+.panel-head .hint { font-size: 0.76rem; color: var(--text-faint); }
+
+.automation-note-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+/* Source rows. The sources panel gets exactly the height left over after
+   Tasks / Run / the Skipped tile: `height: 100%` on the screen is a hard
+   cap (min-height would be a floor that grows to fit every row and pushes
+   the scrollbar back onto the page), and min-height: 0 lets the list
+   shrink to that leftover and scroll inside. */
+#screen-analysis { height: 100%; }
+#screen-analysis > * { flex-shrink: 0; }
+#screen-analysis > .panel-sources { flex: 1 1 auto; min-height: 200px; display: flex; flex-direction: column; }
+#sources-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin-top: 2px; padding-right: 4px; }
+.source-row { display: flex; align-items: center; gap: 13px; padding: 8px 2px; border-bottom: 1px solid var(--border); }
+.source-row:last-child { border-bottom: none; }
+/* Name + progress on one line (wrapping only when long); the location
+   sits right-aligned next to the pill, in its own colour. */
+.source-name { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+.source-name .t { font-size: 0.9rem; font-weight: 700; }
+.source-name .progress { font-size: 0.76rem; color: var(--text-dim); overflow-wrap: anywhere; min-width: 0; }
+.source-status { flex: none; font-size: 0.76rem; color: var(--text-faint); text-align: right; overflow-wrap: anywhere; max-width: 45%; }
+.pill { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.01em; padding: 3px 9px; border-radius: 4px; flex: none; white-space: nowrap; }
+.pill.good { background: var(--good-wash); color: var(--good); }
+.pill.bad { background: var(--bad-wash); color: var(--bad); }
+.pill.neutral { background: var(--surface-3); color: var(--text-dim); }
+.pill.accent { background: var(--accent-wash); color: var(--accent); }
+
+/* The per-row Hide / Remove buttons only show in edit mode
+   (#btn-edit-sources); normal browsing has no destructive affordance. */
+.source-hide-btn {
+  display: none; flex: none; background: none; border: none; cursor: pointer;
+  color: var(--text-faint); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.02em; padding: 5px 9px; border-radius: 5px;
+}
+.panel-sources.edit-mode .source-hide-btn { display: inline-flex; align-items: center; }
+.source-hide-btn:hover { color: var(--bad); background: var(--bad-wash); }
+.source-remove-btn {
+  display: none; flex: none; background: none; border: none; cursor: pointer;
+  color: var(--text-faint); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.02em; padding: 5px 9px; border-radius: 5px;
+}
+.panel-sources.edit-mode .source-remove-btn { display: inline-flex; align-items: center; }
+.source-remove-btn:hover { color: var(--bad); background: var(--bad-wash); }
+.source-kind { flex: none; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint); width: 4.5em; text-transform: uppercase; }
+.source-name .t { cursor: pointer; }
+.source-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.connect-row { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
+.connect-row input { max-width: 320px; }
+
+.sources-hidden-toggle {
+  background: none; border: none; cursor: pointer; padding: 6px 2px;
+  color: var(--text-faint); font-size: 0.78rem; text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sources-hidden-toggle:hover { color: var(--accent); }
+#sources-hidden-list .source-row { padding: 8px 2px; }
+.source-unhide-btn {
+  flex: none; background: none; border: none; cursor: pointer;
+  color: var(--text-faint); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.02em; padding: 5px 9px; border-radius: 5px;
+}
+.source-unhide-btn:hover { color: var(--accent); background: var(--accent-wash); }
+
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+
+.interval-select { max-width: 190px; }
+
+.pause-times { display: flex; align-items: center; gap: 8px; margin: 2px 0 0 30px; }
+.pause-times input[type="time"] { max-width: 130px; font-family: var(--font-mono); }
+.pause-sep { font-size: 0.78rem; color: var(--text-faint); }
+
+.run-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.run-status { font-size: 0.8rem; color: var(--text-dim); overflow-wrap: anywhere; min-width: 0; flex: 1; }
+.run-status.accent { color: var(--accent); }
+.run-status.ok { color: var(--good); }
+.run-status.err { color: var(--bad); }
+
+.progress-wrap { display: flex; flex-direction: column; gap: 7px; }
+.progress-track { height: 7px; border-radius: 4px; background: var(--surface-2); overflow: hidden; position: relative; }
+.progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; }
+.progress-fill.indeterminate {
+  width: 30%; position: absolute; left: -30%;
+  animation: slide 1.4s ease-in-out infinite; transition: none;
+}
+@keyframes slide { 0% { left: -30%; } 100% { left: 100%; } }
+.progress-meta { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-dim); }
+.progress-meta .phase { font-family: var(--font-mono); }
+.progress-file {
+  font-size: 0.76rem; color: var(--text-faint);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.runlog {
+  background: var(--surface-2); border-radius: 6px; padding: 11px 13px;
+  font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.65;
+  height: 190px; overflow: auto; color: var(--text-dim);
+}
+.runlog .ln { white-space: pre-wrap; overflow-wrap: anywhere; }
+.runlog .ln + .ln { margin-top: 1px; }
+.runlog .ln.lvl-head { color: var(--accent); font-weight: 700; }
+.runlog .ln.lvl-error { color: var(--bad); }
+.runlog .ln.placeholder { color: var(--text-faint); }
+
+/* Log screen: the only screen whose box should fill most of the window
+   rather than size to content — everything else on the page is this one
+   box. `main` isn't a flex container, so this sizes off the viewport
+   directly instead of flexing (topbar + screen-head + panel padding are
+   baked into the subtracted constant — approximate, not pixel-exact). */
+.screen-fill .panel { padding: 8px; }
+.screen-fill .runlog { height: calc(100dvh - 230px); min-height: 240px; }
+
+/* Clickable stat tile */
+.stat-tile {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; text-align: left; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 18px;
+}
+.stat-tile:hover { border-color: var(--accent); background: var(--accent-wash); }
+.stat-tile .left { display: flex; align-items: center; gap: 16px; }
+.stat-tile .num { font-family: var(--font-display); font-weight: 800; font-size: 1.9rem; color: var(--accent); min-width: 2ch; }
+.stat-tile .lbl { display: flex; flex-direction: column; gap: 1px; }
+.stat-tile .lbl .t { font-size: 0.88rem; font-weight: 700; }
+.stat-tile .lbl .d { font-size: 0.78rem; color: var(--text-dim); }
+.stat-tile .chev { color: var(--text-faint); font-size: 1.1rem; }
+.stat-tile:hover .chev { color: var(--accent); }
+
+table.mini { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+table.mini th {
+  text-align: left; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--text-faint); font-weight: 700; padding: 8px; border-bottom: 1px solid var(--border);
+}
+table.mini td { padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--text-dim); }
+table.mini td:first-child { color: var(--text); font-weight: 600; }
+table.mini tr:last-child td { border-bottom: none; }
+.table-scroll { overflow-x: auto; }
+.file-cell { font-family: var(--font-mono); font-size: 0.78rem; white-space: nowrap; }
+
+/* Settings tabs */
+.tabbar { display: flex; gap: 22px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.tab-btn {
+  background: none; border: none; padding: 4px 2px 12px; margin-bottom: -1px;
+  font-size: 0.88rem; font-weight: 700; color: var(--text-faint); cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+/* No flex `gap`: each child carries its own margins, and a gap on top
+   compounds with them. */
+.tab-panel { display: flex; flex-direction: column; }
+
+.field-note { font-size: 0.78rem; color: var(--text-faint); margin-top: 6px; }
+
+.section-label { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; font-weight: 700; margin-bottom: 14px; }
+.section-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+.path-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--surface-2); border-radius: 5px;
+  padding: 10px 13px; font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);
+  overflow-x: auto;
+}
+
+
+/* First-launch setup overlay: covers the window until the model is present
+   and the engine is up. */
+#setup-overlay {
+  position: fixed; inset: 0; z-index: 50;
+  background: radial-gradient(ellipse at center, var(--backdrop-center) 0%, var(--bg) 72%);
+  display: flex; align-items: center; justify-content: center; padding: 30px;
+}
+.setup-card { max-width: 600px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.setup-logo { width: 110px; height: 110px; margin-bottom: 6px; }
+.setup-card h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 2px; }
+.setup-card p { font-size: 0.86rem; color: var(--text-dim); max-width: 56ch; }
+.setup-track { width: 100%; max-width: 560px; margin-top: 14px; }
+.setup-status { font-size: 0.8rem; color: var(--text-dim); min-height: 1.2em; overflow-wrap: anywhere; }
+.setup-status.err { color: var(--bad); }
+.setup-card .btn { margin-top: 10px; }
+
+[hidden] { display: none !important; }
+
+@media (max-width: 720px) {
+  #app-shell { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .sidebar { grid-row: auto; flex-direction: row; align-items: center; border-right: none; border-bottom: 1px solid var(--border); padding: 10px 12px; gap: 14px; flex-wrap: wrap; }
+  .sidebar-head { padding: 0; }
+  .nav { flex-direction: row; flex-wrap: wrap; }
+  .sidebar-status { margin-top: 0; padding: 0; border-top: none; flex-direction: row; align-items: center; }
+  .sidebar-foot { display: none; }
+  main { grid-column: 1; grid-row: 2; padding: 18px; }
+}
+
+/* ---------- Skin: bevels, gradients and text transforms on top of the base rules ---------- */
+
+h1,
+h2,
+h3 { letter-spacing: 0.01em; }
+a { color: var(--accent-hi); }
+
+/* Chunky Winamp-ish scrollbars */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--panel-2); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--metal-hi), var(--metal-lo));
+  border: 1px solid var(--border); border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(var(--metal-hi), var(--metal)); }
+
+/* App mark + wordmark */
+.app-mark { color: var(--text); filter: drop-shadow(0 1px 0 #000); }
+.wordmark { font-weight: 800; letter-spacing: 0.02em; color: var(--text); text-shadow: 0 1px 0 #000; }
+.wordmark .w2 { color: var(--accent); text-shadow: 0 0 8px var(--accent-wash-strong); }
+
+/* Form primitives — LCD fields */
+.field label { letter-spacing: 0.02em; text-transform: uppercase; }
+input[type="text"],
+input[type="password"],
+input[type="time"],
+select {
+  background: var(--panel-2); border: 1px solid var(--border);
+  box-shadow: inset 1px 1px 0 var(--bevel-lo), inset -1px -1px 0 var(--bevel-hi-soft);
+  border-radius: 3px; padding: 9px 11px; color: var(--lcd); font-family: var(--font-mono);
+}
+select { color: var(--text); font-family: var(--font-body); }
+input:focus,
+select:focus { border-color: var(--accent); box-shadow: inset 1px 1px 3px #000, 0 0 0 1px var(--accent-wash-strong); }
+
+/* Checkbox — beveled metal box, LCD-green check */
+.checkbox {
+  border-radius: 3px; background: linear-gradient(var(--metal-lo), var(--panel-2));
+  border: 1px solid var(--border);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi-soft), inset -1px -1px 0 var(--bevel-lo);
+}
+.checkbox.on { border-color: var(--lcd-dim); background: linear-gradient(#0c160c, var(--lcd-bg)); }
+.checkbox.on::after {
+  border-right: 2px solid var(--lcd); border-bottom: 2px solid var(--lcd);
+  filter: drop-shadow(0 0 3px var(--lcd));
+}
+
+/* Buttons — raised beveled metal; :active presses in */
+.btn {
+  border-radius: 3px; border: 1px solid var(--border);
+  padding: 9px 17px; font-size: 0.8rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text);
+  background: linear-gradient(var(--metal-hi), var(--metal-lo));
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-lo);
+}
+.btn:hover { background: linear-gradient(var(--metal-hi), var(--metal)); }
+.btn:active { box-shadow: inset -1px -1px 0 var(--bevel-hi-soft), inset 2px 2px 3px var(--bevel-lo); transform: translateY(0.5px); }
+.btn-primary { color: var(--accent-contrast); background: linear-gradient(var(--accent-hi), var(--accent)); text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25); }
+.btn-primary:hover { background: linear-gradient(#ffd071, var(--accent-hi)); }
+.btn-primary:disabled { background: linear-gradient(var(--accent-hi), var(--accent)); color: var(--accent-contrast); }
+.btn-outline { background: linear-gradient(var(--metal), var(--metal-lo)); color: var(--text); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.btn-danger { color: #ffe3e0; background: linear-gradient(#b5443c, #6f221c); border-color: var(--border); }
+.btn-danger:hover { background: linear-gradient(#c94d43, #7d271f); }
+.btn-sm { padding: 6px 12px; font-size: 0.7rem; border-radius: 3px; }
+
+.version-tag { font-family: var(--font-mono); }
+
+/* Shell / sidebar */
+.sidebar {
+  background: linear-gradient(var(--bg-2), var(--bg));
+  box-shadow: inset -1px 0 0 var(--bevel-hi-soft);
+}
+.nav-item {
+  border-radius: 3px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em;
+  border: 1px solid transparent;
+}
+.nav-item:hover { background: linear-gradient(var(--metal), var(--metal-lo)); color: var(--text); border-color: var(--border); box-shadow: inset 1px 1px 0 var(--bevel-hi-soft); }
+.nav-item.active {
+  background: linear-gradient(#1b1d28, var(--panel-2)); color: var(--accent-hi);
+  border-color: var(--border); box-shadow: inset 2px 0 0 var(--accent), inset 1px 1px 0 var(--bevel-hi-soft);
+}
+.nav-item.active svg { opacity: 1; stroke: var(--accent); }
+.nav-item.disabled:hover { background: none; border-color: transparent; box-shadow: none; }
+.nav-badge {
+  font-family: var(--font-mono); font-size: 0.66rem; background: var(--lcd-bg); color: var(--lcd);
+  border: 1px solid var(--lcd-dim); border-radius: 3px; text-shadow: 0 0 4px var(--lcd);
+}
+.nav-item.active .nav-badge { background: var(--lcd-bg); color: var(--lcd); }
+.sidebar-status { box-shadow: inset 0 1px 0 var(--bevel-hi-soft); }
+.engine-pill { font-family: var(--font-mono); font-size: 0.76rem; }
+.dot.good { box-shadow: 0 0 6px var(--good), 0 0 0 2px var(--good-wash); }
+.dot.bad { box-shadow: 0 0 6px var(--bad), 0 0 0 2px var(--bad-wash); }
+.dot.busy { box-shadow: 0 0 6px var(--accent), 0 0 0 2px var(--accent-wash); }
+.sidebar-foot { font-family: var(--font-mono); }
+
+/* Headings */
+.screen-head h2 { font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); text-shadow: 0 1px 0 #000; }
+
+/* Panels: inset metal with a beveled titlebar header */
+.panel {
+  background: var(--panel); border-radius: 4px; padding: 0 16px 14px;
+  box-shadow: inset 1px 1px 0 var(--bevel-hi-soft), 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.panel-head {
+  align-items: center; margin: 0 -16px 12px; padding: 7px 14px;
+  background: linear-gradient(var(--metal-hi), var(--metal-lo));
+  border-bottom: 1px solid var(--border); box-shadow: inset 0 1px 0 var(--bevel-hi);
+  border-radius: 4px 4px 0 0;
+}
+.panel-head h3 { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #eef; text-shadow: 0 1px 0 #000; }
+.automation-note-row { box-shadow: inset 0 1px 0 var(--bevel-hi-soft); }
+
+/* Source rows */
+.source-row { box-shadow: inset 0 1px 0 var(--bevel-hi-soft); }
+.source-row:last-child { box-shadow: none; }
+.source-status { font-family: var(--font-mono); font-size: 0.74rem; }
+.pill { font-size: 0.66rem; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 3px; border: 1px solid var(--border); }
+.pill.good { border-color: var(--lcd-dim); }
+.pill.neutral { background: var(--neutral-wash); }
+.pill.accent { color: var(--accent-hi); border-color: var(--accent); }
+.source-hide-btn,
+.source-remove-btn,
+.source-unhide-btn { text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.7rem; }
+.sources-hidden-toggle { font-family: var(--font-mono); }
+
+/* Run bar + activity indicator: a braille glyph cycled from JS by the same
+   tick as the "Running…" dots (app.js updateAnim). Not a CSS animation on
+   purpose: macOS Reduce Motion silently freezes those, and the indicator
+   must keep showing that work is happening. Empty when idle. */
+.run-status { font-family: var(--font-mono); }
+.run-status.accent { color: var(--accent-hi); }
+
+.torch {
+  display: inline-block; min-width: 1.2em; flex: none; text-align: center;
+  font-family: var(--font-mono); font-size: 1rem; line-height: 1;
+  color: var(--accent-hi); text-shadow: 0 0 6px var(--accent-wash-strong);
+}
+
+/* Progress bar as a green LCD meter */
+.progress-track {
+  height: 12px; border-radius: 2px; background: var(--lcd-bg);
+  border: 1px solid var(--border); box-shadow: inset 1px 1px 2px #000;
+}
+.progress-fill {
+  background: repeating-linear-gradient(90deg, var(--lcd) 0 6px, #2fbf55 6px 8px);
+  box-shadow: 0 0 6px var(--lcd-dim);
+}
+.progress-meta .phase { color: var(--lcd); text-shadow: 0 0 4px var(--lcd-dim); }
+.progress-meta span:last-child { font-family: var(--font-mono); }
+
+/* Run log — green-on-black LCD terminal */
+.runlog {
+  background: var(--lcd-bg); border: 1px solid var(--border); border-radius: 3px;
+  box-shadow: inset 1px 1px 3px #000; color: #7fbf8c;
+}
+.runlog .ln.lvl-head { color: var(--accent-hi); }
+.runlog .ln.lvl-ok { color: var(--lcd); text-shadow: 0 0 3px var(--lcd-dim); }
+
+/* Stat tile — big boxed LCD number */
+.stat-tile {
+  background: var(--panel); border-radius: 4px;
+  box-shadow: inset 1px 1px 0 var(--bevel-hi-soft);
+}
+.stat-tile:hover { border-color: var(--accent); background: var(--panel); box-shadow: inset 1px 1px 0 var(--bevel-hi-soft), 0 0 0 1px var(--accent-wash-strong); }
+.stat-tile .num {
+  font-family: var(--font-mono); font-weight: 700; font-size: 1.8rem; color: var(--lcd);
+  text-align: center; text-shadow: 0 0 8px var(--lcd-dim);
+  background: var(--lcd-bg); border: 1px solid var(--border); border-radius: 3px;
+  padding: 2px 8px; box-shadow: inset 1px 1px 2px #000;
+}
+
+/* Tables */
+table.mini th { letter-spacing: 0.06em; }
+.file-cell { color: var(--lcd); }
+
+/* Settings tabs */
+.tabbar { gap: 20px; margin: 0 -16px 20px; padding: 0 16px; box-shadow: inset 0 -1px 0 var(--bevel-hi-soft); }
+.tab-btn { padding: 8px 2px 11px; font-size: 0.82rem; letter-spacing: 0.03em; text-transform: uppercase; }
+.tab-btn.active { color: var(--accent-hi); border-bottom-color: var(--accent); }
+
+/* Section separators — fading metal rule */
+.section-label { font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+.section-label::after { height: 2px; background: linear-gradient(90deg, var(--metal-hi), transparent); border-top: 1px solid var(--border); }
+
+/* Path row — recessed LCD well */
+.path-row {
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: 3px;
+  box-shadow: inset 1px 1px 2px #000; color: var(--lcd);
+}

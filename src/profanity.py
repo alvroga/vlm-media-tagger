@@ -23,9 +23,13 @@ import re
 
 import config
 
-# Vendored LDNOOBW lists. A missing dir just means _terms() returns empty
-# sets (fails open, see contains_profanity).
-_VENDOR_DIR = config.PROJECT_ROOT / "vendor" / "ldnoobw"
+# Vendored LDNOOBW lists: checkout = vendor/ldnoobw/, built app =
+# Resources/app/ldnoobw/ (briefcase lands vendor dirs flat under app/). A
+# missing dir just means _terms() returns empty sets (fails open, see
+# contains_profanity).
+_VENDOR_DIR = next((d for d in (config.PROJECT_ROOT / "vendor" / "ldnoobw",
+                                config.PROJECT_ROOT / "app" / "ldnoobw") if d.is_dir()),
+                   config.PROJECT_ROOT / "vendor" / "ldnoobw")
 
 # Found empirically 2026-07-30 (opus-mt hallucination: "bucket" -> 你这个混蛋)
 # — not present in the upstream zh.txt (only compound 王八蛋 forms are). Same

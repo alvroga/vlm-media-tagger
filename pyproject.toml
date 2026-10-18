@@ -21,4 +21,81 @@ select = ["E9", "F", "I"]
 [tool.ruff.lint.isort]
 known-first-party = ["config", "detect_cuts", "detect_objects_vlm", "extract_frames", "media_probe",
                      "opus_translate", "pipeline", "profanity", "prompts", "resolve_proxy", "summarize",
-                     "tag_filter", "tagger", "timecode_utils", "translation_models", "harness"]
+                     "tag_filter", "tagger", "timecode_utils", "translation_models", "harness", "sinks",
+                     "library", "llama_manager", "vlm", "doctor", "vmt_app"]
+
+# -- macOS app (briefcase) --------------------------------------------------------
+# ./venv/bin/briefcase build && ./venv/bin/briefcase package --identity "Developer ID Application: …"
+# The app key is the package name (briefcase runs `python -m vmt_app`); the
+# .app is named after formal_name. Version, description, licence and author
+# come from [project] above.
+[tool.briefcase]
+project_name = "VLM Media Tagger"
+bundle = "io.github.alvroga"
+url = "https://github.com/alvroga/vlm-media-tagger"
+license-files = ["LICENSE", "NOTICE"]
+
+[tool.briefcase.app.vmt_app]
+formal_name = "VLM Media Tagger"
+description = "Tag and describe video and images with a local vision-language model"
+long_description = """Tags and describes video and still images with a local vision-language model
+(MiniCPM-V 4.7 on a bundled llama-server) and writes a JSON sidecar beside each file."""
+icon = "icons/vlm-media-tagger"
+# Every top-level module the app imports must be listed: `briefcase dev`
+# runs from src/ and can't catch a missing one; only the built app can.
+# tests/test_briefcase_sources.py checks this list against the app's
+# import closure.
+sources = [
+    "src/vmt_app",
+    "src/config.py",
+    "src/detect_cuts.py",
+    "src/detect_objects_vlm.py",
+    "src/extract_frames.py",
+    "src/library.py",
+    "src/llama_manager.py",
+    "src/media_probe.py",
+    "src/opus_translate.py",
+    "src/pipeline.py",
+    "src/profanity.py",
+    "src/prompts.py",
+    "src/resolve_proxy.py",
+    "src/sinks.py",
+    "src/summarize.py",
+    "src/tag_filter.py",
+    "src/tagger.py",
+    "src/timecode_utils.py",
+    # A package, so its manifest.json data file ships with it.
+    "src/translation_models",
+    "src/vlm.py",
+    # Vendored data/binaries land flat under Resources/app/ (llama_manager
+    # and profanity look there in a built app).
+    "vendor/llama_cpp",
+    "vendor/ldnoobw",
+]
+requires = [
+    "python-dotenv>=1.0",
+    "av>=13.0",
+    "opencv-python-headless>=4.8",
+    "scenedetect>=0.6",
+    "pillow>=10.0",
+    "imagehash>=4.3",
+    "timecode>=1.3",
+    "numpy>=1.24",
+    "ollama>=0.3",
+    "ctranslate2>=4.8",
+    "sentencepiece>=0.2",
+]
+
+[tool.briefcase.app.vmt_app.macOS]
+universal_build = false
+# Python 3.13 + scipy (an imagehash dependency): every scipy wheel for
+# cp313/arm64 targets macOS 14+.
+min_os_version = "14.0"
+requires = [
+    "pywebview==6.2.1",
+    "std-nslog~=2.0.0",
+]
+# pywebview's dependency proxy_tools has no wheel on PyPI (sdist only), and
+# briefcase installs app requirements with --only-binary. vendor/wheels holds
+# one built from the official sdist (pip wheel --no-deps proxy_tools==0.1.0).
+requirement_installer_args = ["--find-links", "./vendor/wheels"]

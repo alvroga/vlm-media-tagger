@@ -118,11 +118,13 @@ def _app_version() -> str:
             return tomllib.loads(pyproject.read_text())["project"]["version"]
         except Exception:
             pass
-    try:
-        from importlib import metadata
-        return metadata.version("vlm-media-tagger")
-    except Exception:
-        return "unknown"
+    from importlib import metadata
+    for dist in ("vmt_app", "vlm-media-tagger"):  # briefcase names it after the app key
+        try:
+            return metadata.version(dist)
+        except Exception:
+            continue
+    return "unknown"
 
 
 APP_VERSION = _app_version()

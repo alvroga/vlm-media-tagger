@@ -27,3 +27,8 @@ vendor/llama_cpp/llama-server
 
 # Golden entries whose source media cannot be redistributed
 tests/golden/private/
+
+# briefcase output
+/build/
+/dist/
+/logs/

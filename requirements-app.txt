@@ -1,0 +1,5 @@
+# The macOS app (src/vmt_app): pywebview window + briefcase packaging.
+# The CLI needs only requirements.txt.
+-r requirements.txt
+pywebview==6.2.1
+briefcase==0.4.4

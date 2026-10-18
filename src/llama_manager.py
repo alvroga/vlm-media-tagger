@@ -49,6 +49,9 @@ OLLAMA_BLOBS = Path(os.environ.get("OLLAMA_MODELS") or Path.home() / ".ollama" /
 STARTUP_TIMEOUT = 600
 
 _lock = threading.Lock()
+# Set by shutdown(): a startup wait in progress gives up at once instead of
+# blocking quit for up to STARTUP_TIMEOUT.
+_stopping = threading.Event()
 _proc: "subprocess.Popen | None" = None
 _adopted_pid: "int | None" = None
 
@@ -229,9 +232,14 @@ def _adopt_orphan() -> "int | None":
 
 
 def _wait_ready(deadline: float) -> tuple[bool, str]:
+    """Called WITHOUT _lock held, so shutdown() can run while a cold model
+    load (minutes) is being waited on."""
     while time.monotonic() < deadline:
-        if _proc is not None and _proc.poll() is not None:
-            return False, f"llama-server exited (code {_proc.returncode}) — see {log_path()}"
+        if _stopping.is_set():
+            return False, "shutting down"
+        proc = _proc
+        if proc is not None and proc.poll() is not None:
+            return False, f"llama-server exited (code {proc.returncode}) — see {log_path()}"
         if server_alive(timeout=1.0):
             return True, f"ready at {config.LLAMA_HOST}"
         time.sleep(0.5)
@@ -241,50 +249,63 @@ def _wait_ready(deadline: float) -> tuple[bool, str]:
 def ensure_started(wait: bool = True) -> tuple[bool, str]:
     """Managed mode: make sure the private server is up (spawning it if
     needed). Cheap when already running. Never raises; (ok, message)."""
-    global _proc, _adopted_pid
+    global _adopted_pid
     if not config.LLAMA_MANAGED or config.VLM_BACKEND != "llama":
         return True, "unmanaged — using the configured server"
+    _stopping.clear()
     with _lock:
         if _port_open():
             if _proc is None and _adopted_pid is None:
                 _adopted_pid = _adopt_orphan()
-            return _wait_ready(time.monotonic() + STARTUP_TIMEOUT) if wait else (True, "starting")
-        if _proc is not None and _proc.poll() is not None:
-            _proc = None
-        _adopted_pid = None
+            spawned = False
+        else:
+            ok, msg = _spawn_locked()
+            if not ok:
+                return False, msg
+            spawned = True
+    if not wait:
+        return True, "starting" if spawned else "already running"
+    return _wait_ready(time.monotonic() + STARTUP_TIMEOUT)
 
-        binary = find_binary()
-        if binary is None:
-            return False, ("llama-server not found — run scripts/build_llama_cpp.sh "
-                           "(or set LLAMA_SERVER_BIN)")
-        if not models_installed():
-            return False, "model files missing — run the first-time download"
-        log_path().parent.mkdir(parents=True, exist_ok=True)
-        cmd = [str(binary),
-               "-m", str(model_path("model")), "--mmproj", str(model_path("mmproj")),
-               "--host", "127.0.0.1", "--port", str(config.LLAMA_PORT),
-               "-ngl", "99", "-fa", "on", "--jinja",
-               "--parallel", str(config.PARALLEL_WORKERS),
-               "-c", str(config.LLAMA_CTX * config.PARALLEL_WORKERS),
-               "--alias", config.LLAMA_MODEL_NAME]
-        try:
-            with open(log_path(), "w") as log_file:
-                _proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL,
-                                         stdout=log_file, stderr=subprocess.STDOUT)
-        except OSError as e:
-            return False, f"failed to launch llama-server: {e}"
-        try:
-            _pidfile().write_text(str(_proc.pid))
-        except OSError:
-            pass
-        if not wait:
-            return True, "starting"
-        return _wait_ready(time.monotonic() + STARTUP_TIMEOUT)
+
+def _spawn_locked() -> tuple[bool, str]:
+    """Start the server process. Caller holds _lock."""
+    global _proc, _adopted_pid
+    if _proc is not None and _proc.poll() is not None:
+        _proc = None
+    _adopted_pid = None
+
+    binary = find_binary()
+    if binary is None:
+        return False, ("llama-server not found — run scripts/build_llama_cpp.sh "
+                       "(or set LLAMA_SERVER_BIN)")
+    if not models_installed():
+        return False, "model files missing — run the first-time download"
+    log_path().parent.mkdir(parents=True, exist_ok=True)
+    cmd = [str(binary),
+           "-m", str(model_path("model")), "--mmproj", str(model_path("mmproj")),
+           "--host", "127.0.0.1", "--port", str(config.LLAMA_PORT),
+           "-ngl", "99", "-fa", "on", "--jinja",
+           "--parallel", str(config.PARALLEL_WORKERS),
+           "-c", str(config.LLAMA_CTX * config.PARALLEL_WORKERS),
+           "--alias", config.LLAMA_MODEL_NAME]
+    try:
+        with open(log_path(), "w") as log_file:
+            _proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL,
+                                     stdout=log_file, stderr=subprocess.STDOUT)
+    except OSError as e:
+        return False, f"failed to launch llama-server: {e}"
+    try:
+        _pidfile().write_text(str(_proc.pid))
+    except OSError:
+        pass
+    return True, "spawned"
 
 
 def shutdown(grace_seconds: float = 10.0) -> None:
     """Terminate the managed server (ours or adopted). Safe to call always."""
     global _proc, _adopted_pid
+    _stopping.set()
     with _lock:
         if _proc is not None:
             _proc.terminate()
