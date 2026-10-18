@@ -69,6 +69,10 @@ processed in as many sittings as you like, or on a schedule (Settings → Automa
   Settings → Integrations.
 - **Send results elsewhere:** add an output plugin ([`docs/plugins.md`](docs/plugins.md)).
 
+**Installing a downloaded build:** the app is signed but not notarized, so macOS blocks the first launch. Open
+it once, then go to System Settings → Privacy & Security, click **Open Anyway** next to VLM Media Tagger, and
+confirm. After that it opens normally.
+
 Run it from a checkout (after the Quick start's engine steps):
 
 ```bash
