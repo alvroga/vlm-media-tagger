@@ -189,3 +189,38 @@ def test_scan_counts_and_skips(tmp_path, sink):
 
     # The sidecars themselves are never media.
     assert all(not p.name.endswith(".json") for p in res.candidates)
+
+
+def test_sidecar_is_readable_by_others_and_keeps_its_mode(sink, media):
+    sink.write(media, _record())
+    side = sink.sidecar_path(media)
+    assert stat.S_IMODE(side.stat().st_mode) == 0o666 & ~sinks._UMASK   # not mkstemp's 0600
+    os.chmod(side, 0o640)
+    sink.write(media, _record(tasks=["tags"]))
+    assert stat.S_IMODE(side.stat().st_mode) == 0o640                  # a user's choice survives
+
+
+def test_stale_sidecar_beside_file_does_not_hide_current_mirror(sink, media):
+    sink.write(media, _record())
+    side = sink.sidecar_path(media)
+    stale = json.loads(side.read_text())
+    stale["source_size"] = 1                     # describes an older export
+    side.write_text(json.dumps(stale))
+    mirror = sink.mirror_path(media)
+    mirror.parent.mkdir(parents=True)
+    current = json.loads(json.dumps(stale))
+    current["source_size"] = media.stat().st_size
+    mirror.write_text(json.dumps(current))
+    assert sink.is_done(media, FULL)
+
+
+@pytest.mark.parametrize("tasks", [["tags", "description"], "tags,description", {"tags": "x"}])
+def test_hand_mangled_tasks_read_as_not_done_and_never_crash(sink, media, tasks):
+    sink.write(media, _record())
+    side = sink.sidecar_path(media)
+    data = json.loads(side.read_text())
+    data["tasks"] = tasks
+    side.write_text(json.dumps(data))
+    assert sink.is_done(media, FULL, model="minicpm-v4.7") is False
+    sink.write(media, _record())                 # and the redo can write over it
+    assert sink.is_done(media, FULL)

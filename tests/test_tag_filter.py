@@ -154,3 +154,12 @@ def test_plural_rules_and_exceptions():
     # a singular alone is untouched; only the LAST word inflects
     assert clean_tags(["plate"]) == ["plate"]
     assert clean_tags(["car door", "cars door"]) == ["car door", "cars door"]
+
+
+def test_no_false_merges_between_different_nouns():
+    for singular, other in [("can", "canes"), ("cap", "capes"), ("ski", "skies"),
+                            ("pin", "pines"), ("tub", "tubes"), ("content", "contents"),
+                            ("graphic", "graphics"), ("spirit", "spirits")]:
+        assert clean_tags([singular, other]) == [singular, other]
+    assert clean_tags(["bus", "buses", "tomato", "tomatoes", "dish", "dishes"]) == \
+        ["buses", "tomatoes", "dishes"]

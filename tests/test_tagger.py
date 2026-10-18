@@ -221,3 +221,54 @@ def test_segments_follow_the_plural_merge():
             {"class": "teapot", "start_time": 0.0, "end_time": 7.0, "frame_count": 2}]
     tags = [s["tag"] for s in tagger._clean_segments(segs)]
     assert tags == ["decorative plates", "teapot", "decorative plates"]
+
+
+def test_one_files_vlm_failure_becomes_a_record_not_a_crash(tmp_path, monkeypatch):
+    from detect_objects_vlm import VLMCallFailed
+    monkeypatch.setattr(config, "DATA_DIR", tmp_path / "data")
+
+    def boom(*a, **k):
+        raise VLMCallFailed("engine went away")
+    monkeypatch.setattr(tagger.pipeline, "run", boom)
+    clip = tmp_path / "a.mp4"
+    clip.write_bytes(b"x")
+    rec = tagger.process_file(clip, model=None, lang="en", describe=False,
+                              force=False, keep_workdir=False)
+    assert rec["status"] == "pipeline-failed" and "engine went away" in rec["error"]
+
+
+def test_profanity_filter_also_applies_to_segments(monkeypatch):
+    monkeypatch.setattr(config, "FILTER_PROFANITY", True)
+    monkeypatch.setattr(tagger.profanity, "filter_tags",
+                        lambda tags, lang: [t for t in tags if t != "badword"])
+    segs = [{"class": "badword", "start_time": 0.0, "end_time": 1.0, "frame_count": 1},
+            {"class": "car", "start_time": 0.0, "end_time": 1.0, "frame_count": 1}]
+    assert [s["tag"] for s in tagger._clean_segments(segs)] == ["car"]
+
+
+def test_still_is_decoded_upright_per_exif(tmp_path):
+    img = Image.new("RGB", (40, 20), "red")      # stored landscape …
+    exif = img.getexif()
+    exif[0x0112] = 6                             # … shown rotated 90°: portrait
+    path = tmp_path / "p.jpg"
+    img.save(path, exif=exif)
+    assert tagger._decode_image(path, tmp_path).size == (20, 40)
+
+
+def test_timecode_at_an_unsupported_rate_is_none_not_a_crash():
+    from timecode_utils import seconds_to_tc
+    assert seconds_to_tc(10.0, 0.5, drop_frame=False) is None
+    assert seconds_to_tc(1.0, 25.0, drop_frame=False) == "00:00:01:00"
+
+
+def test_last_shot_ends_at_the_file_duration_not_the_last_kept_frame(tmp_path):
+    from detect_objects_vlm import _end_ts, _select_shot_frames
+    index = [{"frame_idx": 0, "timestamp_sec": 0.0, "path": "a"},
+             {"frame_idx": 1, "timestamp_sec": 6.24, "path": "b"}]
+    cuts = {"cuts": [{"frame_num": 0, "timestamp_sec": 0.0}, {"frame_num": 144, "timestamp_sec": 6.0}],
+            "duration_sec": 12.0}
+    assert _end_ts(index, cuts) == 12.0
+    assert _end_ts(index, {"cuts": []}) == 6.24          # old cache without the field
+    p = tmp_path / "cuts.json"
+    p.write_text(json.dumps(cuts))
+    assert [f["timestamp_sec"] for f in _select_shot_frames(index, p)] == [0.0, 6.24]

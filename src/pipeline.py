@@ -14,6 +14,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+import av
+
 import config
 from detect_cuts import detect_cuts
 from detect_objects_vlm import detect_objects_vlm
@@ -48,6 +50,16 @@ def _frames_cache_usable(frames_dir: Path, force: bool,
     except Exception:
         print("      cached frames/index.json is unreadable — re-extracting")
         return False
+
+
+def _container_duration(video_path: Path) -> float | None:
+    """The file's duration, for the last shot's end (the last extracted frame
+    can be seconds early when dedup kept only the start of a static tail)."""
+    try:
+        with av.open(str(video_path)) as c:
+            return round(c.duration / av.time_base, 3) if c.duration else None
+    except Exception:
+        return None
 
 
 def run(video: str, sample_fps: float = 2.0, threshold: float = 15.0,
@@ -115,6 +127,7 @@ def run(video: str, sample_fps: float = 2.0, threshold: float = 15.0,
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source":       str(video_path),
             "fps":          fps,
+            "duration_sec": _container_duration(video_path),
             "threshold":    threshold,
             "scene_count":  len(cuts),
             "cuts":         cuts,

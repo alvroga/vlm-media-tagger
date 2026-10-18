@@ -146,10 +146,11 @@ def _process_raw_via_resolve(media: Path, video_id: str, decode_error: Exception
 
 def _decode_image(path: Path, work_dir: Path):
     """PIL first; macOS `sips` for what PIL can't open (HEIC, PSD, camera
-    RAW). Returns an RGB PIL image, or None."""
-    from PIL import Image
+    RAW). Returns an RGB PIL image, upright per its EXIF orientation (a
+    portrait phone photo would otherwise reach the model sideways), or None."""
+    from PIL import Image, ImageOps
     try:
-        return Image.open(path).convert("RGB")
+        return ImageOps.exif_transpose(Image.open(path)).convert("RGB")
     except Exception as e:
         pil_error = e
     if shutil.which("sips"):
@@ -159,7 +160,7 @@ def _decode_image(path: Path, work_dir: Path):
             capture_output=True, text=True, timeout=120)
         if proc.returncode == 0 and converted.exists():
             try:
-                return Image.open(converted).convert("RGB")
+                return ImageOps.exif_transpose(Image.open(converted)).convert("RGB")
             except Exception:
                 pass
     print(f"    not decodable as an image ({pil_error})")
@@ -210,6 +211,8 @@ def _clean_segments(segments: list) -> list:
     same tag ("red car", "car"); they stay separate segments. A singular is
     renamed to its plural when the file has both, matching clean_tags."""
     cleaned = [clean_tag(s["class"]) for s in segments]
+    if config.FILTER_PROFANITY:  # same rule as the tags list (_finish_tags)
+        cleaned = [c if c and profanity.filter_tags([c], "en") else None for c in cleaned]
     merges = plural_merges(c for c in cleaned if c)
     out = []
     for s, cls in zip(segments, cleaned):
@@ -246,7 +249,27 @@ def _finish_text(text: str, lang: str) -> tuple[str, str]:
 def process_file(path: Path, *, model: str | None, lang: str, describe: bool,
                  force: bool, keep_workdir: bool) -> dict:
     """Process one file and return its JSON record. Never raises for a
-    per-file problem; the record's status says what happened."""
+    per-file problem; the record's status says what happened. Anything the
+    pipeline lets escape (VLMCallFailed when the engine dies, a check_vlm
+    SystemExit, an error inside the Resolve fallback) becomes
+    "pipeline-failed", so one file can't end a CLI batch and lose its JSON."""
+    t0 = time.time()
+    try:
+        return _process_file(path, model=model, lang=lang, describe=describe,
+                             force=force, keep_workdir=keep_workdir)
+    except (Exception, SystemExit) as e:
+        if not keep_workdir:
+            work = config.DATA_DIR / config.video_id_from_path(str(path), unique=True)
+            if work.is_dir() and not work.is_symlink():
+                shutil.rmtree(work, ignore_errors=True)
+        return {"path": str(path),
+                "type": "image" if path.suffix.lower() in IMAGE_EXTS else "video",
+                "status": "pipeline-failed", "error": f"{e.__class__.__name__}: {e}",
+                "elapsed_sec": round(time.time() - t0, 1)}
+
+
+def _process_file(path: Path, *, model: str | None, lang: str, describe: bool,
+                  force: bool, keep_workdir: bool) -> dict:
     from detect_objects_vlm import STILL_OBJECT_PROMPT, detect_objects_vlm
     from summarize import summarize_image, summarize_video
 
@@ -365,6 +388,11 @@ def main() -> int:
     if a.filter_profanity:
         config.FILTER_PROFANITY = True
     RESOLVE_ALLOWED = not a.no_resolve
+    if a.model and config.VLM_BACKEND == "llama" and a.model != config.VISION_MODEL:
+        # llama-server serves one model; recording another name in the
+        # sidecars would mislabel the output and break --redo-other-model.
+        ap.error(f"--model only applies with VLM_BACKEND=ollama; the llama backend "
+                 f"runs {config.VISION_MODEL}")
     model = a.model or config.VISION_MODEL
     if a.lang != "en":
         if not translation_models.is_downloadable(a.lang):

@@ -42,13 +42,19 @@ def extract_frames(
         # transport-stream flavors) — sample every frame rather than crash.
         src_fps = float(stream.average_rate or sample_fps)
         every_n = max(1, int(src_fps / sample_fps))
+        # Timestamps on the same clock as detect_cuts (0 = first frame): a
+        # stream that starts at a non-zero pts (MPEG-TS/AVCHD, MXF or MOV
+        # with an edit list / timecode start) would otherwise put every frame
+        # in the wrong shot slot.
+        start_pts = stream.start_time or 0
 
         print(f"Source: {src_fps:.2f} fps  →  sampling 1 of every {every_n} frames")
 
         for packet in container.demux(stream):
             for frame in packet.decode():
                 if frame_idx % every_n == 0:
-                    ts_sec = float(frame.pts * stream.time_base)
+                    ts_sec = (max(0.0, float((frame.pts - start_pts) * stream.time_base))
+                              if frame.pts is not None else frame_idx / src_fps)
                     img = frame.to_image()
                     w, h = img.size
                     if max(w, h) > max_dimension:

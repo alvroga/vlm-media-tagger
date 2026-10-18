@@ -24,6 +24,7 @@ import contextlib
 import importlib
 import json
 import os
+import stat
 import sys
 import tempfile
 from datetime import datetime, timezone
@@ -70,11 +71,25 @@ def _source_stat(media: Path) -> dict:
     return {"source_size": st.st_size, "source_mtime_ns": st.st_mtime_ns}
 
 
+# Read once: os.umask can only be queried by setting it, which would race
+# file creation on other threads.
+_UMASK = os.umask(0)
+os.umask(_UMASK)
+
+
 def _atomic_write_json(path: Path, data: dict) -> None:
     """tmp file in the same directory + os.replace, so a reader (or a crash
-    mid-write) never sees a half-written sidecar."""
+    mid-write) never sees a half-written sidecar. Keeps an existing file's
+    permissions, else uses the normal umask (mkstemp's 0600 would hide
+    sidecars from other users of a shared volume)."""
+    try:
+        mode = stat.S_IMODE(path.stat().st_mode)
+    except OSError:
+        mode = 0o666 & ~_UMASK
     fd, tmp = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
     try:
+        with contextlib.suppress(OSError):
+            os.fchmod(fd, mode)
         with os.fdopen(fd, "w") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
             f.write("\n")
@@ -103,33 +118,37 @@ class SidecarSink(OutputSink):
         return self.mirror_root / absolute.relative_to(absolute.anchor) \
             .with_name(absolute.name + ".json")
 
-    def read(self, media: Path) -> dict | None:
-        """The current sidecar for `media` (beside it, else the mirror), or
-        None. A corrupt sidecar reads as None: the file is simply redone."""
+    def _candidates(self, media: Path):
+        """Well-formed sidecars for `media`: beside it, then the mirror. The
+        file is user-writable, so its shape is checked, not trusted: a
+        corrupt or hand-mangled sidecar is skipped (the file is redone)."""
         for p in (self.sidecar_path(media), self.mirror_path(media)):
             try:
                 data = json.loads(p.read_text())
             except (OSError, ValueError):
                 continue
-            if isinstance(data, dict):
-                return data
-        return None
+            tasks = data.get("tasks", {}) if isinstance(data, dict) else None
+            if isinstance(tasks, dict) and all(isinstance(m, dict) for m in tasks.values()):
+                yield data
+
+    def read(self, media: Path) -> dict | None:
+        """The sidecar for `media` (beside it, else the mirror), or None."""
+        return next(self._candidates(media), None)
 
     def _current(self, media: Path, language: str) -> dict | None:
-        """The sidecar, only if it still describes this exact file content
-        in this language."""
-        data = self.read(media)
-        if not data:
-            return None
+        """The sidecar that still describes this exact file content in this
+        language. Both locations are checked: a stale sidecar beside the file
+        (left from before the volume went read-only) must not hide a current
+        mirror, or the file would be redone on every run."""
         try:
-            stat = _source_stat(media)
+            source = _source_stat(media)
         except OSError:
             return None
-        if any(data.get(k) != v for k, v in stat.items()):
-            return None  # the file changed since: everything is stale
-        if data.get("language", "en") != language:
-            return None
-        return data
+        for data in self._candidates(media):
+            if all(data.get(k) == v for k, v in source.items()) and \
+                    data.get("language", "en") == language:
+                return data
+        return None
 
     def is_done(self, media, tasks, *, language="en", model=None):
         data = self._current(Path(media), language)

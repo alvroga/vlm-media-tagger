@@ -162,6 +162,15 @@ def _pick_sharpest(frames: list, target_ts: float, cache: dict) -> dict | None:
     return best
 
 
+def _end_ts(index: list, cuts_data: dict) -> float:
+    """End of the last shot: the file's duration when cuts.json has it (the
+    last kept frame is early when dedup dropped a static tail, which made a
+    static final shot look ~0 s long and go untagged), never earlier than
+    the last frame."""
+    last = index[-1]["timestamp_sec"] if index else 0.0
+    return max(last, float(cuts_data.get("duration_sec") or 0.0))
+
+
 def _select_shot_frames(index: list, cuts_path: Path) -> list[dict]:
     """Return representative frames per shot using cuts.json boundaries:
     the sharpest frame near the middle of a normal shot; long shots are cut
@@ -176,8 +185,7 @@ def _select_shot_frames(index: list, cuts_path: Path) -> list[dict]:
     # PySceneDetect always writes frame 0 as the first cut entry — strip it so
     # we don't get a 0.0→0.0 degenerate slot in boundaries.
     cut_times = [c["timestamp_sec"] for c in cuts_data["cuts"] if c.get("frame_num", 1) > 0]
-    end_ts = index[-1]["timestamp_sec"] if index else 0.0
-    boundaries = [0.0] + cut_times + [end_ts]
+    boundaries = [0.0] + cut_times + [_end_ts(index, cuts_data)]
 
     selected = []
     seen: set[int] = set()
@@ -412,8 +420,7 @@ def detect_objects_vlm(video_id: str, model: str | None = None,
         frames_to_process = _select_shot_frames(index, cuts_path)
         # Strip frame-0 entries (PySceneDetect convention) to avoid 0.0→0.0 degenerate slot
         cut_times = [c["timestamp_sec"] for c in cuts_data["cuts"] if c.get("frame_num", 1) > 0]
-        end_ts = index[-1]["timestamp_sec"] if index else 0.0
-        shot_boundaries = [0.0] + cut_times + [end_ts]
+        shot_boundaries = [0.0] + cut_times + [_end_ts(index, cuts_data)]
         print(f"Objects ({active_model}) for {video_id}: {len(frames_to_process)} shots (cut-aware)")
     else:
         frames_to_process = _select_interval_frames(index, interval_sec=5.0)

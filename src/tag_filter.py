@@ -70,6 +70,7 @@ _LANGUAGES = {
 _PLURAL_DISTINCT = {
     "glasses", "shorts", "goods", "customs", "spectacles", "scales", "clothes",
     "greens", "woods", "grounds", "quarters", "papers", "sands", "waters", "news",
+    "spirits", "contents", "electronics", "graphics", "times", "arms",
 }
 _IRREGULAR_PLURALS = {
     "mouse": "mice", "goose": "geese", "tooth": "teeth", "foot": "feet",
@@ -78,7 +79,11 @@ _IRREGULAR_PLURALS = {
 
 
 def _plural_forms(word: str) -> set[str]:
-    forms = {word + "s", word + "es"}
+    forms = {word + "s"}
+    # "+es" only where English uses it ("box" → "boxes"); a blanket "+es"
+    # merged different nouns ("can" → "canes", "cap" → "capes").
+    if word.endswith(("s", "x", "z", "ch", "sh", "o")):
+        forms.add(word + "es")
     if len(word) > 1 and word.endswith("y") and word[-2] not in "aeiou":
         forms.add(word[:-1] + "ies")
     if word.endswith("f"):
