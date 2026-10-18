@@ -160,7 +160,6 @@ def main() -> int:
         check(str(llama_manager.find_binary()).startswith(os.environ["VMT_SMOKE_BUNDLE"]),
               f"bundled llama-server used ({llama_manager.find_binary()})")
 
-    llama_manager.shutdown = lambda *a, **k: None  # leave the engine running for the next run
     app.LOGS_DIR = WORK / "logs"  # never prune or write the real run logs
     backend = app.Backend()
     window = webview.create_window("VLM Media Tagger", url=str(app.WEBUI_DIR / "index.html"),

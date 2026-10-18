@@ -23,6 +23,7 @@ no-op and that external server is used as-is.
 
     python src/llama_manager.py status | fetch | start | stop
 """
+import contextlib
 import hashlib
 import os
 import signal
@@ -67,6 +68,9 @@ _lock = threading.Lock()
 # Set by shutdown(): a startup wait in progress gives up at once instead of
 # blocking quit for up to STARTUP_TIMEOUT.
 _stopping = threading.Event()
+# Set by shutdown(final=True) at app quit: nothing may respawn the engine
+# afterwards (a click or a timer while the window lingers during cleanup).
+_closed = threading.Event()
 _proc: "subprocess.Popen | None" = None
 _adopted_pid: "int | None" = None
 
@@ -171,6 +175,11 @@ def _download(url: str, dest: Path, size: int, on_bytes) -> None:
             while chunk := r.read(1 << 20):
                 f.write(chunk)
                 on_bytes(len(chunk))
+    # read() returns b"" on a dropped connection instead of raising: keep the
+    # .part (the retry resumes) rather than hash and delete a short file.
+    got = part.stat().st_size
+    if got != size:
+        raise OSError(f"incomplete download ({got} of {size} bytes)")
     part.replace(dest)
 
 
@@ -287,11 +296,20 @@ def ensure_started(wait: bool = True) -> tuple[bool, str]:
     global _adopted_pid
     if not config.LLAMA_MANAGED or config.VLM_BACKEND != "llama":
         return True, "unmanaged — using the configured server"
+    if _closed.is_set():
+        return False, "shutting down"
     _stopping.clear()
     with _lock:
-        if _port_open():
+        if _proc is not None and _proc.poll() is None:
+            spawned = False  # ours, still loading (port not open yet): never a second one
+        elif _port_open():
             if _proc is None and _adopted_pid is None:
                 _adopted_pid = _adopt_orphan()
+                if _adopted_pid is not None:
+                    # Adopted orphans get the same guarantees as our own.
+                    with contextlib.suppress(OSError):
+                        _pidfile().write_text(f"{_adopted_pid} {os.getpid()}")
+                    spawn_watchdog(os.getpid(), _adopted_pid)
             spawned = False
         else:
             ok, msg = _spawn_locked()
@@ -354,9 +372,12 @@ def spawn_watchdog(owner_pid: int, server_pid: int, poll: float = WATCHDOG_POLL_
         return None
 
 
-def shutdown(grace_seconds: float = 10.0) -> None:
-    """Terminate the managed server (ours or adopted). Safe to call always."""
+def shutdown(grace_seconds: float = 10.0, final: bool = False) -> None:
+    """Terminate the managed server (ours or adopted). Safe to call always.
+    final=True (app quit) also refuses any later ensure_started()."""
     global _proc, _adopted_pid
+    if final:
+        _closed.set()
     _stopping.set()
     with _lock:
         if _proc is not None:

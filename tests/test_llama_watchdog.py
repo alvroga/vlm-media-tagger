@@ -57,3 +57,34 @@ def test_server_with_a_live_owner_is_never_adopted(tmp_path, monkeypatch):
         for p in (owner, server):
             if p.poll() is None:
                 p.kill()
+
+
+def test_final_shutdown_refuses_a_respawn(monkeypatch):
+    monkeypatch.setattr(config, "LLAMA_MANAGED", True)
+    monkeypatch.setattr(config, "VLM_BACKEND", "llama")
+    monkeypatch.setattr(llama_manager, "_spawn_locked",
+                        lambda: (_ for _ in ()).throw(AssertionError("respawned")))
+    try:
+        llama_manager.shutdown(final=True)
+        assert llama_manager.ensure_started(wait=False) == (False, "shutting down")
+    finally:
+        llama_manager._closed.clear()
+
+
+def test_short_download_keeps_the_part_file(tmp_path, monkeypatch):
+    import io
+
+    class Resp(io.BytesIO):
+        status = 200
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+    monkeypatch.setattr(llama_manager.urllib.request, "urlopen", lambda *a, **k: Resp(b"x" * 10))
+    dest = tmp_path / "m.gguf"
+    import pytest
+    with pytest.raises(OSError, match="incomplete download"):
+        llama_manager._download("http://x", dest, 100, lambda n: None)
+    assert not dest.exists() and dest.with_suffix(".part").stat().st_size == 10

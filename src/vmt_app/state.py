@@ -7,6 +7,7 @@ import json
 import os
 import tempfile
 import threading
+import time
 from pathlib import Path
 
 SETTINGS_FILENAME = "settings.json"
@@ -63,17 +64,41 @@ def load_settings(config_dir: Path) -> dict:
         # for no reason.
         print(f"WARNING: could not read {path} ({e.__class__.__name__}: {e}) "
               f"— starting from default settings")
+        _keep_corrupt(path)
         return json.loads(json.dumps(DEFAULT_SETTINGS))
     if not isinstance(data, dict):
         print(f"WARNING: {path} does not contain a settings object "
               f"— starting from default settings")
+        _keep_corrupt(path)
         return json.loads(json.dumps(DEFAULT_SETTINGS))
     merged = json.loads(json.dumps(DEFAULT_SETTINGS))
-    merged.update({k: v for k, v in data.items() if k in DEFAULT_SETTINGS})
-    for key in ("sources", "shares"):
-        if not isinstance(merged[key], dict):
-            merged[key] = {}
+    for key, value in data.items():
+        if key not in DEFAULT_SETTINGS:
+            continue
+        default = DEFAULT_SETTINGS[key]
+        # The file is user-writable: a value of the wrong type (null, a
+        # number for a time string) would crash the UI later, so it falls
+        # back to the default. bool is an int subclass: kept apart.
+        if isinstance(value, type(default)) and \
+                (isinstance(value, bool) == isinstance(default, bool)):
+            merged[key] = value
+        else:
+            print(f"WARNING: settings: ignoring {key}={value!r} (expected "
+                  f"{type(default).__name__})")
+    merged["sources"] = {k: v for k, v in merged["sources"].items()
+                         if isinstance(k, str) and isinstance(v, dict)}
+    merged["shares"] = {k: v for k, v in merged["shares"].items()
+                        if isinstance(k, str) and isinstance(v, str)}
     return merged
+
+
+def _keep_corrupt(path: Path) -> None:
+    """Move an unreadable settings file aside before defaults overwrite it,
+    so sources can be recovered by hand."""
+    backup = path.with_name(f"{path.name}.corrupt-{time.strftime('%Y%m%d-%H%M%S')}")
+    with contextlib.suppress(OSError):
+        path.replace(backup)
+        print(f"WARNING: kept the unreadable settings as {backup}")
 
 
 def save_settings(config_dir: Path, settings: dict) -> None:

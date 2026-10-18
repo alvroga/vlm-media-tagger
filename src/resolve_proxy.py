@@ -233,6 +233,24 @@ def release_ownership() -> None:
             pass
 
 
+def owned_by_this_process() -> bool:
+    """This process holds the Quit() responsibility for a headless Resolve."""
+    return _read_owner_pid() == os.getpid()
+
+
+def kill_headless_if_lingering(grace: float = 10.0) -> None:
+    """Quit-time fallback for an instance this process owned: give a Quit()
+    in flight `grace` seconds, then kill whatever headless Resolve is left
+    (never a GUI session; see _kill_headless_resolve)."""
+    deadline = time.time() + grace
+    while time.time() < deadline:
+        if not _running_resolve_pids():
+            return
+        time.sleep(0.5)
+    _kill_headless_resolve()
+    release_ownership()
+
+
 def ensure_resolve_running():
     """
     Connect to Resolve, launching it headless (-nogui) if it isn't already
@@ -341,6 +359,11 @@ def ensure_resolve_running():
         if resolve is not None:
             return resolve, True
 
+    if ours_to_quit:
+        # Launched (or claimed) by us and never answered: don't leave a
+        # headless Resolve (GBs of RAM + GPU) running behind the error.
+        _kill_headless_resolve()
+        release_ownership()
     raise RuntimeError(
         f"Resolve did not become ready within {RESOLVE_STARTUP_TIMEOUT}s."
     )

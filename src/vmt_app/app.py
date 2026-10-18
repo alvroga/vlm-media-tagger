@@ -36,6 +36,7 @@ pywebview.api method names; keep both sides in lockstep).
 import asyncio
 import concurrent.futures
 import contextlib
+import faulthandler
 import json
 import os
 import subprocess
@@ -121,12 +122,16 @@ class _LineLogger:
         self._on_line = on_line
         self._log_file = log_file
         self._buf = ""
+        # redirect_stdout swaps sys.stdout process-wide: the batch's worker
+        # threads (and any other thread) write here concurrently.
+        self._lock = threading.RLock()
 
     def write(self, text: str) -> int:
-        self._buf += text
-        while "\n" in self._buf:
-            line, self._buf = self._buf.split("\n", 1)
-            self._emit(line)
+        with self._lock:
+            self._buf += text
+            while "\n" in self._buf:
+                line, self._buf = self._buf.split("\n", 1)
+                self._emit(line)
         return len(text)
 
     def _emit(self, line: str) -> None:
@@ -138,9 +143,10 @@ class _LineLogger:
     def flush(self) -> None:
         # Emit a partial trailing line (an in-place progress line like
         # resolve_proxy's "Rendering... ") rather than dropping it.
-        if self._buf:
-            line, self._buf = self._buf, ""
-            self._emit(line)
+        with self._lock:
+            if self._buf:
+                line, self._buf = self._buf, ""
+                self._emit(line)
 
 
 def _available_languages() -> list[dict]:
@@ -192,6 +198,9 @@ class Backend:
         # yet (Resolve waits for the engine setup) already reads as busy.
         self._resolve_light = "busy" if self.settings.get("resolve_enabled") else "off"
         self._resolve_watch_task: asyncio.Task | None = None
+        # Set first thing on quit: nothing new (run, Resolve, engine) may
+        # start while the window lingers during cleanup.
+        self._quitting = False
 
         # Per-source (done, total), in memory only: recomputed on demand.
         # _progress_gen bumps whenever what "done" means changes (tasks,
@@ -224,8 +233,18 @@ class Backend:
     def _eval(self, event: dict) -> None:
         if self.window is None:
             return
-        with contextlib.suppress(Exception):  # window mid-close
-            self.window.evaluate_js(f"window.UI && UI.dispatch({json.dumps(event)})")
+        js = f"window.UI && UI.dispatch({json.dumps(event)})"
+
+        def _send() -> None:
+            with contextlib.suppress(Exception):  # window mid-close
+                self.window.evaluate_js(js)
+        # evaluate_js waits (no timeout) for the main thread to run the JS:
+        # called ON the main thread (a print in the quit handler, captured by
+        # a run's stdout redirect) it would wait on itself forever.
+        if threading.current_thread() is threading.main_thread():
+            threading.Thread(target=_send, daemon=True).start()
+        else:
+            _send()
 
     def snapshot(self) -> dict:
         """Initial state for the front end; called once by JS (api.init())
@@ -331,14 +350,26 @@ class Backend:
         and unmount shares if opted in. Every step is bounded, so a wedged
         child can't hang Cmd+Q, and idempotent: it runs from the window's
         closing event and again after webview.start() returns."""
+        self._quitting = True
         if self._stop_event is not None:
             self._stop_event.set()
+        if self._auto_task is not None:
+            with contextlib.suppress(Exception):
+                self.loop.call_soon_threadsafe(self._auto_task.cancel)
+        # Captured before _stop_resolve releases the marker: if Quit() can't
+        # finish in time, the headless instance this session launched is
+        # killed rather than left running after the app is gone.
+        owned_resolve = resolve_proxy.owned_by_this_process()
 
         if self._loop_thread is not None and self._loop_thread.is_alive():
             with contextlib.suppress(Exception):
                 asyncio.run_coroutine_threadsafe(self._stop_resolve(), self.loop).result(timeout=70)
+        if owned_resolve:
+            with contextlib.suppress(Exception):
+                resolve_proxy.kill_headless_if_lingering(grace=10)
 
-        engine = threading.Thread(target=llama_manager.shutdown, daemon=True)
+        engine = threading.Thread(target=llama_manager.shutdown, kwargs={"final": True},
+                                  daemon=True)
         engine.start()
         engine.join(timeout=15)
 
@@ -763,7 +794,7 @@ class Backend:
         """One run, from the button or the timer. The only difference: a
         scheduled run that processed nothing doesn't notify (an hourly poll
         finding nothing new must not ping every hour)."""
-        if self._batch_running:
+        if self._batch_running or self._quitting:
             return
         sources = [p for p, e in self.settings["sources"].items()
                    if e.get("selected") and not e.get("hidden")]
@@ -864,6 +895,7 @@ class Backend:
             failure = f"Failed: {_short(e)}"
             subtitle = "Analysis failed"
         finally:
+            self._batch_running = False  # first: nothing below may leave it stuck
             _end_no_nap(nap_token)
             with contextlib.suppress(Exception):
                 for sink in self.output_sinks:
@@ -890,8 +922,9 @@ class Backend:
 
             elapsed = datetime.now() - started_at
             elapsed_str = str(elapsed - timedelta(microseconds=elapsed.microseconds))
-            log_file.write(f"\n{summary}\nTook {elapsed_str}\n")
-            log_file.close()
+            with contextlib.suppress(OSError):  # a full disk must not wedge the UI
+                log_file.write(f"\n{summary}\nTook {elapsed_str}\n")
+                log_file.close()
             self._on_log_line("")
             self._on_log_line(f"Log saved to {log_path} (took {elapsed_str})")
             # A scheduled run notifies only when it did something new (not
@@ -1013,7 +1046,7 @@ class Backend:
 
     async def _start_resolve(self) -> None:
         async with self._resolve_lock:
-            if self._resolve_handle is not None:
+            if self._resolve_handle is not None or self._quitting:
                 return
             self._set_resolve_status("Starting…", light="busy")
             try:
@@ -1045,6 +1078,7 @@ class Backend:
                     return
                 _, ours_to_quit = self._resolve_handle
                 self._resolve_handle = None
+                tagger._resolve_state = None  # a run must not render on a dead handle
                 if ours_to_quit:
                     resolve_proxy.release_ownership()
                 self._set_resolve_status(
@@ -1250,6 +1284,10 @@ def _default_window_size() -> tuple[int, int]:
     return width, height
 
 
+# Hard deadline for quit cleanup (its steps are bounded at ~70+10+15+30 s).
+QUIT_DEADLINE_SECONDS = 150
+_quit_watchdog_file = None
+
 # Held for the process lifetime; the kernel drops it on any exit (crash and
 # SIGKILL included), so a stale lock can't block the next launch.
 _instance_lock_fd: int | None = None
@@ -1315,16 +1353,25 @@ def main() -> None:
 
 
 def _say(text: str) -> None:
-    """Console line that can never break quitting (stdout may be a closed pipe)."""
+    """Console line that can never break quitting: the real stdout (never a
+    run's UI redirect, see Backend._eval), which may be a closed pipe."""
     with contextlib.suppress(Exception):
-        print(text, flush=True)
+        print(text, file=sys.__stdout__, flush=True)
 
 
 def _shutdown_then_exit(backend: "Backend") -> None:
     """Clean up, then hard-exit no matter what: a run mid-VLM-call sits in a
     non-daemon executor thread that Python would otherwise join, making Quit
     look hung for minutes. A failing cleanup step is logged (crash.log via
-    the excepthook), never allowed to skip the exit."""
+    the excepthook), never allowed to skip the exit. A C-level watchdog
+    (faulthandler, needs no GIL) dumps every thread's stack to crash.log and
+    exits if cleanup ever wedges past its bounded steps."""
+    with contextlib.suppress(Exception):
+        LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        global _quit_watchdog_file
+        _quit_watchdog_file = open(LOGS_DIR / "crash.log", "a")
+        faulthandler.dump_traceback_later(QUIT_DEADLINE_SECONDS, exit=True,
+                                          file=_quit_watchdog_file)
     try:
         backend.shutdown()
         _say("Shutdown complete.")

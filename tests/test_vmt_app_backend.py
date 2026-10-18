@@ -597,3 +597,46 @@ def test_second_instance_is_refused_until_the_first_exits(tmp_path, monkeypatch)
             holder.kill()
         if app._instance_lock_fd is not None:
             __import__("os").close(app._instance_lock_fd)
+
+
+def test_push_from_the_main_thread_never_blocks(backend):
+    gate = threading.Event()
+
+    class BlockingWindow:  # pywebview's evaluate_js waits for the main thread
+        def evaluate_js(self, js):
+            gate.wait(5)
+    backend.attach(BlockingWindow())
+    backend.snapshot()
+    import time
+    t0 = time.monotonic()
+    backend.push(type="log", t="00:00:00", text="from the quit handler")
+    assert time.monotonic() - t0 < 1.0
+    gate.set()
+
+
+def test_quitting_blocks_new_runs_and_resolve(backend, monkeypatch):
+    import asyncio
+
+    from vmt_app import app
+    started = []
+    monkeypatch.setattr(app.resolve_proxy, "ensure_resolve_running",
+                        lambda: started.append(1) or (object(), True))
+    backend._quitting = True
+    backend.settings["sources"] = {"/x": {"selected": True}}
+    loop = asyncio.new_event_loop()
+    loop.run_until_complete(backend._run_analyze(scheduled=False))
+    loop.run_until_complete(backend._start_resolve())
+    assert started == [] and backend._batch_running is False
+
+
+def test_bad_settings_values_fall_back_and_corrupt_file_is_kept(tmp_path):
+    (tmp_path / state.SETTINGS_FILENAME).write_text(json.dumps({
+        "auto_analyze_interval_minutes": None, "auto_pause_start": 900,
+        "auto_analyze": True, "sources": {"/ok": {"selected": True}, "/bad": "x"}}))
+    s = state.load_settings(tmp_path)
+    assert s["auto_analyze_interval_minutes"] == state.DEFAULT_SETTINGS["auto_analyze_interval_minutes"]
+    assert s["auto_pause_start"] == state.DEFAULT_SETTINGS["auto_pause_start"]
+    assert s["auto_analyze"] is True and list(s["sources"]) == ["/ok"]
+    (tmp_path / state.SETTINGS_FILENAME).write_text("{ half written")
+    state.load_settings(tmp_path)
+    assert list(tmp_path.glob(f"{state.SETTINGS_FILENAME}.corrupt-*"))

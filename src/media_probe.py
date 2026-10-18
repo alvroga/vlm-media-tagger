@@ -102,6 +102,10 @@ def _run_as_child() -> None:
         _trap_fatal_signals()
     except Exception:
         pass  # worst case: old behavior (crash dialog), probe still works
+    # Self-limit: if the parent dies (app quit, os._exit) during a decode
+    # hung on a dead share, nothing else would ever end this process.
+    # SIGALRM's default action terminates it at the C level.
+    signal.alarm(PROBE_TIMEOUT + 5)
     path = os.environ[PROBE_ENV_VAR]
     error = _decode_one_frame(path)
     if error:
