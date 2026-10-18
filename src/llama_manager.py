@@ -12,9 +12,11 @@ vision projector), so this manages llama.cpp's own server:
     order: already there → the local Ollama store, if this exact build was
     pulled through Ollama (same bytes, matched by sha256; hard-linked, so no
     extra disk) → a resumable Hugging Face download, sha256-verified;
-  - an orphan left by a killed previous session is adopted via a pidfile
-    and terminated on shutdown (the loaded model holds ~23 GB RSS; it must
-    not outlive the process that started it).
+  - the loaded model holds ~23 GB RSS; it must not outlive the process
+    that started it. A clean quit terminates it (shutdown()); a watchdog
+    (/bin/sh, own session) terminates it within seconds when that process
+    dies without cleanup (Force Quit, crash, SIGKILL); and an orphan that
+    still slips through is adopted via a pidfile and terminated on shutdown.
 
 When LLAMA_HOST is set (config.LLAMA_MANAGED False) every function here is a
 no-op and that external server is used as-is.
@@ -47,6 +49,19 @@ MODEL_FILES = (
 OLLAMA_BLOBS = Path(os.environ.get("OLLAMA_MODELS") or Path.home() / ".ollama" / "models") / "blobs"
 # Loading 22 GB of weights into Metal takes a while on a cold disk cache.
 STARTUP_TIMEOUT = 600
+# Watchdog: how often it checks that the owning process is alive, and how
+# long llama-server gets after SIGTERM before SIGKILL.
+WATCHDOG_POLL_SECONDS = 2
+WATCHDOG_GRACE_SECONDS = 10
+# Exits on its own as soon as the server is gone; never outlives it.
+_WATCHDOG_SH = (
+    'p=$1; c=$2; poll=$3; grace=$4\n'
+    'while kill -0 "$p" 2>/dev/null && kill -0 "$c" 2>/dev/null; do sleep "$poll"; done\n'
+    'kill -0 "$c" 2>/dev/null || exit 0\n'
+    'kill -TERM "$c" 2>/dev/null\n'
+    'i=0; while [ "$i" -lt "$grace" ] && kill -0 "$c" 2>/dev/null; do sleep 1; i=$((i+1)); done\n'
+    'kill -KILL "$c" 2>/dev/null; exit 0\n'
+)
 
 _lock = threading.Lock()
 # Set by shutdown(): a startup wait in progress gives up at once instead of
@@ -299,7 +314,24 @@ def _spawn_locked() -> tuple[bool, str]:
         _pidfile().write_text(str(_proc.pid))
     except OSError:
         pass
+    spawn_watchdog(os.getpid(), _proc.pid)
     return True, "spawned"
+
+
+def spawn_watchdog(owner_pid: int, server_pid: int, poll: float = WATCHDOG_POLL_SECONDS,
+                   grace: int = WATCHDOG_GRACE_SECONDS) -> "subprocess.Popen | None":
+    """Terminate server_pid once owner_pid is gone. In its own session, so a
+    signal aimed at the owner (or its process group) doesn't take it down
+    too; macOS has no PR_SET_PDEATHSIG."""
+    try:
+        return subprocess.Popen(
+            ["/bin/sh", "-c", _WATCHDOG_SH, "vmt-llama-watchdog",
+             str(owner_pid), str(server_pid), str(poll), str(int(grace))],
+            stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            start_new_session=True)
+    except OSError as e:
+        print(f"WARNING: llama-server watchdog not started ({e})", file=sys.stderr)
+        return None
 
 
 def shutdown(grace_seconds: float = 10.0) -> None:
