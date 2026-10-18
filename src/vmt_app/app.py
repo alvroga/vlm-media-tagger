@@ -1304,18 +1304,33 @@ def main() -> None:
         if quit_state["in_progress"]:
             return False
         quit_state["in_progress"] = True
-
-        def _shutdown_then_exit() -> None:
-            backend.shutdown()
-            os._exit(0)
-
-        threading.Thread(target=_shutdown_then_exit, daemon=True).start()
+        threading.Thread(target=_shutdown_then_exit, args=(backend,), daemon=True).start()
+        _say("Quit requested — shutting down…")
         return False
 
     window.events.closing += _on_closing
     # Right-click → Inspect for front-end work: VMT_WEBVIEW_DEBUG=1.
     webview.start(backend.on_gui_started, debug=bool(os.environ.get("VMT_WEBVIEW_DEBUG")))
-    backend.shutdown()  # safety net if a path ever skips the event above
-    # Hard exit: a run mid-VLM-call sits in a non-daemon executor thread that
-    # Python would otherwise join, making Quit look hung for minutes.
-    os._exit(0)
+    _shutdown_then_exit(backend)  # safety net if a path ever skips the event above
+
+
+def _say(text: str) -> None:
+    """Console line that can never break quitting (stdout may be a closed pipe)."""
+    with contextlib.suppress(Exception):
+        print(text, flush=True)
+
+
+def _shutdown_then_exit(backend: "Backend") -> None:
+    """Clean up, then hard-exit no matter what: a run mid-VLM-call sits in a
+    non-daemon executor thread that Python would otherwise join, making Quit
+    look hung for minutes. A failing cleanup step is logged (crash.log via
+    the excepthook), never allowed to skip the exit."""
+    try:
+        backend.shutdown()
+        _say("Shutdown complete.")
+    except BaseException:
+        with contextlib.suppress(Exception):
+            sys.excepthook(*sys.exc_info())
+        _say("Shutdown finished with errors (see crash.log).")
+    finally:
+        os._exit(0)
