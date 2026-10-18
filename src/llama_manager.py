@@ -234,16 +234,36 @@ def _port_open() -> bool:
         return False
 
 
+def _pid_alive(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
 def _adopt_orphan() -> "int | None":
     """PID recorded by a previous session, verified with ps so a recycled PID
-    of an unrelated process is never adopted (we'd SIGTERM it)."""
+    of an unrelated process is never adopted (we'd SIGTERM it). The pidfile
+    also names the owner ("<server> <owner>"): a server whose owner is still
+    alive (another app instance, a `llama_manager.py start` in a terminal) is
+    used as-is but never adopted, so our shutdown can't pull it from under
+    its owner."""
     try:
-        pid = int(_pidfile().read_text().strip())
+        fields = _pidfile().read_text().split()
+        pid = int(fields[0])
+        owner = int(fields[1]) if len(fields) > 1 else None
         out = subprocess.run(["ps", "-p", str(pid), "-o", "command="],
                              capture_output=True, text=True, timeout=10).stdout
-    except (OSError, ValueError, subprocess.TimeoutExpired):
+    except (OSError, ValueError, IndexError, subprocess.TimeoutExpired):
         return None
-    return pid if "llama-server" in out else None
+    if "llama-server" not in out:
+        return None
+    if owner is not None and owner != os.getpid() and _pid_alive(owner):
+        return None
+    return pid
 
 
 def _wait_ready(deadline: float) -> tuple[bool, str]:
@@ -311,7 +331,7 @@ def _spawn_locked() -> tuple[bool, str]:
     except OSError as e:
         return False, f"failed to launch llama-server: {e}"
     try:
-        _pidfile().write_text(str(_proc.pid))
+        _pidfile().write_text(f"{_proc.pid} {os.getpid()}")
     except OSError:
         pass
     spawn_watchdog(os.getpid(), _proc.pid)

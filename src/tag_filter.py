@@ -10,6 +10,9 @@ Light cleanup of VLM object nouns before they become output tags.
   nouns, but multi-word phrasings slipped through both (caught by the
   golden-set harness 2026-07-10 on real footage) — this is the last line
   of defense before a tag reaches the output.
+- When both a singular and its plural survive ("shelf" + "shelves",
+  "decorative plate" + "decorative plates"), only the plural is kept
+  (a repeated noun adds no search value).
 - Everything else passes through untouched.
 """
 
@@ -62,6 +65,46 @@ _LANGUAGES = {
 }
 
 
+# Plurals that mean something else than their singular: never merged
+# ("glass" the material vs "glasses" the eyewear).
+_PLURAL_DISTINCT = {
+    "glasses", "shorts", "goods", "customs", "spectacles", "scales", "clothes",
+    "greens", "woods", "grounds", "quarters", "papers", "sands", "waters", "news",
+}
+_IRREGULAR_PLURALS = {
+    "mouse": "mice", "goose": "geese", "tooth": "teeth", "foot": "feet",
+    "die": "dice", "cactus": "cacti", "fungus": "fungi", "ox": "oxen",
+}
+
+
+def _plural_forms(word: str) -> set[str]:
+    forms = {word + "s", word + "es"}
+    if len(word) > 1 and word.endswith("y") and word[-2] not in "aeiou":
+        forms.add(word[:-1] + "ies")
+    if word.endswith("f"):
+        forms.add(word[:-1] + "ves")
+    if word.endswith("fe"):
+        forms.add(word[:-2] + "ves")
+    if word in _IRREGULAR_PLURALS:
+        forms.add(_IRREGULAR_PLURALS[word])
+    return forms - _PLURAL_DISTINCT
+
+
+def plural_merges(tags) -> dict[str, str]:
+    """{singular: plural} for every tag whose plural (last word inflected)
+    is also in `tags`."""
+    present = set(tags)
+    merges = {}
+    for tag in present:
+        head, _, last = tag.rpartition(" ")
+        for form in _plural_forms(last):
+            plural = f"{head} {form}" if head else form
+            if plural in present:
+                merges[tag] = plural
+                break
+    return merges
+
+
 def clean_tag(tag: str) -> str | None:
     """Return the cleaned tag, or None if it should be dropped."""
     tag = tag.lower().strip()
@@ -104,7 +147,8 @@ def clean_tag(tag: str) -> str | None:
 
 
 def clean_tags(tags: list[str]) -> list[str]:
-    """Clean a tag list: drop junk, strip colors, dedup preserving order."""
+    """Clean a tag list: drop junk, strip colors, dedup preserving order,
+    and drop a singular when its plural is also there."""
     seen = set()
     out = []
     for t in tags:
@@ -112,4 +156,5 @@ def clean_tags(tags: list[str]) -> list[str]:
         if c and c not in seen:
             seen.add(c)
             out.append(c)
-    return out
+    merges = plural_merges(out)
+    return [t for t in out if t not in merges]

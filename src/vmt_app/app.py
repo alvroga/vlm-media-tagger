@@ -1250,8 +1250,41 @@ def _default_window_size() -> tuple[int, int]:
     return width, height
 
 
+# Held for the process lifetime; the kernel drops it on any exit (crash and
+# SIGKILL included), so a stale lock can't block the next launch.
+_instance_lock_fd: int | None = None
+
+
+def _acquire_single_instance() -> bool:
+    """One app per profile: a second instance would adopt the first one's
+    llama-server and stop it on quit. False means another instance holds the
+    lock; it is brought to the front."""
+    global _instance_lock_fd
+    import fcntl
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    fd = os.open(CONFIG_DIR / "app.lock", os.O_RDWR | os.O_CREAT, 0o600)
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        with contextlib.suppress(Exception):
+            other = int(os.read(fd, 32).decode().strip() or 0)
+            from AppKit import NSApplicationActivateIgnoringOtherApps, NSRunningApplication
+            running = NSRunningApplication.runningApplicationWithProcessIdentifier_(other)
+            if running is not None:
+                running.activateWithOptions_(NSApplicationActivateIgnoringOtherApps)
+        os.close(fd)
+        return False
+    os.ftruncate(fd, 0)
+    os.write(fd, str(os.getpid()).encode())
+    _instance_lock_fd = fd
+    return True
+
+
 def main() -> None:
     _install_crash_log()
+    if not _acquire_single_instance():
+        print(f"{APP_NAME} is already running — brought it to the front.")
+        os._exit(0)
     backend = Backend()
     width, height = _default_window_size()
     window = webview.create_window(APP_NAME, url=str(WEBUI_DIR / "index.html"),

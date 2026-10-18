@@ -130,3 +130,27 @@ def test_clean_tags_drops_junk_and_person_entries_from_a_mixed_list():
 
 def test_clean_tags_empty_list_returns_empty():
     assert clean_tags([]) == []
+
+
+def test_singular_dropped_when_its_plural_is_present():
+    # A real run (2026-10-17), as tagged before this rule.
+    raw = ["baseball cap", "blurred background", "bull figurine", "color chart",
+           "color checker chart", "decorative plate", "decorative plates", "polo shirt",
+           "sculpture", "shelf", "shelves", "shelving unit", "teapot", "white wall"]
+    out = clean_tags(raw)
+    assert "decorative plates" in out and "decorative plate" not in out
+    assert "shelves" in out and "shelf" not in out
+    assert "shelving unit" in out and "wall" in out
+
+
+def test_plural_rules_and_exceptions():
+    assert clean_tags(["box", "boxes", "bottle", "bottles", "berry", "berries",
+                       "knife", "knives", "mouse", "mice"]) == \
+        ["boxes", "bottles", "berries", "knives", "mice"]
+    assert clean_tags(["key", "keys"]) == ["keys"]
+    # a different meaning in the plural: both kept
+    assert clean_tags(["glass", "glasses"]) == ["glass", "glasses"]
+    assert clean_tags(["short", "shorts"]) == ["short", "shorts"]
+    # a singular alone is untouched; only the LAST word inflects
+    assert clean_tags(["plate"]) == ["plate"]
+    assert clean_tags(["car door", "cars door"]) == ["car door", "cars door"]

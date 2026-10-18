@@ -39,7 +39,7 @@ import resolve_proxy
 import sinks as sinks_mod
 import translation_models
 from media_probe import UndecodableMediaError
-from tag_filter import clean_tag, clean_tags
+from tag_filter import clean_tag, clean_tags, plural_merges
 
 TOOL_VERSION = "0.1.0"
 
@@ -207,10 +207,13 @@ def _duration_sec(path: Path) -> float | None:
 def _clean_segments(segments: list) -> list:
     """Segments with tag_filter applied to their class (dropped when the
     class is), in the JSON's own shape. Several raw classes can clean to the
-    same tag ("red car", "car"); they stay separate segments."""
+    same tag ("red car", "car"); they stay separate segments. A singular is
+    renamed to its plural when the file has both, matching clean_tags."""
+    cleaned = [clean_tag(s["class"]) for s in segments]
+    merges = plural_merges(c for c in cleaned if c)
     out = []
-    for s in segments:
-        cls = clean_tag(s["class"])
+    for s, cls in zip(segments, cleaned):
+        cls = merges.get(cls, cls)
         if cls:
             out.append({"tag": cls, "start_sec": s["start_time"],
                         "end_sec": s["end_time"], "frame_count": s["frame_count"]})

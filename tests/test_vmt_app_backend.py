@@ -570,3 +570,30 @@ def test_resolve_light_follows_start_crash_and_stop(backend, monkeypatch):
     asyncio.new_event_loop().run_until_complete(scenario())
     lights = [ev["light"] for ev in events if ev.get("type") == "resolve"]
     assert lights == ["busy", "ok", "error", "off", "busy", "ok", "off"]
+
+
+def test_second_instance_is_refused_until_the_first_exits(tmp_path, monkeypatch):
+    pytest.importorskip("webview")
+    import subprocess
+    import sys
+
+    from vmt_app import app
+    monkeypatch.setattr(app, "CONFIG_DIR", tmp_path)
+    monkeypatch.setattr(app, "_instance_lock_fd", None)
+    holder = subprocess.Popen([sys.executable, "-c",
+                               "import fcntl, os, time; "
+                               f"fd = os.open({str(tmp_path / 'app.lock')!r}, os.O_RDWR | os.O_CREAT); "
+                               "fcntl.flock(fd, fcntl.LOCK_EX); print('locked', flush=True); time.sleep(600)"],
+                              stdout=subprocess.PIPE, text=True)
+    try:
+        assert holder.stdout.readline().strip() == "locked"
+        assert app._acquire_single_instance() is False
+        holder.kill()                                   # even SIGKILL frees it
+        holder.wait()
+        assert app._acquire_single_instance() is True
+        assert (tmp_path / "app.lock").read_text() == str(__import__("os").getpid())
+    finally:
+        if holder.poll() is None:
+            holder.kill()
+        if app._instance_lock_fd is not None:
+            __import__("os").close(app._instance_lock_fd)

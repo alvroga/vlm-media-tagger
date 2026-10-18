@@ -213,3 +213,11 @@ def test_video_id_is_unique_per_folder(tmp_path):
     a = config.video_id_from_path(str(tmp_path / "x" / "A001.mov"), unique=True)
     b = config.video_id_from_path(str(tmp_path / "y" / "A001.mov"), unique=True)
     assert a != b and a.startswith("A001-")
+
+
+def test_segments_follow_the_plural_merge():
+    segs = [{"class": "decorative plate", "start_time": 0.0, "end_time": 5.0, "frame_count": 1},
+            {"class": "decorative plates", "start_time": 6.9, "end_time": 7.0, "frame_count": 1},
+            {"class": "teapot", "start_time": 0.0, "end_time": 7.0, "frame_count": 2}]
+    tags = [s["tag"] for s in tagger._clean_segments(segs)]
+    assert tags == ["decorative plates", "teapot", "decorative plates"]
