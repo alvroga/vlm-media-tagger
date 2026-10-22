@@ -349,6 +349,38 @@ def test_add_select_remove_sources(backend, tmp_path):
     assert set(saved["sources"]) == {str(clip.resolve())}
 
 
+def test_finished_file_is_unticked_folder_stays(backend, tmp_path):
+    lib = _media(tmp_path / "lib", "a.mp4", "b.mp4")
+    clip = _media(tmp_path / "one", "c.mp4") / "c.mp4"
+    backend.add_sources([str(lib), str(clip)])
+    lib_p, clip_p = str(lib.resolve()), str(clip.resolve())
+    backend._file_sources.add(clip_p)
+    backend._set_source_progress(clip_p, 0, 1)
+    assert backend.settings["sources"][clip_p]["selected"] is True   # not done yet
+    backend._set_source_progress(clip_p, 1, 1)
+    backend._set_source_progress(lib_p, 2, 2)
+    assert backend.settings["sources"][clip_p]["selected"] is False  # done file: unticked
+    assert backend.settings["sources"][lib_p]["selected"] is True    # folder keeps watching
+    saved = json.loads((tmp_path / "support" / "settings.json").read_text())
+    assert saved["sources"][clip_p]["selected"] is False
+
+
+def test_remove_finished_and_clear_sources(backend, tmp_path):
+    a = _media(tmp_path / "a", "x.mp4")
+    b = _media(tmp_path / "b", "y.mp4")
+    backend.add_sources([str(a), str(b)])
+    a_p, b_p = str(a.resolve()), str(b.resolve())
+    backend._set_source_progress(a_p, 1, 1)
+    backend._set_source_progress(b_p, 0, 1)
+    backend.remove_finished_sources()
+    assert set(backend.settings["sources"]) == {b_p}
+    assert (a / "x.mp4").exists()                                     # media untouched
+    backend.clear_sources()
+    assert backend.settings["sources"] == {}
+    saved = json.loads((tmp_path / "support" / "settings.json").read_text())
+    assert saved["sources"] == {}
+
+
 def test_missing_source_row(backend, tmp_path):
     backend.settings["sources"]["/Volumes/Gone/footage"] = {"selected": True}
     backend.settings["shares"]["/Volumes/Gone"] = "smb://nas.local/Gone"

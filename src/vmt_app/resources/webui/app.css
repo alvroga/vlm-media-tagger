@@ -264,6 +264,9 @@ main { grid-column: 2; padding: 18px 26px; max-width: 940px; overflow-y: auto; m
   letter-spacing: 0.02em; padding: 5px 9px; border-radius: 5px;
 }
 .panel-sources.edit-mode .source-remove-btn { display: inline-flex; align-items: center; }
+.panel-sources .edit-only { display: none; }
+.panel-sources.edit-mode .edit-only { display: inline-flex; }
+#btn-clear-sources.confirm { color: var(--bad); border-color: var(--bad); }
 .source-remove-btn:hover { color: var(--bad); background: var(--bad-wash); }
 .source-kind { flex: none; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint); width: 4.5em; text-transform: uppercase; }
 .source-name .t { cursor: pointer; }

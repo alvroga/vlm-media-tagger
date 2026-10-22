@@ -206,6 +206,8 @@ class Backend:
         # _progress_gen bumps whenever what "done" means changes (tasks,
         # language, model filter), so a count started before is dropped.
         self._source_progress: dict[str, tuple[int, int]] = {}
+        # Sources last seen as a single file (vs a folder), from the counter.
+        self._file_sources: set[str] = set()
         self._progress_gen = 0
         self._progress_inflight: set[str] = set()
         self._progress_again: set[str] = set()
@@ -510,8 +512,22 @@ class Backend:
             self.call(self.add_sources, list(chosen))
 
     def remove_source(self, path: str) -> None:
-        self.settings["sources"].pop(path, None)
-        self._source_progress.pop(path, None)
+        self._remove_sources([path])
+
+    def remove_finished_sources(self) -> None:
+        """Drop every source whose files are all analyzed (results stay on disk)."""
+        self._remove_sources([p for p, (done, total) in self._source_progress.items()
+                              if total > 0 and done >= total])
+
+    def clear_sources(self) -> None:
+        """Empty the list (results stay on disk)."""
+        self._remove_sources(list(self.settings["sources"]))
+
+    def _remove_sources(self, paths: list[str]) -> None:
+        for path in paths:
+            self.settings["sources"].pop(path, None)
+            self._source_progress.pop(path, None)
+            self._file_sources.discard(path)
         # Forget a share no remaining source lives on.
         for point in list(self.settings["shares"]):
             if not any(p == point or p.startswith(point.rstrip("/") + "/")
@@ -605,6 +621,20 @@ class Backend:
             tasks.add("description")
         return tasks
 
+    def _set_source_progress(self, path: str, done: int, total: int) -> None:
+        """Record and show a source's count (loop thread). A single file that
+        is fully analyzed gets unticked, so the next run doesn't list it
+        again. Folders stay ticked: new files in them still get picked up."""
+        if path not in self.settings["sources"]:
+            return
+        self._source_progress[path] = (done, total)
+        self.push(type="source_progress", path=path, done=done, total=total)
+        entry = self.settings["sources"][path]
+        if path in self._file_sources and total > 0 and done >= total and entry.get("selected"):
+            entry["selected"] = False
+            state.save_settings(CONFIG_DIR, self.settings)
+            self._push_sources()
+
     async def _refresh_source_progress(self, path: str) -> None:
         """"N / M analyzed" for one source, for the current tasks. Runs on the
         scan pool; a result from an older generation is dropped."""
@@ -617,10 +647,10 @@ class Backend:
             p = Path(path)
             if p.is_dir():
                 r = library.scan(p, tasks, self.output_sinks, language=language, model=model)
-                return r.done, r.total
+                return r.done, r.total, False
             if p.is_file():
                 done = sinks_mod.is_done(self.output_sinks, p, tasks, language=language, model=model)
-                return int(done), 1
+                return int(done), 1, True
             return None
 
         result = None
@@ -632,8 +662,12 @@ class Backend:
         finally:
             self._progress_inflight.discard(path)
         if result is not None and gen == self._progress_gen and path in self.settings["sources"]:
-            self._source_progress[path] = result
-            self.push(type="source_progress", path=path, done=result[0], total=result[1])
+            done, total, is_file = result
+            if is_file:
+                self._file_sources.add(path)
+            else:
+                self._file_sources.discard(path)
+            self._set_source_progress(path, done, total)
         if path in self._progress_again or gen != self._progress_gen:
             self._progress_again.discard(path)
             if path in self.settings["sources"]:
@@ -844,8 +878,7 @@ class Backend:
                       text=_short(f"{Path(source).name}: {shown}", 100))
 
         def _on_source_progress(source: str, done: int, total: int) -> None:
-            self._source_progress[source] = (done, total)
-            self.push(type="source_progress", path=source, done=done, total=total)
+            self.call(self._set_source_progress, source, done, total)
 
         # Captured now: flipping the toggle mid-run shouldn't change an
         # in-flight run's RAW policy.
@@ -1167,6 +1200,12 @@ class Api:
 
     def remove_source(self, path: str) -> None:
         self._backend.call(self._backend.remove_source, path)
+
+    def remove_finished_sources(self) -> None:
+        self._backend.call(self._backend.remove_finished_sources)
+
+    def clear_sources(self) -> None:
+        self._backend.call(self._backend.clear_sources)
 
     def set_source_selected(self, path: str, selected: bool) -> None:
         self._backend.call(self._backend.set_source_selected, path, selected)

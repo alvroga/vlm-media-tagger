@@ -217,6 +217,15 @@ function applyComplete(rowEl, donePill, progress) {
   rowEl.classList.toggle("complete", complete);
 }
 
+var clearConfirmTimer = null;
+
+function resetClearConfirm() {
+  clearTimeout(clearConfirmTimer);
+  var btn = $("btn-clear-sources");
+  btn.classList.remove("confirm");
+  btn.textContent = "Clear list";
+}
+
 function smallButton(cls, text, title, onClick) {
   var btn = document.createElement("button");
   btn.type = "button";
@@ -548,7 +557,23 @@ function wireControls() {
   $("btn-add-files").addEventListener("click", function () { api("add_files"); });
   $("btn-refresh-sources").addEventListener("click", function () { api("refresh_sources"); });
   $("btn-edit-sources").addEventListener("click", function () {
-    $("panel-sources").classList.toggle("edit-mode");
+    var on = $("panel-sources").classList.toggle("edit-mode");
+    $("btn-edit-sources").textContent = on ? "Done" : "Edit list";
+    resetClearConfirm();
+  });
+  $("btn-remove-finished").addEventListener("click", function () { api("remove_finished_sources"); });
+  // Clear list asks for a second click within 4 s (no native confirm dialog
+  // in the web view).
+  $("btn-clear-sources").addEventListener("click", function () {
+    var btn = $("btn-clear-sources");
+    if (btn.classList.contains("confirm")) {
+      resetClearConfirm();
+      api("clear_sources");
+      return;
+    }
+    btn.classList.add("confirm");
+    btn.textContent = "Click again to clear";
+    clearConfirmTimer = setTimeout(resetClearConfirm, 4000);
   });
   checkboxes.selectAll = makeCheckbox($("cb-select-all"), function (on) { api("select_all_sources", on); });
   $("btn-show-connect").addEventListener("click", function () {
