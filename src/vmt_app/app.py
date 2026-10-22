@@ -1298,13 +1298,29 @@ def _install_crash_log() -> None:
     threading.excepthook = lambda args: _hook(args.exc_type, args.exc_value, args.exc_traceback)
 
 
-def _default_window_size() -> tuple[int, int]:
-    """The tallest comfortable height the actual display allows (a 13"
-    laptop leaves ~790 pt; a 5K display 1300+), capped at 1000. Falls back
-    to a static size if screen info is unavailable."""
-    width, height = 1120, 840
+def _screen_height() -> int | None:
+    """Usable height of the main display in points (menu bar and Dock
+    excluded), or None. AppKit first: pywebview's screen list can come back
+    empty before its app starts, which silently left the window short."""
     with contextlib.suppress(Exception):
-        height = max(660, min(1000, int(webview.screens[0].height) - 110))
+        from AppKit import NSScreen
+        screen = NSScreen.mainScreen()
+        if screen is not None:
+            return int(screen.visibleFrame().size.height)
+    with contextlib.suppress(Exception):
+        return int(webview.screens[0].height) - 80  # full height: leave menu bar + Dock
+    return None
+
+
+def _default_window_size() -> tuple[int, int]:
+    """The tallest comfortable height the display allows (a 13" laptop
+    leaves ~790 pt; a 5K display 1300+), capped at 1000 so the source list
+    has room. Falls back to a static size if screen info is unavailable."""
+    width, height = 1120, 900
+    usable = _screen_height()
+    if usable:
+        height = max(660, min(1000, usable - 30))
+    print(f"window {width}x{height} (usable screen height: {usable})")
     return width, height
 
 

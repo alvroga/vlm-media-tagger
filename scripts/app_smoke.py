@@ -71,6 +71,10 @@ def wait_for(window, expr: str, timeout: float, every: float = 0.5):
     return None
 
 
+def backend_path(backend: "app.Backend") -> str:
+    return next(iter(backend.settings["sources"]))
+
+
 def scenario(window, backend: "app.Backend", media: Path) -> None:
     try:
         # Page loaded and the bridge snapshot applied.
@@ -128,7 +132,11 @@ def scenario(window, backend: "app.Backend", media: Path) -> None:
                                    ".indexOf('1 / 1') === 0", 10)
         check(counted, "source shows 1 / 1 analyzed after the run")
 
-        # A second run finds nothing to do.
+        # A finished single file unticks itself; ticked again by hand, a
+        # second run finds nothing to do.
+        unticked = wait_for(window, "!document.querySelector('#sources-list .checkbox').classList.contains('on')", 10)
+        check(unticked, "finished file unticked itself")
+        backend.set_source_selected(backend_path(backend), True)
         js(window, "document.getElementById('btn-analyze').click()")
         time.sleep(1)
         again = wait_for(window, "!document.body.classList.contains('running') && "
