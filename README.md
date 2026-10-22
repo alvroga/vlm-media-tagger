@@ -107,7 +107,7 @@ least one file didn't process; its record says why.
 
 ```json
 {
-  "tool": "vlm-media-tagger", "version": "0.1.0", "model": "openbmb/minicpm-v4.5", "language": "en",
+  "tool": "vlm-media-tagger", "version": "0.1.0", "model": "minicpm-v4.7-35b-a3b-q4_k_m", "language": "en",
   "files": [
     {
       "path": "A001_C001.braw", "type": "video", "status": "ok", "source": "resolve-proxy",

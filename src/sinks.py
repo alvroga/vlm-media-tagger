@@ -16,9 +16,9 @@ docs/plugins.md has a worked example.
 
 A sink that tracks processed state sets tracks_state = True and implements
 is_done(); the library scanner skips a file when every state-tracking sink
-reports it done. That keeps "what is already processed" behind this
-interface, so a database-backed index can replace the sidecar check later
-without touching the batch code.
+reports it done. The output is JSON only: loading it into a database or
+search index is left to whoever consumes it (the jsonl sink makes that
+easy).
 """
 import contextlib
 import importlib
