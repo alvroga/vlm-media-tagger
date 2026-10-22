@@ -390,14 +390,18 @@ class Backend:
         when ready; False leaves the overlay showing an error and Retry."""
         managed_llama = config.VLM_BACKEND == "llama" and config.LLAMA_MANAGED
         if managed_llama and not await asyncio.to_thread(llama_manager.models_installed):
-            self.push(type="setup", mode="progress", phase="Preparing…")
+            # stage tells the overlay which view to show: "download" (bar,
+            # GB counter, download copy) or "load" (spinner only: the model
+            # is already on disk, so download talk would only confuse).
+            self.push(type="setup", mode="progress", stage="download", phase="Preparing…")
 
             def _progress(done: int, total: int, phase: str) -> None:
-                self.push(type="setup", mode="progress", done=done, total=total, phase=phase)
+                self.push(type="setup", mode="progress", stage="download",
+                          done=done, total=total, phase=phase)
 
             ok, msg = await asyncio.to_thread(llama_manager.fetch_models, _progress)
             if not ok:
-                self.push(type="setup", mode="error", message=_short(msg, 300))
+                self.push(type="setup", mode="error", stage="download", message=_short(msg, 300))
                 return False
             _notify(APP_NAME, "AI model downloaded — ready to use.",
                     subtitle="First-time setup complete")
@@ -405,13 +409,14 @@ class Backend:
         self.push(type="engine", state="busy", text="Loading the AI model…")
         if managed_llama:
             # A cold load reads ~22 GB from disk: it can take a few minutes.
-            self.push(type="setup", mode="progress", phase="Loading the AI model (can take a few minutes)…")
+            self.push(type="setup", mode="progress", stage="load",
+                      phase="Loading the AI model (can take a few minutes)…")
             ok, msg = await asyncio.to_thread(llama_manager.ensure_started)
         else:
             ok, msg = await asyncio.to_thread(config.vlm_status)
         if not ok:
             self.push(type="engine", state="error", text=f"✗ {_short(msg)}")
-            self.push(type="setup", mode="error", message=_short(msg, 300))
+            self.push(type="setup", mode="error", stage="load", message=_short(msg, 300))
             return False
         self._engine_ready = True
         self.push(type="engine", state="ok", text="✓ AI engine ready")
@@ -446,17 +451,12 @@ class Backend:
 
     def _sources_payload(self) -> dict:
         names = sorted(self.settings["sources"], key=str.lower)
-        hidden = [n for n in names if self.settings["sources"][n].get("hidden")]
-        visible = [n for n in names if n not in hidden]
-        selected = sum(1 for n in visible if self.settings["sources"][n].get("selected"))
+        selected = sum(1 for n in names if self.settings["sources"][n].get("selected"))
         if not names:
             status = "Add a folder or files to analyze."
         else:
-            status = f"{len(visible)} source(s) / {selected} selected"
-            if hidden:
-                status += f" / {len(hidden)} hidden"
-        return {"sources": [self._source_row(n) for n in visible],
-                "sources_hidden": [self._source_row(n) for n in hidden],
+            status = f"{len(names)} source(s) / {selected} selected"
+        return {"sources": [self._source_row(n) for n in names],
                 "sources_status": status}
 
     def _push_sources(self) -> None:
@@ -479,7 +479,7 @@ class Backend:
                 rejected.append(p.name)
                 continue
             if path not in self.settings["sources"]:
-                self.settings["sources"][path] = {"selected": True, "hidden": False}
+                self.settings["sources"][path] = {"selected": True}
                 added.append(path)
             self._remember_share(path)
         state.save_settings(CONFIG_DIR, self.settings)
@@ -529,20 +529,8 @@ class Backend:
         self.push(type="sources_status", message=self._sources_payload()["sources_status"])
 
     def select_all_sources(self, value: bool) -> None:
-        """Hidden sources are excluded: Select all must never sweep one back in."""
         for entry in self.settings["sources"].values():
-            if not entry.get("hidden"):
-                entry["selected"] = bool(value)
-        state.save_settings(CONFIG_DIR, self.settings)
-        self._push_sources()
-
-    def set_source_hidden(self, path: str, hidden: bool) -> None:
-        entry = self.settings["sources"].get(path)
-        if entry is None:
-            return
-        entry["hidden"] = bool(hidden)
-        if hidden:
-            entry["selected"] = False
+            entry["selected"] = bool(value)
         state.save_settings(CONFIG_DIR, self.settings)
         self._push_sources()
 
@@ -568,7 +556,7 @@ class Backend:
                 continue
             needed = any(p.startswith(point.rstrip("/") + "/") or p == point
                          for p, e in self.settings["sources"].items()
-                         if e.get("selected") and not e.get("hidden"))
+                         if e.get("selected"))
             if not needed:
                 continue
             self.push(type="sources_status", message=f"Reconnecting {url}…")
@@ -599,9 +587,8 @@ class Backend:
         self.loop.call_soon_threadsafe(_start)
 
     def _spawn_progress_refresh_all(self) -> None:
-        for path, entry in list(self.settings["sources"].items()):
-            if not entry.get("hidden"):
-                self._spawn_progress_refresh(path)
+        for path in list(self.settings["sources"]):
+            self._spawn_progress_refresh(path)
 
     def _invalidate_progress(self) -> None:
         """What "done" means changed: drop counts (and any in flight)."""
@@ -797,7 +784,7 @@ class Backend:
         if self._batch_running or self._quitting:
             return
         sources = [p for p, e in self.settings["sources"].items()
-                   if e.get("selected") and not e.get("hidden")]
+                   if e.get("selected")]
         if not sources:
             self.push(type="run_status", cls="accent", text="Select at least one source first.")
             return
@@ -1187,8 +1174,6 @@ class Api:
     def select_all_sources(self, value: bool) -> None:
         self._backend.call(self._backend.select_all_sources, value)
 
-    def set_source_hidden(self, path: str, hidden: bool) -> None:
-        self._backend.call(self._backend.set_source_hidden, path, hidden)
 
     def refresh_sources(self) -> None:
         self._backend.submit(self._backend.refresh_sources())

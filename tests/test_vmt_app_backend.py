@@ -232,15 +232,21 @@ def test_phase_markers():
 def test_settings_roundtrip_and_unknown_keys(tmp_path):
     s = state.load_settings(tmp_path)
     assert s == state.DEFAULT_SETTINGS and s is not state.DEFAULT_SETTINGS
-    s["sources"]["/x"] = {"selected": True, "hidden": False}
+    s["sources"]["/x"] = {"selected": True}
     state.save_settings(tmp_path, s)
     raw = json.loads((tmp_path / "settings.json").read_text())
     raw["sb_host"] = "legacy-key"
     (tmp_path / "settings.json").write_text(json.dumps(raw))
     loaded = state.load_settings(tmp_path)
-    assert loaded["sources"] == {"/x": {"selected": True, "hidden": False}}
+    assert loaded["sources"] == {"/x": {"selected": True}}
     assert "sb_host" not in loaded
     assert state.DEFAULT_SETTINGS["sources"] == {}  # defaults never mutated
+
+
+def test_old_hidden_flag_dropped(tmp_path):
+    (tmp_path / state.SETTINGS_FILENAME).write_text(
+        json.dumps({"sources": {"/x": {"selected": False, "hidden": True}}}))
+    assert state.load_settings(tmp_path)["sources"] == {"/x": {"selected": False}}
 
 
 def test_corrupt_settings_fall_back_with_warning(tmp_path, capsys):
@@ -326,7 +332,7 @@ def test_push_queue_flushes_on_init(backend):
     assert len(sent) == 2
 
 
-def test_add_select_hide_remove_sources(backend, tmp_path):
+def test_add_select_remove_sources(backend, tmp_path):
     lib = _media(tmp_path / "lib", "a.mp4")
     clip = lib / "a.mp4"
     backend.add_sources([str(lib), str(clip), str(lib)])
@@ -335,9 +341,8 @@ def test_add_select_hide_remove_sources(backend, tmp_path):
     assert rows[str(lib.resolve())]["kind"] == "folder"
     assert rows[str(clip.resolve())]["kind"] == "file"
 
-    backend.set_source_hidden(str(clip.resolve()), True)
-    backend.select_all_sources(True)
-    assert backend.settings["sources"][str(clip.resolve())]["selected"] is False  # hidden stays out
+    backend.select_all_sources(False)
+    assert not any(e["selected"] for e in backend.settings["sources"].values())
     backend.remove_source(str(lib.resolve()))
     assert set(backend.settings["sources"]) == {str(clip.resolve())}
     saved = json.loads((tmp_path / "support" / "settings.json").read_text())
@@ -345,7 +350,7 @@ def test_add_select_hide_remove_sources(backend, tmp_path):
 
 
 def test_missing_source_row(backend, tmp_path):
-    backend.settings["sources"]["/Volumes/Gone/footage"] = {"selected": True, "hidden": False}
+    backend.settings["sources"]["/Volumes/Gone/footage"] = {"selected": True}
     backend.settings["shares"]["/Volumes/Gone"] = "smb://nas.local/Gone"
     row = backend._source_row("/Volumes/Gone/footage")
     assert row["kind"] == "missing" and row["share"] == "smb://nas.local/Gone"
@@ -393,7 +398,7 @@ def test_reveal_path_only_known_paths(backend, tmp_path, monkeypatch):
 def test_concurrent_settings_saves_never_corrupt(tmp_path):
     import json as _json
     settings = state.load_settings(tmp_path)
-    settings["sources"] = {f"/v/{i}": {"selected": True, "hidden": False} for i in range(500)}
+    settings["sources"] = {f"/v/{i}": {"selected": True} for i in range(500)}
     errors = []
 
     def writer():
@@ -450,7 +455,7 @@ def test_stale_progress_counts_are_dropped(backend, tmp_path, monkeypatch):
         backend._progress_gen += 1   # the user toggled a task mid-scan
         return real_scan(*a, **k)
     monkeypatch.setattr(library, "scan", scan_while_tasks_change)
-    backend.settings["sources"][str(lib)] = {"selected": True, "hidden": False}
+    backend.settings["sources"][str(lib)] = {"selected": True}
     loop = asyncio.new_event_loop()
     backend.loop = loop
     backend._spawn_progress_refresh = lambda path: None
@@ -509,7 +514,7 @@ def test_run_analyze_end_to_end_through_the_backend(backend, tmp_path, fake_proc
     backend.output_sinks = [sinks.SidecarSink(mirror_root=tmp_path / "m"), Recorder()]
     lib = _media(tmp_path / "lib", "a.mp4", "b.braw")
     statuses["b.braw"] = "undecodable"
-    backend.settings["sources"] = {str(lib): {"selected": True, "hidden": False}}
+    backend.settings["sources"] = {str(lib): {"selected": True}}
 
     loop = asyncio.new_event_loop()
     loop.run_until_complete(backend._run_analyze(scheduled=False))
@@ -531,7 +536,7 @@ def test_run_analyze_engine_down(backend, monkeypatch):
     monkeypatch.setattr(backend, "_engine_check", lambda: (False, "llama-server exited"))
     pushed = []
     backend.push = lambda **ev: pushed.append(ev)
-    backend.settings["sources"] = {"/x": {"selected": True, "hidden": False}}
+    backend.settings["sources"] = {"/x": {"selected": True}}
     asyncio.new_event_loop().run_until_complete(backend._run_analyze(scheduled=False))
     assert backend._batch_running is False
     assert any(e.get("type") == "run_status" and e.get("cls") == "err" for e in pushed)

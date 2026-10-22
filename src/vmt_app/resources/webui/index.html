@@ -68,10 +68,6 @@
           </div>
         </div>
         <div id="sources-list"></div>
-        <div id="sources-hidden-wrap" hidden style="margin-top:6px;">
-          <button class="sources-hidden-toggle" id="btn-toggle-hidden" type="button"></button>
-          <div id="sources-hidden-list" hidden></div>
-        </div>
         <div class="row-between" style="margin-top:16px;">
           <span style="font-size:0.78rem;color:var(--text-faint);" id="sources-status">Add a folder or files to analyze.</span>
           <div class="source-actions">
@@ -331,12 +327,13 @@
 <div id="setup-overlay" hidden>
   <div class="setup-card">
     <img src="logo.png" alt="" class="setup-logo" onerror="this.hidden=true" />
-    <h2>First-time setup</h2>
-    <p>VLM Media Tagger analyzes media with a local AI vision model (about 22&nbsp;GB; it needs a Mac with
+    <h2 id="setup-title">First-time setup</h2>
+    <p class="setup-download-only">VLM Media Tagger analyzes media with a local AI vision model (about 22&nbsp;GB; it needs a Mac with
        32&nbsp;GB of memory or more).</p>
-    <p>It is downloaded once, onto this Mac — nothing is sent to any cloud service.
+    <p class="setup-download-only">It is downloaded once, onto this Mac — nothing is sent to any cloud service.
        Quitting is safe: the download resumes.</p>
-    <div class="progress-track setup-track"><div class="progress-fill indeterminate" id="setup-fill"></div></div>
+    <div class="setup-spinner" id="setup-spinner" hidden></div>
+    <div class="progress-track setup-track setup-download-only"><div class="progress-fill indeterminate" id="setup-fill"></div></div>
     <div class="setup-status" id="setup-status">Starting…</div>
     <button class="btn btn-primary" id="btn-setup-retry" hidden>Retry</button>
   </div>

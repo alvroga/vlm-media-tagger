@@ -18,7 +18,7 @@ DEFAULT_SETTINGS = {
     # Output language for tags and descriptions: "en" is a no-op, anything
     # else an entry in translation_models/manifest.json (downloaded on demand).
     "language": "en",
-    # What to analyze: absolute path -> {"selected": bool, "hidden": bool}.
+    # What to analyze: absolute path -> {"selected": bool}.
     # A path is a folder (scanned recursively) or a single file.
     "sources": {},
     # Network shares the app has seen sources on: mount point -> share URL
@@ -85,7 +85,10 @@ def load_settings(config_dir: Path) -> dict:
         else:
             print(f"WARNING: settings: ignoring {key}={value!r} (expected "
                   f"{type(default).__name__})")
-    merged["sources"] = {k: v for k, v in merged["sources"].items()
+    # Only "selected" is kept: an older build's "hidden" flag is dropped, so
+    # a source hidden there just shows again (unticked, as hiding left it).
+    merged["sources"] = {k: {"selected": bool(v.get("selected"))}
+                         for k, v in merged["sources"].items()
                          if isinstance(k, str) and isinstance(v, dict)}
     merged["shares"] = {k: v for k, v in merged["shares"].items()
                         if isinstance(k, str) and isinstance(v, str)}

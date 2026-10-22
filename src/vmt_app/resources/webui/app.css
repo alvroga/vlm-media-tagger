@@ -243,6 +243,7 @@ main { grid-column: 2; padding: 18px 26px; max-width: 940px; overflow-y: auto; m
 #sources-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin-top: 2px; padding-right: 4px; }
 .source-row { display: flex; align-items: center; gap: 13px; padding: 8px 2px; border-bottom: 1px solid var(--border); }
 .source-row:last-child { border-bottom: none; }
+.source-row.complete .source-name .t { color: var(--text-dim); }
 /* Name + progress on one line (wrapping only when long); the location
    sits right-aligned next to the pill, in its own colour. */
 .source-name { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
@@ -255,15 +256,8 @@ main { grid-column: 2; padding: 18px 26px; max-width: 940px; overflow-y: auto; m
 .pill.neutral { background: var(--surface-3); color: var(--text-dim); }
 .pill.accent { background: var(--accent-wash); color: var(--accent); }
 
-/* The per-row Hide / Remove buttons only show in edit mode
+/* The per-row Remove button only shows in edit mode
    (#btn-edit-sources); normal browsing has no destructive affordance. */
-.source-hide-btn {
-  display: none; flex: none; background: none; border: none; cursor: pointer;
-  color: var(--text-faint); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.02em; padding: 5px 9px; border-radius: 5px;
-}
-.panel-sources.edit-mode .source-hide-btn { display: inline-flex; align-items: center; }
-.source-hide-btn:hover { color: var(--bad); background: var(--bad-wash); }
 .source-remove-btn {
   display: none; flex: none; background: none; border: none; cursor: pointer;
   color: var(--text-faint); font-size: 0.72rem; font-weight: 700;
@@ -277,19 +271,6 @@ main { grid-column: 2; padding: 18px 26px; max-width: 940px; overflow-y: auto; m
 .connect-row { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
 .connect-row input { max-width: 320px; }
 
-.sources-hidden-toggle {
-  background: none; border: none; cursor: pointer; padding: 6px 2px;
-  color: var(--text-faint); font-size: 0.78rem; text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.sources-hidden-toggle:hover { color: var(--accent); }
-#sources-hidden-list .source-row { padding: 8px 2px; }
-.source-unhide-btn {
-  flex: none; background: none; border: none; cursor: pointer;
-  color: var(--text-faint); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.02em; padding: 5px 9px; border-radius: 5px;
-}
-.source-unhide-btn:hover { color: var(--accent); background: var(--accent-wash); }
 
 .row-between { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 
@@ -406,6 +387,14 @@ table.mini tr:last-child td { border-bottom: none; }
 .setup-track { width: 100%; max-width: 560px; margin-top: 14px; }
 .setup-status { font-size: 0.8rem; color: var(--text-dim); min-height: 1.2em; overflow-wrap: anywhere; }
 .setup-status.err { color: var(--bad); }
+#setup-overlay.loading .setup-download-only { display: none; }
+.setup-spinner {
+  width: 34px; height: 34px; margin-top: 14px; border-radius: 50%;
+  border: 3px solid var(--surface-3); border-top-color: var(--accent);
+  animation: setup-spin 0.9s linear infinite;
+}
+.setup-spinner[hidden] { display: none; }
+@keyframes setup-spin { to { transform: rotate(360deg); } }
 .setup-card .btn { margin-top: 10px; }
 
 [hidden] { display: none !important; }
@@ -540,9 +529,7 @@ select:focus { border-color: var(--accent); box-shadow: inset 1px 1px 3px #000, 
 .pill.good { border-color: var(--lcd-dim); }
 .pill.neutral { background: var(--neutral-wash); }
 .pill.accent { color: var(--accent-hi); border-color: var(--accent); }
-.source-hide-btn,
-.source-remove-btn,
-.source-unhide-btn { text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.7rem; }
+.source-remove-btn { text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.7rem; }
 .sources-hidden-toggle { font-family: var(--font-mono); }
 
 /* Run bar + activity indicator: a braille glyph cycled from JS by the same

@@ -59,7 +59,6 @@ var state = {
   stopping: false,
   animTimer: null,
   animTick: 0,
-  hiddenExpanded: false,
   appName: "VLM Media Tagger",
 };
 
@@ -197,9 +196,25 @@ function resetProgress() {
 
 /* ---------- sources ---------- */
 
+function isComplete(progress) {
+  return !!progress && progress.total > 0 && progress.done >= progress.total;
+}
+
 function progressText(progress) {
   if (!progress) return "";
-  return progress.done.toLocaleString() + " / " + progress.total.toLocaleString() + " analyzed";
+  if (progress.total === 0) return "No media files found";
+  var text = progress.done.toLocaleString() + " / " + progress.total.toLocaleString() + " analyzed";
+  if (progress.done > 0 && !isComplete(progress)) {
+    text += " · " + (progress.total - progress.done).toLocaleString() + " to go";
+  }
+  return text;
+}
+
+// The "Done" tag and dimmed row for a source with nothing left to analyze.
+function applyComplete(rowEl, donePill, progress) {
+  var complete = isComplete(progress);
+  donePill.hidden = !complete;
+  rowEl.classList.toggle("complete", complete);
 }
 
 function smallButton(cls, text, title, onClick) {
@@ -260,8 +275,13 @@ function renderSources(rows) {
     }
     rowEl.appendChild(pill);
 
-    rowEl.appendChild(smallButton("source-hide-btn", "Hide", "Hide from this list",
-      function () { api("set_source_hidden", row.path, true); }));
+    var donePill = document.createElement("span");
+    donePill.className = "pill good";
+    donePill.textContent = "✓ Done";
+    donePill.title = "Every file here is analyzed. New files added later will be picked up on the next run.";
+    rowEl.appendChild(donePill);
+    applyComplete(rowEl, donePill, row.kind === "missing" ? null : row.progress);
+
     rowEl.appendChild(smallButton("source-remove-btn", "Remove", "Remove this source (its results stay on disk)",
       function () { api("remove_source", row.path); }));
 
@@ -273,7 +293,7 @@ function renderSources(rows) {
       api("set_source_selected", row.path, on);
     });
     t.addEventListener("dblclick", function () { api("reveal_path", row.path); });
-    sourceRows[row.path] = { box: handle, progressEl: progressEl };
+    sourceRows[row.path] = { box: handle, progressEl: progressEl, rowEl: rowEl, donePill: donePill };
   });
   if (!rows || !rows.length) {
     var empty = document.createElement("div");
@@ -285,52 +305,17 @@ function renderSources(rows) {
   }
 }
 
-var lastHiddenRows = [];
-
-function renderHiddenSources(rows) {
-  lastHiddenRows = rows || [];
-  var listEl = $("sources-hidden-list");
-  listEl.textContent = "";
-  lastHiddenRows.forEach(function (row) {
-    var rowEl = document.createElement("div");
-    rowEl.className = "source-row";
-    var nameEl = document.createElement("div");
-    nameEl.className = "source-name";
-    var t = document.createElement("div");
-    t.className = "t";
-    t.textContent = row.name;
-    t.title = row.path;
-    nameEl.appendChild(t);
-    rowEl.appendChild(nameEl);
-    rowEl.appendChild(smallButton("source-unhide-btn", "Unhide", null,
-      function () { api("set_source_hidden", row.path, false); }));
-    listEl.appendChild(rowEl);
-  });
-  updateHiddenToggle();
-}
-
-function updateHiddenToggle() {
-  var wrap = $("sources-hidden-wrap");
-  if (!lastHiddenRows.length) {
-    wrap.hidden = true;
-    state.hiddenExpanded = false;
-    return;
-  }
-  wrap.hidden = false;
-  $("sources-hidden-list").hidden = !state.hiddenExpanded;
-  $("btn-toggle-hidden").textContent = lastHiddenRows.length + " hidden — " +
-    (state.hiddenExpanded ? "Hide ▴" : "Show ▾");
-}
-
 function applySources(ev) {
   renderSources(ev.sources);
-  renderHiddenSources(ev.sources_hidden);
   if (ev.sources_status) $("sources-status").textContent = ev.sources_status;
 }
 
 function updateSourceProgress(ev) {
   var entry = sourceRows[ev.path];
-  if (entry) entry.progressEl.textContent = progressText({ done: ev.done, total: ev.total });
+  if (!entry) return;
+  var progress = { done: ev.done, total: ev.total };
+  entry.progressEl.textContent = progressText(progress);
+  applyComplete(entry.rowEl, entry.donePill, progress);
 }
 
 /* ---------- skipped files ---------- */
@@ -369,6 +354,11 @@ function setSetup(ev) {
     return;
   }
   overlay.removeAttribute("hidden");
+  // "load" = the model is already downloaded: spinner, no download copy.
+  var loading = ev.stage === "load";
+  overlay.classList.toggle("loading", loading);
+  $("setup-title").textContent = loading ? "Starting the AI model" : "First-time setup";
+  $("setup-spinner").hidden = !loading || ev.mode === "error";
   var fill = $("setup-fill");
   var status = $("setup-status");
   var retry = $("btn-setup-retry");
@@ -559,10 +549,6 @@ function wireControls() {
   $("btn-refresh-sources").addEventListener("click", function () { api("refresh_sources"); });
   $("btn-edit-sources").addEventListener("click", function () {
     $("panel-sources").classList.toggle("edit-mode");
-  });
-  $("btn-toggle-hidden").addEventListener("click", function () {
-    state.hiddenExpanded = !state.hiddenExpanded;
-    updateHiddenToggle();
   });
   checkboxes.selectAll = makeCheckbox($("cb-select-all"), function (on) { api("select_all_sources", on); });
   $("btn-show-connect").addEventListener("click", function () {
